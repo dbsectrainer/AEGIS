@@ -1,4 +1,4 @@
-# Variables for USCG Multi-Cloud Infrastructure
+# USCG Multi-Cloud IAM Variables
 
 variable "environment" {
   description = "Environment name (e.g., production, staging)"
@@ -7,165 +7,150 @@ variable "environment" {
 }
 
 variable "region" {
-  description = "Region name (e.g., southeast, northeast)"
-  type        = string
-  default     = "southeast"
-}
-
-variable "aws_govcloud_region" {
   description = "AWS GovCloud region"
   type        = string
   default     = "us-gov-east-1"
 }
 
-variable "azure_gov_region" {
-  description = "Azure Government region"
+variable "azure_location" {
+  description = "Azure Government location"
   type        = string
   default     = "usgovvirginia"
 }
 
-variable "vpc_cidr" {
-  description = "CIDR block for VPC"
+variable "project_name" {
+  description = "Project name for resource naming"
   type        = string
-  default     = "10.0.0.0/16"
+  default     = "uscg"
 }
 
-variable "vnet_cidr" {
-  description = "CIDR block for Virtual Network"
-  type        = string
-  default     = "172.16.0.0/16"
-}
-
-variable "private_subnet_cidrs" {
-  description = "CIDR blocks for private subnets"
-  type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.2.0/24"]
-}
-
-variable "azure_subnet_cidrs" {
-  description = "CIDR blocks for Azure subnets"
-  type        = list(string)
-  default     = ["172.16.1.0/24", "172.16.2.0/24"]
-}
-
-variable "resource_tags" {
-  description = "Tags to apply to all resources"
+variable "tags" {
+  description = "Common tags for all resources"
   type        = map(string)
   default     = {
-    Organization = "USCG"
-    Environment  = "Production"
-    Compliance  = "FedRAMP-High"
+    Environment = "production"
+    Project     = "USCG"
+    ManagedBy   = "Terraform"
+    Security    = "FedRAMP-High"
   }
 }
 
-variable "dx_gateway_asn" {
-  description = "ASN for Direct Connect Gateway"
-  type        = string
-  default     = "64512"
+variable "password_policy" {
+  description = "IAM password policy settings"
+  type = object({
+    minimum_length        = number
+    require_lowercase     = bool
+    require_uppercase     = bool
+    require_numbers       = bool
+    require_symbols       = bool
+    password_reuse_limit  = number
+    max_password_age      = number
+  })
+  default = {
+    minimum_length        = 14
+    require_lowercase     = true
+    require_uppercase     = true
+    require_numbers       = true
+    require_symbols       = true
+    password_reuse_limit  = 24
+    max_password_age      = 60
+  }
 }
 
-variable "expressroute_bandwidth" {
-  description = "Bandwidth in Mbps for ExpressRoute circuit"
+variable "emergency_access" {
+  description = "Emergency access configuration"
+  type = object({
+    user_path  = string
+    group_path = string
+  })
+  default = {
+    user_path  = "/system/"
+    group_path = "/emergency/"
+  }
+}
+
+variable "audit_log_retention_days" {
+  description = "Number of days to retain audit logs"
   type        = number
-  default     = 1000
+  default     = 365
 }
 
-variable "expressroute_provider" {
-  description = "Service provider for ExpressRoute"
-  type        = string
-  default     = "Equinix"
-}
-
-variable "expressroute_peering_location" {
-  description = "Peering location for ExpressRoute"
-  type        = string
-  default     = "Washington DC"
-}
-
-variable "log_retention_days" {
-  description = "Number of days to retain logs"
+variable "session_timeout" {
+  description = "Session timeout in hours"
   type        = number
-  default     = 90
+  default     = 1
 }
 
-variable "key_vault_sku" {
-  description = "SKU for Key Vault"
-  type        = string
-  default     = "premium"
+variable "key_vault" {
+  description = "Key Vault configuration"
+  type = object({
+    sku_name                    = string
+    soft_delete_retention_days  = number
+    purge_protection_enabled    = bool
+  })
+  default = {
+    sku_name                    = "premium"
+    soft_delete_retention_days  = 90
+    purge_protection_enabled    = true
+  }
 }
 
-variable "storage_account_tier" {
-  description = "Storage account tier"
-  type        = string
-  default     = "Standard"
+variable "log_analytics" {
+  description = "Log Analytics configuration"
+  type = object({
+    sku               = string
+    retention_in_days = number
+  })
+  default = {
+    sku               = "PerGB2018"
+    retention_in_days = 90
+  }
 }
 
-variable "storage_replication_type" {
-  description = "Storage account replication type"
-  type        = string
-  default     = "GRS"
+variable "storage_account" {
+  description = "Storage Account configuration"
+  type = object({
+    account_tier             = string
+    account_replication_type = string
+    min_tls_version         = string
+  })
+  default = {
+    account_tier             = "Standard"
+    account_replication_type = "GRS"
+    min_tls_version         = "TLS1_2"
+  }
 }
 
-# Security-related variables
-variable "allowed_ip_ranges" {
-  description = "List of allowed IP ranges for management access"
+# Azure AD Conditional Access Policy Settings
+variable "conditional_access" {
+  description = "Conditional Access Policy configuration"
+  type = object({
+    state                     = string
+    client_app_types         = list(string)
+    sign_in_frequency        = number
+    sign_in_frequency_period = string
+  })
+  default = {
+    state                     = "enabled"
+    client_app_types         = ["all"]
+    sign_in_frequency        = 1
+    sign_in_frequency_period = "hours"
+  }
+}
+
+# Service Principal Names
+variable "service_principals" {
+  description = "List of service principals to create"
   type        = list(string)
-  default     = []  # Should be provided in terraform.tfvars
+  default     = []
 }
 
-variable "enable_encryption" {
-  description = "Enable encryption for all supported resources"
-  type        = bool
-  default     = true
-}
-
-variable "enable_logging" {
-  description = "Enable logging for all supported resources"
-  type        = bool
-  default     = true
-}
-
-variable "enable_monitoring" {
-  description = "Enable monitoring for all supported resources"
-  type        = bool
-  default     = true
-}
-
-# Compliance-related variables
-variable "compliance_requirements" {
-  description = "List of compliance requirements to enforce"
-  type        = list(string)
-  default     = ["FedRAMP-High", "NIST-800-53", "DoD-SRG"]
-}
-
-variable "data_classification" {
-  description = "Data classification level"
-  type        = string
-  default     = "sensitive"
-}
-
-# Backup and DR variables
-variable "backup_retention_days" {
-  description = "Number of days to retain backups"
-  type        = number
-  default     = 90
-}
-
-variable "enable_cross_region_backup" {
-  description = "Enable cross-region backup replication"
-  type        = bool
-  default     = true
-}
-
-# Performance-related variables
-variable "performance_tier" {
-  description = "Performance tier for resources"
-  type        = string
-  default     = "premium"
-}
-
-variable "auto_scaling_enabled" {
-  description = "Enable auto-scaling for supported resources"
-  type        = bool
-  default     = true
+# RBAC Role Assignments
+variable "role_assignments" {
+  description = "Map of role assignments"
+  type = map(object({
+    role_definition_name = string
+    principal_type      = string
+  }))
+  default = {}
 }
