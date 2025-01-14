@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2c3e50">
+        USCG Network Architecture
+    </text>
+
+    <!-- Cloud Core (Background) -->
+    <rect x="200" y="70" width="400" height="200" rx="15" fill="#f1f8ff" stroke="#4a90e2" stroke-width="2"/>
+    <text x="400" y="95" font-family="Arial" font-size="16" fill="#4a90e2">Cloud Core Network</text>
+
+    <!-- Core Components -->
+    <rect x="220" y="110" width="160" height="140" rx="8" fill="#fff" stroke="#3f51b5" stroke-width="2"/>
+    <text x="300" y="135" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#3f51b5">AWS Transit</text>
+    <rect x="230" y="150" width="140" height="25" rx="5" fill="#c5cae9"/>
+    <text x="300" y="167" text-anchor="middle" font-family="Arial" font-size="12">Transit Gateway</text>
+    <rect x="230" y="185" width="140" height="25" rx="5" fill="#c5cae9"/>
+    <text x="300" y="202" text-anchor="middle" font-family="Arial" font-size="12">Direct Connect</text>
+
+    <rect x="420" y="110" width="160" height="140" rx="8" fill="#fff" stroke="#ff9800" stroke-width="2"/>
+    <text x="500" y="135" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#ff9800">Azure Network</text>
+    <rect x="430" y="150" width="140" height="25" rx="5" fill="#ffe0b2"/>
+    <text x="500" y="167" text-anchor="middle" font-family="Arial" font-size="12">Virtual WAN</text>
+    <rect x="430" y="185" width="140" height="25" rx="5" fill="#ffe0b2"/>
+    <text x="500" y="202" text-anchor="middle" font-family="Arial" font-size="12">ExpressRoute</text>
+
+    <!-- Regional Networks -->
+    <!-- Southeast -->
+    <rect x="50" y="300" width="140" height="250" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="120" y="325" text-anchor="middle" font-family="Arial" font-size="14" fill="#e65100">Southeast</text>
+    <rect x="60" y="340" width="120" height="190" rx="8" fill="#fff"/>
+    <text x="120" y="360" text-anchor="middle" font-family="Arial" font-size="12">11 Locations</text>
+    <text x="120" y="380" text-anchor="middle" font-family="Arial" font-size="12">Charleston Hub</text>
+
+    <!-- Northeast -->
+    <rect x="200" y="300" width="140" height="250" rx="10" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="270" y="325" text-anchor="middle" font-family="Arial" font-size="14" fill="#2e7d32">Northeast</text>
+    <rect x="210" y="340" width="120" height="190" rx="8" fill="#fff"/>
+    <text x="270" y="360" text-anchor="middle" font-family="Arial" font-size="12">6 Locations</text>
+    <text x="270" y="380" text-anchor="middle" font-family="Arial" font-size="12">New York Hub</text>
+
+    <!-- Alaska -->
+    <rect x="350" y="300" width="140" height="250" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="420" y="325" text-anchor="middle" font-family="Arial" font-size="14" fill="#1976d2">Alaska</text>
+    <rect x="360" y="340" width="120" height="190" rx="8" fill="#fff"/>
+    <text x="420" y="360" text-anchor="middle" font-family="Arial" font-size="12">6 Locations</text>
+    <text x="420" y="380" text-anchor="middle" font-family="Arial" font-size="12">Anchorage Hub</text>
+
+    <!-- Pacific -->
+    <rect x="500" y="300" width="140" height="250" rx="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="570" y="325" text-anchor="middle" font-family="Arial" font-size="14" fill="#9c27b0">Pacific</text>
+    <rect x="510" y="340" width="120" height="190" rx="8" fill="#fff"/>
+    <text x="570" y="360" text-anchor="middle" font-family="Arial" font-size="12">8 Locations</text>
+    <text x="570" y="380" text-anchor="middle" font-family="Arial" font-size="12">Alameda Hub</text>
+
+    <!-- Central -->
+    <rect x="650" y="300" width="140" height="250" rx="10" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+    <text x="720" y="325" text-anchor="middle" font-family="Arial" font-size="14" fill="#e91e63">Central</text>
+    <rect x="660" y="340" width="120" height="190" rx="8" fill="#fff"/>
+    <text x="720" y="360" text-anchor="middle" font-family="Arial" font-size="12">3 Locations</text>
+    <text x="720" y="380" text-anchor="middle" font-family="Arial" font-size="12">Grand Haven Hub</text>
+
+    <!-- Connections -->
+    <path d="M120 300 L120 270 Q120 250 140 250 L400 250" stroke="#795548" stroke-width="2" fill="none"/>
+    <path d="M270 300 L270 270 Q270 250 290 250 L400 250" stroke="#795548" stroke-width="2" fill="none"/>
+    <path d="M420 300 L420 270 Q420 250 400 250" stroke="#795548" stroke-width="2" fill="none"/>
+    <path d="M570 300 L570 270 Q570 250 400 250" stroke="#795548" stroke-width="2" fill="none"/>
+    <path d="M720 300 L720 270 Q720 250 400 250" stroke="#795548" stroke-width="2" fill="none"/>
+
+    <!-- Legend -->
+    <rect x="50" y="570" width="700" height="20" rx="5" fill="#fff" stroke="#2c3e50" stroke-width="1"/>
+    <text x="400" y="585" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">
+        Direct Connect/ExpressRoute Primary Connections with VPN Backup
+    </text>
+</svg>

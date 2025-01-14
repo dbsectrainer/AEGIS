@@ -1,0 +1,94 @@
+# Example terraform.tfvars file for USCG Multi-Cloud Infrastructure
+# Rename to terraform.tfvars and update values accordingly
+# DO NOT commit terraform.tfvars to version control
+
+# Environment Configuration
+environment = "production"
+region      = "southeast"
+
+# AWS GovCloud Configuration
+aws_govcloud_region = "us-gov-east-1"
+
+# Azure Government Configuration
+azure_gov_region = "usgovvirginia"
+
+# Network Configuration
+vpc_cidr  = "10.0.0.0/16"
+vnet_cidr = "172.16.0.0/16"
+
+private_subnet_cidrs = [
+  "10.0.1.0/24",
+  "10.0.2.0/24"
+]
+
+azure_subnet_cidrs = [
+  "172.16.1.0/24",
+  "172.16.2.0/24"
+]
+
+# Security Configuration
+allowed_ip_ranges = [
+  "10.0.0.0/8",      # Internal network range
+  "192.168.0.0/16"   # Management network range
+]
+
+# Resource Tags
+resource_tags = {
+  Organization = "USCG"
+  Environment  = "Production"
+  Compliance   = "FedRAMP-High"
+  Region       = "Southeast"
+  Project      = "Multi-Cloud-Infrastructure"
+  Owner        = "Cloud-Security-Team"
+}
+
+# Direct Connect Configuration
+dx_gateway_asn = "64512"
+
+# ExpressRoute Configuration
+expressroute_bandwidth        = 1000
+expressroute_provider        = "Equinix"
+expressroute_peering_location = "Washington DC"
+
+# Compliance Configuration
+compliance_requirements = [
+  "FedRAMP-High",
+  "NIST-800-53",
+  "DoD-SRG",
+  "USCG-STIG"
+]
+
+data_classification = "sensitive"
+
+# Security Features
+enable_encryption = true
+enable_logging    = true
+enable_monitoring = true
+
+# Backup Configuration
+backup_retention_days      = 90
+enable_cross_region_backup = true
+
+# Performance Configuration
+performance_tier      = "premium"
+auto_scaling_enabled  = true
+
+# Log Analytics Configuration
+log_retention_days = 90
+
+# Key Vault Configuration
+key_vault_sku = "premium"
+
+# Storage Configuration
+storage_account_tier        = "Standard"
+storage_replication_type    = "GRS"
+
+# Note: The following sensitive values should be provided through environment variables
+# or secure secret management systems, NOT in this file:
+#
+# AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY
+# ARM_CLIENT_ID
+# ARM_CLIENT_SECRET
+# ARM_SUBSCRIPTION_ID
+# ARM_TENANT_ID

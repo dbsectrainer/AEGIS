@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2c3e50">
+        USCG Multi-Cloud Implementation Timeline FY25
+    </text>
+
+    <!-- Timeline Base -->
+    <line x1="100" y1="150" x2="700" y2="150" stroke="#2c3e50" stroke-width="2"/>
+    
+    <!-- Q1: Foundation -->
+    <rect x="100" y="80" width="140" height="140" rx="8" fill="#f1f8ff" stroke="#4a90e2" stroke-width="2"/>
+    <text x="170" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4a90e2">Q1</text>
+    <text x="170" y="120" text-anchor="middle" font-family="Arial" font-size="12" fill="#4a90e2">Oct-Dec 2024</text>
+    <rect x="110" y="130" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="170" y="150" text-anchor="middle" font-family="Arial" font-size="12">Foundation</text>
+    <text x="170" y="170" text-anchor="middle" font-family="Arial" font-size="10">- Cloud Accounts</text>
+    <text x="170" y="185" text-anchor="middle" font-family="Arial" font-size="10">- Security Controls</text>
+    <text x="170" y="200" text-anchor="middle" font-family="Arial" font-size="10">- Identity Management</text>
+
+    <!-- Q2: Network -->
+    <rect x="260" y="80" width="140" height="140" rx="8" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="330" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#ff9800">Q2</text>
+    <text x="330" y="120" text-anchor="middle" font-family="Arial" font-size="12" fill="#ff9800">Jan-Mar 2025</text>
+    <rect x="270" y="130" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="330" y="150" text-anchor="middle" font-family="Arial" font-size="12">Network</text>
+    <text x="330" y="170" text-anchor="middle" font-family="Arial" font-size="10">- Core Network</text>
+    <text x="330" y="185" text-anchor="middle" font-family="Arial" font-size="10">- Southeast Region</text>
+    <text x="330" y="200" text-anchor="middle" font-family="Arial" font-size="10">- Security Monitoring</text>
+
+    <!-- Q3: Regional -->
+    <rect x="420" y="80" width="140" height="140" rx="8" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="490" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#66bb6a">Q3</text>
+    <text x="490" y="120" text-anchor="middle" font-family="Arial" font-size="12" fill="#66bb6a">Apr-Jun 2025</text>
+    <rect x="430" y="130" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="490" y="150" text-anchor="middle" font-family="Arial" font-size="12">Regional</text>
+    <text x="490" y="170" text-anchor="middle" font-family="Arial" font-size="10">- Northeast Region</text>
+    <text x="490" y="185" text-anchor="middle" font-family="Arial" font-size="10">- Alaska Region</text>
+    <text x="490" y="200" text-anchor="middle" font-family="Arial" font-size="10">- FedRAMP Package</text>
+
+    <!-- Q4: Operations -->
+    <rect x="580" y="80" width="140" height="140" rx="8" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="650" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#9c27b0">Q4</text>
+    <text x="650" y="120" text-anchor="middle" font-family="Arial" font-size="12" fill="#9c27b0">Jul-Sep 2025</text>
+    <rect x="590" y="130" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="650" y="150" text-anchor="middle" font-family="Arial" font-size="12">Operations</text>
+    <text x="650" y="170" text-anchor="middle" font-family="Arial" font-size="10">- All Regions Live</text>
+    <text x="650" y="185" text-anchor="middle" font-family="Arial" font-size="10">- FedRAMP Auth</text>
+    <text x="650" y="200" text-anchor="middle" font-family="Arial" font-size="10">- Full Operations</text>
+
+    <!-- Regional Deployment Timeline -->
+    <text x="400" y="250" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2c3e50">
+        Regional Deployment Schedule
+    </text>
+
+    <!-- Southeast -->
+    <rect x="100" y="280" width="620" height="50" rx="5" fill="#fff" stroke="#2c3e50" stroke-width="1"/>
+    <rect x="260" y="290" width="140" height="30" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="330" y="310" text-anchor="middle" font-family="Arial" font-size="12">Southeast (11 sites)</text>
+
+    <!-- Northeast -->
+    <rect x="100" y="340" width="620" height="50" rx="5" fill="#fff" stroke="#2c3e50" stroke-width="1"/>
+    <rect x="420" y="350" width="140" height="30" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="490" y="370" text-anchor="middle" font-family="Arial" font-size="12">Northeast (6 sites)</text>
+
+    <!-- Alaska -->
+    <rect x="100" y="400" width="620" height="50" rx="5" fill="#fff" stroke="#2c3e50" stroke-width="1"/>
+    <rect x="420" y="410" width="140" height="30" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="490" y="430" text-anchor="middle" font-family="Arial" font-size="12">Alaska (6 sites)</text>
+
+    <!-- Pacific -->
+    <rect x="100" y="460" width="620" height="50" rx="5" fill="#fff" stroke="#2c3e50" stroke-width="1"/>
+    <rect x="420" y="470" width="140" height="30" rx="5" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="490" y="490" text-anchor="middle" font-family="Arial" font-size="12">Pacific (8 sites)</text>
+
+    <!-- Central -->
+    <rect x="100" y="520" width="620" height="50" rx="5" fill="#fff" stroke="#2c3e50" stroke-width="1"/>
+    <rect x="580" y="530" width="140" height="30" rx="5" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="650" y="550" text-anchor="middle" font-family="Arial" font-size="12">Central (3 sites)</text>
+</svg>
