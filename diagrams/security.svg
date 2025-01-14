@@ -19,7 +19,7 @@
     <!-- Identity and Access Management -->
     <rect x="90" y="150" width="200" height="160" rx="8" fill="#fff" stroke="#3f51b5" stroke-width="2"/>
     <text x="190" y="175" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#3f51b5">
-        Identity & Access
+        Identity &amp; Access
     </text>
     <rect x="100" y="190" width="180" height="25" rx="5" fill="#c5cae9"/>
     <text x="190" y="207" text-anchor="middle" font-family="Arial" font-size="12">PIV/CAC Integration</text>
