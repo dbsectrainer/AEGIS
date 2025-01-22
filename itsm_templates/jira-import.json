@@ -1,0 +1,158 @@
+{
+  "templates": [
+    {
+      "name": "Feature Request",
+      "description": "Template for new feature requests and enhancements",
+      "issueType": "Story",
+      "fields": {
+        "project": {
+          "key": "${project}"
+        },
+        "summary": "[Feature Request] ${summary}",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "heading",
+              "attrs": { "level": 2 },
+              "content": [{ "type": "text", "text": "Business Information" }]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [{ "type": "text", "text": "Request Type: ${requestType}" }]
+                },
+                {
+                  "type": "listItem",
+                  "content": [{ "type": "text", "text": "Business Unit: ${businessUnit}" }]
+                }
+              ]
+            }
+          ]
+        },
+        "customfield_security": {
+          "value": "Confidential"
+        },
+        "customfield_compliance": {
+          "value": ["SOX", "GDPR", "HIPAA", "PCI"]
+        }
+      }
+    },
+    {
+      "name": "Security Assessment",
+      "description": "Template for security review requests",
+      "issueType": "Security Review",
+      "fields": {
+        "project": {
+          "key": "${project}"
+        },
+        "summary": "[Security Assessment] ${summary}",
+        "security": {
+          "value": "Restricted"
+        },
+        "customfield_dataclass": {
+          "value": ["PII", "PHI", "PCI", "Confidential"]
+        }
+      }
+    },
+    {
+      "name": "Infrastructure Change",
+      "description": "Template for infrastructure modifications",
+      "issueType": "Change Request",
+      "fields": {
+        "project": {
+          "key": "${project}"
+        },
+        "summary": "[Infrastructure Change] ${summary}",
+        "environment": {
+          "value": "${environment}"
+        },
+        "customfield_changeType": {
+          "value": ["IaC", "Network", "Security", "Cloud"]
+        }
+      }
+    },
+    {
+      "name": "Production Deployment",
+      "description": "Template for production releases",
+      "issueType": "Deployment",
+      "fields": {
+        "project": {
+          "key": "${project}"
+        },
+        "summary": "[Deployment] ${summary}",
+        "customfield_deployment": {
+          "method": "${deploymentMethod}",
+          "window": "${deploymentWindow}"
+        }
+      }
+    },
+    {
+      "name": "Incident Response",
+      "description": "Template for incident management",
+      "issueType": "Incident",
+      "fields": {
+        "project": {
+          "key": "${project}"
+        },
+        "summary": "[Incident] ${summary}",
+        "priority": {
+          "name": "${severity}"
+        },
+        "customfield_incident": {
+          "category": "${category}",
+          "impact": "${impact}"
+        }
+      }
+    }
+  ],
+  "screens": {
+    "default": [
+      {
+        "name": "Create Issue Screen",
+        "tabs": [
+          {
+            "name": "Field Tab",
+            "fields": [
+              "summary",
+              "description",
+              "priority",
+              "customfield_security",
+              "customfield_compliance"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "workflows": {
+    "Feature Request": {
+      "name": "DevSecOps Feature Workflow",
+      "statuses": [
+        "Open",
+        "Security Review",
+        "In Progress",
+        "Code Review",
+        "Security Testing",
+        "QA",
+        "UAT",
+        "Ready for Production",
+        "Closed"
+      ]
+    },
+    "Security Assessment": {
+      "name": "Security Review Workflow",
+      "statuses": [
+        "Open",
+        "In Review",
+        "Remediation Required",
+        "Verification",
+        "Approved",
+        "Closed"
+      ]
+    }
+  }
+}

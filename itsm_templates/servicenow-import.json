@@ -1,0 +1,191 @@
+{
+  "sys_template": {
+    "templates": [
+      {
+        "name": "Feature Request",
+        "table": "rm_feature",
+        "template_type": "standard",
+        "fields": {
+          "short_description": "[Feature Request] ${summary}",
+          "description": "${description}",
+          "priority": "${priority}",
+          "risk": "${risk_level}",
+          "business_service": "${service}",
+          "assignment_group": "${dev_team}",
+          "u_security_review_required": "true",
+          "u_compliance_requirements": ["SOX", "GDPR", "HIPAA", "PCI"],
+          "u_data_classification": "confidential",
+          "category": "feature",
+          "subcategory": "enhancement"
+        },
+        "workflow": {
+          "stages": [
+            "draft",
+            "security_review",
+            "development",
+            "testing",
+            "deployment",
+            "closed"
+          ]
+        }
+      },
+      {
+        "name": "Security Assessment",
+        "table": "u_security_assessment",
+        "template_type": "security",
+        "fields": {
+          "short_description": "[Security Assessment] ${summary}",
+          "description": "${description}",
+          "priority": "${priority}",
+          "risk_level": "${risk}",
+          "compliance_framework": "${compliance}",
+          "data_classification": "${data_class}",
+          "security_category": "${sec_category}",
+          "assignment_group": "security_team"
+        }
+      },
+      {
+        "name": "Infrastructure Change",
+        "table": "change_request",
+        "template_type": "normal",
+        "fields": {
+          "short_description": "[Infrastructure Change] ${summary}",
+          "description": "${description}",
+          "priority": "${priority}",
+          "risk": "${risk_level}",
+          "type": "normal",
+          "category": "infrastructure",
+          "assignment_group": "${ops_team}",
+          "change_plan": "${implementation_plan}",
+          "backout_plan": "${rollback_plan}",
+          "test_plan": "${test_strategy}"
+        }
+      },
+      {
+        "name": "Production Deployment",
+        "table": "change_request",
+        "template_type": "standard",
+        "fields": {
+          "short_description": "[Deployment] ${summary}",
+          "description": "${description}",
+          "priority": "${priority}",
+          "risk": "${risk_level}",
+          "type": "standard",
+          "category": "release",
+          "assignment_group": "${release_team}",
+          "change_plan": "${deployment_plan}",
+          "backout_plan": "${rollback_plan}",
+          "test_plan": "${validation_plan}"
+        }
+      },
+      {
+        "name": "Incident Response",
+        "table": "incident",
+        "template_type": "major_incident",
+        "fields": {
+          "short_description": "[Major Incident] ${summary}",
+          "description": "${description}",
+          "priority": "${priority}",
+          "impact": "${impact}",
+          "urgency": "${urgency}",
+          "category": "incident",
+          "subcategory": "${incident_type}",
+          "assignment_group": "${incident_team}",
+          "u_security_incident": "${is_security_incident}",
+          "u_data_breach": "${is_data_breach}"
+        }
+      }
+    ],
+    "catalog_items": [
+      {
+        "name": "Request Feature Enhancement",
+        "category": "Software Development",
+        "template": "Feature Request",
+        "variables": [
+          {
+            "name": "business_justification",
+            "type": "multi_line_text",
+            "mandatory": true
+          },
+          {
+            "name": "security_requirements",
+            "type": "multi_choice",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "name": "Request Security Assessment",
+        "category": "Security",
+        "template": "Security Assessment",
+        "variables": [
+          {
+            "name": "data_handling",
+            "type": "choice",
+            "mandatory": true
+          },
+          {
+            "name": "compliance_requirements",
+            "type": "multi_choice",
+            "mandatory": true
+          }
+        ]
+      }
+    ],
+    "workflows": {
+      "Feature Request": {
+        "stages": [
+          {
+            "name": "Draft",
+            "roles": ["requester"]
+          },
+          {
+            "name": "Security Review",
+            "roles": ["security_team"],
+            "mandatory": true
+          },
+          {
+            "name": "Development",
+            "roles": ["development_team"]
+          },
+          {
+            "name": "Testing",
+            "roles": ["qa_team"]
+          },
+          {
+            "name": "Deployment",
+            "roles": ["release_team"]
+          }
+        ]
+      },
+      "Security Assessment": {
+        "stages": [
+          {
+            "name": "Initiation",
+            "roles": ["requester"]
+          },
+          {
+            "name": "Triage",
+            "roles": ["security_team"]
+          },
+          {
+            "name": "Assessment",
+            "roles": ["security_analyst"]
+          },
+          {
+            "name": "Review",
+            "roles": ["security_manager"]
+          },
+          {
+            "name": "Remediation",
+            "roles": ["development_team"]
+          },
+          {
+            "name": "Verification",
+            "roles": ["security_team"]
+          }
+        ]
+      }
+    }
+  }
+}
