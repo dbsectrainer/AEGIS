@@ -76,14 +76,14 @@ variable "default_labels" {
   default = {
     environment = "production"
     managed_by  = "terraform"
-    project     = "uscg-cloud"
+    project     = "gov-cloud"
   }
 }
 
 # GCS Backend for State Management
 terraform {
   backend "gcs" {
-    bucket = "uscg-terraform-state"
+    bucket = "gov-terraform-state"
     prefix = "terraform/state"
   }
 }
@@ -150,7 +150,7 @@ variable "org_id" {
 resource "google_access_context_manager_access_policy" "default" {
   count  = var.enable_vpc_service_controls ? 1 : 0
   parent = "organizations/${var.org_id}"
-  title  = "USCG Default Access Policy"
+  title  = "GOV Default Access Policy"
 }
 
 variable "enable_vpc_service_controls" {

@@ -1,7 +1,7 @@
 # Cloud Security Posture Management Implementation Guide
 
 ## Overview
-This document outlines the comprehensive Cloud Security Posture Management (CSPM) strategy for the USCG multi-cloud environment, ensuring continuous security assessment, compliance monitoring, and risk management.
+This document outlines the comprehensive Cloud Security Posture Management (CSPM) strategy for the GOV multi-cloud environment, ensuring continuous security assessment, compliance monitoring, and risk management.
 
 ## Cloud Security Framework
 
@@ -13,7 +13,7 @@ This document outlines the comprehensive Cloud Security Posture Management (CSPM
   - DoD Cloud Computing SRG
 
 - **Organization Standards**
-  - USCG security policies
+  - GOV security policies
   - Compliance requirements
   - Industry best practices
   - Security benchmarks
@@ -288,4 +288,4 @@ This document outlines the comprehensive Cloud Security Posture Management (CSPM
 2. FedRAMP Security Assessment Framework
 3. DoD Cloud Security Requirements Guide
 4. Cloud Security Alliance Security Guidance
-5. USCG Security Policies and Standards
+5. GOV Security Policies and Standards

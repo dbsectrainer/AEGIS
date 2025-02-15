@@ -1,7 +1,7 @@
-# USCG Multi-Cloud IAM Implementation Plan
+# GOV Multi-Cloud IAM Implementation Plan
 
 ## Executive Summary
-This implementation plan outlines the steps to transition the USCG multi-cloud environment to a FedRAMP High compliant IAM infrastructure that adheres to DoD ICAM requirements.
+This implementation plan outlines the steps to transition the GOV multi-cloud environment to a FedRAMP High compliant IAM infrastructure that adheres to DoD ICAM requirements.
 
 ## Current State Assessment
 - Missing PIV/CAC integration

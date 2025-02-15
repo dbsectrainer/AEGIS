@@ -1,7 +1,7 @@
-# USCG Multi-Cloud Security Implementation
+# GOV Multi-Cloud Security Implementation
 
 ## Overview
-This repository contains comprehensive documentation for the USCG multi-cloud security implementation, covering security controls, compliance requirements, and operational procedures aligned with FedRAMP High, NIST 800-53, and DoD Cloud Computing Security Requirements Guide (SRG) standards.
+This repository contains comprehensive documentation for the GOV multi-cloud security implementation, covering security controls, compliance requirements, and operational procedures aligned with FedRAMP High, NIST 800-53, and DoD Cloud Computing Security Requirements Guide (SRG) standards.
 
 ## Documentation Structure
 
@@ -104,7 +104,7 @@ This implementation adheres to:
 - FedRAMP High baseline requirements
 - NIST 800-53 Revision 5 controls
 - DoD Cloud Computing SRG
-- USCG security policies and requirements
+- GOV security policies and requirements
 
 ## Contributing
 
@@ -118,5 +118,5 @@ This implementation adheres to:
 1. NIST Special Publications
 2. FedRAMP Documentation
 3. DoD Cloud Security Requirements
-4. USCG Security Policies
+4. GOV Security Policies
 5. Cloud Service Provider Security Documentation

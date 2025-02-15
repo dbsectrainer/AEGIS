@@ -1,7 +1,7 @@
 # Security Incident Response Plan
 
 ## Overview
-This document outlines the comprehensive incident response procedures for the USCG multi-cloud environment, ensuring consistent and effective handling of security incidents.
+This document outlines the comprehensive incident response procedures for the GOV multi-cloud environment, ensuring consistent and effective handling of security incidents.
 
 ## Incident Classification Matrix
 
@@ -272,7 +272,7 @@ This document outlines the comprehensive incident response procedures for the US
 
 ## References
 1. NIST SP 800-61r2
-2. USCG Security Policies
+2. GOV Security Policies
 3. FedRAMP Requirements
 4. DoD Security Guidelines
 5. Industry Best Practices

@@ -1,7 +1,7 @@
 # Compliance Reporting Framework
 
 ## Overview
-This document outlines the comprehensive compliance reporting framework for the USCG multi-cloud environment, establishing standardized procedures for compliance reporting, evidence collection, and audit support.
+This document outlines the comprehensive compliance reporting framework for the GOV multi-cloud environment, establishing standardized procedures for compliance reporting, evidence collection, and audit support.
 
 ## Reporting Structure
 
@@ -295,5 +295,5 @@ This document outlines the comprehensive compliance reporting framework for the 
 1. FedRAMP Continuous Monitoring Guide
 2. NIST SP 800-137 Information Security Continuous Monitoring
 3. DoD Assessment and Authorization Process Guide
-4. USCG Compliance Reporting Requirements
+4. GOV Compliance Reporting Requirements
 5. Agency Audit and Assessment Guidelines

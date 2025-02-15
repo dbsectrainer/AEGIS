@@ -1,7 +1,7 @@
 # Zero Trust Architecture Implementation Guide
 
 ## Overview
-This document outlines the comprehensive Zero Trust Architecture (ZTA) implementation strategy for the USCG multi-cloud environment, following NIST SP 800-207 and DoD Zero Trust Reference Architecture.
+This document outlines the comprehensive Zero Trust Architecture (ZTA) implementation strategy for the GOV multi-cloud environment, following NIST SP 800-207 and DoD Zero Trust Reference Architecture.
 
 ## Core Principles
 

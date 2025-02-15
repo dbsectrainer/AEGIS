@@ -1,7 +1,7 @@
 # DevSecOps Pipeline Implementation Guide
 
 ## Overview
-This document outlines the integration of security practices within the USCG's DevOps pipeline, ensuring security is embedded throughout the software development lifecycle (SDLC).
+This document outlines the integration of security practices within the GOV's DevOps pipeline, ensuring security is embedded throughout the software development lifecycle (SDLC).
 
 ## Pipeline Security Components
 
@@ -9,7 +9,7 @@ This document outlines the integration of security practices within the USCG's D
 - **Static Application Security Testing (SAST)**
   - SonarQube integration for code quality and security
   - Checkmarx for deep code security analysis
-  - Custom security rules aligned with USCG requirements
+  - Custom security rules aligned with GOV requirements
   - Critical/High severity findings block pipeline progression
 
 - **Software Composition Analysis (SCA)**
@@ -189,7 +189,7 @@ build-secure:
 
 ## References
 1. NIST SP 800-53 Rev 5
-2. USCG Security Technical Implementation Guides (STIGs)
+2. GOV Security Technical Implementation Guides (STIGs)
 3. DoD Enterprise DevSecOps Reference Design
 4. OWASP Security Verification Standard
 5. CIS Benchmarks

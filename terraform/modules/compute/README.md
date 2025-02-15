@@ -129,7 +129,7 @@ module "gcp_compute" {
    - FedRAMP High baseline
    - NIST 800-53
    - DoD CC SRG
-   - USCG security requirements
+   - GOV security requirements
 
 ## Monitoring and Logging
 
@@ -200,5 +200,5 @@ Each module provides outputs for:
 For issues or questions:
 1. Review cloud provider documentation
 2. Check terraform documentation
-3. Consult USCG cloud team
+3. Consult GOV cloud team
 4. Review security requirements

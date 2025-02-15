@@ -39,7 +39,7 @@ variable "location" {
 variable "resource_group_name" {
   description = "Name of the resource group"
   type        = string
-  default     = "uscg-cloud-rg"
+  default     = "gov-cloud-rg"
 }
 
 variable "default_tags" {
@@ -48,15 +48,15 @@ variable "default_tags" {
   default = {
     Environment = "production"
     ManagedBy   = "terraform"
-    Project     = "uscg-cloud"
+    Project     = "gov-cloud"
   }
 }
 
 # Azure Backend Configuration for State Management
 terraform {
   backend "azurerm" {
-    resource_group_name  = "uscg-terraform-state-rg"
-    storage_account_name = "uscgterraformstate"
+    resource_group_name  = "gov-terraform-state-rg"
+    storage_account_name = "govterraformstate"
     container_name      = "tfstate"
     key                 = "government.tfstate"
     environment         = "usgovernment"

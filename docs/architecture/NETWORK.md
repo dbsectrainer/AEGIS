@@ -1,7 +1,7 @@
-# USCG Multi-Cloud Network Design
+# GOV Multi-Cloud Network Design
 
 ## Overview
-This document details the network architecture for the USCG multi-cloud infrastructure, focusing on secure connectivity between Coast Guard locations, cloud providers, and external networks.
+This document details the network architecture for the GOV multi-cloud infrastructure, focusing on secure connectivity between Coast Guard locations, cloud providers, and external networks.
 
 ## Network Architecture
 
@@ -219,7 +219,7 @@ This document details the network architecture for the USCG multi-cloud infrastr
    - NIST compliance
    - FedRAMP requirements
    - DoD standards
-   - USCG policies
+   - GOV policies
 
 2. **Industry Standards**
    - ISO 27001

@@ -1,8 +1,8 @@
-# USCG Multi-Cloud Implementation
+# GOV Multi-Cloud Implementation
 ## Executive Summary Briefing
 
 ### Project Overview
-The USCG is implementing a FedRAMP High compliant multi-cloud infrastructure across 34 Coast Guard Cities to enhance operational capabilities while ensuring security and compliance.
+The GOV is implementing a FedRAMP High compliant multi-cloud infrastructure across 34 Coast Guard Cities to enhance operational capabilities while ensuring security and compliance.
 
 ### Key Facts
 - **Timeline**: FY25 (October 2024 - September 2025)

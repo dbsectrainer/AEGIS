@@ -1,7 +1,7 @@
-# USCG Multi-Cloud Security Audit Checklist
+# GOV Multi-Cloud Security Audit Checklist
 
 ## Overview
-This checklist provides a comprehensive framework for auditing the USCG multi-cloud environment against security best practices, federal requirements, and organizational standards. Each checklist item is mapped to corresponding NIST 800-53 Rev 5 controls and FedRAMP High baseline requirements.
+This checklist provides a comprehensive framework for auditing the GOV multi-cloud environment against security best practices, federal requirements, and organizational standards. Each checklist item is mapped to corresponding NIST 800-53 Rev 5 controls and FedRAMP High baseline requirements.
 
 ## Control Mapping Format
 Each checklist item includes:
@@ -729,5 +729,5 @@ Each checklist item includes:
 1. NIST SP 800-53 Rev 5
 2. FedRAMP High Security Controls Baseline
 3. DoD Cloud Computing SRG
-4. USCG Security Policies
+4. GOV Security Policies
 5. Cloud Service Provider Security Documentation

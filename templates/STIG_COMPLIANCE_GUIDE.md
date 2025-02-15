@@ -1,7 +1,7 @@
 # STIG Compliance Implementation Guide
 
 ## Overview
-This guide provides detailed procedures for implementing, validating, and documenting Security Technical Implementation Guide (STIG) compliance in the USCG multi-cloud environment.
+This guide provides detailed procedures for implementing, validating, and documenting Security Technical Implementation Guide (STIG) compliance in the GOV multi-cloud environment.
 
 ## 1. STIG Implementation Process
 

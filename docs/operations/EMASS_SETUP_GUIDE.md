@@ -1,7 +1,7 @@
-# eMASS Setup & Integration Guide for USCG Multi-Cloud Environment
+# eMASS Setup & Integration Guide for GOV Multi-Cloud Environment
 
 ## Overview
-This guide provides comprehensive instructions for setting up and configuring eMASS (Enterprise Mission Assurance Support Service) for the USCG multi-cloud environment. It includes procedures for system setup, security control validation, documentation management, and integration with cloud services.
+This guide provides comprehensive instructions for setting up and configuring eMASS (Enterprise Mission Assurance Support Service) for the GOV multi-cloud environment. It includes procedures for system setup, security control validation, documentation management, and integration with cloud services.
 
 ## 1. eMASS Access Setup
 
@@ -34,7 +34,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
 
 ### System Details
 1. Basic Information:
-   - System Name: USCG Multi-Cloud Environment
+   - System Name: GOV Multi-Cloud Environment
    - System Description
    - System Categorization
    - System Type: Major Application
@@ -57,7 +57,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
    - FedRAMP High Baseline
    - NIST 800-53 Rev 5
    - DoD Cloud Computing SRG
-   - USCG Specific Controls
+   - GOV Specific Controls
 
 2. Control Inheritance:
    - AWS GovCloud Inherited Controls (See INHERITED_CONTROLS.md)

@@ -1,7 +1,5 @@
 .
-├── AWS_AUDIT_TOOLS.md
 ├── README.md
-├── USER_STORIES.md
 ├── data
 │   ├── JIRA_IMPORT.csv
 │   └── JIRA_IMPORT_UPDATED.csv
@@ -33,13 +31,15 @@
 │   │   ├── EXECUTIVE_ROADMAP.md
 │   │   ├── EXECUTIVE_SUMMARY.md
 │   │   ├── IMPLEMENTATION_TIMELINE.md
-│   │   └── SAFE_ROADMAP.md
+│   │   ├── SAFE_ROADMAP.md
+│   │   └── USER_STORIES.md
 │   ├── iam
 │   │   ├── ENTERPRISE_IAM_ROLES.md
 │   │   ├── IAM_GOVERNANCE.md
 │   │   ├── IAM_IMPLEMENTATION_PLAN.md
 │   │   └── INITIAL_IAM_REQUIREMENTS.md
 │   ├── operations
+│   │   ├── AWS_AUDIT_TOOLS.md
 │   │   ├── CONFIGURATION_STANDARDS.md
 │   │   ├── CSPM_IMPLEMENTATION.md
 │   │   ├── DEPLOYMENT.md
@@ -81,10 +81,72 @@
 │   ├── SSP_TEMPLATE.md
 │   └── STIG_COMPLIANCE_GUIDE.md
 ├── terraform
-│   ├── iam.tf
-│   ├── main.tf
-│   ├── terraform.tfvars.example
-│   └── variables.tf
+│   ├── environments
+│   │   ├── development
+│   │   │   ├── northeast
+│   │   │   ├── southeast
+│   │   │   └── west
+│   │   ├── production
+│   │   │   ├── northeast
+│   │   │   ├── southeast
+│   │   │   │   ├── main.tf
+│   │   │   │   └── terraform.tfvars
+│   │   │   └── west
+│   │   └── staging
+│   │       ├── northeast
+│   │       ├── southeast
+│   │       └── west
+│   ├── modules
+│   │   ├── compute
+│   │   │   ├── README.md
+│   │   │   ├── aws
+│   │   │   │   ├── iam.tf
+│   │   │   │   ├── main.tf
+│   │   │   │   └── templates
+│   │   │   │       └── ecs-userdata.sh
+│   │   │   ├── azure
+│   │   │   │   └── main.tf
+│   │   │   └── gcp
+│   │   │       └── main.tf
+│   │   ├── database
+│   │   │   ├── README.md
+│   │   │   ├── aws
+│   │   │   │   ├── iam.tf
+│   │   │   │   └── main.tf
+│   │   │   ├── azure
+│   │   │   │   └── main.tf
+│   │   │   └── gcp
+│   │   │       └── main.tf
+│   │   ├── iam
+│   │   │   ├── aws
+│   │   │   ├── azure
+│   │   │   └── gcp
+│   │   ├── monitoring
+│   │   │   ├── aws
+│   │   │   ├── azure
+│   │   │   └── gcp
+│   │   ├── networking
+│   │   │   ├── aws
+│   │   │   │   └── main.tf
+│   │   │   ├── azure
+│   │   │   │   └── main.tf
+│   │   │   └── gcp
+│   │   │       └── main.tf
+│   │   ├── security
+│   │   │   ├── aws
+│   │   │   ├── azure
+│   │   │   └── gcp
+│   │   └── storage
+│   │       ├── aws
+│   │       ├── azure
+│   │       └── gcp
+│   └── providers
+│       ├── aws
+│       │   └── govcloud.tf
+│       ├── azure
+│       │   └── government.tf
+│       └── gcp
+│           └── main.tf
 └── tree.txt
 
-17 directories, 71 files
+64 directories, 86 files

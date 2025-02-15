@@ -1,7 +1,7 @@
-# USCG Multi-Cloud Security Controls
+# GOV Multi-Cloud Security Controls
 
 ## Overview
-This document outlines the comprehensive security controls and compliance requirements implemented across the USCG multi-cloud infrastructure. All controls are designed to meet or exceed FedRAMP High, NIST 800-53, and DoD Cloud Computing Security Requirements Guide (SRG) standards.
+This document outlines the comprehensive security controls and compliance requirements implemented across the GOV multi-cloud infrastructure. All controls are designed to meet or exceed FedRAMP High, NIST 800-53, and DoD Cloud Computing Security Requirements Guide (SRG) standards.
 
 ## Security Framework Compliance
 
@@ -21,9 +21,9 @@ This document outlines the comprehensive security controls and compliance requir
    - Impact Level 5 (IL5) Requirements for specific workloads
    - Boundary Control Implementation
 
-4. **USCG Specific Requirements**
-   - USCG Security Technical Implementation Guides (STIGs)
-   - USCG Information Assurance Policy
+4. **GOV Specific Requirements**
+   - GOV Security Technical Implementation Guides (STIGs)
+   - GOV Information Assurance Policy
    - DHS Security Requirements
 
 ## Access Control Architecture

@@ -172,4 +172,4 @@ This plan covers all security controls identified in the System Security Plan (S
 - NIST SP 800-53 Rev 5
 - FedRAMP High Baseline
 - DoD Cloud Computing SRG
-- USCG Security Policies
+- GOV Security Policies

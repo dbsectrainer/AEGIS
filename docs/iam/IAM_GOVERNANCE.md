@@ -1,7 +1,7 @@
-# USCG Multi-Cloud IAM Governance
+# GOV Multi-Cloud IAM Governance
 
 ## Overview
-This document outlines the Identity and Access Management (IAM) governance framework for USCG's multi-cloud environment, adhering to DoD ICAM requirements and FedRAMP High controls.
+This document outlines the Identity and Access Management (IAM) governance framework for GOV's multi-cloud environment, adhering to DoD ICAM requirements and FedRAMP High controls.
 
 ## Authentication Requirements
 

@@ -1,7 +1,7 @@
 # Cloud Service Provider Inherited Controls
 
 ## Overview
-This document details the security controls inherited from AWS GovCloud and Azure Government under their shared responsibility models, mapped to FedRAMP High baseline controls. It clarifies which security requirements are managed by the Cloud Service Provider (CSP) versus USCG responsibilities.
+This document details the security controls inherited from AWS GovCloud and Azure Government under their shared responsibility models, mapped to FedRAMP High baseline controls. It clarifies which security requirements are managed by the Cloud Service Provider (CSP) versus GOV responsibilities.
 
 ## Shared Responsibility Model Overview
 
@@ -20,7 +20,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
    - Awareness and training
    - Incident response
 
-3. Customer Responsibilities (USCG)
+3. Customer Responsibilities (GOV)
    - Data classification and accountability
    - Access management
    - Application security
@@ -42,7 +42,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
    - Network security
    - Service configuration
 
-3. Customer Responsibilities (USCG)
+3. Customer Responsibilities (GOV)
    - Data governance
    - Application security
    - Resource configuration

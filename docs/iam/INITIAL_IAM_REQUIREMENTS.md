@@ -1,4 +1,4 @@
-# Initial IAM Requirements for USCG Cloud Environments
+# Initial IAM Requirements for GOV Cloud Environments
 
 ## Executive Summary
 
@@ -256,7 +256,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 
 ## Next Steps
 
-1. **USCG Actions Required**
+1. **GOV Actions Required**
    - Approve IAM requirements
    - Grant initial access
    - Provide PIV/CAC certificates
@@ -283,8 +283,8 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ## Approval Requirements
 
 ### Required Signatures
-- [ ] USCG Information System Security Manager
-- [ ] USCG Cloud Program Manager
+- [ ] GOV Information System Security Manager
+- [ ] GOV Cloud Program Manager
 - [ ] Contractor Program Manager
 - [ ] Security Team Lead
 

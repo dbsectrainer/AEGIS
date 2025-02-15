@@ -1,7 +1,7 @@
 # Security Testing Framework
 
 ## Overview
-This document outlines the comprehensive security testing framework for the USCG multi-cloud environment, ensuring thorough validation of security controls, identification of vulnerabilities, and verification of security posture.
+This document outlines the comprehensive security testing framework for the GOV multi-cloud environment, ensuring thorough validation of security controls, identification of vulnerabilities, and verification of security posture.
 
 ## Testing Categories
 

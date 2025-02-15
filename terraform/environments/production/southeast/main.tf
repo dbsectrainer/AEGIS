@@ -28,7 +28,7 @@ module "aws_compute" {
   private_subnet_cidrs = ["10.0.3.0/24", "10.0.4.0/24"]
   
   kubernetes_version  = "1.27"
-  ssh_key_name       = "uscg-prod-southeast"
+  ssh_key_name       = "gov-prod-southeast"
   kms_key_arn        = "arn:aws-us-gov:kms:us-gov-east-1:123456789012:key/abcd1234-a123-456a-a12b-a123b4cd5678"
   
   ecs_ami_id         = "ami-123456789" # Replace with actual ECS-optimized AMI ID
@@ -46,7 +46,7 @@ module "azure_networking" {
 
   environment         = "prod-southeast"
   location           = "usgovvirginia"
-  resource_group_name = "uscg-prod-southeast-rg"
+  resource_group_name = "gov-prod-southeast-rg"
   vnet_cidr          = "172.16.0.0/16"
   public_subnet_cidrs = ["172.16.1.0/24", "172.16.2.0/24"]
   private_subnet_cidrs = ["172.16.3.0/24", "172.16.4.0/24"]
@@ -67,14 +67,14 @@ module "azure_compute" {
 
   environment          = "prod-southeast"
   location            = "usgovvirginia"
-  resource_group_name = "uscg-prod-southeast-rg"
+  resource_group_name = "gov-prod-southeast-rg"
   subnet_id           = module.azure_networking.private_subnet_ids[0]
   
   kubernetes_version  = "1.27"
   admin_group_object_ids = ["12345678-1234-5678-1234-567812345678"] # Replace with actual Azure AD group IDs
   
   allowed_ip_ranges  = "10.0.0.0/8"
-  key_vault_key_id   = "/subscriptions/12345678-1234-5678-1234-567812345678/resourceGroups/uscg-prod-southeast-rg/providers/Microsoft.KeyVault/vaults/uscg-prod-kv/keys/container-registry"
+  key_vault_key_id   = "/subscriptions/12345678-1234-5678-1234-567812345678/resourceGroups/gov-prod-southeast-rg/providers/Microsoft.KeyVault/vaults/gov-prod-kv/keys/container-registry"
   
   tags = {
     Environment = "production"
@@ -134,7 +134,7 @@ module "aws_database" {
   allowed_security_groups = [module.aws_compute.ecs_security_group_id]
 
   create_aurora_cluster = true
-  database_name        = "uscgapp"
+  database_name        = "govapp"
   master_username      = "admin"
   master_password      = var.aurora_master_password
 
@@ -169,7 +169,7 @@ module "azure_database" {
 
   environment          = "prod-southeast"
   location            = "usgovvirginia"
-  resource_group_name = "uscg-prod-southeast-rg"
+  resource_group_name = "gov-prod-southeast-rg"
   subnet_id           = module.azure_networking.private_subnet_ids[0]
   
   administrator_login    = "admin"
@@ -374,7 +374,7 @@ terraform {
 
   # Use remote state
   backend "s3" {
-    bucket         = "uscg-terraform-state"
+    bucket         = "gov-terraform-state"
     key            = "environments/production/southeast/terraform.tfstate"
     region         = "us-gov-east-1"
     encrypt        = true

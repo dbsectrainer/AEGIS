@@ -1,7 +1,7 @@
 # Compliance Control Mapping Matrix
 
 ## Overview
-This document provides a comprehensive mapping of security controls across various compliance frameworks applicable to the USCG multi-cloud environment, ensuring unified compliance management and control implementation.
+This document provides a comprehensive mapping of security controls across various compliance frameworks applicable to the GOV multi-cloud environment, ensuring unified compliance management and control implementation.
 
 ## Control Frameworks
 
@@ -28,7 +28,7 @@ This document provides a comprehensive mapping of security controls across vario
   - Assessment procedures
   - Continuous monitoring
 
-- **USCG Requirements**
+- **GOV Requirements**
   - Agency controls
   - Policy requirements
   - Implementation guidance
@@ -39,7 +39,7 @@ This document provides a comprehensive mapping of security controls across vario
 
 ### 1. Access Control (AC)
 ```
-| Control ID | FedRAMP | NIST 800-53 | DoD SRG | USCG | Implementation |
+| Control ID | FedRAMP | NIST 800-53 | DoD SRG | GOV | Implementation |
 |------------|----------|-------------|----------|------|----------------|
 | AC-1       | High     | High        | L4/5     | Yes  | Documented     |
 | AC-2       | High     | High        | L4/5     | Yes  | Implemented    |
@@ -50,7 +50,7 @@ This document provides a comprehensive mapping of security controls across vario
 
 ### 2. Audit and Accountability (AU)
 ```
-| Control ID | FedRAMP | NIST 800-53 | DoD SRG | USCG | Implementation |
+| Control ID | FedRAMP | NIST 800-53 | DoD SRG | GOV | Implementation |
 |------------|----------|-------------|----------|------|----------------|
 | AU-1       | High     | High        | L4/5     | Yes  | Documented     |
 | AU-2       | High     | High        | L4/5     | Yes  | Implemented    |
@@ -255,5 +255,5 @@ This document provides a comprehensive mapping of security controls across vario
 1. FedRAMP Security Controls Baseline
 2. NIST SP 800-53 Rev 5
 3. DoD Cloud Computing SRG
-4. USCG Security Requirements
+4. GOV Security Requirements
 5. Compliance Framework Documentation

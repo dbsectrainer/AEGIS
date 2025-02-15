@@ -1,7 +1,7 @@
-# USCG FedRAMP High Compliance Requirements
+# GOV FedRAMP High Compliance Requirements
 
 ## Overview
-This document outlines the specific FedRAMP High baseline requirements and their implementation in the USCG multi-cloud environment. It follows the FedRAMP Security Controls Baseline for High Impact Level Systems.
+This document outlines the specific FedRAMP High baseline requirements and their implementation in the GOV multi-cloud environment. It follows the FedRAMP Security Controls Baseline for High Impact Level Systems.
 
 ## Access Control (AC)
 

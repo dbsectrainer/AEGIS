@@ -1,7 +1,7 @@
 # Risk Management Framework
 
 ## Overview
-This document outlines the comprehensive risk management framework for the USCG multi-cloud environment, establishing standardized procedures for risk identification, assessment, mitigation, and continuous monitoring.
+This document outlines the comprehensive risk management framework for the GOV multi-cloud environment, establishing standardized procedures for risk identification, assessment, mitigation, and continuous monitoring.
 
 ## Risk Governance
 
@@ -264,4 +264,4 @@ This document outlines the comprehensive risk management framework for the USCG 
 2. ISO 31000 Risk Management
 3. NIST SP 800-37 Risk Management Framework
 4. DoD Risk Management Framework
-5. USCG Risk Management Requirements
+5. GOV Risk Management Requirements

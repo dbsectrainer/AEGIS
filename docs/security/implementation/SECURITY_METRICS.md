@@ -1,7 +1,7 @@
 # Security Metrics and Key Performance Indicators
 
 ## Overview
-This document defines the comprehensive security metrics and Key Performance Indicators (KPIs) framework for the USCG multi-cloud environment, providing quantifiable measurements for security effectiveness, risk management, and compliance.
+This document defines the comprehensive security metrics and Key Performance Indicators (KPIs) framework for the GOV multi-cloud environment, providing quantifiable measurements for security effectiveness, risk management, and compliance.
 
 ## Security Posture Metrics
 

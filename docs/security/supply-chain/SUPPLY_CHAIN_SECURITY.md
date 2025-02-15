@@ -1,7 +1,7 @@
 # Software Supply Chain Security Framework
 
 ## Overview
-This document outlines the comprehensive software supply chain security framework for the USCG multi-cloud environment, ensuring secure and compliant integration of third-party components, dependencies, and vendors.
+This document outlines the comprehensive software supply chain security framework for the GOV multi-cloud environment, ensuring secure and compliant integration of third-party components, dependencies, and vendors.
 
 ## Supply Chain Risk Management
 

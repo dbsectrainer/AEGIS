@@ -1,7 +1,7 @@
 # Threat Modeling Framework
 
 ## Overview
-This document outlines the comprehensive threat modeling approach for the USCG multi-cloud environment, providing a structured methodology for identifying, analyzing, and mitigating security threats.
+This document outlines the comprehensive threat modeling approach for the GOV multi-cloud environment, providing a structured methodology for identifying, analyzing, and mitigating security threats.
 
 ## System Component Analysis
 

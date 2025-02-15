@@ -1,7 +1,7 @@
-# USCG Multi-Cloud Deployment Strategy
+# GOV Multi-Cloud Deployment Strategy
 
 ## Overview
-This document outlines the deployment and operational procedures for the USCG multi-cloud infrastructure. It provides detailed guidance for implementing the architecture across AWS GovCloud, Azure Government, and Google Cloud Platform (GCP) environments.
+This document outlines the deployment and operational procedures for the GOV multi-cloud infrastructure. It provides detailed guidance for implementing the architecture across AWS GovCloud, Azure Government, and Google Cloud Platform (GCP) environments.
 
 ## Infrastructure as Code (IaC)
 
@@ -309,4 +309,4 @@ This document outlines the deployment and operational procedures for the USCG mu
    - FedRAMP requirements
    - NIST guidelines
    - DoD standards
-   - USCG policies
+   - GOV policies

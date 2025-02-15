@@ -1,15 +1,15 @@
-# USCG Multi-Cloud Implementation - User Stories
+# GOV Multi-Cloud Implementation - User Stories
 
 ## PI-1 (Q1 FY25) - Foundation and Security
 
 ### Epic: Cloud Foundation Setup
-**Value Statement**: As a Cloud Security Engineer, I want to establish a secure multi-cloud foundation so that USCG can deploy compliant workloads across regions.
+**Value Statement**: As a Cloud Security Engineer, I want to establish a secure multi-cloud foundation so that GOV can deploy compliant workloads across regions.
 
 #### User Stories:
 1. **AWS Account Structure**
    - As a Cloud Administrator
    - I want to establish a hierarchical AWS GovCloud account structure
-   - So that I can enforce security controls and billing management across all USCG workloads
+   - So that I can enforce security controls and billing management across all GOV workloads
    - Acceptance Criteria:
      * Master payer account configured
      * Organizational units aligned with regions
@@ -79,7 +79,7 @@
 ## PI-2 (Q2 FY25) - Network and Connectivity
 
 ### Epic: Core Network Implementation
-**Value Statement**: As a Network Engineer, I want to establish a resilient multi-cloud network backbone so that all USCG locations can communicate securely.
+**Value Statement**: As a Network Engineer, I want to establish a resilient multi-cloud network backbone so that all GOV locations can communicate securely.
 
 #### User Stories:
 1. **AWS Transit Gateway**
@@ -116,7 +116,7 @@
    - Story Points: 21
 
 ### Epic: Regional Network Deployment - Southeast
-**Value Statement**: As a Regional IT Director, I want to establish secure cloud infrastructure in the Southeast region so that local USCG facilities can access cloud resources with low latency.
+**Value Statement**: As a Regional IT Director, I want to establish secure cloud infrastructure in the Southeast region so that local GOV facilities can access cloud resources with low latency.
 
 #### User Stories:
 1. **Network Infrastructure**

@@ -1,7 +1,7 @@
 # Security Training Program
 
 ## Overview
-This document outlines the comprehensive security training program for the USCG multi-cloud environment, ensuring all personnel maintain appropriate levels of security awareness and technical expertise.
+This document outlines the comprehensive security training program for the GOV multi-cloud environment, ensuring all personnel maintain appropriate levels of security awareness and technical expertise.
 
 ## Training Framework
 
@@ -264,4 +264,4 @@ This document outlines the comprehensive security training program for the USCG 
 2. NIST SP 800-16 Information Technology Security Training Requirements
 3. DoD Cyber Security Training Requirements
 4. FedRAMP Security Awareness Training Requirements
-5. USCG Training and Education Policies
+5. GOV Training and Education Policies

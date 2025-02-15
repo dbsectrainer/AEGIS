@@ -40,14 +40,14 @@ variable "default_tags" {
   default = {
     Environment = "production"
     ManagedBy   = "terraform"
-    Project     = "uscg-cloud"
+    Project     = "gov-cloud"
   }
 }
 
 # S3 Backend for State Management
 terraform {
   backend "s3" {
-    bucket         = "uscg-terraform-state"
+    bucket         = "gov-terraform-state"
     key            = "govcloud/terraform.tfstate"
     region         = "us-gov-east-1"
     encrypt        = true

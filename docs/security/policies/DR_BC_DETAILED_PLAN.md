@@ -1,7 +1,7 @@
 # Disaster Recovery and Business Continuity Plan
 
 ## Overview
-This document outlines the comprehensive Disaster Recovery (DR) and Business Continuity (BC) plan for the USCG multi-cloud environment, ensuring service resilience and recovery capabilities across all critical systems and operations.
+This document outlines the comprehensive Disaster Recovery (DR) and Business Continuity (BC) plan for the GOV multi-cloud environment, ensuring service resilience and recovery capabilities across all critical systems and operations.
 
 ## Business Impact Analysis
 
@@ -296,4 +296,4 @@ This document outlines the comprehensive Disaster Recovery (DR) and Business Con
 2. ISO 22301 Business Continuity Management
 3. FedRAMP Contingency Planning Requirements
 4. DoD Business Continuity Guidelines
-5. USCG Continuity of Operations Plans
+5. GOV Continuity of Operations Plans

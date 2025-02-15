@@ -1,7 +1,7 @@
-# USCG Multi-Cloud Architecture Design
+# GOV Multi-Cloud Architecture Design
 
 ## Overview
-This document outlines the architectural design for the USCG multi-cloud infrastructure, leveraging AWS and Azure as primary cloud service providers with Google Cloud Platform (GCP) as a tertiary provider for specific workloads.
+This document outlines the architectural design for the GOV multi-cloud infrastructure, leveraging AWS and Azure as primary cloud service providers with Google Cloud Platform (GCP) as a tertiary provider for specific workloads.
 
 ## Architecture Principles
 1. Security-First Design

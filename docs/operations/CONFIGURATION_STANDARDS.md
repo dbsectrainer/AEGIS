@@ -1,7 +1,7 @@
 # Configuration and Hardening Standards
 
 ## Overview
-This document defines the comprehensive configuration and hardening standards for the USCG multi-cloud environment, ensuring consistent security baselines across all systems and components.
+This document defines the comprehensive configuration and hardening standards for the GOV multi-cloud environment, ensuring consistent security baselines across all systems and components.
 
 ## Operating System Hardening
 
@@ -328,4 +328,4 @@ This document defines the comprehensive configuration and hardening standards fo
 2. CIS Benchmarks
 3. DoD Security Technical Implementation Guides (STIGs)
 4. Cloud Service Provider Security Documentation
-5. USCG Security Policies and Standards
+5. GOV Security Policies and Standards
