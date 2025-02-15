@@ -1,0 +1,90 @@
+.
+├── AWS_AUDIT_TOOLS.md
+├── README.md
+├── USER_STORIES.md
+├── data
+│   ├── JIRA_IMPORT.csv
+│   └── JIRA_IMPORT_UPDATED.csv
+├── diagrams
+│   ├── architecture.svg
+│   ├── container_security.svg
+│   ├── data_protection.svg
+│   ├── devsecops_flow.svg
+│   ├── iam_flow.svg
+│   ├── network.svg
+│   ├── network_security.svg
+│   ├── security.svg
+│   ├── soc_workflow.svg
+│   └── timeline.svg
+├── docs
+│   ├── architecture
+│   │   ├── ACCESS_TRANSITION_PLAN.md
+│   │   ├── ARCHITECTURE.md
+│   │   ├── NETWORK.md
+│   │   └── ZERO_TRUST_ARCHITECTURE.md
+│   ├── compliance
+│   │   ├── COMPLIANCE_MAPPING.md
+│   │   ├── COMPLIANCE_REPORTING.md
+│   │   ├── RISK_MANAGEMENT_FRAMEWORK.md
+│   │   └── fedramp
+│   │       ├── FEDRAMP_COMPLIANCE.md
+│   │       └── INHERITED_CONTROLS.md
+│   ├── executive
+│   │   ├── EXECUTIVE_ROADMAP.md
+│   │   ├── EXECUTIVE_SUMMARY.md
+│   │   ├── IMPLEMENTATION_TIMELINE.md
+│   │   └── SAFE_ROADMAP.md
+│   ├── iam
+│   │   ├── ENTERPRISE_IAM_ROLES.md
+│   │   ├── IAM_GOVERNANCE.md
+│   │   ├── IAM_IMPLEMENTATION_PLAN.md
+│   │   └── INITIAL_IAM_REQUIREMENTS.md
+│   ├── operations
+│   │   ├── CONFIGURATION_STANDARDS.md
+│   │   ├── CSPM_IMPLEMENTATION.md
+│   │   ├── DEPLOYMENT.md
+│   │   ├── DEVSECOPS_PIPELINE.md
+│   │   └── EMASS_SETUP_GUIDE.md
+│   └── security
+│       ├── implementation
+│       │   ├── SECURITY_AUDIT_CHECKLIST.md
+│       │   ├── SECURITY_METRICS.md
+│       │   ├── SECURITY_TESTING_FRAMEWORK.md
+│       │   └── THREAT_MODELING.md
+│       ├── policies
+│       │   ├── DR_BC_DETAILED_PLAN.md
+│       │   ├── INCIDENT_RESPONSE_PLAN.md
+│       │   ├── SECURITY.md
+│       │   └── SECURITY_TRAINING_PROGRAM.md
+│       └── supply-chain
+│           └── SUPPLY_CHAIN_SECURITY.md
+├── itsm_templates
+│   ├── IMPLEMENTATION_GUIDE.md
+│   ├── ITSM_IMPLEMENTATION_GUIDE.md
+│   ├── README.md
+│   ├── feature-request.md
+│   ├── incident-response.md
+│   ├── infrastructure-change.md
+│   ├── jira-import.json
+│   ├── production-deployment.md
+│   ├── remedy-import.xml
+│   ├── security-assessment.md
+│   └── servicenow-import.json
+├── templates
+│   ├── AUTHORIZATION_PACKAGE.md
+│   ├── CCI_MAPPING.md
+│   ├── POAM_TEMPLATE.md
+│   ├── RAR_TEMPLATE.md
+│   ├── SAR_TEMPLATE.md
+│   ├── SCIP_TEMPLATE.md
+│   ├── SECURITY_ASSESSMENT_PROCEDURES.md
+│   ├── SSP_TEMPLATE.md
+│   └── STIG_COMPLIANCE_GUIDE.md
+├── terraform
+│   ├── iam.tf
+│   ├── main.tf
+│   ├── terraform.tfvars.example
+│   └── variables.tf
+└── tree.txt
+
+17 directories, 71 files
