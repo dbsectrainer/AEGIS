@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2c3e50">
+        Security Operations Center Workflow
+    </text>
+
+    <!-- Detection Phase -->
+    <rect x="50" y="80" width="220" height="200" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="160" y="100" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#1976d2">Detection</text>
+    
+    <!-- SIEM -->
+    <rect x="60" y="120" width="200" height="70" rx="5" fill="#fff"/>
+    <text x="160" y="140" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">SIEM Integration</text>
+    <text x="160" y="160" text-anchor="middle" font-family="Arial" font-size="10">- Log Collection</text>
+    <text x="160" y="175" text-anchor="middle" font-family="Arial" font-size="10">- Event Correlation</text>
+    
+    <!-- Threat Detection -->
+    <rect x="60" y="200" width="200" height="70" rx="5" fill="#fff"/>
+    <text x="160" y="220" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Threat Detection</text>
+    <text x="160" y="240" text-anchor="middle" font-family="Arial" font-size="10">- Behavioral Analysis</text>
+    <text x="160" y="255" text-anchor="middle" font-family="Arial" font-size="10">- Anomaly Detection</text>
+
+    <!-- Analysis Phase -->
+    <rect x="290" y="80" width="220" height="200" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="400" y="100" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#ff9800">Analysis</text>
+    
+    <!-- Triage -->
+    <rect x="300" y="120" width="200" height="70" rx="5" fill="#fff"/>
+    <text x="400" y="140" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Incident Triage</text>
+    <text x="400" y="160" text-anchor="middle" font-family="Arial" font-size="10">- Severity Assessment</text>
+    <text x="400" y="175" text-anchor="middle" font-family="Arial" font-size="10">- Impact Analysis</text>
+    
+    <!-- Investigation -->
+    <rect x="300" y="200" width="200" height="70" rx="5" fill="#fff"/>
+    <text x="400" y="220" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Investigation</text>
+    <text x="400" y="240" text-anchor="middle" font-family="Arial" font-size="10">- Forensic Analysis</text>
+    <text x="400" y="255" text-anchor="middle" font-family="Arial" font-size="10">- Threat Hunting</text>
+
+    <!-- Response Phase -->
+    <rect x="530" y="80" width="220" height="200" rx="10" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="640" y="100" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#66bb6a">Response</text>
+    
+    <!-- Containment -->
+    <rect x="540" y="120" width="200" height="70" rx="5" fill="#fff"/>
+    <text x="640" y="140" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Containment</text>
+    <text x="640" y="160" text-anchor="middle" font-family="Arial" font-size="10">- Threat Isolation</text>
+    <text x="640" y="175" text-anchor="middle" font-family="Arial" font-size="10">- Access Control</text>
+    
+    <!-- Remediation -->
+    <rect x="540" y="200" width="200" height="70" rx="5" fill="#fff"/>
+    <text x="640" y="220" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Remediation</text>
+    <text x="640" y="240" text-anchor="middle" font-family="Arial" font-size="10">- System Recovery</text>
+    <text x="640" y="255" text-anchor="middle" font-family="Arial" font-size="10">- Security Hardening</text>
+
+    <!-- Automation & Orchestration -->
+    <rect x="50" y="300" width="700" height="140" rx="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="400" y="320" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#9c27b0">Automation &amp; Orchestration</text>
+    
+    <!-- Playbooks -->
+    <rect x="60" y="340" width="330" height="90" rx="5" fill="#fff"/>
+    <text x="225" y="360" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Security Playbooks</text>
+    <text x="225" y="380" text-anchor="middle" font-family="Arial" font-size="10">- Automated Response</text>
+    <text x="225" y="395" text-anchor="middle" font-family="Arial" font-size="10">- Incident Workflows</text>
+    <text x="225" y="410" text-anchor="middle" font-family="Arial" font-size="10">- Recovery Procedures</text>
+    
+    <!-- Integration -->
+    <rect x="410" y="340" width="330" height="90" rx="5" fill="#fff"/>
+    <text x="575" y="360" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Tool Integration</text>
+    <text x="575" y="380" text-anchor="middle" font-family="Arial" font-size="10">- SOAR Platform</text>
+    <text x="575" y="395" text-anchor="middle" font-family="Arial" font-size="10">- Security Tools</text>
+    <text x="575" y="410" text-anchor="middle" font-family="Arial" font-size="10">- Ticketing Systems</text>
+
+    <!-- Metrics & Reporting -->
+    <rect x="50" y="460" width="700" height="120" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
+    <text x="400" y="480" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#3f51b5">Metrics &amp; Reporting</text>
+    
+    <!-- Performance -->
+    <rect x="60" y="500" width="330" height="70" rx="5" fill="#fff"/>
+    <text x="225" y="520" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Performance Metrics</text>
+    <text x="225" y="540" text-anchor="middle" font-family="Arial" font-size="10">- MTTD/MTTR</text>
+    <text x="225" y="555" text-anchor="middle" font-family="Arial" font-size="10">- Incident Statistics</text>
+    
+    <!-- Compliance -->
+    <rect x="410" y="500" width="330" height="70" rx="5" fill="#fff"/>
+    <text x="575" y="520" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Compliance Reporting</text>
+    <text x="575" y="540" text-anchor="middle" font-family="Arial" font-size="10">- Audit Trails</text>
+    <text x="575" y="555" text-anchor="middle" font-family="Arial" font-size="10">- Regulatory Reports</text>
+
+    <!-- Flow Arrows -->
+    <path d="M270 180 L290 180" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M510 180 L530 180" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="none" stroke="#2c3e50"/>
+        </marker>
+    </defs>
+</svg>

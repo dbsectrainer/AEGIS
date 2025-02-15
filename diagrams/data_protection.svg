@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2c3e50">
+        Data Protection Architecture
+    </text>
+
+    <!-- Data Classification -->
+    <rect x="50" y="70" width="700" height="100" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="400" y="90" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#1976d2">Data Classification</text>
+    
+    <!-- Classification Levels -->
+    <rect x="60" y="110" width="165" height="50" rx="5" fill="#fff"/>
+    <text x="142" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Unclassified</text>
+    <text x="142" y="150" text-anchor="middle" font-family="Arial" font-size="10">Public Data</text>
+
+    <rect x="235" y="110" width="165" height="50" rx="5" fill="#fff"/>
+    <text x="317" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">SBU</text>
+    <text x="317" y="150" text-anchor="middle" font-family="Arial" font-size="10">Sensitive Data</text>
+
+    <rect x="410" y="110" width="165" height="50" rx="5" fill="#fff"/>
+    <text x="492" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">FOUO</text>
+    <text x="492" y="150" text-anchor="middle" font-family="Arial" font-size="10">Official Use Only</text>
+
+    <rect x="585" y="110" width="155" height="50" rx="5" fill="#fff"/>
+    <text x="662" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">LES</text>
+    <text x="662" y="150" text-anchor="middle" font-family="Arial" font-size="10">Law Enforcement</text>
+
+    <!-- Encryption Layer -->
+    <rect x="50" y="190" width="700" height="160" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="400" y="210" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#ff9800">Encryption Controls</text>
+
+    <!-- Data at Rest -->
+    <rect x="60" y="230" width="330" height="110" rx="5" fill="#fff"/>
+    <text x="225" y="250" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Data at Rest</text>
+    <text x="225" y="270" text-anchor="middle" font-family="Arial" font-size="10">- FIPS 140-2 Encryption</text>
+    <text x="225" y="285" text-anchor="middle" font-family="Arial" font-size="10">- Storage Encryption</text>
+    <text x="225" y="300" text-anchor="middle" font-family="Arial" font-size="10">- Database Encryption</text>
+    <text x="225" y="315" text-anchor="middle" font-family="Arial" font-size="10">- Backup Encryption</text>
+
+    <!-- Data in Transit -->
+    <rect x="410" y="230" width="330" height="110" rx="5" fill="#fff"/>
+    <text x="575" y="250" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Data in Transit</text>
+    <text x="575" y="270" text-anchor="middle" font-family="Arial" font-size="10">- TLS 1.3 Protocol</text>
+    <text x="575" y="285" text-anchor="middle" font-family="Arial" font-size="10">- VPN Encryption</text>
+    <text x="575" y="300" text-anchor="middle" font-family="Arial" font-size="10">- Network Encryption</text>
+    <text x="575" y="315" text-anchor="middle" font-family="Arial" font-size="10">- API Encryption</text>
+
+    <!-- Key Management -->
+    <rect x="50" y="370" width="700" height="110" rx="10" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="400" y="390" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#66bb6a">Key Management</text>
+
+    <!-- KMS -->
+    <rect x="60" y="410" width="215" height="60" rx="5" fill="#fff"/>
+    <text x="167" y="430" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Key Generation</text>
+    <text x="167" y="445" text-anchor="middle" font-family="Arial" font-size="10">FIPS Compliant</text>
+    <text x="167" y="460" text-anchor="middle" font-family="Arial" font-size="10">Hardware Security Module</text>
+
+    <!-- Rotation -->
+    <rect x="295" y="410" width="215" height="60" rx="5" fill="#fff"/>
+    <text x="402" y="430" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Key Rotation</text>
+    <text x="402" y="445" text-anchor="middle" font-family="Arial" font-size="10">Automated Rotation</text>
+    <text x="402" y="460" text-anchor="middle" font-family="Arial" font-size="10">Version Management</text>
+
+    <!-- Storage -->
+    <rect x="530" y="410" width="210" height="60" rx="5" fill="#fff"/>
+    <text x="635" y="430" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Key Storage</text>
+    <text x="635" y="445" text-anchor="middle" font-family="Arial" font-size="10">Secure Storage</text>
+    <text x="635" y="460" text-anchor="middle" font-family="Arial" font-size="10">Access Controls</text>
+
+    <!-- Access Controls -->
+    <rect x="50" y="500" width="700" height="80" rx="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="400" y="520" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#9c27b0">Data Access Controls</text>
+
+    <!-- Access Management -->
+    <rect x="60" y="540" width="330" height="30" rx="5" fill="#fff"/>
+    <text x="225" y="560" text-anchor="middle" font-family="Arial" font-size="12">Role-Based Access Control</text>
+
+    <!-- Monitoring -->
+    <rect x="410" y="540" width="330" height="30" rx="5" fill="#fff"/>
+    <text x="575" y="560" text-anchor="middle" font-family="Arial" font-size="12">Data Access Monitoring</text>
+
+    <!-- Flow Arrows -->
+    <path d="M400 170 L400 190" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M400 350 L400 370" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M400 480 L400 500" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="none" stroke="#2c3e50"/>
+        </marker>
+    </defs>
+</svg>

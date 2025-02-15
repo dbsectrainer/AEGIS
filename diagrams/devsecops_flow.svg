@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2c3e50">
+        DevSecOps Pipeline Flow
+    </text>
+
+    <!-- Pipeline Stages -->
+    <!-- Pre-Commit Stage -->
+    <rect x="50" y="80" width="140" height="120" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="120" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#1976d2">Pre-Commit</text>
+    <rect x="60" y="110" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="120" y="130" text-anchor="middle" font-family="Arial" font-size="12">- Secrets Scanning</text>
+    <text x="120" y="150" text-anchor="middle" font-family="Arial" font-size="12">- Code Linting</text>
+    <text x="120" y="170" text-anchor="middle" font-family="Arial" font-size="12">- SAST (Basic)</text>
+
+    <!-- Commit Stage -->
+    <rect x="210" y="80" width="140" height="120" rx="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="280" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#9c27b0">Commit</text>
+    <rect x="220" y="110" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="280" y="130" text-anchor="middle" font-family="Arial" font-size="12">- Full SAST</text>
+    <text x="280" y="150" text-anchor="middle" font-family="Arial" font-size="12">- SCA</text>
+    <text x="280" y="170" text-anchor="middle" font-family="Arial" font-size="12">- Unit Tests</text>
+
+    <!-- Build Stage -->
+    <rect x="370" y="80" width="140" height="120" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="440" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#ff9800">Build</text>
+    <rect x="380" y="110" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="440" y="130" text-anchor="middle" font-family="Arial" font-size="12">- Container Scan</text>
+    <text x="440" y="150" text-anchor="middle" font-family="Arial" font-size="12">- IaC Security</text>
+    <text x="440" y="170" text-anchor="middle" font-family="Arial" font-size="12">- Artifact Sign</text>
+
+    <!-- Test Stage -->
+    <rect x="530" y="80" width="140" height="120" rx="10" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="600" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#66bb6a">Test</text>
+    <rect x="540" y="110" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="600" y="130" text-anchor="middle" font-family="Arial" font-size="12">- DAST</text>
+    <text x="600" y="150" text-anchor="middle" font-family="Arial" font-size="12">- Pen Testing</text>
+    <text x="600" y="170" text-anchor="middle" font-family="Arial" font-size="12">- API Security</text>
+
+    <!-- Deploy Stage -->
+    <rect x="690" y="80" width="140" height="120" rx="10" fill="#ffebee" stroke="#e53935" stroke-width="2"/>
+    <text x="760" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#e53935">Deploy</text>
+    <rect x="700" y="110" width="120" height="80" rx="5" fill="#fff"/>
+    <text x="760" y="130" text-anchor="middle" font-family="Arial" font-size="12">- Config Valid</text>
+    <text x="760" y="150" text-anchor="middle" font-family="Arial" font-size="12">- Secure Deploy</text>
+    <text x="760" y="170" text-anchor="middle" font-family="Arial" font-size="12">- Compliance</text>
+
+    <!-- Security Gates -->
+    <rect x="50" y="240" width="780" height="120" rx="10" fill="#fafafa" stroke="#455a64" stroke-width="2"/>
+    <text x="440" y="260" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#455a64">Security Gates</text>
+    
+    <!-- Critical Gates -->
+    <rect x="60" y="280" width="370" height="70" rx="5" fill="#ffebee" stroke="#e53935" stroke-width="2"/>
+    <text x="245" y="300" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#e53935">Critical Gates (Blocking)</text>
+    <text x="245" y="320" text-anchor="middle" font-family="Arial" font-size="10">- Critical/High Vulnerabilities</text>
+    <text x="245" y="335" text-anchor="middle" font-family="Arial" font-size="10">- Secrets in Code</text>
+
+    <!-- Warning Gates -->
+    <rect x="450" y="280" width="370" height="70" rx="5" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="635" y="300" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#ff9800">Warning Gates (Non-Blocking)</text>
+    <text x="635" y="320" text-anchor="middle" font-family="Arial" font-size="10">- Medium Vulnerabilities</text>
+    <text x="635" y="335" text-anchor="middle" font-family="Arial" font-size="10">- Code Quality Issues</text>
+
+    <!-- Continuous Monitoring -->
+    <rect x="50" y="380" width="780" height="160" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
+    <text x="440" y="400" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#3f51b5">Continuous Security Monitoring</text>
+
+    <!-- SIEM Integration -->
+    <rect x="60" y="420" width="370" height="110" rx="5" fill="#fff"/>
+    <text x="245" y="440" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">SIEM Integration</text>
+    <text x="245" y="460" text-anchor="middle" font-family="Arial" font-size="10">- Security Event Collection</text>
+    <text x="245" y="475" text-anchor="middle" font-family="Arial" font-size="10">- Real-time Alerting</text>
+    <text x="245" y="490" text-anchor="middle" font-family="Arial" font-size="10">- Threat Detection</text>
+    <text x="245" y="505" text-anchor="middle" font-family="Arial" font-size="10">- Compliance Monitoring</text>
+
+    <!-- Automated Response -->
+    <rect x="450" y="420" width="370" height="110" rx="5" fill="#fff"/>
+    <text x="635" y="440" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Automated Response</text>
+    <text x="635" y="460" text-anchor="middle" font-family="Arial" font-size="10">- Auto-remediation</text>
+    <text x="635" y="475" text-anchor="middle" font-family="Arial" font-size="10">- Incident Response</text>
+    <text x="635" y="490" text-anchor="middle" font-family="Arial" font-size="10">- Security Playbooks</text>
+    <text x="635" y="505" text-anchor="middle" font-family="Arial" font-size="10">- Compliance Reporting</text>
+
+    <!-- Flow Arrows -->
+    <path d="M190 140 L210 140" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M350 140 L370 140" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M510 140 L530 140" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M670 140 L690 140" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="none" stroke="#2c3e50"/>
+        </marker>
+    </defs>
+</svg>

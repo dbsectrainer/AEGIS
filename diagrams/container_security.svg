@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2c3e50">
+        Container Security Architecture
+    </text>
+
+    <!-- Build Security -->
+    <rect x="50" y="70" width="700" height="120" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="400" y="90" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#1976d2">Build Security</text>
+
+    <!-- Base Images -->
+    <rect x="60" y="110" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="170" y="130" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Base Image Security</text>
+    <text x="170" y="150" text-anchor="middle" font-family="Arial" font-size="10">- Minimal Base Images</text>
+    <text x="170" y="165" text-anchor="middle" font-family="Arial" font-size="10">- Security Patches</text>
+    <text x="170" y="180" text-anchor="middle" font-family="Arial" font-size="10">- Vulnerability Scanning</text>
+
+    <!-- Image Scanning -->
+    <rect x="290" y="110" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="400" y="130" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Image Scanning</text>
+    <text x="400" y="150" text-anchor="middle" font-family="Arial" font-size="10">- CVE Detection</text>
+    <text x="400" y="165" text-anchor="middle" font-family="Arial" font-size="10">- Dependency Checks</text>
+    <text x="400" y="180" text-anchor="middle" font-family="Arial" font-size="10">- Policy Compliance</text>
+
+    <!-- Image Signing -->
+    <rect x="520" y="110" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="630" y="130" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Image Signing</text>
+    <text x="630" y="150" text-anchor="middle" font-family="Arial" font-size="10">- Digital Signatures</text>
+    <text x="630" y="165" text-anchor="middle" font-family="Arial" font-size="10">- Chain of Trust</text>
+    <text x="630" y="180" text-anchor="middle" font-family="Arial" font-size="10">- Image Verification</text>
+
+    <!-- Runtime Security -->
+    <rect x="50" y="210" width="700" height="120" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="400" y="230" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#ff9800">Runtime Security</text>
+
+    <!-- Container Runtime -->
+    <rect x="60" y="250" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="170" y="270" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Container Runtime</text>
+    <text x="170" y="290" text-anchor="middle" font-family="Arial" font-size="10">- Seccomp Profiles</text>
+    <text x="170" y="305" text-anchor="middle" font-family="Arial" font-size="10">- AppArmor/SELinux</text>
+    <text x="170" y="320" text-anchor="middle" font-family="Arial" font-size="10">- Privilege Control</text>
+
+    <!-- Workload Security -->
+    <rect x="290" y="250" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="400" y="270" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Workload Security</text>
+    <text x="400" y="290" text-anchor="middle" font-family="Arial" font-size="10">- Pod Security Policies</text>
+    <text x="400" y="305" text-anchor="middle" font-family="Arial" font-size="10">- Network Policies</text>
+    <text x="400" y="320" text-anchor="middle" font-family="Arial" font-size="10">- Resource Limits</text>
+
+    <!-- Monitoring -->
+    <rect x="520" y="250" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="630" y="270" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Runtime Monitoring</text>
+    <text x="630" y="290" text-anchor="middle" font-family="Arial" font-size="10">- Behavior Analysis</text>
+    <text x="630" y="305" text-anchor="middle" font-family="Arial" font-size="10">- Threat Detection</text>
+    <text x="630" y="320" text-anchor="middle" font-family="Arial" font-size="10">- Anomaly Detection</text>
+
+    <!-- Orchestration Security -->
+    <rect x="50" y="350" width="700" height="120" rx="10" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="400" y="370" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#66bb6a">Orchestration Security</text>
+
+    <!-- Cluster Security -->
+    <rect x="60" y="390" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="170" y="410" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Cluster Security</text>
+    <text x="170" y="430" text-anchor="middle" font-family="Arial" font-size="10">- Control Plane Security</text>
+    <text x="170" y="445" text-anchor="middle" font-family="Arial" font-size="10">- Node Security</text>
+    <text x="170" y="460" text-anchor="middle" font-family="Arial" font-size="10">- RBAC</text>
+
+    <!-- Network Security -->
+    <rect x="290" y="390" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="400" y="410" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Network Security</text>
+    <text x="400" y="430" text-anchor="middle" font-family="Arial" font-size="10">- Network Segmentation</text>
+    <text x="400" y="445" text-anchor="middle" font-family="Arial" font-size="10">- Service Mesh</text>
+    <text x="400" y="460" text-anchor="middle" font-family="Arial" font-size="10">- Ingress/Egress Control</text>
+
+    <!-- Secret Management -->
+    <rect x="520" y="390" width="220" height="70" rx="5" fill="#fff"/>
+    <text x="630" y="410" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Secret Management</text>
+    <text x="630" y="430" text-anchor="middle" font-family="Arial" font-size="10">- Secrets Encryption</text>
+    <text x="630" y="445" text-anchor="middle" font-family="Arial" font-size="10">- Key Management</text>
+    <text x="630" y="460" text-anchor="middle" font-family="Arial" font-size="10">- Access Control</text>
+
+    <!-- Compliance -->
+    <rect x="50" y="490" width="700" height="90" rx="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="400" y="510" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#9c27b0">Compliance &amp; Audit</text>
+
+    <!-- Policy Enforcement -->
+    <rect x="60" y="530" width="330" height="40" rx="5" fill="#fff"/>
+    <text x="225" y="550" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Policy Enforcement</text>
+    <text x="225" y="565" text-anchor="middle" font-family="Arial" font-size="10">OPA/Gatekeeper Policies</text>
+
+    <!-- Audit Logging -->
+    <rect x="410" y="530" width="330" height="40" rx="5" fill="#fff"/>
+    <text x="575" y="550" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Audit Logging</text>
+    <text x="575" y="565" text-anchor="middle" font-family="Arial" font-size="10">Comprehensive Audit Trail</text>
+
+    <!-- Flow Arrows -->
+    <path d="M400 190 L400 210" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M400 330 L400 350" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M400 470 L400 490" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="none" stroke="#2c3e50"/>
+        </marker>
+    </defs>
+</svg>

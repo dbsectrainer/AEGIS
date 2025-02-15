@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2c3e50">
+        Identity and Access Flow
+    </text>
+
+    <!-- User Authentication -->
+    <rect x="50" y="70" width="220" height="480" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="160" y="90" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#1976d2">User Authentication</text>
+
+    <!-- PIV/CAC -->
+    <rect x="60" y="110" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="160" y="130" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">PIV/CAC Authentication</text>
+    <text x="160" y="150" text-anchor="middle" font-family="Arial" font-size="10">- Certificate Validation</text>
+    <text x="160" y="165" text-anchor="middle" font-family="Arial" font-size="10">- Hardware Token</text>
+    <text x="160" y="180" text-anchor="middle" font-family="Arial" font-size="10">- PIN Verification</text>
+    <text x="160" y="195" text-anchor="middle" font-family="Arial" font-size="10">- Certificate Chain</text>
+
+    <!-- MFA -->
+    <rect x="60" y="220" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="160" y="240" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Multi-Factor Authentication</text>
+    <text x="160" y="260" text-anchor="middle" font-family="Arial" font-size="10">- Biometric</text>
+    <text x="160" y="275" text-anchor="middle" font-family="Arial" font-size="10">- Time-based OTP</text>
+    <text x="160" y="290" text-anchor="middle" font-family="Arial" font-size="10">- Push Notification</text>
+    <text x="160" y="305" text-anchor="middle" font-family="Arial" font-size="10">- Hardware Token</text>
+
+    <!-- Session -->
+    <rect x="60" y="330" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="160" y="350" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Session Management</text>
+    <text x="160" y="370" text-anchor="middle" font-family="Arial" font-size="10">- Token Generation</text>
+    <text x="160" y="385" text-anchor="middle" font-family="Arial" font-size="10">- Session Monitoring</text>
+    <text x="160" y="400" text-anchor="middle" font-family="Arial" font-size="10">- Timeout Controls</text>
+    <text x="160" y="415" text-anchor="middle" font-family="Arial" font-size="10">- Activity Tracking</text>
+
+    <!-- Authorization -->
+    <rect x="290" y="70" width="220" height="480" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="400" y="90" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#ff9800">Authorization</text>
+
+    <!-- RBAC -->
+    <rect x="300" y="110" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="400" y="130" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Role-Based Access</text>
+    <text x="400" y="150" text-anchor="middle" font-family="Arial" font-size="10">- Role Assignment</text>
+    <text x="400" y="165" text-anchor="middle" font-family="Arial" font-size="10">- Permission Sets</text>
+    <text x="400" y="180" text-anchor="middle" font-family="Arial" font-size="10">- Group Management</text>
+    <text x="400" y="195" text-anchor="middle" font-family="Arial" font-size="10">- Role Hierarchy</text>
+
+    <!-- ABAC -->
+    <rect x="300" y="220" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="400" y="240" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Attribute-Based Access</text>
+    <text x="400" y="260" text-anchor="middle" font-family="Arial" font-size="10">- User Attributes</text>
+    <text x="400" y="275" text-anchor="middle" font-family="Arial" font-size="10">- Resource Attributes</text>
+    <text x="400" y="290" text-anchor="middle" font-family="Arial" font-size="10">- Environmental Conditions</text>
+    <text x="400" y="305" text-anchor="middle" font-family="Arial" font-size="10">- Dynamic Rules</text>
+
+    <!-- Privilege Management -->
+    <rect x="300" y="330" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="400" y="350" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Privilege Management</text>
+    <text x="400" y="370" text-anchor="middle" font-family="Arial" font-size="10">- Least Privilege</text>
+    <text x="400" y="385" text-anchor="middle" font-family="Arial" font-size="10">- Just-In-Time Access</text>
+    <text x="400" y="400" text-anchor="middle" font-family="Arial" font-size="10">- Privilege Elevation</text>
+    <text x="400" y="415" text-anchor="middle" font-family="Arial" font-size="10">- Access Review</text>
+
+    <!-- Access Control -->
+    <rect x="530" y="70" width="220" height="480" rx="10" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="640" y="90" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#66bb6a">Access Control</text>
+
+    <!-- Resource Access -->
+    <rect x="540" y="110" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="640" y="130" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Resource Access</text>
+    <text x="640" y="150" text-anchor="middle" font-family="Arial" font-size="10">- Policy Enforcement</text>
+    <text x="640" y="165" text-anchor="middle" font-family="Arial" font-size="10">- Resource Tags</text>
+    <text x="640" y="180" text-anchor="middle" font-family="Arial" font-size="10">- Access Boundaries</text>
+    <text x="640" y="195" text-anchor="middle" font-family="Arial" font-size="10">- Service Control</text>
+
+    <!-- Monitoring -->
+    <rect x="540" y="220" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="640" y="240" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Access Monitoring</text>
+    <text x="640" y="260" text-anchor="middle" font-family="Arial" font-size="10">- Activity Logging</text>
+    <text x="640" y="275" text-anchor="middle" font-family="Arial" font-size="10">- Access Patterns</text>
+    <text x="640" y="290" text-anchor="middle" font-family="Arial" font-size="10">- Anomaly Detection</text>
+    <text x="640" y="305" text-anchor="middle" font-family="Arial" font-size="10">- Compliance Tracking</text>
+
+    <!-- Governance -->
+    <rect x="540" y="330" width="200" height="100" rx="5" fill="#fff"/>
+    <text x="640" y="350" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Access Governance</text>
+    <text x="640" y="370" text-anchor="middle" font-family="Arial" font-size="10">- Policy Management</text>
+    <text x="640" y="385" text-anchor="middle" font-family="Arial" font-size="10">- Compliance Reports</text>
+    <text x="640" y="400" text-anchor="middle" font-family="Arial" font-size="10">- Access Reviews</text>
+    <text x="640" y="415" text-anchor="middle" font-family="Arial" font-size="10">- Audit Trails</text>
+
+    <!-- Flow Arrows -->
+    <path d="M270 160 L290 160" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M510 160 L530 160" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="none" stroke="#2c3e50"/>
+        </marker>
+    </defs>
+</svg>

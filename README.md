@@ -1,81 +1,122 @@
-# USCG Multi-Cloud Infrastructure Design
+# USCG Multi-Cloud Security Implementation
 
 ## Overview
-This repository contains the design documentation for the United States Coast Guard (USCG) multi-cloud infrastructure supporting 34 designated Coast Guard Cities. The infrastructure is designed to provide secure, resilient, and compliant cloud services across multiple geographic regions.
+This repository contains comprehensive documentation for the USCG multi-cloud security implementation, covering security controls, compliance requirements, and operational procedures aligned with FedRAMP High, NIST 800-53, and DoD Cloud Computing Security Requirements Guide (SRG) standards.
 
-## Table of Contents
-1. [Architecture Design](./ARCHITECTURE.md)
-2. [Security Controls](./SECURITY.md)
-3. [Network Design](./NETWORK.md)
-4. [Deployment Strategy](./DEPLOYMENT.md)
+## Documentation Structure
 
-## Infrastructure Goals
-- Implement a secure multi-cloud environment following federal security requirements
-- Ensure high availability and disaster recovery across all locations
-- Maintain compliance with federal regulations and security standards
-- Optimize resource utilization and cost management
-- Enable secure inter-location connectivity
-- Support future scalability and expansion
+### Executive and Planning Documents
+- `EXECUTIVE_SUMMARY.md` - High-level overview of the security implementation
+- `EXECUTIVE_ROADMAP.md` - Strategic roadmap for security implementation
+- `IMPLEMENTATION_TIMELINE.md` - Detailed implementation schedule
+- `SAFE_ROADMAP.md` - Security architecture framework roadmap
+- `USER_STORIES.md` - Security implementation user stories
 
-## Supported Locations
-The infrastructure supports the following Coast Guard Cities:
+### Architecture and Design
+- `ARCHITECTURE.md` - System architecture documentation
+- `NETWORK.md` - Network architecture and security
+- `THREAT_MODELING.md` - Comprehensive threat modeling framework
+- `ZERO_TRUST_ARCHITECTURE.md` - Zero Trust implementation guide
 
-### Alaska Region
-- Kodiak
-- Sitka
-- Ketchikan
-- Cordova
-- Valdez
-- Homer
+### Security Implementation
+- `SECURITY.md` - Core security controls and requirements
+- `DEVSECOPS_PIPELINE.md` - Security integration in CI/CD pipeline
+- `CONFIGURATION_STANDARDS.md` - System hardening and configuration
+- `CSPM_IMPLEMENTATION.md` - Cloud Security Posture Management
+- `SUPPLY_CHAIN_SECURITY.md` - Supply chain security controls
+- `SECURITY_TESTING_FRAMEWORK.md` - Security testing procedures
+- `DEPLOYMENT.md` - Secure deployment procedures
 
-### Pacific Region
-- Eureka, CA
-- Alameda, CA
-- San Diego, CA
-- Newport, OR
-- Astoria, OR
-- Florence, OR
-- Garibaldi, OR
-- Westport, WA
+### Identity and Access Management
+- `ENTERPRISE_IAM_ROLES.md` - Enterprise IAM role definitions
+- `IAM_GOVERNANCE.md` - IAM governance framework
+- `IAM_IMPLEMENTATION_PLAN.md` - IAM implementation procedures
+- `INITIAL_IAM_REQUIREMENTS.md` - Initial IAM requirements
+- `ACCESS_TRANSITION_PLAN.md` - Access management transition
 
-### Central Region
-- Grand Haven, MI
-- Traverse City, MI
-- Sturgeon Bay, WI
+### Risk and Compliance
+- `RISK_MANAGEMENT_FRAMEWORK.md` - Risk management procedures
+- `FEDRAMP_COMPLIANCE.md` - FedRAMP compliance requirements
+- `COMPLIANCE_MAPPING.md` - Control mapping across frameworks
+- `COMPLIANCE_REPORTING.md` - Compliance reporting procedures
+- `SECURITY_AUDIT_CHECKLIST.md` - Security audit requirements
+- `INHERITED_CONTROLS.md` - Inherited security controls
+- `AWS_AUDIT_TOOLS.md` - AWS security audit procedures
 
-### Southeast Region
-- Mobile, AL
-- Wilmington, NC
-- Portsmouth, VA
-- Clearwater, FL
-- Camden County, GA
-- Elizabeth City, NC
-- Carteret County, NC
-- Chatham County, GA
-- Key West, FL
-- Bay County, FL
-- Charleston, SC
+### Security Operations
+- `INCIDENT_RESPONSE_PLAN.md` - Incident handling procedures
+- `SECURITY_METRICS.md` - Security performance metrics
+- `DR_BC_DETAILED_PLAN.md` - Disaster recovery procedures
+- `SECURITY_TRAINING_PROGRAM.md` - Security awareness training
+- `EMASS_SETUP_GUIDE.md` - eMASS configuration guide
 
-### Northeast Region
-- Rockland, ME
-- Newburyport, MA
-- Hull, MA
-- Cape May County, NJ
-- New London, CT
-- New York, NY
+### Templates and Procedures
+- `templates/`
+  - `AUTHORIZATION_PACKAGE.md` - Authorization package template
+  - `CCI_MAPPING.md` - Control correlation mapping
+  - `POAM_TEMPLATE.md` - Plan of Action & Milestones template
+  - `RAR_TEMPLATE.md` - Risk Assessment Report template
+  - `SAR_TEMPLATE.md` - Security Assessment Report template
+  - `SCIP_TEMPLATE.md` - Security Control Implementation Plan
+  - `SECURITY_ASSESSMENT_PROCEDURES.md` - Assessment procedures
+  - `SSP_TEMPLATE.md` - System Security Plan template
+  - `STIG_COMPLIANCE_GUIDE.md` - STIG compliance procedures
+
+### ITSM Integration
+- `itsm_templates/`
+  - `IMPLEMENTATION_GUIDE.md` - ITSM implementation guide
+  - `ITSM_IMPLEMENTATION_GUIDE.md` - Detailed ITSM procedures
+  - `feature-request.md` - Feature request template
+  - `incident-response.md` - Incident response template
+  - `infrastructure-change.md` - Change management template
+  - `production-deployment.md` - Deployment procedures
+  - `security-assessment.md` - Security assessment template
+
+### Infrastructure as Code
+- `terraform/`
+  - `iam.tf` - IAM infrastructure configuration
+  - `main.tf` - Main infrastructure configuration
+  - `variables.tf` - Infrastructure variables
+  - `terraform.tfvars.example` - Variable configuration example
+
+### System Diagrams
+- `diagrams/`
+  - `architecture.svg` - System architecture diagram
+  - `network.svg` - Network architecture diagram
+  - `security.svg` - Security controls diagram
+  - `timeline.svg` - Implementation timeline diagram
+
+### Data Files
+- `JIRA_IMPORT.csv` - Initial Jira data import
+- `JIRA_IMPORT_UPDATED.csv` - Updated Jira data import
 
 ## Getting Started
-1. Review the [Architecture Design](./ARCHITECTURE.md) for overall infrastructure design
-2. Consult the [Security Controls](./SECURITY.md) for security implementation details
-3. Reference the [Network Design](./NETWORK.md) for connectivity specifications
-4. Follow the [Deployment Strategy](./DEPLOYMENT.md) for implementation guidelines
 
-## Contact
-For questions or concerns regarding this infrastructure design, please contact the USCG Cloud Security Team.
+1. Review the `EXECUTIVE_SUMMARY.md` for a high-level overview
+2. Consult `IMPLEMENTATION_TIMELINE.md` for the deployment schedule
+3. Follow `DEPLOYMENT.md` for implementation procedures
+4. Use templates in `templates/` for required documentation
+5. Reference `SECURITY_AUDIT_CHECKLIST.md` for compliance validation
 
-## Compliance
-This infrastructure design adheres to:
-- FedRAMP High requirements
-- NIST 800-53 controls
-- DoD Cloud Computing Security Requirements Guide (SRG)
-- USCG specific security directives
+## Compliance Framework
+
+This implementation adheres to:
+- FedRAMP High baseline requirements
+- NIST 800-53 Revision 5 controls
+- DoD Cloud Computing SRG
+- USCG security policies and requirements
+
+## Contributing
+
+1. Follow the procedures in `DEVSECOPS_PIPELINE.md`
+2. Use templates from `itsm_templates/` for changes
+3. Ensure compliance with `SECURITY_AUDIT_CHECKLIST.md`
+4. Update documentation as required
+
+## References
+
+1. NIST Special Publications
+2. FedRAMP Documentation
+3. DoD Cloud Security Requirements
+4. USCG Security Policies
+5. Cloud Service Provider Security Documentation

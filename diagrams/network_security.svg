@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#2c3e50">
+        Network Security Architecture
+    </text>
+
+    <!-- Internet Zone -->
+    <rect x="50" y="70" width="700" height="100" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="400" y="90" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#1976d2">Internet Zone</text>
+
+    <!-- DDoS Protection -->
+    <rect x="60" y="110" width="165" height="50" rx="5" fill="#fff"/>
+    <text x="142" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">DDoS Protection</text>
+    <text x="142" y="150" text-anchor="middle" font-family="Arial" font-size="10">Cloud-Native Protection</text>
+
+    <!-- WAF -->
+    <rect x="235" y="110" width="165" height="50" rx="5" fill="#fff"/>
+    <text x="317" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Web Application Firewall</text>
+    <text x="317" y="150" text-anchor="middle" font-family="Arial" font-size="10">OWASP Top 10 Protection</text>
+
+    <!-- CDN -->
+    <rect x="410" y="110" width="165" height="50" rx="5" fill="#fff"/>
+    <text x="492" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Content Delivery</text>
+    <text x="492" y="150" text-anchor="middle" font-family="Arial" font-size="10">Edge Security</text>
+
+    <!-- Load Balancer -->
+    <rect x="585" y="110" width="155" height="50" rx="5" fill="#fff"/>
+    <text x="662" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Load Balancers</text>
+    <text x="662" y="150" text-anchor="middle" font-family="Arial" font-size="10">SSL Termination</text>
+
+    <!-- DMZ -->
+    <rect x="50" y="190" width="700" height="120" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="400" y="210" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#ff9800">DMZ</text>
+
+    <!-- Reverse Proxy -->
+    <rect x="60" y="230" width="330" height="70" rx="5" fill="#fff"/>
+    <text x="225" y="250" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Reverse Proxy</text>
+    <text x="225" y="270" text-anchor="middle" font-family="Arial" font-size="10">- Request Filtering</text>
+    <text x="225" y="285" text-anchor="middle" font-family="Arial" font-size="10">- TLS Termination</text>
+
+    <!-- Bastion Hosts -->
+    <rect x="410" y="230" width="330" height="70" rx="5" fill="#fff"/>
+    <text x="575" y="250" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Bastion Hosts</text>
+    <text x="575" y="270" text-anchor="middle" font-family="Arial" font-size="10">- Secure Access Points</text>
+    <text x="575" y="285" text-anchor="middle" font-family="Arial" font-size="10">- Jump Boxes</text>
+
+    <!-- Application Zone -->
+    <rect x="50" y="330" width="700" height="120" rx="10" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
+    <text x="400" y="350" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#66bb6a">Application Zone</text>
+
+    <!-- Web Tier -->
+    <rect x="60" y="370" width="215" height="70" rx="5" fill="#fff"/>
+    <text x="167" y="390" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Web Tier</text>
+    <text x="167" y="410" text-anchor="middle" font-family="Arial" font-size="10">- Web Servers</text>
+    <text x="167" y="425" text-anchor="middle" font-family="Arial" font-size="10">- Application Servers</text>
+
+    <!-- App Tier -->
+    <rect x="295" y="370" width="215" height="70" rx="5" fill="#fff"/>
+    <text x="402" y="390" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Application Tier</text>
+    <text x="402" y="410" text-anchor="middle" font-family="Arial" font-size="10">- Business Logic</text>
+    <text x="402" y="425" text-anchor="middle" font-family="Arial" font-size="10">- Service Mesh</text>
+
+    <!-- API Tier -->
+    <rect x="530" y="370" width="210" height="70" rx="5" fill="#fff"/>
+    <text x="635" y="390" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">API Tier</text>
+    <text x="635" y="410" text-anchor="middle" font-family="Arial" font-size="10">- API Gateway</text>
+    <text x="635" y="425" text-anchor="middle" font-family="Arial" font-size="10">- Service Control</text>
+
+    <!-- Data Zone -->
+    <rect x="50" y="470" width="700" height="110" rx="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+    <text x="400" y="490" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#9c27b0">Data Zone</text>
+
+    <!-- Databases -->
+    <rect x="60" y="510" width="330" height="60" rx="5" fill="#fff"/>
+    <text x="225" y="530" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Database Tier</text>
+    <text x="225" y="550" text-anchor="middle" font-family="Arial" font-size="10">Encrypted Data Storage</text>
+
+    <!-- Storage -->
+    <rect x="410" y="510" width="330" height="60" rx="5" fill="#fff"/>
+    <text x="575" y="530" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Storage Tier</text>
+    <text x="575" y="550" text-anchor="middle" font-family="Arial" font-size="10">Object/File Storage</text>
+
+    <!-- Flow Arrows -->
+    <path d="M400 170 L400 190" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M400 310 L400 330" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M400 450 L400 470" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="none" stroke="#2c3e50"/>
+        </marker>
+    </defs>
+</svg>
