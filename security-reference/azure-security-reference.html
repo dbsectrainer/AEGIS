@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Security, Identity, and Compliance Reference Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0078d4;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #0078d4;
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #444;
+            margin-top: 25px;
+        }
+        a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .nav {
+            background: #f0f6ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border: 1px solid #e1e7f0;
+        }
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav ul li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .resources {
+            background: #f0f6ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: 1px solid #e1e7f0;
+        }
+        .resources ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .key-features {
+            margin-left: 20px;
+        }
+        .top-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0078d4;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .top-link:hover {
+            background: #006abc;
+            text-decoration: none;
+        }
+        .service-box {
+            background: #f8f9fa;
+            border: 1px solid #e1e7f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .service-box h3 {
+            margin-top: 0;
+            color: #0078d4;
+        }
+    </style>
+</head>
+<body>
+    <div id="top"></div>
+    <h1>Azure Security, Identity, and Compliance Reference Guide</h1>
+    
+    <div class="nav">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#core-security-services">Core Security Services</a></li>
+            <li><a href="#federal-security-requirements">Federal Security Requirements</a></li>
+            <li><a href="#security-best-practices">Security Best Practices</a></li>
+            <li><a href="#compliance-frameworks">Compliance Frameworks</a></li>
+            <li><a href="#security-architecture">Security Architecture</a></li>
+            <li><a href="#security-operations">Security Operations</a></li>
+            <li><a href="#governance-risk-management">Governance and Risk Management</a></li>
+            <li><a href="#zero-trust">Zero Trust Architecture</a></li>
+            <li><a href="#container-security">Container Security</a></li>
+            <li><a href="#devsecops">DevSecOps Integration</a></li>
+            <li><a href="#cspm">Cloud Security Posture Management</a></li>
+            <li><a href="#workload-protection">Cloud Workload Protection</a></li>
+            <li><a href="#data-protection">Data Protection</a></li>
+            <li><a href="#api-security">API Security</a></li>
+            <li><a href="#dr-bc">Disaster Recovery and Business Continuity</a></li>
+            <li><a href="#supply-chain">Supply Chain Security</a></li>
+            <li><a href="#cloud-native">Cloud Native Security</a></li>
+            <li><a href="#additional-resources">Additional Resources</a></li>
+        </ul>
+    </div>
+
+    <div class="section" id="core-security-services">
+        <h2>Core Security Services</h2>
+        
+        <div class="service-box">
+            <h3>Azure Active Directory (Azure AD)</h3>
+            <p><strong>Description</strong>: Cloud-based identity and access management service</p>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>Single sign-on (SSO)</li>
+                    <li>Multi-factor authentication</li>
+                    <li>Conditional access</li>
+                    <li>Privileged identity management</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade">Azure AD Portal</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/active-directory">Documentation</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/active-directory/fundamentals">Admin Guide</a></li>
+                    <li><a href="https://docs.microsoft.com/graph/api/resources/azure-ad-overview">API Reference</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/active-directory/fundamentals/security-operations-introduction">Best Practices</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Microsoft Defender for Cloud</h3>
+            <p><strong>Description</strong>: Unified security management and threat protection</p>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>Security posture management</li>
+                    <li>Threat protection</li>
+                    <li>Resource security hygiene</li>
+                    <li>Regulatory compliance</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://portal.azure.com/#blade/Microsoft_Azure_Security">Defender Portal</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/defender-for-cloud">Documentation</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/defender-for-cloud/alerts-reference">Security Alerts Reference</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/defender-for-cloud/security-policy-concept">Best Practices</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Continue with other core services -->
+    </div>
+
+    <div class="section" id="federal-security-requirements">
+        <h2>Federal Security Requirements</h2>
+        
+        <div class="service-box">
+            <h3>Azure Government</h3>
+            <p><strong>Description</strong>: Dedicated cloud for US government workloads</p>
+            <div class="key-features">
+                <strong>Features</strong>:
+                <ul>
+                    <li>Separate instance from commercial Azure</li>
+                    <li>US sovereign cloud</li>
+                    <li>DoD Impact Level 5 provisional authorization</li>
+                    <li>FedRAMP High certification</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://docs.microsoft.com/azure/azure-government">Azure Government Documentation</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/azure-government/compliance-overview">Compliance Overview</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure">Service Availability</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Federal Identity Integration</h3>
+            <div class="key-features">
+                <strong>Requirements</strong>:
+                <ul>
+                    <li>PIV/CAC card integration</li>
+                    <li>SAML-based federation</li>
+                    <li>Multi-factor authentication</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-certificate-based-authentication">PIV/CAC Integration Guide</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/active-directory/government/azure-ad-government-identity-federation">Federal Identity Guidelines</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-certificate-based-authentication-smartcard">Smart Card Authentication</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="security-best-practices">
+        <h2>Security Best Practices</h2>
+
+        <div class="service-box">
+            <h3>Identity and Access Management</h3>
+            <div class="key-features">
+                <strong>1. Azure AD Security</strong>
+                <ul>
+                    <li>Enable MFA for all users</li>
+                    <li>Implement Conditional Access policies</li>
+                    <li>Regular access reviews</li>
+                </ul>
+                <strong>2. Privileged Access Management</strong>
+                <ul>
+                    <li>Just-in-time access</li>
+                    <li>Role-based access control</li>
+                    <li>Privileged Identity Management</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://docs.microsoft.com/azure/active-directory/fundamentals/security-operations-introduction">Azure AD Security Guide</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/active-directory/privileged-identity-management">PIM Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Network Security</h3>
+            <div class="key-features">
+                <strong>1. Network Security Groups (NSGs)</strong>
+                <ul>
+                    <li>Default deny rules</li>
+                    <li>Least privilege access</li>
+                    <li>Regular rule review</li>
+                </ul>
+                <strong>2. Azure Firewall</strong>
+                <ul>
+                    <li>Application rules</li>
+                    <li>Network rules</li>
+                    <li>Threat intelligence</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview">NSG Documentation</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/firewall">Firewall Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="zero-trust">
+        <h2>Zero Trust Architecture</h2>
+
+        <div class="service-box">
+            <h3>Core Principles</h3>
+            <div class="key-features">
+                <strong>Principles</strong>:
+                <ul>
+                    <li>Verify explicitly</li>
+                    <li>Least privilege access</li>
+                    <li>Assume breach</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://docs.microsoft.com/security/zero-trust">Zero Trust Guide</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Implementation</h3>
+            <div class="key-features">
+                <ul>
+                    <li>Identity-based security</li>
+                    <li>Network segmentation</li>
+                    <li>Micro-segmentation</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://docs.microsoft.com/security/zero-trust/zero-trust-overview">Implementation Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="container-security">
+        <h2>Container Security</h2>
+
+        <div class="service-box">
+            <h3>Azure Kubernetes Service (AKS) Security</h3>
+            <div class="key-features">
+                <strong>1. Container Security</strong>
+                <ul>
+                    <li>Azure Container Registry scanning</li>
+                    <li>Image signing and verification</li>
+                    <li>Base image management</li>
+                </ul>
+                <strong>2. Runtime Protection</strong>
+                <ul>
+                    <li>Pod security policies</li>
+                    <li>Network policies</li>
+                    <li>Azure Policy for AKS</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://docs.microsoft.com/azure/aks/concepts-security">AKS Security Guide</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security">Runtime Security Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="devsecops">
+        <h2>DevSecOps Integration</h2>
+
+        <div class="service-box">
+            <h3>Pipeline Security</h3>
+            <div class="key-features">
+                <strong>1. Azure DevOps Security</strong>
+                <ul>
+                    <li>Pipeline security</li>
+                    <li>Automated security testing</li>
+                    <li>Infrastructure as Code scanning</li>
+                </ul>
+                <strong>2. Infrastructure as Code Security</strong>
+                <ul>
+                    <li>ARM template checker</li>
+                    <li>Bicep security scanning</li>
+                    <li>Policy as code</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://docs.microsoft.com/azure/devops/organizations/security/about-security-identity">DevOps Security Guide</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/cloud-adoption-framework/secure/security-considerations-infrastructure-as-code">IaC Security Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="additional-resources">
+        <h2>Additional Resources</h2>
+
+        <div class="service-box">
+            <h3>Federal Resources</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://docs.microsoft.com/security/benchmark/azure/security-baselines-overview">NIST Cybersecurity Framework Implementation</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/azure-government">Azure Government Documentation</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/governance/policy/samples/gov-policies">Federal Security Guidelines</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Learning Resources</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://docs.microsoft.com/learn/paths/azure-security">Microsoft Learn Security Path</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/security/fundamentals/best-practices-concepts">Azure Security Best Practices</a></li>
+                    <li><a href="https://docs.microsoft.com/azure/security">Security Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Certifications</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://docs.microsoft.com/learn/certifications/browse/?products=azure&resource_type=certification&terms=security">Microsoft Security Certifications</a></li>
+                    <li><a href="https://docs.microsoft.com/learn/certifications/azure-security-engineer">Azure Security Engineer Associate</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Community Resources</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://techcommunity.microsoft.com/t5/azure-security/bg-p/AzureSecurityCenter">Azure Security Blog</a></li>
+                    <li><a href="https://techcommunity.microsoft.com/t5/azure-government/bg-p/AzureGovernment">Azure Government Community</a></li>
+                    <li><a href="https://techcommunity.microsoft.com/t5/security-compliance-and-identity/bg-p/SecurityComplianceAndIdentityUpdates">Security Community Webinars</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <a href="#top" class="top-link">Back to Top</a>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Cloud Platform Security Reference Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #185abc;
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #1967d2;
+            margin-top: 25px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .nav {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav ul li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .service-box {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+        .resources {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .resources ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .key-features {
+            margin-left: 20px;
+        }
+        .top-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1a73e8;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .top-link:hover {
+            background: #185abc;
+            text-decoration: none;
+            color: white;
+        }
+        .description {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top"></div>
+    <h1>Google Cloud Platform Security Reference Guide</h1>
+
+    <div class="nav">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#core-security-services">Core Security Services</a></li>
+            <li><a href="#federal-security-requirements">Federal Security Requirements</a></li>
+            <li><a href="#security-best-practices">Security Best Practices</a></li>
+            <li><a href="#zero-trust">Zero Trust Architecture</a></li>
+            <li><a href="#container-security">Container Security</a></li>
+            <li><a href="#devsecops">DevSecOps Integration</a></li>
+            <li><a href="#cspm">Cloud Security Posture Management</a></li>
+            <li><a href="#workload-protection">Cloud Workload Protection</a></li>
+            <li><a href="#data-protection">Data Protection</a></li>
+            <li><a href="#additional-resources">Additional Resources</a></li>
+        </ul>
+    </div>
+
+    <div class="section" id="core-security-services">
+        <h2>Core Security Services</h2>
+
+        <div class="service-box">
+            <h3>Cloud Identity and Access Management (IAM)</h3>
+            <p class="description">Unified system for managing access to Google Cloud resources</p>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>Fine-grained access control</li>
+                    <li>Predefined and custom roles</li>
+                    <li>Service accounts</li>
+                    <li>Workload identity federation</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://console.cloud.google.com/iam-admin">IAM Console</a></li>
+                    <li><a href="https://cloud.google.com/iam/docs">Documentation</a></li>
+                    <li><a href="https://cloud.google.com/iam/docs/best-practices">Best Practices</a></li>
+                    <li><a href="https://cloud.google.com/iam/docs/reference/rest">API Reference</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Resource Manager</h3>
+            <p class="description">Hierarchically manage resources, policies, and permissions</p>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>Organization hierarchy</li>
+                    <li>Project management</li>
+                    <li>Folder organization</li>
+                    <li>Policy inheritance</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://console.cloud.google.com/cloud-resource-manager">Resource Manager Console</a></li>
+                    <li><a href="https://cloud.google.com/resource-manager/docs">Documentation</a></li>
+                    <li><a href="https://cloud.google.com/resource-manager/docs/best-practices">Best Practices</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Security Command Center</h3>
+            <p class="description">Centralized security management and risk platform</p>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>Security posture management</li>
+                    <li>Threat detection</li>
+                    <li>Asset discovery and inventory</li>
+                    <li>Compliance monitoring</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://console.cloud.google.com/security">Security Command Center Console</a></li>
+                    <li><a href="https://cloud.google.com/security-command-center/docs">Documentation</a></li>
+                    <li><a href="https://cloud.google.com/security-command-center/docs/concepts-security-command-center-overview">User Guide</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Cloud Audit Logs</h3>
+            <p class="description">Track user and system activity within Google Cloud</p>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>Admin activity logs</li>
+                    <li>Data access logs</li>
+                    <li>System event logs</li>
+                    <li>Policy denied logs</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://console.cloud.google.com/audit">Audit Logs Console</a></li>
+                    <li><a href="https://cloud.google.com/audit-logs/docs">Documentation</a></li>
+                    <li><a href="https://cloud.google.com/audit-logs/docs/overview">User Guide</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Cloud Armor</h3>
+            <p class="description">DDoS protection and Web Application Firewall (WAF)</p>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>DDoS protection</li>
+                    <li>WAF rules</li>
+                    <li>Edge security</li>
+                    <li>Adaptive protection</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://console.cloud.google.com/net-security/cloud-armor">Cloud Armor Console</a></li>
+                    <li><a href="https://cloud.google.com/armor/docs">Documentation</a></li>
+                    <li><a href="https://cloud.google.com/armor/docs/security-policy-best-practices">Best Practices</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>VPC Service Controls</h3>
+            <p class="description">Define security perimeters for sensitive data</p>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>Resource isolation</li>
+                    <li>Access context management</li>
+                    <li>Data exfiltration prevention</li>
+                    <li>API access control</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://console.cloud.google.com/security/service-perimeter">VPC Service Controls Console</a></li>
+                    <li><a href="https://cloud.google.com/vpc-service-controls/docs">Documentation</a></li>
+                    <li><a href="https://cloud.google.com/vpc-service-controls/docs/best-practices">Best Practices</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="federal-security-requirements">
+        <h2>Federal Security Requirements</h2>
+
+        <div class="service-box">
+            <h3>FedRAMP Compliance</h3>
+            <div class="key-features">
+                <strong>Impact Levels</strong>:
+                <ul>
+                    <li>FedRAMP Moderate</li>
+                    <li>FedRAMP High</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/security/compliance/fedramp">GCP FedRAMP Compliance</a></li>
+                    <li><a href="https://cloud.google.com/security/compliance/fedramp-controls">FedRAMP Security Controls</a></li>
+                    <li><a href="https://cloud.google.com/security/compliance/fedramp-process">Authorization Process</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Federal Information Security Management Act (FISMA)</h3>
+            <div class="key-features">
+                <strong>Requirements</strong>:
+                <ul>
+                    <li>Security Assessment and Authorization</li>
+                    <li>Continuous Monitoring</li>
+                    <li>Risk Management Framework</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/security/compliance/fisma">FISMA Compliance on GCP</a></li>
+                    <li><a href="https://cloud.google.com/security/compliance/nist-800-53">NIST Controls Implementation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Department of Defense (DoD) Requirements</h3>
+            <div class="key-features">
+                <strong>Impact Levels</strong>:
+                <ul>
+                    <li>IL4 (Controlled Unclassified)</li>
+                    <li>IL5 (Controlled Unclassified - National Security)</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/security/compliance/dod-il4">DoD Compliance</a></li>
+                    <li><a href="https://cloud.google.com/security/compliance/disa-stig">DISA Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Federal Identity Management</h3>
+            <div class="key-features">
+                <strong>Requirements</strong>:
+                <ul>
+                    <li>PIV/CAC Integration</li>
+                    <li>Multi-Factor Authentication</li>
+                    <li>Federation Services</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/identity-platform/docs/government">Identity Platform Federal Guide</a></li>
+                    <li><a href="https://cloud.google.com/identity-platform/docs/web/smart-card-auth">Smart Card Integration</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="security-best-practices">
+        <h2>Security Best Practices</h2>
+
+        <div class="service-box">
+            <h3>IAM Security</h3>
+            <div class="key-features">
+                <strong>1. Organization-Level Security</strong>
+                <ul>
+                    <li>Use organization policies</li>
+                    <li>Implement least privilege</li>
+                    <li>Regular access reviews</li>
+                </ul>
+                <strong>2. Service Account Management</strong>
+                <ul>
+                    <li>Limited scope and permissions</li>
+                    <li>Key rotation</li>
+                    <li>Regular audits</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/resource-manager/docs/organization-policy/overview">Organization Security Guide</a></li>
+                    <li><a href="https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys">Service Account Best Practices</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Network Security</h3>
+            <div class="key-features">
+                <strong>1. VPC Design</strong>
+                <ul>
+                    <li>Network segmentation</li>
+                    <li>Private Google Access</li>
+                    <li>Cloud NAT</li>
+                </ul>
+                <strong>2. Firewall Rules</strong>
+                <ul>
+                    <li>Default-deny policies</li>
+                    <li>Tag-based rules</li>
+                    <li>Service account-based rules</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/vpc/docs/vpc-planning">VPC Design Guide</a></li>
+                    <li><a href="https://cloud.google.com/vpc/docs/firewalls">Firewall Rules Overview</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="zero-trust">
+        <h2>Zero Trust Architecture</h2>
+
+        <div class="service-box">
+            <h3>BeyondCorp Enterprise</h3>
+            <div class="key-features">
+                <strong>Key Features</strong>:
+                <ul>
+                    <li>Context-aware access</li>
+                    <li>Identity-aware proxy</li>
+                    <li>Continuous verification</li>
+                    <li>Device trust</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/beyondcorp-enterprise">BeyondCorp Enterprise Overview</a></li>
+                    <li><a href="https://cloud.google.com/beyondcorp-enterprise/docs/deployment-overview">Implementation Guide</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Implementation Components</h3>
+            <div class="key-features">
+                <strong>1. Identity and Access</strong>
+                <ul>
+                    <li>Fine-grained permissions</li>
+                    <li>Just-in-time access</li>
+                    <li>Continuous authentication</li>
+                </ul>
+                <strong>2. Network Security</strong>
+                <ul>
+                    <li>Micro-segmentation</li>
+                    <li>Network isolation</li>
+                    <li>Traffic encryption</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/architecture/identity-beyond-corp">Zero Trust Guide</a></li>
+                    <li><a href="https://cloud.google.com/security/infrastructure/design">Network Security Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="container-security">
+        <h2>Container Security</h2>
+
+        <div class="service-box">
+            <h3>Google Kubernetes Engine (GKE) Security</h3>
+            <div class="key-features">
+                <strong>1. Container Image Security</strong>
+                <ul>
+                    <li>Container-Optimized OS</li>
+                    <li>Binary Authorization</li>
+                    <li>Container Analysis</li>
+                </ul>
+                <strong>2. Cluster Security</strong>
+                <ul>
+                    <li>Node auto-upgrade</li>
+                    <li>Network policies</li>
+                    <li>Workload Identity</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/security-overview">GKE Security Overview</a></li>
+                    <li><a href="https://cloud.google.com/binary-authorization/docs">Binary Authorization</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Container Compliance</h3>
+            <div class="key-features">
+                <ul>
+                    <li>CIS Kubernetes Benchmark</li>
+                    <li>NIST Container Guidelines</li>
+                    <li>Runtime threat detection</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster">Container Security Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="devsecops">
+        <h2>DevSecOps Integration</h2>
+
+        <div class="service-box">
+            <h3>Cloud Build Security</h3>
+            <div class="key-features">
+                <strong>Features</strong>:
+                <ul>
+                    <li>Source code security scanning</li>
+                    <li>Container vulnerability scanning</li>
+                    <li>Infrastructure as Code security</li>
+                    <li>Automated security testing</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/build/docs/securing-builds">Securing Cloud Build</a></li>
+                    <li><a href="https://cloud.google.com/architecture/devops/devops-tech-continuous-integration">CI/CD Security</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Infrastructure as Code Security</h3>
+            <div class="key-features">
+                <ul>
+                    <li>Deployment Manager security</li>
+                    <li>Terraform provider security</li>
+                    <li>Policy validation</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/deployment-manager/docs/configuration/security">IaC Security Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="cspm">
+        <h2>Cloud Security Posture Management</h2>
+
+        <div class="service-box">
+            <h3>Security Command Center</h3>
+            <div class="key-features">
+                <strong>1. Security Posture</strong>
+                <ul>
+                    <li>Security standards</li>
+                    <li>Automated checks</li>
+                    <li>Compliance monitoring</li>
+                </ul>
+                <strong>2. Asset Security</strong>
+                <ul>
+                    <li>Asset discovery</li>
+                    <li>Configuration monitoring</li>
+                    <li>Compliance rules</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/security-command-center/docs/concepts-security-posture">Security Posture Guide</a></li>
+                    <li><a href="https://cloud.google.com/asset-inventory/docs/overview">Asset Inventory Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="workload-protection">
+        <h2>Cloud Workload Protection</h2>
+
+        <div class="service-box">
+            <h3>Workload Security</h3>
+            <div class="key-features">
+                <strong>1. Security Health Analytics</strong>
+                <ul>
+                    <li>Vulnerability assessment</li>
+                    <li>Configuration analysis</li>
+                    <li>Security recommendations</li>
+                </ul>
+                <strong>2. Operations Suite</strong>
+                <ul>
+                    <li>Monitoring</li>
+                    <li>Logging</li>
+                    <li>Error reporting</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/security-command-center/docs/concepts-security-health-analytics-overview">Workload Protection Guide</a></li>
+                    <li><a href="https://cloud.google.com/stackdriver/docs">Operations Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="data-protection">
+        <h2>Data Protection</h2>
+
+        <div class="service-box">
+            <h3>Cloud KMS and Cloud HSM</h3>
+            <div class="key-features">
+                <strong>Features</strong>:
+                <ul>
+                    <li>Key management</li>
+                    <li>Hardware security modules</li>
+                    <li>Encryption at rest</li>
+                    <li>Customer-managed encryption keys</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/kms/docs">Cloud KMS Documentation</a></li>
+                    <li><a href="https://cloud.google.com/hsm/docs">Cloud HSM Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Data Loss Prevention</h3>
+            <div class="key-features">
+                <strong>Features</strong>:
+                <ul>
+                    <li>Sensitive data discovery</li>
+                    <li>Data classification</li>
+                    <li>Data redaction</li>
+                    <li>Data transformation</li>
+                </ul>
+            </div>
+            <div class="resources">
+                <strong>Resources</strong>:
+                <ul>
+                    <li><a href="https://cloud.google.com/dlp/docs">Cloud DLP Documentation</a></li>
+                    <li><a href="https://cloud.google.com/dlp/docs/best-practices">DLP Best Practices</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="additional-resources">
+        <h2>Additional Resources</h2>
+
+        <div class="service-box">
+            <h3>Federal Security Resources</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://www.nist.gov/programs-projects/nist-cloud-computing-program-nccp">NIST Cloud Computing Standards</a></li>
+                    <li><a href="https://www.fedramp.gov/">FedRAMP Documentation</a></li>
+                    <li><a href="https://www.cisa.gov/cloud">Federal Cloud Security Requirements</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Learning Resources</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://cloud.google.com/blog/products/identity-security">Google Cloud Security Blog</a></li>
+                    <li><a href="https://cloud.google.com/blog/topics/google-cloud-next">Google Cloud Next Security Sessions</a></li>
+                    <li><a href="https://cloud.google.com/security/best-practices">Security Best Practices Center</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Google Cloud Certifications</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://cloud.google.com/certification/cloud-security-engineer">Professional Cloud Security Engineer</a></li>
+                    <li><a href="https://cloud.google.com/certification/cloud-security-engineer#preparation-resources">Certification Prep Resources</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <h3>Community Resources</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://www.googlecloudcommunity.com/">Google Cloud Community</a></li>
+                    <li><a href="https://cloud.google.com/security/tutorials">Google Cloud Security Tutorials</a></li>
+                    <li><a href="https://cloud.google.com/security/workshops">Cloud Security Workshops</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <a href="#top" class="top-link">Back to Top</a>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
