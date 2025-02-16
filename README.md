@@ -62,6 +62,20 @@ This repository contains comprehensive documentation for the GOV multi-cloud sec
   - `SSP_TEMPLATE.md` - System Security Plan template
   - `STIG_COMPLIANCE_GUIDE.md` - STIG compliance procedures
 
+### RACI Documentation
+- `raci/`
+  - `federal_enterprise_cloud_raci.md` - RACI matrix for cloud operations
+  - `federal_enterprise_cloud_raci_duties.md` - Detailed duty assignments
+  - `federal_enterprise_excel_instructions.md` - Excel-based RACI tracking
+  - `federal_enterprise_remedy_workflows.md` - Remedy workflow integration
+
+### Cloud Security Reference
+- `security-reference/`
+  - `aws-security-reference.md` - AWS security implementation guide
+  - `azure-security-reference.md` - Azure security implementation guide
+  - `gcp-security-reference.md` - GCP security implementation guide
+  - HTML versions available for each guide
+
 ### ITSM Integration
 - `itsm_templates/`
   - `IMPLEMENTATION_GUIDE.md` - ITSM implementation guide
@@ -120,3 +134,5 @@ This implementation adheres to:
 3. DoD Cloud Security Requirements
 4. GOV Security Policies
 5. Cloud Service Provider Security Documentation
+6. RACI Matrix Implementation Guidelines
+7. Cloud Provider Security Best Practices
