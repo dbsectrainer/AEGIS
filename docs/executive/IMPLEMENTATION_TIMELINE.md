@@ -1,7 +1,7 @@
 # GOV Multi-Cloud Implementation Timeline
 
 ## Overview
-This document provides a detailed timeline and resource requirements for implementing the GOV multi-cloud environment across AWS GovCloud, Azure Government, and GCP, covering all 34 Coast Guard Cities.
+This document provides a detailed timeline and resource requirements for implementing the GOV multi-cloud environment across AWS GovCloud, Azure Government, and GCP.
 
 ## Implementation Phases
 

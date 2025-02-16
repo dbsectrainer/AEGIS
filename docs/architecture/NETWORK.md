@@ -1,7 +1,7 @@
 # GOV Multi-Cloud Network Design
 
 ## Overview
-This document details the network architecture for the GOV multi-cloud infrastructure, focusing on secure connectivity between Coast Guard locations, cloud providers, and external networks.
+This document details the network architecture for the GOV multi-cloud infrastructure, focusing on secure connectivity between cloud providers, and external networks.
 
 ## Network Architecture
 

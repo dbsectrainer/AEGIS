@@ -1,7 +1,7 @@
 # GOV Multi-Cloud Implementation Executive Roadmap
 
 ## Executive Summary
-The United States Coast Guard is implementing a FedRAMP High compliant multi-cloud infrastructure to support 34 designated Coast Guard Cities across five regions. This strategic initiative will establish secure, resilient cloud services while ensuring compliance with federal security requirements.
+Implementing a FedRAMP High compliant multi-cloud infrastructure. This strategic initiative will establish secure, resilient cloud services while ensuring compliance with federal security requirements.
 
 ## Strategic Objectives
 1. Establish FedRAMP High compliant cloud infrastructure
