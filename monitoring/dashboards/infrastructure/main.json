@@ -1,0 +1,225 @@
+{
+  "dashboard": {
+    "title": "Infrastructure Overview",
+    "uid": "infrastructure-overview",
+    "tags": ["infrastructure", "overview"],
+    "timezone": "browser",
+    "schemaVersion": 21,
+    "version": 1,
+    "refresh": "5m",
+    "panels": [
+      {
+        "title": "Compute Resources",
+        "type": "row",
+        "collapsed": false,
+        "panels": [
+          {
+            "title": "CPU Utilization",
+            "type": "graph",
+            "datasource": "CloudWatch",
+            "targets": [
+              {
+                "region": "${AWS_REGION}",
+                "namespace": "AWS/EC2",
+                "metricName": "CPUUtilization",
+                "dimensions": {
+                  "AutoScalingGroupName": "*"
+                },
+                "statistics": ["Average"],
+                "period": 300
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "title": "Memory Usage",
+            "type": "graph",
+            "datasource": "CloudWatch",
+            "targets": [
+              {
+                "region": "${AWS_REGION}",
+                "namespace": "CWAgent",
+                "metricName": "mem_used_percent",
+                "dimensions": {
+                  "AutoScalingGroupName": "*"
+                },
+                "statistics": ["Average"],
+                "period": 300
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 0
+            }
+          }
+        ]
+      },
+      {
+        "title": "Network Resources",
+        "type": "row",
+        "collapsed": false,
+        "panels": [
+          {
+            "title": "Network In",
+            "type": "graph",
+            "datasource": "CloudWatch",
+            "targets": [
+              {
+                "region": "${AWS_REGION}",
+                "namespace": "AWS/EC2",
+                "metricName": "NetworkIn",
+                "dimensions": {
+                  "AutoScalingGroupName": "*"
+                },
+                "statistics": ["Sum"],
+                "period": 300
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 8
+            }
+          },
+          {
+            "title": "Network Out",
+            "type": "graph",
+            "datasource": "CloudWatch",
+            "targets": [
+              {
+                "region": "${AWS_REGION}",
+                "namespace": "AWS/EC2",
+                "metricName": "NetworkOut",
+                "dimensions": {
+                  "AutoScalingGroupName": "*"
+                },
+                "statistics": ["Sum"],
+                "period": 300
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 8
+            }
+          }
+        ]
+      },
+      {
+        "title": "Storage Resources",
+        "type": "row",
+        "collapsed": false,
+        "panels": [
+          {
+            "title": "EBS IOPS",
+            "type": "graph",
+            "datasource": "CloudWatch",
+            "targets": [
+              {
+                "region": "${AWS_REGION}",
+                "namespace": "AWS/EBS",
+                "metricName": "VolumeReadOps",
+                "dimensions": {
+                  "VolumeId": "*"
+                },
+                "statistics": ["Sum"],
+                "period": 300
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 16
+            }
+          },
+          {
+            "title": "EBS Throughput",
+            "type": "graph",
+            "datasource": "CloudWatch",
+            "targets": [
+              {
+                "region": "${AWS_REGION}",
+                "namespace": "AWS/EBS",
+                "metricName": "VolumeWriteBytes",
+                "dimensions": {
+                  "VolumeId": "*"
+                },
+                "statistics": ["Sum"],
+                "period": 300
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 16
+            }
+          }
+        ]
+      },
+      {
+        "title": "Database Resources",
+        "type": "row",
+        "collapsed": false,
+        "panels": [
+          {
+            "title": "RDS CPU",
+            "type": "graph",
+            "datasource": "CloudWatch",
+            "targets": [
+              {
+                "region": "${AWS_REGION}",
+                "namespace": "AWS/RDS",
+                "metricName": "CPUUtilization",
+                "dimensions": {
+                  "DBInstanceIdentifier": "*"
+                },
+                "statistics": ["Average"],
+                "period": 300
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 24
+            }
+          },
+          {
+            "title": "RDS Connections",
+            "type": "graph",
+            "datasource": "CloudWatch",
+            "targets": [
+              {
+                "region": "${AWS_REGION}",
+                "namespace": "AWS/RDS",
+                "metricName": "DatabaseConnections",
+                "dimensions": {
+                  "DBInstanceIdentifier": "*"
+                },
+                "statistics": ["Sum"],
+                "period": 300
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 24
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

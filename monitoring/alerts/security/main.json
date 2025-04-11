@@ -1,0 +1,221 @@
+{
+  "alerts": {
+    "version": "1.0",
+    "environment": "${ENVIRONMENT}",
+    "rules": [
+      {
+        "name": "root_account_usage",
+        "description": "Alert when AWS root account is used",
+        "severity": "critical",
+        "source": "CloudWatch",
+        "metric": {
+          "namespace": "AWS/CloudTrail",
+          "metricName": "RootAccountUsage",
+          "dimensions": {},
+          "period": 300,
+          "statistic": "Sum",
+          "threshold": 1,
+          "evaluationPeriods": 1,
+          "comparisonOperator": "GreaterThanThreshold"
+        },
+        "actions": [
+          {
+            "type": "sns",
+            "target": "${SECURITY_SNS_TOPIC}"
+          },
+          {
+            "type": "slack",
+            "target": "${SECURITY_SLACK_CHANNEL}"
+          }
+        ]
+      },
+      {
+        "name": "security_group_changes",
+        "description": "Alert on security group configuration changes",
+        "severity": "high",
+        "source": "CloudWatch",
+        "metric": {
+          "namespace": "AWS/CloudTrail",
+          "metricName": "SecurityGroupChanges",
+          "dimensions": {},
+          "period": 300,
+          "statistic": "Sum",
+          "threshold": 1,
+          "evaluationPeriods": 1,
+          "comparisonOperator": "GreaterThanThreshold"
+        },
+        "actions": [
+          {
+            "type": "sns",
+            "target": "${SECURITY_SNS_TOPIC}"
+          }
+        ]
+      },
+      {
+        "name": "unauthorized_api_calls",
+        "description": "Alert on unauthorized API calls",
+        "severity": "high",
+        "source": "CloudWatch",
+        "metric": {
+          "namespace": "AWS/CloudTrail",
+          "metricName": "UnauthorizedAPICalls",
+          "dimensions": {},
+          "period": 300,
+          "statistic": "Sum",
+          "threshold": 5,
+          "evaluationPeriods": 2,
+          "comparisonOperator": "GreaterThanThreshold"
+        },
+        "actions": [
+          {
+            "type": "sns",
+            "target": "${SECURITY_SNS_TOPIC}"
+          }
+        ]
+      },
+      {
+        "name": "network_acl_changes",
+        "description": "Alert on NACL changes",
+        "severity": "high",
+        "source": "CloudWatch",
+        "metric": {
+          "namespace": "AWS/CloudTrail",
+          "metricName": "NetworkAclChanges",
+          "dimensions": {},
+          "period": 300,
+          "statistic": "Sum",
+          "threshold": 1,
+          "evaluationPeriods": 1,
+          "comparisonOperator": "GreaterThanThreshold"
+        },
+        "actions": [
+          {
+            "type": "sns",
+            "target": "${SECURITY_SNS_TOPIC}"
+          }
+        ]
+      },
+      {
+        "name": "failed_console_logins",
+        "description": "Alert on multiple failed console logins",
+        "severity": "medium",
+        "source": "CloudWatch",
+        "metric": {
+          "namespace": "AWS/CloudTrail",
+          "metricName": "ConsoleLoginFailures",
+          "dimensions": {},
+          "period": 300,
+          "statistic": "Sum",
+          "threshold": 10,
+          "evaluationPeriods": 2,
+          "comparisonOperator": "GreaterThanThreshold"
+        },
+        "actions": [
+          {
+            "type": "sns",
+            "target": "${SECURITY_SNS_TOPIC}"
+          }
+        ]
+      },
+      {
+        "name": "s3_bucket_policy_changes",
+        "description": "Alert on S3 bucket policy changes",
+        "severity": "high",
+        "source": "CloudWatch",
+        "metric": {
+          "namespace": "AWS/CloudTrail",
+          "metricName": "S3BucketPolicyChanges",
+          "dimensions": {},
+          "period": 300,
+          "statistic": "Sum",
+          "threshold": 1,
+          "evaluationPeriods": 1,
+          "comparisonOperator": "GreaterThanThreshold"
+        },
+        "actions": [
+          {
+            "type": "sns",
+            "target": "${SECURITY_SNS_TOPIC}"
+          }
+        ]
+      },
+      {
+        "name": "config_changes",
+        "description": "Alert on AWS Config changes",
+        "severity": "medium",
+        "source": "CloudWatch",
+        "metric": {
+          "namespace": "AWS/CloudTrail",
+          "metricName": "ConfigChanges",
+          "dimensions": {},
+          "period": 300,
+          "statistic": "Sum",
+          "threshold": 1,
+          "evaluationPeriods": 1,
+          "comparisonOperator": "GreaterThanThreshold"
+        },
+        "actions": [
+          {
+            "type": "sns",
+            "target": "${SECURITY_SNS_TOPIC}"
+          }
+        ]
+      },
+      {
+        "name": "route_table_changes",
+        "description": "Alert on route table changes",
+        "severity": "high",
+        "source": "CloudWatch",
+        "metric": {
+          "namespace": "AWS/CloudTrail",
+          "metricName": "RouteTableChanges",
+          "dimensions": {},
+          "period": 300,
+          "statistic": "Sum",
+          "threshold": 1,
+          "evaluationPeriods": 1,
+          "comparisonOperator": "GreaterThanThreshold"
+        },
+        "actions": [
+          {
+            "type": "sns",
+            "target": "${SECURITY_SNS_TOPIC}"
+          }
+        ]
+      }
+    ],
+    "notification_channels": {
+      "sns": [
+        {
+          "name": "security_alerts",
+          "topic_arn": "${SECURITY_SNS_TOPIC}",
+          "subscription_protocol": "email"
+        }
+      ],
+      "slack": [
+        {
+          "name": "security_channel",
+          "webhook_url": "${SECURITY_SLACK_WEBHOOK}",
+          "channel": "${SECURITY_SLACK_CHANNEL}"
+        }
+      ]
+    },
+    "escalation_policies": {
+      "critical": {
+        "notification_interval": 300,
+        "max_notifications": 5,
+        "notification_channels": ["sns", "slack"]
+      },
+      "high": {
+        "notification_interval": 900,
+        "max_notifications": 3,
+        "notification_channels": ["sns"]
+      },
+      "medium": {
+        "notification_interval": 1800,
+        "max_notifications": 2,
+        "notification_channels": ["sns"]
+      }
+    }
+  }
+}

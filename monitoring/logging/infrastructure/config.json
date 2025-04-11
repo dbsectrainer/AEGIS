@@ -1,0 +1,189 @@
+{
+  "logging": {
+    "version": "1.0",
+    "environment": "${ENVIRONMENT}",
+    "retention": {
+      "cloudwatch": {
+        "infrastructure_logs": 90,
+        "application_logs": 30,
+        "security_logs": 365,
+        "audit_logs": 730
+      },
+      "s3": {
+        "infrastructure_logs": {
+          "retention_days": 365,
+          "transition_glacier_days": 90
+        },
+        "security_logs": {
+          "retention_days": 730,
+          "transition_glacier_days": 180
+        },
+        "audit_logs": {
+          "retention_days": 2555,
+          "transition_glacier_days": 365
+        }
+      }
+    },
+    "cloudwatch": {
+      "log_groups": [
+        {
+          "name": "/aws/ec2/${ENVIRONMENT}",
+          "retention_days": 90,
+          "metric_filters": [
+            {
+              "name": "ErrorCount",
+              "pattern": "ERROR",
+              "metric": {
+                "namespace": "CustomMetrics/Errors",
+                "metric_name": "ErrorCount",
+                "value": 1,
+                "unit": "Count"
+              }
+            }
+          ]
+        },
+        {
+          "name": "/aws/rds/${ENVIRONMENT}",
+          "retention_days": 90,
+          "metric_filters": [
+            {
+              "name": "SlowQueries",
+              "pattern": "SLOW_QUERY",
+              "metric": {
+                "namespace": "CustomMetrics/Database",
+                "metric_name": "SlowQueryCount",
+                "value": 1,
+                "unit": "Count"
+              }
+            }
+          ]
+        },
+        {
+          "name": "/aws/lambda/${ENVIRONMENT}",
+          "retention_days": 30,
+          "metric_filters": [
+            {
+              "name": "FunctionErrors",
+              "pattern": "ERROR",
+              "metric": {
+                "namespace": "CustomMetrics/Lambda",
+                "metric_name": "ErrorCount",
+                "value": 1,
+                "unit": "Count"
+              }
+            }
+          ]
+        }
+      ],
+      "subscription_filters": [
+        {
+          "name": "SecurityEventsFilter",
+          "log_group": "/aws/cloudtrail",
+          "filter_pattern": "{ $.eventName = DeleteSecurityGroup }",
+          "destination_arn": "${SECURITY_KINESIS_STREAM}"
+        },
+        {
+          "name": "AuditEventsFilter",
+          "log_group": "/aws/cloudtrail",
+          "filter_pattern": "{ $.userIdentity.type = Root }",
+          "destination_arn": "${AUDIT_KINESIS_STREAM}"
+        }
+      ]
+    },
+    "s3": {
+      "buckets": [
+        {
+          "name": "${LOG_BUCKET_NAME}",
+          "prefix": "infrastructure/",
+          "lifecycle_rules": [
+            {
+              "prefix": "infrastructure/",
+              "enabled": true,
+              "transitions": [
+                {
+                  "days": 90,
+                  "storage_class": "GLACIER"
+                }
+              ],
+              "expiration": {
+                "days": 365
+              }
+            }
+          ],
+          "server_side_encryption": {
+            "algorithm": "AES256"
+          },
+          "versioning": true,
+          "logging": {
+            "target_bucket": "${LOGGING_BUCKET}",
+            "target_prefix": "s3-access-logs/"
+          }
+        }
+      ]
+    },
+    "kinesis": {
+      "streams": [
+        {
+          "name": "${SECURITY_KINESIS_STREAM}",
+          "retention_hours": 24,
+          "shard_count": 1,
+          "consumers": [
+            {
+              "name": "SecurityLogProcessor",
+              "destination": "Lambda"
+            }
+          ]
+        },
+        {
+          "name": "${AUDIT_KINESIS_STREAM}",
+          "retention_hours": 24,
+          "shard_count": 1,
+          "consumers": [
+            {
+              "name": "AuditLogProcessor",
+              "destination": "Lambda"
+            }
+          ]
+        }
+      ]
+    },
+    "elasticsearch": {
+      "domains": [
+        {
+          "name": "${ES_DOMAIN_NAME}",
+          "version": "7.10",
+          "instance_type": "t3.small.elasticsearch",
+          "instance_count": 2,
+          "dedicated_master_enabled": false,
+          "zone_awareness_enabled": true,
+          "ebs_options": {
+            "volume_type": "gp2",
+            "volume_size": 100
+          },
+          "indices": [
+            {
+              "name": "infrastructure-logs",
+              "rollover": {
+                "max_age": "7d",
+                "max_size": "50gb"
+              },
+              "retention": {
+                "hot": {
+                  "min_age": "0d",
+                  "max_age": "30d"
+                },
+                "warm": {
+                  "min_age": "30d",
+                  "max_age": "90d"
+                },
+                "cold": {
+                  "min_age": "90d"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

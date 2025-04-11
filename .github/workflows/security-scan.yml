@@ -1,0 +1,155 @@
+name: 'Security Scan'
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight
+  pull_request:
+    branches:
+      - main
+      - develop
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  security-scan:
+    name: 'Security Scan'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Run tfsec
+      uses: aquasecurity/tfsec-action@v1.0.0
+      with:
+        working_directory: terraform
+        format: sarif
+        soft_fail: true
+        output_file: tfsec.sarif
+
+    - name: Run Checkov
+      uses: bridgecrewio/checkov-action@master
+      with:
+        directory: terraform
+        framework: terraform
+        output_format: sarif
+        output_file_path: checkov.sarif
+        soft_fail: true
+
+    - name: Run Trivy Config Scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'config'
+        hide-progress: false
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+        exit-code: '1'
+        ignore-unfixed: true
+        severity: 'CRITICAL,HIGH'
+
+    - name: Run KICS Scan
+      uses: checkmarx/kics-github-action@v1.7
+      with:
+        path: terraform
+        output_path: kics-results
+        output_formats: 'sarif'
+        ignore_on_exit: results
+        fail_on: HIGH
+        enable_comments: true
+
+    - name: Upload tfsec SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      if: success() || failure()
+      with:
+        sarif_file: tfsec.sarif
+        category: tfsec
+
+    - name: Upload Checkov SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      if: success() || failure()
+      with:
+        sarif_file: checkov.sarif
+        category: checkov
+
+    - name: Upload Trivy SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      if: success() || failure()
+      with:
+        sarif_file: trivy-results.sarif
+        category: trivy
+
+    - name: Upload KICS SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      if: success() || failure()
+      with:
+        sarif_file: kics-results/results.sarif
+        category: kics
+
+    - name: Run Dependency Check
+      uses: dependency-check/Dependency-Check_Action@main
+      with:
+        project: 'cloud-infrastructure'
+        path: '.'
+        format: 'SARIF'
+        out: 'dependency-check-results'
+
+    - name: Upload Dependency Check SARIF
+      uses: github/codeql-action/upload-sarif@v2
+      if: success() || failure()
+      with:
+        sarif_file: dependency-check-results/dependency-check-report.sarif
+        category: dependency-check
+
+    - name: Run Secret Scanning
+      uses: gitleaks/gitleaks-action@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Generate Security Report
+      if: always()
+      run: |
+        echo "# Security Scan Results" > security-report.md
+        echo "## Scan Summary" >> security-report.md
+        echo "- Repository: ${{ github.repository }}" >> security-report.md
+        echo "- Branch: ${{ github.ref }}" >> security-report.md
+        echo "- Timestamp: $(date)" >> security-report.md
+        
+        echo "## Detailed Findings" >> security-report.md
+        
+        if [ -f "tfsec.sarif" ]; then
+          echo "### TFSec Findings" >> security-report.md
+          jq -r '.runs[].results[] | "- " + .level + ": " + .message.text' tfsec.sarif >> security-report.md
+        fi
+        
+        if [ -f "checkov.sarif" ]; then
+          echo "### Checkov Findings" >> security-report.md
+          jq -r '.runs[].results[] | "- " + .level + ": " + .message.text' checkov.sarif >> security-report.md
+        fi
+        
+        if [ -f "trivy-results.sarif" ]; then
+          echo "### Trivy Findings" >> security-report.md
+          jq -r '.runs[].results[] | "- " + .level + ": " + .message.text' trivy-results.sarif >> security-report.md
+        fi
+
+    - name: Upload Security Report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: security-report
+        path: security-report.md
+
+    - name: Notify Slack on High Severity Findings
+      if: failure()
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        channel-id: ${{ secrets.SECURITY_CHANNEL_ID }}
+        slack-message: |
+          :warning: High Severity Security Findings Detected
+          Repository: ${{ github.repository }}
+          Branch: ${{ github.ref }}
+          Workflow: ${{ github.workflow }}
+          See detailed report in GitHub Actions artifacts
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
