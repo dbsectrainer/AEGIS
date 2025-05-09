@@ -50,14 +50,18 @@ jobs:
         severity: 'CRITICAL,HIGH'
 
     - name: Run KICS Scan
-      uses: checkmarx/kics-github-action@latest
+      uses: checkmarx/kics-github-action@v1.7.0
       with:
-        path: terraform
-        output_path: kics-results
+        path: 'terraform'
+        output_path: 'kics-results'
         output_formats: 'sarif'
-        ignore_on_exit: results
-        fail_on: HIGH
-        enable_comments: true
+        ignore_on_exit: 'results'
+        fail_on: 'high'
+        disable_secrets: false
+        type: 'Terraform'
+        exclude_paths: 'terraform/examples,terraform/.terraform'
+        exclude_queries: ''
+        config_path: ''
 
     - name: Upload tfsec SARIF file
       uses: github/codeql-action/upload-sarif@v2
