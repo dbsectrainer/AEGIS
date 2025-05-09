@@ -50,7 +50,7 @@ jobs:
         severity: 'CRITICAL,HIGH'
 
     - name: Run KICS Scan
-      uses: checkmarx/kics-github-action@v1.7
+      uses: checkmarx/kics-github-action@latest
       with:
         path: terraform
         output_path: kics-results
