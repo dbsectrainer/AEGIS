@@ -68,6 +68,16 @@ check_prerequisites() {
     log "INFO" "Prerequisites check passed"
 }
 
+# Function to send Slack notification on high severity findings
+notify_slack() {
+    local message=$1
+    if [[ -n "$SLACK_WEBHOOK_URL" ]]; then
+        curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"$message\"}" "$SLACK_WEBHOOK_URL"
+    else
+        log "WARN" "SLACK_WEBHOOK_URL not set; skipping Slack notification."
+    fi
+}
+
 # Function to run vulnerability scan
 run_vulnerability_scan() {
     log "INFO" "Running vulnerability scan..."
@@ -77,18 +87,26 @@ run_vulnerability_scan() {
         return 0
     fi
 
-    # Scan infrastructure code
+    # Scan infrastructure code (JSON and SARIF)
     log "INFO" "Scanning infrastructure code..."
     trivy config --severity $SEVERITY \
         --format json \
         --output "$OUTPUT_DIR/vulnerability-terraform-$ENVIRONMENT.json" \
         ./terraform
+    trivy config --severity $SEVERITY \
+        --format sarif \
+        --output "$OUTPUT_DIR/trivy-terraform-$ENVIRONMENT.sarif" \
+        ./terraform
 
-    # Scan container images
+    # Scan container images (JSON and SARIF)
     log "INFO" "Scanning container images..."
     trivy image --severity $SEVERITY \
         --format json \
         --output "$OUTPUT_DIR/vulnerability-containers-$ENVIRONMENT.json" \
+        $(aws ecr describe-repositories --query 'repositories[*].repositoryUri' --output text)
+    trivy image --severity $SEVERITY \
+        --format sarif \
+        --output "$OUTPUT_DIR/trivy-containers-$ENVIRONMENT.sarif" \
         $(aws ecr describe-repositories --query 'repositories[*].repositoryUri' --output text)
 
     log "INFO" "Vulnerability scan completed"
@@ -103,11 +121,15 @@ run_compliance_scan() {
         return 0
     fi
 
-    # Run tfsec for compliance checks
+    # Run tfsec for compliance checks (JSON and SARIF)
     log "INFO" "Running infrastructure compliance checks..."
     tfsec ./terraform \
         --format json \
         --out "$OUTPUT_DIR/compliance-terraform-$ENVIRONMENT.json" \
+        --minimum-severity $SEVERITY
+    tfsec ./terraform \
+        --format sarif \
+        --out "$OUTPUT_DIR/tfsec-$ENVIRONMENT.sarif" \
         --minimum-severity $SEVERITY
 
     # Run AWS Config rules check
@@ -173,6 +195,11 @@ EOF
     if [ -f "$OUTPUT_DIR/vulnerability-terraform-$ENVIRONMENT.json" ]; then
         echo "### Vulnerability Scan" >> "$OUTPUT_DIR/security-scan-report-$ENVIRONMENT.md"
         jq -r '.Results | length' "$OUTPUT_DIR/vulnerability-terraform-$ENVIRONMENT.json" >> "$OUTPUT_DIR/security-scan-report-$ENVIRONMENT.md"
+        # Notify Slack if high/critical findings
+        high_count=$(jq '[.Results[] | select(.Severity=="HIGH" or .Severity=="CRITICAL")] | length' "$OUTPUT_DIR/vulnerability-terraform-$ENVIRONMENT.json")
+        if [ "$high_count" -gt 0 ]; then
+            notify_slack "[$ENVIRONMENT] High or Critical vulnerabilities found: $high_count. See $OUTPUT_DIR/security-scan-report-$ENVIRONMENT.md"
+        fi
     fi
 
     # Add compliance scan summary
