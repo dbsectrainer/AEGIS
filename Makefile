@@ -24,16 +24,18 @@ apply:
 test: test-terraform test-security test-performance
 
 test-terraform:
-	@echo "Running Terraform tests..."
-	cd tests/terraform && go test -v ./...
+	@echo "Running Terraform format check and validation..."
+	terraform fmt -recursive -check terraform
+	cd terraform/environments/production/southeast && terraform init -backend=false -input=false && terraform validate
+	@if [ -d tests/terraform ]; then cd tests/terraform && go test -v ./...; fi
 
 test-security:
 	@echo "Running security tests..."
-	cd tests/security && go test -v ./...
+	@if [ -d tests/security ]; then cd tests/security && go test -v ./...; else echo "No tests/security suite present; skipping"; fi
 
 test-performance:
 	@echo "Running performance tests..."
-	cd tests/performance && go test -v ./...
+	@if [ -d tests/performance ]; then cd tests/performance && go test -v ./...; else echo "No tests/performance suite present; skipping"; fi
 
 # Security Commands
 security: security-scan security-audit security-compliance

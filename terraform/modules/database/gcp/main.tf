@@ -3,9 +3,9 @@
 # Cloud SQL Instance
 resource "google_sql_database_instance" "main" {
   name                = "${var.environment}-sql-instance"
-  database_version    = "POSTGRES_13"
+  database_version    = "POSTGRES_17"
   region              = var.region
-  project            = var.project_id
+  project             = var.project_id
   deletion_protection = true
 
   settings {
@@ -13,7 +13,7 @@ resource "google_sql_database_instance" "main" {
     availability_type = "REGIONAL"
     disk_size         = var.disk_size
     disk_type         = "PD_SSD"
-    
+
     backup_configuration {
       enabled                        = true
       point_in_time_recovery_enabled = true
@@ -25,9 +25,10 @@ resource "google_sql_database_instance" "main" {
     }
 
     ip_configuration {
-      ipv4_enabled       = false
-      private_network    = var.network_id
-      require_ssl        = true
+      ipv4_enabled    = false
+      private_network = var.network_id
+      #tfsec:ignore:google-sql-encrypt-in-transit-data ssl_mode replaces the deprecated require_ssl
+      ssl_mode           = "ENCRYPTED_ONLY"
       allocated_ip_range = var.sql_ip_range
     }
 
@@ -44,8 +45,8 @@ resource "google_sql_database_instance" "main" {
     }
 
     maintenance_window {
-      day          = 7  # Sunday
-      hour         = 2  # 2 AM
+      day          = 7 # Sunday
+      hour         = 2 # 2 AM
       update_track = "stable"
     }
   }
@@ -75,24 +76,24 @@ resource "google_sql_user" "main" {
 
 # Cloud Spanner Instance
 resource "google_spanner_instance" "main" {
-  count          = var.create_spanner ? 1 : 0
-  name           = "${var.environment}-spanner"
-  config         = var.spanner_config
-  display_name   = "${var.environment} Spanner Instance"
+  count            = var.create_spanner ? 1 : 0
+  name             = "${var.environment}-spanner"
+  config           = var.spanner_config
+  display_name     = "${var.environment} Spanner Instance"
   processing_units = var.spanner_processing_units
-  project        = var.project_id
+  project          = var.project_id
 
   labels = var.labels
 }
 
 # Cloud Spanner Database
 resource "google_spanner_database" "main" {
-  count        = var.create_spanner ? 1 : 0
-  instance     = google_spanner_instance.main[0].name
-  name         = "${var.environment}-spanner-db"
-  project      = var.project_id
+  count                    = var.create_spanner ? 1 : 0
+  instance                 = google_spanner_instance.main[0].name
+  name                     = "${var.environment}-spanner-db"
+  project                  = var.project_id
   version_retention_period = "7d"
-  
+
   deletion_protection = true
 
   ddl = var.spanner_ddl_statements
@@ -139,9 +140,9 @@ resource "google_monitoring_alert_policy" "database_cpu" {
   conditions {
     display_name = "High CPU Usage"
     condition_threshold {
-      filter     = "metric.type=\"cloudsql.googleapis.com/database/cpu/utilization\" resource.type=\"cloudsql_database\""
-      duration   = "300s"
-      comparison = "COMPARISON_GT"
+      filter          = "metric.type=\"cloudsql.googleapis.com/database/cpu/utilization\" resource.type=\"cloudsql_database\""
+      duration        = "300s"
+      comparison      = "COMPARISON_GT"
       threshold_value = 0.8
       trigger {
         count = 1
@@ -165,9 +166,9 @@ resource "google_monitoring_alert_policy" "spanner_cpu" {
   conditions {
     display_name = "High CPU Usage"
     condition_threshold {
-      filter     = "metric.type=\"spanner.googleapis.com/instance/cpu/utilization\" resource.type=\"spanner_instance\""
-      duration   = "300s"
-      comparison = "COMPARISON_GT"
+      filter          = "metric.type=\"spanner.googleapis.com/instance/cpu/utilization\" resource.type=\"spanner_instance\""
+      duration        = "300s"
+      comparison      = "COMPARISON_GT"
       threshold_value = 0.8
       trigger {
         count = 1

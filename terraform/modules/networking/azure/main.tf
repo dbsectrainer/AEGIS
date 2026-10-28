@@ -60,9 +60,9 @@ resource "azurerm_network_security_group" "public" {
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range         = "*"
-    destination_port_range    = "443"
-    source_address_prefix     = "*"
+    source_port_range          = "*"
+    destination_port_range     = "443"
+    source_address_prefixes    = var.public_ingress_source_prefixes
     destination_address_prefix = "*"
   }
 
@@ -80,9 +80,9 @@ resource "azurerm_network_security_group" "private" {
     direction                  = "Outbound"
     access                     = "Deny"
     protocol                   = "*"
-    source_port_range         = "*"
-    destination_port_range    = "*"
-    source_address_prefix     = "*"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
     destination_address_prefix = "Internet"
   }
 
@@ -274,4 +274,10 @@ output "nat_gateway_id" {
 
 output "private_link_service_id" {
   value = var.enable_private_link ? azurerm_private_link_service.main[0].id : null
+}
+
+variable "public_ingress_source_prefixes" {
+  description = "Source address prefixes or service tags allowed to reach the public NSG on 443 (e.g. AzureFrontDoor.Backend)"
+  type        = list(string)
+  default     = ["VirtualNetwork"]
 }

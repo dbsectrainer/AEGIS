@@ -2,7 +2,7 @@
 
 # Azure SQL Server
 resource "azurerm_mssql_server" "main" {
-  name                          = "${var.environment}-sql-server"
+  name                         = "${var.environment}-sql-server"
   resource_group_name          = var.resource_group_name
   location                     = var.location
   version                      = "12.0"
@@ -27,12 +27,12 @@ resource "azurerm_mssql_server" "main" {
 
 # Azure SQL Database
 resource "azurerm_mssql_database" "main" {
-  name                = "${var.environment}-db"
-  server_id          = azurerm_mssql_server.main.id
-  collation          = "SQL_Latin1_General_CP1_CI_AS"
-  sku_name           = var.sql_sku_name
-  zone_redundant     = true
-  
+  name           = "${var.environment}-db"
+  server_id      = azurerm_mssql_server.main.id
+  collation      = "SQL_Latin1_General_CP1_CI_AS"
+  sku_name       = var.sql_sku_name
+  zone_redundant = true
+
   short_term_retention_policy {
     retention_days = 7
   }
@@ -41,7 +41,7 @@ resource "azurerm_mssql_database" "main" {
     weekly_retention  = "P4W"
     monthly_retention = "P12M"
     yearly_retention  = "P5Y"
-    week_of_year     = 1
+    week_of_year      = 1
   }
 
   tags = var.tags
@@ -55,8 +55,8 @@ resource "azurerm_cosmosdb_account" "main" {
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
 
-  enable_automatic_failover = true
-  enable_multiple_write_locations = false
+  automatic_failover_enabled       = true
+  multiple_write_locations_enabled = false
 
   consistency_policy {
     consistency_level = "Session"
@@ -80,7 +80,7 @@ resource "azurerm_cosmosdb_account" "main" {
   network_acl_bypass_for_azure_services = true
 
   is_virtual_network_filter_enabled = true
-  
+
   virtual_network_rule {
     id = var.subnet_id
   }
@@ -106,8 +106,8 @@ resource "azurerm_private_endpoint" "sql" {
   private_service_connection {
     name                           = "${var.environment}-sql-psc"
     private_connection_resource_id = azurerm_mssql_server.main.id
-    is_manual_connection          = false
-    subresource_names            = ["sqlServer"]
+    is_manual_connection           = false
+    subresource_names              = ["sqlServer"]
   }
 
   private_dns_zone_group {
@@ -127,8 +127,8 @@ resource "azurerm_private_endpoint" "cosmos" {
   private_service_connection {
     name                           = "${var.environment}-cosmos-psc"
     private_connection_resource_id = azurerm_cosmosdb_account.main.id
-    is_manual_connection          = false
-    subresource_names            = ["Sql"]
+    is_manual_connection           = false
+    subresource_names              = ["Sql"]
   }
 
   private_dns_zone_group {
@@ -151,76 +151,41 @@ resource "azurerm_user_assigned_identity" "sql" {
 # Diagnostic Settings
 resource "azurerm_monitor_diagnostic_setting" "sql" {
   name                       = "${var.environment}-sql-diag"
-  target_resource_id        = azurerm_mssql_database.main.id
+  target_resource_id         = azurerm_mssql_database.main.id
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
-  log {
+  enabled_log {
     category = "SQLInsights"
-    enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 
-  log {
+  enabled_log {
     category = "AutomaticTuning"
-    enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 
-  log {
+  enabled_log {
     category = "QueryStoreRuntimeStatistics"
-    enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 
-  metric {
+  enabled_metric {
     category = "Basic"
-    enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 }
 
 resource "azurerm_monitor_diagnostic_setting" "cosmos" {
   name                       = "${var.environment}-cosmos-diag"
-  target_resource_id        = azurerm_cosmosdb_account.main.id
+  target_resource_id         = azurerm_cosmosdb_account.main.id
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
-  log {
+  enabled_log {
     category = "DataPlaneRequests"
-    enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 
-  log {
+  enabled_log {
     category = "QueryRuntimeStatistics"
-    enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 
-  metric {
+  enabled_metric {
     category = "Requests"
-    enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 }
 

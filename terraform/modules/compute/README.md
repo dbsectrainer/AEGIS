@@ -71,7 +71,7 @@ module "aws_compute" {
   environment         = "production"
   vpc_id             = module.networking.vpc_id
   private_subnet_ids = module.networking.private_subnet_ids
-  kubernetes_version = "1.27"
+  kubernetes_version = "1.35"
   
   # Additional configuration...
 }

@@ -154,7 +154,7 @@ Terraform modules target federal cloud environments with security-hardened defau
 
 ### Prerequisites
 
-- Terraform 1.5+ installed
+- Terraform 1.12+ installed
 - AWS CLI configured for GovCloud (or Azure CLI / gcloud for respective providers)
 - Go 1.21+ (for running tests via `make test`)
 - `markdownlint` (optional, for `make docs-lint`)

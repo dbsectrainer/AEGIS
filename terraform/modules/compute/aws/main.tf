@@ -74,7 +74,7 @@ resource "aws_ecs_cluster" "main" {
 
       log_configuration {
         cloud_watch_encryption_enabled = true
-        cloud_watch_log_group_name    = aws_cloudwatch_log_group.ecs.name
+        cloud_watch_log_group_name     = aws_cloudwatch_log_group.ecs.name
       }
     }
   }
@@ -140,7 +140,7 @@ resource "aws_launch_template" "ecs" {
 
   network_interfaces {
     associate_public_ip_address = false
-    security_groups            = [aws_security_group.ecs.id]
+    security_groups             = [aws_security_group.ecs.id]
   }
 
   iam_instance_profile {
@@ -186,10 +186,12 @@ resource "aws_security_group" "eks_cluster" {
   }
 
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    # Egress stays inside the private subnets; reach AWS services via VPC endpoints
+    description = "Egress to private subnets only"
+    cidr_blocks = var.private_subnet_cidrs
   }
 
   tags = merge(var.tags, {
@@ -209,10 +211,12 @@ resource "aws_security_group" "eks_nodes" {
   }
 
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    # Egress stays inside the private subnets; reach AWS services via VPC endpoints
+    description = "Egress to private subnets only"
+    cidr_blocks = var.private_subnet_cidrs
   }
 
   tags = merge(var.tags, {
@@ -232,10 +236,12 @@ resource "aws_security_group" "ecs" {
   }
 
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    # Egress stays inside the private subnets; reach AWS services via VPC endpoints
+    description = "Egress to private subnets only"
+    cidr_blocks = var.private_subnet_cidrs
   }
 
   tags = merge(var.tags, {

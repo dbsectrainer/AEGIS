@@ -140,7 +140,7 @@ resource "aws_iam_role_policy" "ecs_ssm" {
           "ssm:GetParameter",
           "ssm:DescribeParameters"
         ]
-        Resource = "arn:aws-us-gov:ssm:*:*:parameter/*"
+        Resource = "arn:aws-us-gov:ssm:*:*:parameter/${var.environment}/*"
       }
     ]
   })

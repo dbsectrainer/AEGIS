@@ -8,18 +8,21 @@ resource "azurerm_kubernetes_cluster" "main" {
   dns_prefix          = "${var.environment}-aks"
   kubernetes_version  = var.kubernetes_version
 
+  # Keep the API server off the public internet
+  private_cluster_enabled = true
+
   default_node_pool {
-    name                = "system"
-    node_count          = var.system_node_count
-    vm_size             = var.system_node_vm_size
-    vnet_subnet_id      = var.subnet_id
-    availability_zones  = var.availability_zones
-    enable_auto_scaling = true
-    min_count          = var.system_node_min_count
-    max_count          = var.system_node_max_count
-    os_disk_size_gb    = var.system_node_disk_size
-    os_disk_type       = "Managed"
-    type               = "VirtualMachineScaleSets"
+    name                 = "system"
+    node_count           = var.system_node_count
+    vm_size              = var.system_node_vm_size
+    vnet_subnet_id       = var.subnet_id
+    zones                = var.availability_zones
+    auto_scaling_enabled = true
+    min_count            = var.system_node_min_count
+    max_count            = var.system_node_max_count
+    os_disk_size_gb      = var.system_node_disk_size
+    os_disk_type         = "Managed"
+    type                 = "VirtualMachineScaleSets"
 
     node_labels = {
       "nodepool-type" = "system"
@@ -35,31 +38,25 @@ resource "azurerm_kubernetes_cluster" "main" {
   }
 
   network_profile {
-    network_plugin     = "azure"
-    network_policy     = "azure"
-    load_balancer_sku  = "Standard"
-    service_cidr       = var.service_cidr
-    dns_service_ip     = var.dns_service_ip
-    docker_bridge_cidr = var.docker_bridge_cidr
+    network_plugin    = "azure"
+    network_policy    = "azure"
+    load_balancer_sku = "Standard"
+    service_cidr      = var.service_cidr
+    dns_service_ip    = var.dns_service_ip
   }
 
-  role_based_access_control {
-    enabled = true
-    azure_active_directory {
-      managed                = true
-      admin_group_object_ids = var.admin_group_object_ids
-    }
+  role_based_access_control_enabled = true
+
+  azure_active_directory_role_based_access_control {
+    azure_rbac_enabled     = true
+    admin_group_object_ids = var.admin_group_object_ids
   }
 
-  addon_profile {
-    oms_agent {
-      enabled                    = true
-      log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
-    }
-    azure_policy {
-      enabled = true
-    }
+  oms_agent {
+    log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
   }
+
+  azure_policy_enabled = true
 
   tags = var.tags
 }
@@ -68,16 +65,16 @@ resource "azurerm_kubernetes_cluster" "main" {
 resource "azurerm_kubernetes_cluster_node_pool" "user" {
   name                  = "user"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.main.id
-  vm_size              = var.user_node_vm_size
-  node_count           = var.user_node_count
-  vnet_subnet_id       = var.subnet_id
-  availability_zones   = var.availability_zones
-  enable_auto_scaling  = true
-  min_count           = var.user_node_min_count
-  max_count           = var.user_node_max_count
-  os_disk_size_gb     = var.user_node_disk_size
-  os_type             = "Linux"
-  mode                = "User"
+  vm_size               = var.user_node_vm_size
+  node_count            = var.user_node_count
+  vnet_subnet_id        = var.subnet_id
+  zones                 = var.availability_zones
+  auto_scaling_enabled  = true
+  min_count             = var.user_node_min_count
+  max_count             = var.user_node_max_count
+  os_disk_size_gb       = var.user_node_disk_size
+  os_type               = "Linux"
+  mode                  = "User"
 
   node_labels = {
     "nodepool-type" = "user"
@@ -102,14 +99,9 @@ resource "azurerm_container_registry" "main" {
       action   = "Allow"
       ip_range = var.allowed_ip_ranges
     }
-    virtual_network {
-      action    = "Allow"
-      subnet_id = var.subnet_id
-    }
   }
 
   encryption {
-    enabled            = true
     key_vault_key_id   = var.key_vault_key_id
     identity_client_id = azurerm_user_assigned_identity.acr.client_id
   }
@@ -131,10 +123,10 @@ resource "azurerm_log_analytics_workspace" "main" {
 # Container Insights Solution
 resource "azurerm_log_analytics_solution" "containers" {
   solution_name         = "Containers"
-  location             = var.location
-  resource_group_name  = var.resource_group_name
+  location              = var.location
+  resource_group_name   = var.resource_group_name
   workspace_resource_id = azurerm_log_analytics_workspace.main.id
-  workspace_name       = azurerm_log_analytics_workspace.main.name
+  workspace_name        = azurerm_log_analytics_workspace.main.name
 
   plan {
     publisher = "Microsoft"
@@ -258,12 +250,6 @@ variable "dns_service_ip" {
   description = "IP address for Kubernetes DNS service"
   type        = string
   default     = "10.0.0.10"
-}
-
-variable "docker_bridge_cidr" {
-  description = "CIDR for Docker bridge network"
-  type        = string
-  default     = "172.17.0.1/16"
 }
 
 variable "allowed_ip_ranges" {

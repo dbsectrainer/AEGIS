@@ -6,7 +6,7 @@ resource "aws_kms_key" "database" {
   deletion_window_in_days = 7
   enable_key_rotation     = true
   policy                  = data.aws_iam_policy_document.kms.json
-  tags                   = var.tags
+  tags                    = var.tags
 }
 
 resource "aws_kms_alias" "database" {
@@ -16,26 +16,26 @@ resource "aws_kms_alias" "database" {
 
 # RDS Aurora PostgreSQL Cluster
 resource "aws_rds_cluster" "main" {
-  count                           = var.create_aurora_cluster ? 1 : 0
-  cluster_identifier             = "${var.environment}-aurora-cluster"
-  engine                         = "aurora-postgresql"
-  engine_version                 = var.aurora_engine_version
-  database_name                  = var.database_name
-  master_username               = var.master_username
-  master_password               = var.master_password
-  backup_retention_period       = var.backup_retention_period
-  preferred_backup_window       = var.preferred_backup_window
-  preferred_maintenance_window  = var.preferred_maintenance_window
+  count                        = var.create_aurora_cluster ? 1 : 0
+  cluster_identifier           = "${var.environment}-aurora-cluster"
+  engine                       = "aurora-postgresql"
+  engine_version               = var.aurora_engine_version
+  database_name                = var.database_name
+  master_username              = var.master_username
+  master_password              = var.master_password
+  backup_retention_period      = var.backup_retention_period
+  preferred_backup_window      = var.preferred_backup_window
+  preferred_maintenance_window = var.preferred_maintenance_window
   db_subnet_group_name         = aws_db_subnet_group.main.name
   vpc_security_group_ids       = [aws_security_group.database.id]
   storage_encrypted            = true
   kms_key_id                   = aws_kms_key.database.arn
   deletion_protection          = true
-  skip_final_snapshot         = false
-  final_snapshot_identifier   = "${var.environment}-aurora-final-snapshot"
-  
+  skip_final_snapshot          = false
+  final_snapshot_identifier    = "${var.environment}-aurora-final-snapshot"
+
   enabled_cloudwatch_logs_exports = ["postgresql"]
-  
+
   serverlessv2_scaling_configuration {
     min_capacity = var.aurora_min_capacity
     max_capacity = var.aurora_max_capacity
@@ -45,17 +45,17 @@ resource "aws_rds_cluster" "main" {
 }
 
 resource "aws_rds_cluster_instance" "main" {
-  count                = var.create_aurora_cluster ? var.aurora_instance_count : 0
-  identifier          = "${var.environment}-aurora-instance-${count.index + 1}"
-  cluster_identifier  = aws_rds_cluster.main[0].id
-  instance_class      = var.aurora_instance_class
-  engine              = aws_rds_cluster.main[0].engine
-  engine_version      = aws_rds_cluster.main[0].engine_version
-  
+  count              = var.create_aurora_cluster ? var.aurora_instance_count : 0
+  identifier         = "${var.environment}-aurora-instance-${count.index + 1}"
+  cluster_identifier = aws_rds_cluster.main[0].id
+  instance_class     = var.aurora_instance_class
+  engine             = aws_rds_cluster.main[0].engine
+  engine_version     = aws_rds_cluster.main[0].engine_version
+
   performance_insights_enabled    = true
   performance_insights_kms_key_id = aws_kms_key.database.arn
-  monitoring_interval            = 60
-  monitoring_role_arn           = aws_iam_role.rds_monitoring.arn
+  monitoring_interval             = 60
+  monitoring_role_arn             = aws_iam_role.rds_monitoring.arn
 
   tags = var.tags
 }
@@ -82,12 +82,12 @@ resource "aws_dynamodb_table" "main" {
   dynamic "global_secondary_index" {
     for_each = each.value.global_secondary_indexes
     content {
-      name               = global_secondary_index.value.name
-      hash_key           = global_secondary_index.value.hash_key
-      range_key          = global_secondary_index.value.range_key
-      projection_type    = global_secondary_index.value.projection_type
-      read_capacity      = each.value.billing_mode == "PROVISIONED" ? global_secondary_index.value.read_capacity : null
-      write_capacity     = each.value.billing_mode == "PROVISIONED" ? global_secondary_index.value.write_capacity : null
+      name            = global_secondary_index.value.name
+      hash_key        = global_secondary_index.value.hash_key
+      range_key       = global_secondary_index.value.range_key
+      projection_type = global_secondary_index.value.projection_type
+      read_capacity   = each.value.billing_mode == "PROVISIONED" ? global_secondary_index.value.read_capacity : null
+      write_capacity  = each.value.billing_mode == "PROVISIONED" ? global_secondary_index.value.write_capacity : null
     }
   }
 
@@ -118,11 +118,11 @@ resource "aws_security_group" "database" {
   }
 
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "Allow all outbound traffic"
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    security_groups = var.allowed_security_groups
+    description     = "Allow outbound traffic to application tier only"
   }
 
   tags = merge(var.tags, {
@@ -145,13 +145,13 @@ resource "aws_cloudwatch_metric_alarm" "database_cpu" {
   alarm_name          = "${var.environment}-aurora-cpu-${count.index + 1}"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "2"
-  metric_name        = "CPUUtilization"
-  namespace          = "AWS/RDS"
-  period             = "300"
-  statistic          = "Average"
-  threshold          = "80"
-  alarm_description  = "This metric monitors RDS CPU utilization"
-  alarm_actions      = var.alarm_actions
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/RDS"
+  period              = "300"
+  statistic           = "Average"
+  threshold           = "80"
+  alarm_description   = "This metric monitors RDS CPU utilization"
+  alarm_actions       = var.alarm_actions
 
   dimensions = {
     DBInstanceIdentifier = aws_rds_cluster_instance.main[count.index].id
@@ -164,13 +164,13 @@ resource "aws_cloudwatch_metric_alarm" "dynamodb_throttles" {
   alarm_name          = "${var.environment}-${each.key}-throttles"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "2"
-  metric_name        = "ThrottledRequests"
-  namespace          = "AWS/DynamoDB"
-  period             = "300"
-  statistic          = "Sum"
-  threshold          = "10"
-  alarm_description  = "This metric monitors DynamoDB throttled requests"
-  alarm_actions      = var.alarm_actions
+  metric_name         = "ThrottledRequests"
+  namespace           = "AWS/DynamoDB"
+  period              = "300"
+  statistic           = "Sum"
+  threshold           = "10"
+  alarm_description   = "This metric monitors DynamoDB throttled requests"
+  alarm_actions       = var.alarm_actions
 
   dimensions = {
     TableName = aws_dynamodb_table.main[each.key].name
@@ -207,7 +207,7 @@ variable "create_aurora_cluster" {
 variable "aurora_engine_version" {
   description = "Aurora PostgreSQL engine version"
   type        = string
-  default     = "13.7"
+  default     = "17.5"
 }
 
 variable "aurora_instance_count" {
@@ -271,11 +271,11 @@ variable "preferred_maintenance_window" {
 variable "dynamodb_tables" {
   description = "Map of DynamoDB table configurations"
   type = map(object({
-    billing_mode    = string
-    read_capacity   = optional(number)
-    write_capacity  = optional(number)
-    hash_key        = string
-    range_key       = optional(string)
+    billing_mode   = string
+    read_capacity  = optional(number)
+    write_capacity = optional(number)
+    hash_key       = string
+    range_key      = optional(string)
     attributes = list(object({
       name = string
       type = string

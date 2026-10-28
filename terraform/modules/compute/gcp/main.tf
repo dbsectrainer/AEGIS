@@ -1,6 +1,7 @@
 # GCP Compute Module
 
 # GKE Cluster
+#tfsec:ignore:google-gke-enforce-pod-security-policy PSP removed from GKE 1.25+; replaced by security_posture_config and Pod Security Admission
 resource "google_container_cluster" "main" {
   name     = "${var.environment}-gke-cluster"
   location = var.region
@@ -14,6 +15,12 @@ resource "google_container_cluster" "main" {
 
   network    = var.network_id
   subnetwork = var.subnetwork_id
+
+  # Pod Security Policy was removed in GKE 1.25; security posture is the replacement
+  security_posture_config {
+    mode               = "BASIC"
+    vulnerability_mode = "VULNERABILITY_BASIC"
+  }
 
   # Enable Workload Identity
   workload_identity_config {
@@ -30,7 +37,7 @@ resource "google_container_cluster" "main" {
   private_cluster_config {
     enable_private_nodes    = true
     enable_private_endpoint = true
-    master_ipv4_cidr_block = var.master_ipv4_cidr_block
+    master_ipv4_cidr_block  = var.master_ipv4_cidr_block
   }
 
   # Enable Binary Authorization
@@ -56,7 +63,7 @@ resource "google_container_cluster" "main" {
 
   # Enable VPC Service Controls
   resource_usage_export_config {
-    enable_network_egress_metering = true
+    enable_network_egress_metering       = true
     enable_resource_consumption_metering = true
     bigquery_destination {
       dataset_id = var.network_usage_dataset_id
@@ -103,19 +110,35 @@ resource "google_container_cluster" "main" {
     gcp_filestore_csi_driver_config {
       enabled = true
     }
+    gke_backup_agent_config {
+      enabled = true
+    }
   }
 
   vertical_pod_autoscaling {
     enabled = true
   }
+}
 
-  # Enable Backup for GKE
+# Backup for GKE: daily at 00:00, retained 30 days
+resource "google_gke_backup_backup_plan" "main" {
+  name     = "${var.environment}-gke-backup-plan"
+  cluster  = google_container_cluster.main.id
+  location = var.region
+  project  = var.project_id
+
+  retention_policy {
+    backup_retain_days = 30
+  }
+
+  backup_schedule {
+    cron_schedule = "0 0 * * *"
+  }
+
   backup_config {
-    enabled = true
-    backup_schedule {
-      start_time = "00:00"
-      retention_period = "720h" # 30 days
-    }
+    all_namespaces      = true
+    include_volume_data = true
+    include_secrets     = true
   }
 }
 
@@ -153,6 +176,10 @@ resource "google_container_node_pool" "system" {
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
+
+    metadata = {
+      disable-legacy-endpoints = "true"
+    }
 
     workload_metadata_config {
       mode = "GKE_METADATA"
@@ -197,6 +224,10 @@ resource "google_container_node_pool" "application" {
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
+
+    metadata = {
+      disable-legacy-endpoints = "true"
+    }
 
     workload_metadata_config {
       mode = "GKE_METADATA"

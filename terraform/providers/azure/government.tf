@@ -1,10 +1,10 @@
 # Azure Government Provider Configuration
 provider "azurerm" {
   features {}
-  
+
   # Azure Government specific configurations
   environment = "usgovernment"
-  
+
   # Use managed identity if specified
   use_msi = var.use_managed_identity
 
@@ -57,9 +57,9 @@ terraform {
   backend "azurerm" {
     resource_group_name  = "gov-terraform-state-rg"
     storage_account_name = "govterraformstate"
-    container_name      = "tfstate"
-    key                 = "government.tfstate"
-    environment         = "usgovernment"
+    container_name       = "tfstate"
+    key                  = "government.tfstate"
+    environment          = "usgovernment"
   }
 }
 
