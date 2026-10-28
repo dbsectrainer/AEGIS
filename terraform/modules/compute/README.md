@@ -107,6 +107,9 @@ module "gcp_compute" {
 
 ## Security Considerations
 
+See the [Terraform security review](../../SECURITY_REVIEW.md) for scanner exceptions
+and the AKS, AWS egress, Azure ingress, and GKE admission prerequisites before applying.
+
 1. Network Security
    - Private cluster endpoints
    - Network policies enabled

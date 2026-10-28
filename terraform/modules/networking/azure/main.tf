@@ -62,7 +62,8 @@ resource "azurerm_network_security_group" "public" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "443"
-    source_address_prefixes    = var.public_ingress_source_prefixes
+    source_address_prefix      = length(var.public_ingress_source_prefixes) == 1 ? var.public_ingress_source_prefixes[0] : null
+    source_address_prefixes    = length(var.public_ingress_source_prefixes) > 1 ? var.public_ingress_source_prefixes : null
     destination_address_prefix = "*"
   }
 
@@ -277,7 +278,18 @@ output "private_link_service_id" {
 }
 
 variable "public_ingress_source_prefixes" {
-  description = "Source address prefixes or service tags allowed to reach the public NSG on 443 (e.g. AzureFrontDoor.Backend)"
+  description = "One service tag (e.g. VirtualNetwork), one CIDR, or multiple CIDRs allowed to reach the public NSG on 443"
   type        = list(string)
   default     = ["VirtualNetwork"]
+
+  validation {
+    condition = length(var.public_ingress_source_prefixes) == 1 ? (
+      trimspace(var.public_ingress_source_prefixes[0]) != ""
+      ) : (
+      length(var.public_ingress_source_prefixes) > 1 && alltrue([
+        for prefix in var.public_ingress_source_prefixes : can(cidrhost(prefix, 0))
+      ])
+    )
+    error_message = "Provide one non-empty service tag or CIDR, or a list of CIDRs. Azure does not support service tags in source_address_prefixes."
+  }
 }

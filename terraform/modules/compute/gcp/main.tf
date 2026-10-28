@@ -1,7 +1,7 @@
 # GCP Compute Module
 
 # GKE Cluster
-#tfsec:ignore:google-gke-enforce-pod-security-policy PSP removed from GKE 1.25+; replaced by security_posture_config and Pod Security Admission
+#tfsec:ignore:google-gke-enforce-pod-security-policy PSP was removed in GKE 1.25; configure Pod Security Admission on workload namespaces separately.
 resource "google_container_cluster" "main" {
   name     = "${var.environment}-gke-cluster"
   location = var.region
@@ -16,7 +16,7 @@ resource "google_container_cluster" "main" {
   network    = var.network_id
   subnetwork = var.subnetwork_id
 
-  # Pod Security Policy was removed in GKE 1.25; security posture is the replacement
+  # Security posture scans for risks; it does not enforce Pod Security Admission.
   security_posture_config {
     mode               = "BASIC"
     vulnerability_mode = "VULNERABILITY_BASIC"
@@ -178,7 +178,8 @@ resource "google_container_node_pool" "system" {
     ]
 
     metadata = {
-      disable-legacy-endpoints = "true"
+      # The provider converts this boolean to the metadata string "true".
+      disable-legacy-endpoints = true
     }
 
     workload_metadata_config {
@@ -226,7 +227,8 @@ resource "google_container_node_pool" "application" {
     ]
 
     metadata = {
-      disable-legacy-endpoints = "true"
+      # The provider converts this boolean to the metadata string "true".
+      disable-legacy-endpoints = true
     }
 
     workload_metadata_config {

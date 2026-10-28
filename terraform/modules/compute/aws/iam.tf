@@ -126,6 +126,10 @@ resource "aws_iam_instance_profile" "ecs" {
 }
 
 # Additional ECS Policies
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
+data "aws_partition" "current" {}
+
 resource "aws_iam_role_policy" "ecs_ssm" {
   name = "${var.environment}-ecs-ssm-policy"
   role = aws_iam_role.ecs_instance.name
@@ -137,10 +141,10 @@ resource "aws_iam_role_policy" "ecs_ssm" {
         Effect = "Allow"
         Action = [
           "ssm:GetParameters",
-          "ssm:GetParameter",
-          "ssm:DescribeParameters"
+          "ssm:GetParameter"
         ]
-        Resource = "arn:aws-us-gov:ssm:*:*:parameter/${var.environment}/*"
+        # DescribeParameters requires Resource = "*" and is deliberately omitted.
+        Resource = "arn:${data.aws_partition.current.partition}:ssm:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:parameter/${var.environment}/*"
       }
     ]
   })

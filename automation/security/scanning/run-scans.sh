@@ -124,10 +124,12 @@ run_compliance_scan() {
     # Run tfsec for compliance checks (JSON and SARIF)
     log "INFO" "Running infrastructure compliance checks..."
     tfsec ./terraform \
+        --force-all-dirs \
         --format json \
         --out "$OUTPUT_DIR/compliance-terraform-$ENVIRONMENT.json" \
         --minimum-severity $SEVERITY
     tfsec ./terraform \
+        --force-all-dirs \
         --format sarif \
         --out "$OUTPUT_DIR/tfsec-$ENVIRONMENT.sarif" \
         --minimum-severity $SEVERITY

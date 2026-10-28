@@ -24,10 +24,10 @@ resource "google_sql_database_instance" "main" {
       }
     }
 
+    #tfsec:ignore:google-sql-encrypt-in-transit-data tfsec v1.28.14 checks legacy require_ssl; ssl_mode below enforces TLS.
     ip_configuration {
-      ipv4_enabled    = false
-      private_network = var.network_id
-      #tfsec:ignore:google-sql-encrypt-in-transit-data ssl_mode replaces the deprecated require_ssl
+      ipv4_enabled       = false
+      private_network    = var.network_id
       ssl_mode           = "ENCRYPTED_ONLY"
       allocated_ip_range = var.sql_ip_range
     }
