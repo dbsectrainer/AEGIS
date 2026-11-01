@@ -1,0 +1,3 @@
+Building documentation portal...
+cd docs && ./generate-docs.sh
+Built 66 documentation pages in /Users/newtechlab/Documents/GitHub/AEGIS/docs/site

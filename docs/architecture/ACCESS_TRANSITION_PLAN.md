@@ -47,6 +47,7 @@
 ### Administrative Roles
 
 1. **Organization Admin Role**
+
    ```hcl
    - Effect: Allow
    - Actions: 
@@ -57,6 +58,7 @@
    ```
 
 2. **Security Admin Role**
+
    ```hcl
    - Effect: Allow
    - Actions:
@@ -68,6 +70,7 @@
    ```
 
 3. **Billing Admin Role**
+
    ```hcl
    - Effect: Allow
    - Actions:
@@ -80,6 +83,7 @@
 ### Operational Roles
 
 1. **Infrastructure Role**
+
    ```hcl
    - Effect: Allow
    - Actions:
@@ -92,6 +96,7 @@
    ```
 
 2. **Application Role**
+
    ```hcl
    - Effect: Allow
    - Actions:
@@ -104,6 +109,7 @@
    ```
 
 3. **ReadOnly Role**
+
    ```hcl
    - Effect: Allow
    - Actions:
@@ -116,6 +122,7 @@
 ## Transition Strategy
 
 ### Phase 1: Account Discovery (Week 1)
+
 1. Document all 30 subscriptions
    - Account IDs
    - Current IAM users
@@ -129,6 +136,7 @@
    - Custom policies
 
 ### Phase 2: Core Setup (Week 2)
+
 1. Establish Organization Structure
    - Create organizational units
    - Set up service control policies
@@ -140,6 +148,7 @@
    - Configure group policies
 
 ### Phase 3: Role Migration (Week 3-4)
+
 1. Create New Roles
    - Administrative roles
    - Operational roles
@@ -153,6 +162,7 @@
 ## Best Practices for Transition
 
 ### Access Management
+
 1. **Implement Least Privilege**
    - Start with minimal access
    - Add permissions based on need
@@ -169,6 +179,7 @@
    - Track permission changes
 
 ### Security Controls
+
 1. **Enforce MFA**
    - Required for all human users
    - Hardware tokens for privileged access
@@ -187,6 +198,7 @@
 ## Critical Considerations
 
 ### Security
+
 1. **Never migrate existing IAM users directly**
    - Create new users
    - Implement new password policies
@@ -203,6 +215,7 @@
    - Track API calls
 
 ### Compliance
+
 1. **Maintain audit logs**
    - Enable CloudTrail in all accounts
    - Centralize log collection
@@ -221,6 +234,7 @@
 ## Immediate Actions
 
 1. **Create Core Administrative Structure**
+
    ```hcl
    resource "aws_iam_group" "platform_admin" {
      name = "platform-admin"
@@ -239,6 +253,7 @@
    ```
 
 2. **Implement Emergency Access**
+
    ```hcl
    resource "aws_iam_user" "break_glass" {
      name = "emergency-access"
@@ -247,6 +262,7 @@
    ```
 
 3. **Setup Cross-Account Roles**
+
    ```hcl
    resource "aws_iam_role" "cross_account_admin" {
      name = "CrossAccountAdmin"

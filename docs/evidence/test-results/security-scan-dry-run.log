@@ -1,0 +1,14 @@
+[2026-10-31 22:53:43] [INFO] Starting security scan
+[2026-10-31 22:53:43] [INFO] Environment: production
+[2026-10-31 22:53:43] [INFO] Scan type: all
+[2026-10-31 22:53:43] [INFO] Severity level: high
+[2026-10-31 22:53:43] [INFO] Dry run selected; external tools and AWS credentials are not required.
+[2026-10-31 22:53:43] [INFO] Running vulnerability scan...
+[2026-10-31 22:53:43] [INFO] [DRY RUN] Would scan ./terraform and ECR repositories in us-gov-east-1 with Trivy
+[2026-10-31 22:53:43] [INFO] Running compliance scan...
+[2026-10-31 22:53:43] [INFO] [DRY RUN] Would run tfsec and aws configservice describe-compliance-by-config-rule
+[2026-10-31 22:53:43] [INFO] Running configuration scan...
+[2026-10-31 22:53:43] [INFO] [DRY RUN] Would collect S3 ACLs, security groups, and IAM password policy from us-gov-east-1
+[2026-10-31 22:53:43] [INFO] Generating consolidated report...
+[2026-10-31 22:53:43] [INFO] [DRY RUN] Would write /Users/newtechlab/Documents/GitHub/AEGIS/security-reports/security-scan-report-production.md
+[2026-10-31 22:53:43] [INFO] Dry run completed successfully; no scans were executed.

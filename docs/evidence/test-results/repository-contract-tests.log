@@ -1,0 +1,26 @@
+test_deploy_rejects_missing_environment (test_repository.AutomationContractTests.test_deploy_rejects_missing_environment) ... ok
+test_dry_run_paths_exit_zero_without_credentials (test_repository.AutomationContractTests.test_dry_run_paths_exit_zero_without_credentials) ... ok
+test_help_paths_exit_zero (test_repository.AutomationContractTests.test_help_paths_exit_zero) ... ok
+test_itsm_xml_is_well_formed (test_repository.ConfigurationSyntaxTests.test_itsm_xml_is_well_formed) ... ok
+test_jira_csv_is_well_formed (test_repository.ConfigurationSyntaxTests.test_jira_csv_is_well_formed) ... ok
+test_json_configuration_is_valid (test_repository.ConfigurationSyntaxTests.test_json_configuration_is_valid) ... ok
+test_shell_scripts_parse (test_repository.ConfigurationSyntaxTests.test_shell_scripts_parse) ... ok
+test_terraform_templates_parse (test_repository.ConfigurationSyntaxTests.test_terraform_templates_parse) ... ok
+test_gitignore_protects_state_and_secrets (test_repository.RepositoryStructureTests.test_gitignore_protects_state_and_secrets) ... ok
+test_makefile_commands_reference_existing_scripts (test_repository.RepositoryStructureTests.test_makefile_commands_reference_existing_scripts) ... ok
+test_readme_relative_links_resolve (test_repository.RepositoryStructureTests.test_readme_relative_links_resolve) ... ok
+test_required_files_exist (test_repository.RepositoryStructureTests.test_required_files_exist) ... ok
+test_shell_scripts_are_executable (test_repository.RepositoryStructureTests.test_shell_scripts_are_executable) ... ok
+test_no_high_confidence_secret_patterns (test_repository.SecretAndStateHygieneTests.test_no_high_confidence_secret_patterns) ... ok
+test_no_state_or_plan_artifacts_are_tracked (test_repository.SecretAndStateHygieneTests.test_no_state_or_plan_artifacts_are_tracked) ... ok
+test_production_root_has_explicit_providers (test_repository.TerraformContractTests.test_production_root_has_explicit_providers) ... ok
+test_production_tfvars_example_contains_no_secrets (test_repository.TerraformContractTests.test_production_tfvars_example_contains_no_secrets) ... ok
+test_provider_reference_configs_are_present (test_repository.TerraformContractTests.test_provider_reference_configs_are_present) ... ok
+test_verification_report_links_resolve (test_repository.VerificationEvidenceTests.test_verification_report_links_resolve) ... ok
+test_verification_report_required_sections (test_repository.VerificationEvidenceTests.test_verification_report_required_sections) ... ok
+test_verification_snapshot_is_valid (test_repository.VerificationEvidenceTests.test_verification_snapshot_is_valid) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.457s
+
+OK

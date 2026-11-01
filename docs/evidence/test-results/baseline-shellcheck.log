@@ -1,0 +1,91 @@
+# Baseline shellcheck
+
+In automation/deployment/infrastructure/deploy.sh line 110:
+validate_deployment() {
+                      ^-- SC1009 (info): The mentioned syntax error was in this brace group.
+
+
+In automation/deployment/infrastructure/deploy.sh line 113:
+    if [ "$DRY_RUN" = true ]; then
+    ^-- SC1046 (error): Couldn't find 'fi' for this 'if'.
+    ^-- SC1073 (error): Couldn't parse this if expression. Fix to allow more checks.
+
+
+In automation/deployment/infrastructure/deploy.sh line 116:
+    }
+    ^-- SC1047 (error): Expected 'fi' matching previously mentioned 'if'.
+     ^-- SC1072 (error): Unexpected keyword/token. Fix any mentioned problems and try again.
+
+
+In automation/security/scanning/run-scans.sh line 34:
+    local message=$@
+                  ^-- SC2124 (warning): Assigning an array to a string! Assign as array, or use * instead of @ to concatenate.
+
+
+In automation/security/scanning/run-scans.sh line 92:
+    trivy config --severity $SEVERITY \
+                            ^-------^ SC2086 (info): Double quote to prevent globbing and word splitting.
+
+Did you mean:
+    trivy config --severity "$SEVERITY" \
+
+
+In automation/security/scanning/run-scans.sh line 96:
+    trivy config --severity $SEVERITY \
+                            ^-------^ SC2086 (info): Double quote to prevent globbing and word splitting.
+
+Did you mean:
+    trivy config --severity "$SEVERITY" \
+
+
+In automation/security/scanning/run-scans.sh line 103:
+    trivy image --severity $SEVERITY \
+                           ^-------^ SC2086 (info): Double quote to prevent globbing and word splitting.
+
+Did you mean:
+    trivy image --severity "$SEVERITY" \
+
+
+In automation/security/scanning/run-scans.sh line 106:
+        $(aws ecr describe-repositories --query 'repositories[*].repositoryUri' --output text)
+        ^-- SC2046 (warning): Quote this to prevent word splitting.
+
+
+In automation/security/scanning/run-scans.sh line 107:
+    trivy image --severity $SEVERITY \
+                           ^-------^ SC2086 (info): Double quote to prevent globbing and word splitting.
+
+Did you mean:
+    trivy image --severity "$SEVERITY" \
+
+
+In automation/security/scanning/run-scans.sh line 110:
+        $(aws ecr describe-repositories --query 'repositories[*].repositoryUri' --output text)
+        ^-- SC2046 (warning): Quote this to prevent word splitting.
+
+
+In automation/security/scanning/run-scans.sh line 130:
+        --minimum-severity $SEVERITY
+                           ^-------^ SC2086 (info): Double quote to prevent globbing and word splitting.
+
+Did you mean:
+        --minimum-severity "$SEVERITY"
+
+
+In automation/security/scanning/run-scans.sh line 135:
+        --minimum-severity $SEVERITY
+                           ^-------^ SC2086 (info): Double quote to prevent globbing and word splitting.
+
+Did you mean:
+        --minimum-severity "$SEVERITY"
+
+
+In automation/security/scanning/run-scans.sh line 236:
+            VERBOSE=true
+            ^-----^ SC2034 (warning): VERBOSE appears unused. Verify use (or export if used externally).
+
+For more information:
+  https://www.shellcheck.net/wiki/SC1046 -- Couldn't find 'fi' for this 'if'.
+  https://www.shellcheck.net/wiki/SC2034 -- VERBOSE appears unused. Verify us...
+  https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
+EXIT=1

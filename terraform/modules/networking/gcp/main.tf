@@ -2,6 +2,7 @@
 
 # VPC Network
 resource "google_compute_network" "main" {
+  project                         = var.project_id
   name                            = "${var.environment}-vpc"
   auto_create_subnetworks         = false
   routing_mode                    = "GLOBAL"
@@ -14,6 +15,7 @@ resource "google_compute_network" "main" {
 
 # Enable required APIs
 resource "google_project_service" "compute_api" {
+  project = var.project_id
   service = "compute.googleapis.com"
 
   disable_on_destroy = false
@@ -153,6 +155,7 @@ resource "google_access_context_manager_service_perimeter" "regular" {
 # Private Service Connect
 resource "google_compute_global_address" "private_service_connect" {
   count         = var.enable_private_service_connect ? 1 : 0
+  project       = var.project_id
   name          = "${var.environment}-psc-address"
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"

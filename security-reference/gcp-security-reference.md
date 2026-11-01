@@ -1,12 +1,10 @@
 # Google Cloud Platform Security, Identity, and Compliance Reference Guide
 
 ## Table of Contents
+
 - [Core Security Services](#core-security-services)
 - [Federal Security Requirements](#federal-security-requirements)
 - [Security Best Practices](#security-best-practices)
-- [Compliance Frameworks](#compliance-frameworks)
-- [Security Architecture](#security-architecture)
-- [Security Operations](#security-operations)
 - [Governance and Risk Management](#governance-and-risk-management)
 - [Zero Trust Architecture](#zero-trust-architecture)
 - [Container Security](#container-security)
@@ -23,6 +21,7 @@
 ## Core Security Services
 
 ### Cloud Identity and Access Management (IAM)
+
 - **Description**: Unified system for managing access to Google Cloud resources
 - **Key Features**:
   - Fine-grained access control
@@ -36,6 +35,7 @@
   - [API Reference](https://cloud.google.com/iam/docs/reference/rest)
 
 ### Resource Manager
+
 - **Description**: Hierarchically manage resources, policies, and permissions
 - **Key Features**:
   - Organization hierarchy
@@ -48,6 +48,7 @@
   - [Best Practices](https://cloud.google.com/resource-manager/docs/best-practices)
 
 ### Security Command Center
+
 - **Description**: Centralized security management and risk platform
 - **Key Features**:
   - Security posture management
@@ -60,6 +61,7 @@
   - [User Guide](https://cloud.google.com/security-command-center/docs/concepts-security-command-center-overview)
 
 ### Cloud Audit Logs
+
 - **Description**: Track user and system activity within Google Cloud
 - **Key Features**:
   - Admin activity logs
@@ -72,6 +74,7 @@
   - [User Guide](https://cloud.google.com/audit-logs/docs/overview)
 
 ### Cloud Armor
+
 - **Description**: DDoS protection and Web Application Firewall (WAF)
 - **Key Features**:
   - DDoS protection
@@ -84,6 +87,7 @@
   - [Best Practices](https://cloud.google.com/armor/docs/security-policy-best-practices)
 
 ### VPC Service Controls
+
 - **Description**: Define security perimeters for sensitive data
 - **Key Features**:
   - Resource isolation
@@ -98,6 +102,7 @@
 ## Federal Security Requirements
 
 ### FedRAMP Compliance
+
 - **Impact Levels**:
   - FedRAMP Moderate
   - FedRAMP High
@@ -107,6 +112,7 @@
   - [Authorization Process](https://cloud.google.com/security/compliance/fedramp-process)
 
 ### Federal Information Security Management Act (FISMA)
+
 - **Requirements**:
   - Security Assessment and Authorization
   - Continuous Monitoring
@@ -116,6 +122,7 @@
   - [NIST Controls Implementation](https://cloud.google.com/security/compliance/nist-800-53)
 
 ### Department of Defense (DoD) Requirements
+
 - **Impact Levels**:
   - IL4 (Controlled Unclassified)
   - IL5 (Controlled Unclassified - National Security)
@@ -124,6 +131,7 @@
   - [DISA Compliance](https://cloud.google.com/security/compliance/disa-stig)
 
 ### Federal Identity Management
+
 - **Requirements**:
   - PIV/CAC Integration
   - Multi-Factor Authentication
@@ -135,6 +143,7 @@
 ## Security Best Practices
 
 ### IAM Security
+
 1. Organization-Level Security
    - Use organization policies
    - Implement least privilege
@@ -148,6 +157,7 @@
    - [Service Account Best Practices](https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys)
 
 ### Network Security
+
 1. VPC Design
    - Network segmentation
    - Private Google Access
@@ -163,6 +173,7 @@
 ## Governance and Risk Management
 
 ### Federal Security Policies
+
 - **Policy Framework**:
   - Agency security policies
   - Federal directives
@@ -170,6 +181,7 @@
   - [Federal Policy Guide](https://cloud.google.com/security/compliance/federal-policies)
 
 ### Risk Management
+
 - **Framework**:
   - NIST RMF implementation
   - Continuous monitoring
@@ -177,6 +189,7 @@
   - [Risk Management Guide](https://cloud.google.com/security/compliance/risk-management)
 
 ### Data Governance
+
 - **Classifications**:
   - CUI handling
   - FCI requirements
@@ -186,6 +199,7 @@
 ## Zero Trust Architecture
 
 ### BeyondCorp Enterprise
+
 - **Key Features**:
   - Context-aware access
   - Identity-aware proxy
@@ -196,6 +210,7 @@
   - [Implementation Guide](https://cloud.google.com/beyondcorp-enterprise/docs/deployment-overview)
 
 ### Implementation Components
+
 1. Identity and Access
    - Fine-grained permissions
    - Just-in-time access
@@ -211,6 +226,7 @@
 ## Container Security
 
 ### Google Kubernetes Engine (GKE) Security
+
 1. Container Image Security
    - Container-Optimized OS
    - Binary Authorization
@@ -224,6 +240,7 @@
    - [Binary Authorization](https://cloud.google.com/binary-authorization/docs)
 
 ### Container Compliance
+
 - CIS Kubernetes Benchmark
 - NIST Container Guidelines
 - Runtime threat detection
@@ -232,6 +249,7 @@
 ## DevSecOps Integration
 
 ### Cloud Build Security
+
 - **Features**:
   - Source code security scanning
   - Container vulnerability scanning
@@ -242,6 +260,7 @@
   - [CI/CD Security](https://cloud.google.com/architecture/devops/devops-tech-continuous-integration)
 
 ### Infrastructure as Code Security
+
 - Deployment Manager security
 - Terraform provider security
 - Policy validation
@@ -250,6 +269,7 @@
 ## Cloud Security Posture Management
 
 ### Security Command Center
+
 1. Security Posture
    - Security standards
    - Automated checks
@@ -265,6 +285,7 @@
 ## Cloud Workload Protection
 
 ### Workload Security
+
 1. Security Health Analytics
    - Vulnerability assessment
    - Configuration analysis
@@ -280,6 +301,7 @@
 ## Data Protection
 
 ### Cloud KMS and Cloud HSM
+
 - **Features**:
   - Key management
   - Hardware security modules
@@ -290,6 +312,7 @@
   - [Cloud HSM Documentation](https://cloud.google.com/hsm/docs)
 
 ### Data Loss Prevention
+
 - **Features**:
   - Sensitive data discovery
   - Data classification
@@ -302,6 +325,7 @@
 ## API Security
 
 ### Cloud Endpoints Security
+
 1. Authentication
    - Identity Platform
    - Service accounts
@@ -317,6 +341,7 @@
 ## Disaster Recovery and Business Continuity
 
 ### Security in DR
+
 1. Backup and Recovery
    - Cross-region backup
    - Encryption in transit
@@ -332,6 +357,7 @@
 ## Supply Chain Security
 
 ### Third-Party Risk Management
+
 1. Marketplace Security
    - Vendor validation
    - Solution verification
@@ -347,6 +373,7 @@
 ## Cloud Native Security
 
 ### Cloud Functions Security
+
 1. Function Security
    - Identity-based access
    - Runtime security
@@ -362,20 +389,24 @@
 ## Additional Resources
 
 ### Federal Security Resources
+
 - [NIST Cloud Computing Standards](https://www.nist.gov/programs-projects/nist-cloud-computing-program-nccp)
 - [FedRAMP Documentation](https://www.fedramp.gov/)
 - [Federal Cloud Security Requirements](https://www.cisa.gov/cloud)
 
 ### Learning Resources
+
 - [Google Cloud Security Blog](https://cloud.google.com/blog/products/identity-security)
 - [Google Cloud Next Security Sessions](https://cloud.google.com/blog/topics/google-cloud-next)
 - [Security Best Practices Center](https://cloud.google.com/security/best-practices)
 
 ### Google Cloud Certifications
+
 - [Professional Cloud Security Engineer](https://cloud.google.com/certification/cloud-security-engineer)
 - [Certification Prep Resources](https://cloud.google.com/certification/cloud-security-engineer#preparation-resources)
 
 ### Community Resources
+
 - [Google Cloud Community](https://www.googlecloudcommunity.com/)
 - [Google Cloud Security Tutorials](https://cloud.google.com/security/tutorials)
 - [Cloud Security Workshops](https://cloud.google.com/security/workshops)

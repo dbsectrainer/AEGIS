@@ -1,6 +1,7 @@
 # AWS Security, Identity, and Compliance Reference Guide
 
 ## Table of Contents
+
 - [Core Security Services](#core-security-services)
 - [Federal Security Requirements](#federal-security-requirements)
 - [Security Best Practices](#security-best-practices)
@@ -13,6 +14,7 @@
 ## Core Security Services
 
 ### AWS Identity and Access Management (IAM)
+
 - **Description**: Securely manage access to AWS services and resources
 - **Key Features**:
   - Fine-grained access control
@@ -27,6 +29,7 @@
   - [Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
 
 ### AWS Organizations
+
 - **Description**: Centrally manage and govern multiple AWS accounts
 - **Key Features**:
   - Centralized management
@@ -40,6 +43,7 @@
   - [API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference)
 
 ### AWS Control Tower
+
 - **Description**: Set up and govern secure, compliant multi-account environments
 - **Key Features**:
   - Account factory
@@ -53,6 +57,7 @@
   - [Best Practices](https://docs.aws.amazon.com/controltower/latest/userguide/best-practices.html)
 
 ### AWS Security Hub
+
 - **Description**: Centralized security management and compliance monitoring
 - **Key Features**:
   - Security findings aggregation
@@ -66,6 +71,7 @@
   - [API Reference](https://docs.aws.amazon.com/securityhub/latest/APIReference)
 
 ### AWS CloudTrail
+
 - **Description**: Track user activity and API usage
 - **Key Features**:
   - API activity logging
@@ -79,6 +85,7 @@
   - [API Reference](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference)
 
 ### Amazon GuardDuty
+
 - **Description**: Intelligent threat detection service
 - **Key Features**:
   - Continuous monitoring
@@ -92,6 +99,7 @@
   - [API Reference](https://docs.aws.amazon.com/guardduty/latest/APIReference)
 
 ### AWS Shield
+
 - **Description**: DDoS protection service
 - **Key Features**:
   - Always-on detection
@@ -105,6 +113,7 @@
   - [API Reference](https://docs.aws.amazon.com/waf/latest/DDOSAPIReference)
 
 ### AWS WAF (Web Application Firewall)
+
 - **Description**: Filter malicious web traffic
 - **Key Features**:
   - Custom rules
@@ -120,6 +129,7 @@
 ## Security Best Practices
 
 ### IAM Security
+
 1. Root Account Security
    - Enable MFA for root account
    - Avoid using root account for daily tasks
@@ -139,6 +149,7 @@
    - [Permissions Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege)
 
 ### Network Security
+
 1. Security Groups
    - Default deny all
    - Specific port access only
@@ -154,6 +165,7 @@
 ## Federal Security Requirements
 
 ### FedRAMP Compliance
+
 - **Impact Levels**:
   - FedRAMP Low
   - FedRAMP Moderate
@@ -164,6 +176,7 @@
   - [FedRAMP Authorization Process](https://www.fedramp.gov/authorization-process/)
 
 ### Federal Information Security Management Act (FISMA)
+
 - **Requirements**:
   - Security Assessment and Authorization
   - Continuous Monitoring
@@ -173,6 +186,7 @@
   - [NIST SP 800-53 Controls](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)
 
 ### Department of Defense (DoD) Requirements
+
 - **Impact Levels**:
   - IL2 (Non-Controlled)
   - IL4 (Controlled Unclassified)
@@ -183,6 +197,7 @@
   - [DISA Security Requirements Guide](https://public.cyber.mil/stigs/downloads/)
 
 ### Federal Identity Management
+
 - **Requirements**:
   - PIV/CAC Integration
   - Multi-Factor Authentication
@@ -194,6 +209,7 @@
 ## Compliance Frameworks
 
 ### Federal Compliance Programs
+
 - FedRAMP (Federal Risk and Authorization Management Program)
 - FISMA (Federal Information Security Management Act)
 - NIST SP 800-53
@@ -203,6 +219,7 @@
 - [AWS Government Compliance Programs](https://aws.amazon.com/compliance/programs/)
 
 ### Additional Compliance Standards
+
 - SOC (1, 2, 3)
 - PCI DSS
 - HIPAA
@@ -210,6 +227,7 @@
 - [AWS Compliance Programs](https://aws.amazon.com/compliance/programs/)
 
 ### Compliance Tools
+
 1. AWS Config
    - Resource inventory
    - Configuration history
@@ -225,6 +243,7 @@
 ## Security Architecture
 
 ### Multi-Account Strategy
+
 1. Account Structure
    - Security account
    - Log archive account
@@ -240,6 +259,7 @@
 ## Security Operations
 
 ### Monitoring and Alerting
+
 1. CloudWatch
    - Metrics and logs
    - Alarms
@@ -253,6 +273,7 @@
    - [EventBridge Documentation](https://docs.aws.amazon.com/eventbridge)
 
 ### Incident Response
+
 1. Preparation
    - Response plans
    - Playbooks
@@ -268,6 +289,7 @@
 ## Governance and Risk Management
 
 ### Federal Security Policies
+
 - **Policy Framework**:
   - Agency-specific security policies
   - Federal security directives
@@ -275,6 +297,7 @@
   - [Federal Policy Guidance](https://www.cisa.gov/federal-policy)
 
 ### Risk Management
+
 - **Framework**:
   - NIST Risk Management Framework (RMF)
   - Continuous monitoring strategy
@@ -282,6 +305,7 @@
   - [NIST RMF Guide](https://csrc.nist.gov/projects/risk-management)
 
 ### Audit and Accountability
+
 - **Requirements**:
   - Federal audit requirements
   - Security control assessments
@@ -289,6 +313,7 @@
   - [AWS Audit Manager for Federal](https://docs.aws.amazon.com/audit-manager/latest/userguide/framework-overviews.html)
 
 ### Data Governance
+
 - **Classifications**:
   - Controlled Unclassified Information (CUI)
   - Federal Contract Information (FCI)
@@ -298,6 +323,7 @@
 ## Zero Trust Architecture
 
 ### Core Principles
+
 - **Verify Explicitly**
   - Authenticate and authorize every request
   - Context-based validation
@@ -305,6 +331,7 @@
   - [Zero Trust Implementation Guide](https://aws.amazon.com/blogs/security/zero-trust-architectures-an-aws-perspective/)
 
 ### Implementation Components
+
 1. Identity and Access
    - Fine-grained permissions
    - Just-in-time access
@@ -320,6 +347,7 @@
 ## Container Security
 
 ### Amazon ECS/EKS Security
+
 1. Container Image Security
    - Amazon ECR scanning
    - Image signing and verification
@@ -333,6 +361,7 @@
    - [EKS Security Guide](https://docs.aws.amazon.com/eks/latest/userguide/security.html)
 
 ### Container Compliance
+
 - CIS Kubernetes Benchmark
 - NIST Container Guidelines
 - Runtime threat detection
@@ -341,6 +370,7 @@
 ## DevSecOps Integration
 
 ### Pipeline Security
+
 1. CI/CD Security
    - CodePipeline security
    - Automated security testing
@@ -356,6 +386,7 @@
 ## Cloud Security Posture Management
 
 ### Security Assessment
+
 1. AWS Security Hub
    - Security standards
    - Automated checks
@@ -371,6 +402,7 @@
 ## Cloud Workload Protection
 
 ### Workload Security
+
 1. Amazon Inspector
    - Vulnerability assessment
    - Network reachability
@@ -386,6 +418,7 @@
 ## Data Protection
 
 ### Encryption and Key Management
+
 1. AWS KMS
    - Key lifecycle management
    - Encryption contexts
@@ -399,6 +432,7 @@
    - [CloudHSM Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html)
 
 ### Data Loss Prevention
+
 - Macie for sensitive data discovery
 - S3 Object Lock
 - Glacier Vault Lock
@@ -407,6 +441,7 @@
 ## API Security
 
 ### API Gateway Security
+
 1. Authentication
    - IAM roles and policies
    - Cognito user pools
@@ -422,6 +457,7 @@
 ## Disaster Recovery and Business Continuity
 
 ### Security in DR
+
 1. Backup Security
    - AWS Backup encryption
    - Cross-region replication
@@ -437,6 +473,7 @@
 ## Supply Chain Security
 
 ### Third-Party Risk Management
+
 1. Vendor Assessment
    - AWS Marketplace security
    - Partner security validation
@@ -452,6 +489,7 @@
 ## Cloud Native Security
 
 ### Serverless Security
+
 1. Lambda Security
    - Function permissions
    - Runtime security
@@ -467,21 +505,25 @@
 ## Additional Resources
 
 ### Federal Security Resources
+
 - [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
 - [CISA Security Guidelines](https://www.cisa.gov/cybersecurity)
 - [Federal Cloud Security Guidelines](https://www.fedramp.gov/documents/)
 - [Federal Identity Management Resources](https://www.idmanagement.gov/)
 
 ### Learning Resources
+
 - [AWS Security Blog](https://aws.amazon.com/blogs/security/)
 - [AWS re:Invent Security Sessions](https://www.youtube.com/playlist?list=PL2yQDdvlhXf_hIzmfHCdbcXj2hS1dRUC-)
 - [AWS Security Documentation](https://docs.aws.amazon.com/security/)
 
 ### AWS Security Certifications
+
 - [AWS Certified Security - Specialty](https://aws.amazon.com/certification/certified-security-specialty/)
 - [AWS Certification Preparation](https://aws.amazon.com/certification/certification-prep/)
 
 ### Community Resources
+
 - [AWS Security Forum](https://forums.aws.amazon.com/forum.jspa?forumID=30)
 - [AWS GitHub Security Examples](https://github.com/aws-samples/aws-security-workshops)
 - [AWS Security Workshops](https://workshops.aws/categories/Security)

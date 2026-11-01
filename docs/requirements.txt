@@ -1,0 +1,2 @@
+# Documentation portal build dependency
+Markdown>=3.5,<4

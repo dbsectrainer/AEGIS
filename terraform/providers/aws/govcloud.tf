@@ -1,11 +1,18 @@
+terraform {
+  required_version = ">= 1.12"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+}
+
 provider "aws" {
   # AWS GovCloud (US) Regions:
   # us-gov-east-1 (AWS GovCloud (US-East))
   # us-gov-west-1 (AWS GovCloud (US-West))
   region = var.aws_region
-
-  # AWS GovCloud specific configurations
-  alias = "govcloud"
 
   # Assume role if specified
   dynamic "assume_role" {

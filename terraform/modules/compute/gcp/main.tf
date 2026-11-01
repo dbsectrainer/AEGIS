@@ -1,7 +1,42 @@
 # GCP Compute Module
 
+# APIs used by the GKE backup, artifact registry, and usage-export resources.
+resource "google_project_service" "container" {
+  project            = var.project_id
+  service            = "container.googleapis.com"
+  disable_on_destroy = false
+}
+
+resource "google_project_service" "artifact_registry" {
+  project            = var.project_id
+  service            = "artifactregistry.googleapis.com"
+  disable_on_destroy = false
+}
+
+resource "google_project_service" "gke_backup" {
+  project            = var.project_id
+  service            = "gkebackup.googleapis.com"
+  disable_on_destroy = false
+}
+
+resource "google_project_service" "bigquery" {
+  project            = var.project_id
+  service            = "bigquery.googleapis.com"
+  disable_on_destroy = false
+}
+
+resource "google_bigquery_dataset" "network_usage" {
+  project    = var.project_id
+  dataset_id = var.network_usage_dataset_id
+  location   = var.region
+  labels     = var.labels
+
+  depends_on = [google_project_service.bigquery]
+}
+
 # GKE Cluster
 #tfsec:ignore:google-gke-enforce-pod-security-policy PSP was removed in GKE 1.25; configure Pod Security Admission on workload namespaces separately.
+#tfsec:ignore:AVD-GCP-0061 The private endpoint is enabled; API access is restricted to the VPC, so public authorized networks do not apply.
 resource "google_container_cluster" "main" {
   name     = "${var.environment}-gke-cluster"
   location = var.region
@@ -13,8 +48,21 @@ resource "google_container_cluster" "main" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
+  deletion_protection = true
+  resource_labels     = var.labels
+
   network    = var.network_id
   subnetwork = var.subnetwork_id
+
+  master_auth {
+    client_certificate_config {
+      issue_client_certificate = false
+    }
+  }
+
+  enable_intranode_visibility = true
+
+  depends_on = [google_project_service.container]
 
   # Security posture scans for risks; it does not enforce Pod Security Admission.
   security_posture_config {
@@ -50,23 +98,12 @@ resource "google_container_cluster" "main" {
     channel = "REGULAR"
   }
 
-  # Master Authorized Networks
-  master_authorized_networks_config {
-    dynamic "cidr_blocks" {
-      for_each = var.master_authorized_networks
-      content {
-        cidr_block   = cidr_blocks.value.cidr_block
-        display_name = cidr_blocks.value.display_name
-      }
-    }
-  }
-
   # Enable VPC Service Controls
   resource_usage_export_config {
     enable_network_egress_metering       = true
     enable_resource_consumption_metering = true
     bigquery_destination {
-      dataset_id = var.network_usage_dataset_id
+      dataset_id = google_bigquery_dataset.network_usage.dataset_id
     }
   }
 
@@ -127,6 +164,8 @@ resource "google_gke_backup_backup_plan" "main" {
   location = var.region
   project  = var.project_id
 
+  depends_on = [google_project_service.gke_backup]
+
   retention_policy {
     backup_retain_days = 30
   }
@@ -144,11 +183,10 @@ resource "google_gke_backup_backup_plan" "main" {
 
 # GKE Node Pools
 resource "google_container_node_pool" "system" {
-  name       = "${var.environment}-system-pool"
-  location   = var.region
-  cluster    = google_container_cluster.main.name
-  project    = var.project_id
-  node_count = var.system_node_count
+  name     = "${var.environment}-system-pool"
+  location = var.region
+  cluster  = google_container_cluster.main.name
+  project  = var.project_id
 
   autoscaling {
     min_node_count = var.system_min_node_count
@@ -194,11 +232,10 @@ resource "google_container_node_pool" "system" {
 }
 
 resource "google_container_node_pool" "application" {
-  name       = "${var.environment}-app-pool"
-  location   = var.region
-  cluster    = google_container_cluster.main.name
-  project    = var.project_id
-  node_count = var.app_node_count
+  name     = "${var.environment}-app-pool"
+  location = var.region
+  cluster  = google_container_cluster.main.name
+  project  = var.project_id
 
   autoscaling {
     min_node_count = var.app_min_node_count
@@ -272,6 +309,8 @@ resource "google_artifact_registry_repository" "main" {
   format        = "DOCKER"
   project       = var.project_id
 
+  depends_on = [google_project_service.artifact_registry]
+
   docker_config {
     immutable_tags = true
   }
@@ -318,17 +357,15 @@ variable "services_ipv4_cidr_block" {
   type        = string
 }
 
-variable "master_authorized_networks" {
-  description = "List of master authorized networks"
-  type = list(object({
-    cidr_block   = string
-    display_name = string
-  }))
-}
-
 variable "network_usage_dataset_id" {
   description = "The ID of the BigQuery dataset for network usage export"
   type        = string
+}
+
+variable "labels" {
+  description = "Labels applied to GCP resources that support labels"
+  type        = map(string)
+  default     = {}
 }
 
 variable "system_node_count" {
@@ -401,7 +438,8 @@ output "cluster_endpoint" {
 }
 
 output "cluster_ca_certificate" {
-  value = google_container_cluster.main.master_auth[0].cluster_ca_certificate
+  value     = try(google_container_cluster.main.master_auth[0].cluster_ca_certificate, null)
+  sensitive = true
 }
 
 output "service_account_email" {

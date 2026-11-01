@@ -26,14 +26,60 @@ resource "google_sql_database_instance" "main" {
 
     #tfsec:ignore:google-sql-encrypt-in-transit-data tfsec v1.28.14 checks legacy require_ssl; ssl_mode below enforces TLS.
     ip_configuration {
-      ipv4_enabled       = false
-      private_network    = var.network_id
-      ssl_mode           = "ENCRYPTED_ONLY"
-      allocated_ip_range = var.sql_ip_range
+      ipv4_enabled                                  = false
+      private_network                               = var.network_id
+      ssl_mode                                      = "ENCRYPTED_ONLY"
+      allocated_ip_range                            = google_compute_global_address.private_ip_address.name
+      enable_private_path_for_google_cloud_services = true
     }
 
     database_flags {
       name  = "cloudsql.enable_pg_cron"
+      value = "on"
+    }
+
+    database_flags {
+      name  = "cloudsql.enable_pgaudit"
+      value = "on"
+    }
+
+    database_flags {
+      name  = "pgaudit.log"
+      value = "all"
+    }
+
+    database_flags {
+      name  = "log_connections"
+      value = "on"
+    }
+
+    database_flags {
+      name  = "log_disconnections"
+      value = "on"
+    }
+
+    database_flags {
+      name  = "log_checkpoints"
+      value = "on"
+    }
+
+    database_flags {
+      name  = "log_lock_waits"
+      value = "on"
+    }
+
+    database_flags {
+      name  = "log_duration"
+      value = "on"
+    }
+
+    database_flags {
+      name  = "log_min_error_statement"
+      value = "error"
+    }
+
+    database_flags {
+      name  = "log_hostname"
       value = "on"
     }
 
@@ -53,7 +99,7 @@ resource "google_sql_database_instance" "main" {
 
   depends_on = [
     google_project_service.sql_admin,
-    google_service_networking_connection.private_vpc_connection
+    google_service_networking_connection.private_vpc_connection,
   ]
 }
 
@@ -109,10 +155,21 @@ resource "google_compute_global_address" "private_ip_address" {
   project       = var.project_id
 }
 
+resource "google_project_service" "servicenetworking" {
+  project            = var.project_id
+  service            = "servicenetworking.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_service_networking_connection" "private_vpc_connection" {
   network                 = var.network_id
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.private_ip_address.name]
+
+  depends_on = [
+    google_project_service.servicenetworking,
+    google_compute_global_address.private_ip_address,
+  ]
 }
 
 # Enable Required APIs
@@ -201,11 +258,6 @@ variable "region" {
 
 variable "network_id" {
   description = "VPC network ID"
-  type        = string
-}
-
-variable "sql_ip_range" {
-  description = "IP range for Cloud SQL"
   type        = string
 }
 

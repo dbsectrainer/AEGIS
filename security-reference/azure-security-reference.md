@@ -1,6 +1,7 @@
 # Azure Security, Identity, and Compliance Reference Guide
 
 ## Table of Contents
+
 - [Core Security Services](#core-security-services)
 - [Federal Security Requirements](#federal-security-requirements)
 - [Security Best Practices](#security-best-practices)
@@ -13,6 +14,7 @@
 ## Core Security Services
 
 ### Azure Active Directory (Azure AD)
+
 - **Description**: Cloud-based identity and access management service
 - **Key Features**:
   - Single sign-on (SSO)
@@ -27,6 +29,7 @@
   - [Best Practices](https://docs.microsoft.com/azure/active-directory/fundamentals/security-operations-introduction)
 
 ### Microsoft Defender for Cloud
+
 - **Description**: Unified security management and threat protection
 - **Key Features**:
   - Security posture management
@@ -40,6 +43,7 @@
   - [Best Practices](https://docs.microsoft.com/azure/defender-for-cloud/security-policy-concept)
 
 ### Azure Key Vault
+
 - **Description**: Cloud key management and secret storage
 - **Key Features**:
   - Key management
@@ -53,6 +57,7 @@
   - [Best Practices](https://docs.microsoft.com/azure/key-vault/general/best-practices)
 
 ### Azure Policy
+
 - **Description**: Policy enforcement and compliance assessment
 - **Key Features**:
   - Policy definitions
@@ -66,6 +71,7 @@
   - [Policy Effects](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
 ### Azure Monitor
+
 - **Description**: Comprehensive monitoring and analytics
 - **Key Features**:
   - Log Analytics
@@ -79,6 +85,7 @@
   - [Best Practices](https://docs.microsoft.com/azure/azure-monitor/best-practices)
 
 ### Azure DDoS Protection
+
 - **Description**: Network protection against DDoS attacks
 - **Key Features**:
   - Always-on monitoring
@@ -94,6 +101,7 @@
 ## Federal Security Requirements
 
 ### Azure Government
+
 - **Description**: Dedicated cloud for US government workloads
 - **Features**:
   - Separate instance from commercial Azure
@@ -106,6 +114,7 @@
   - [Service Availability](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure)
 
 ### FedRAMP Compliance
+
 - **Impact Levels**:
   - FedRAMP High
   - FedRAMP Moderate
@@ -116,6 +125,7 @@
   - [Compliance Blueprint](https://docs.microsoft.com/azure/governance/blueprints/samples/fedramp-h)
 
 ### DoD Compliance
+
 - **Impact Levels**:
   - IL2 - Non-Controlled
   - IL4 - Controlled Unclassified
@@ -127,6 +137,7 @@
   - [Security Technical Implementation Guides](https://docs.microsoft.com/azure/compliance/offerings/offering-dod-stigs)
 
 ### Federal Identity Integration
+
 - **Requirements**:
   - PIV/CAC card integration
   - SAML-based federation
@@ -139,6 +150,7 @@
 ## Security Best Practices
 
 ### Identity and Access Management
+
 1. Azure AD Security
    - Enable MFA for all users
    - Implement Conditional Access policies
@@ -152,6 +164,7 @@
    - [PIM Documentation](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)
 
 ### Network Security
+
 1. Network Security Groups (NSGs)
    - Default deny rules
    - Least privilege access
@@ -167,6 +180,7 @@
 ## Compliance Frameworks
 
 ### Federal Compliance Programs
+
 - FedRAMP
 - FISMA
 - NIST SP 800-53
@@ -176,6 +190,7 @@
 - [Azure Government Compliance](https://docs.microsoft.com/azure/azure-government/compliance-overview)
 
 ### Additional Standards
+
 - SOC (1, 2, 3)
 - PCI DSS
 - HIPAA
@@ -185,6 +200,7 @@
 ## Security Architecture
 
 ### Zero Trust Architecture
+
 1. Core Principles
    - Verify explicitly
    - Least privilege access
@@ -198,6 +214,7 @@
    - [Implementation Guide](https://docs.microsoft.com/security/zero-trust/zero-trust-overview)
 
 ### Security Design Patterns
+
 1. Network Architecture
    - Hub-spoke topology
    - Network isolation
@@ -213,6 +230,7 @@
 ## Security Operations
 
 ### Security Monitoring
+
 1. Azure Monitor
    - Log Analytics
    - Metrics
@@ -226,6 +244,7 @@
    - [Security Operations Guide](https://docs.microsoft.com/azure/defender-for-cloud/security-center-guidance)
 
 ### Incident Response
+
 1. Planning
    - Response procedures
    - Team roles
@@ -241,6 +260,7 @@
 ## Governance and Risk Management
 
 ### Federal Security Policies
+
 - **Policy Framework**:
   - Agency security policies
   - Federal directives
@@ -248,6 +268,7 @@
   - [Federal Policy Guide](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)
 
 ### Risk Management
+
 - **Framework**:
   - NIST RMF implementation
   - Continuous monitoring
@@ -255,6 +276,7 @@
   - [Risk Management Guide](https://docs.microsoft.com/azure/cloud-adoption-framework/govern/risk)
 
 ### Data Governance
+
 - **Classifications**:
   - CUI handling
   - FCI requirements
@@ -264,6 +286,7 @@
 ## Container Security
 
 ### Azure Kubernetes Service (AKS) Security
+
 1. Container Security
    - Azure Container Registry scanning
    - Image signing and verification
@@ -277,6 +300,7 @@
    - [Runtime Security Guide](https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security)
 
 ### Container Compliance
+
 - CIS Kubernetes Benchmark
 - NIST Container Guidelines
 - Microsoft Defender for Containers
@@ -285,6 +309,7 @@
 ## DevSecOps Integration
 
 ### Pipeline Security
+
 1. Azure DevOps Security
    - Pipeline security
    - Automated security testing
@@ -300,6 +325,7 @@
 ## Cloud Security Posture Management
 
 ### Security Assessment
+
 1. Microsoft Defender for Cloud
    - Security standards
    - Automated assessments
@@ -315,6 +341,7 @@
 ## Cloud Workload Protection
 
 ### Workload Security
+
 1. Microsoft Defender for Servers
    - Vulnerability assessment
    - Threat protection
@@ -330,6 +357,7 @@
 ## Data Protection
 
 ### Encryption and Key Management
+
 1. Azure Key Vault
    - Key lifecycle management
    - Secret management
@@ -343,6 +371,7 @@
    - [HSM Guide](https://docs.microsoft.com/azure/dedicated-hsm/overview)
 
 ### Data Loss Prevention
+
 - Microsoft Purview
 - Azure Information Protection
 - Storage service encryption
@@ -351,6 +380,7 @@
 ## API Security
 
 ### API Management Security
+
 1. Authentication
    - OAuth 2.0
    - Client certificates
@@ -366,6 +396,7 @@
 ## Disaster Recovery and Business Continuity
 
 ### Security in DR
+
 1. Azure Site Recovery
    - Replication encryption
    - Access control
@@ -381,6 +412,7 @@
 ## Supply Chain Security
 
 ### Third-Party Risk Management
+
 1. Vendor Assessment
    - Azure Marketplace security
    - Partner security validation
@@ -396,6 +428,7 @@
 ## Cloud Native Security
 
 ### Serverless Security
+
 1. Azure Functions
    - Identity management
    - Runtime protection
@@ -411,20 +444,24 @@
 ## Additional Resources
 
 ### Federal Resources
+
 - [NIST Cybersecurity Framework Implementation](https://docs.microsoft.com/security/benchmark/azure/security-baselines-overview)
 - [Azure Government Documentation](https://docs.microsoft.com/azure/azure-government)
 - [Federal Security Guidelines](https://docs.microsoft.com/azure/governance/policy/samples/gov-policies)
 
 ### Learning Resources
+
 - [Microsoft Learn Security Path](https://docs.microsoft.com/learn/paths/azure-security)
 - [Azure Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/best-practices-concepts)
 - [Security Documentation](https://docs.microsoft.com/azure/security)
 
 ### Certifications
+
 - [Microsoft Security Certifications](https://docs.microsoft.com/learn/certifications/browse/?products=azure&resource_type=certification&terms=security)
 - [Azure Security Engineer Associate](https://docs.microsoft.com/learn/certifications/azure-security-engineer)
 
 ### Community Resources
+
 - [Azure Security Blog](https://techcommunity.microsoft.com/t5/azure-security/bg-p/AzureSecurityCenter)
 - [Azure Government Community](https://techcommunity.microsoft.com/t5/azure-government/bg-p/AzureGovernment)
 - [Security Community Webinars](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/bg-p/SecurityComplianceAndIdentityUpdates)

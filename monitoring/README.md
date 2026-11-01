@@ -1,96 +1,46 @@
-# Monitoring Infrastructure
+# Monitoring Configuration
 
-This directory contains monitoring configurations, dashboards, and alerting rules for the cloud infrastructure.
+This directory contains reviewable monitoring configuration and a validator that
+produces a checksummed bundle. It does **not** deploy dashboards or alerts to a
+cloud provider.
 
-## Directory Structure
+## Directory layout
 
-```
+```text
 monitoring/
-├── dashboards/           # Monitoring dashboards
-│   ├── infrastructure/  # Infrastructure monitoring dashboards
-│   ├── security/       # Security monitoring dashboards
-│   └── cost/          # Cost monitoring dashboards
-├── alerts/              # Alert configurations
-│   ├── infrastructure/ # Infrastructure alerts
-│   ├── security/      # Security alerts
-│   └── cost/         # Cost alerts
-└── logging/            # Logging configurations
-    ├── infrastructure/ # Infrastructure logging
-    ├── security/      # Security logging
-    └── cost/         # Cost logging
+├── alerts/security/main.json
+├── dashboards/infrastructure/main.json
+├── logging/infrastructure/config.json
+├── init-monitoring.sh
+└── update-monitoring.sh
 ```
 
-## Components
+The configuration is intentionally limited to the files that currently exist.
+There are no populated security/cost dashboards or infrastructure alert sets yet.
 
-### Dashboards
+## Usage
 
-- **Infrastructure Dashboards**: Monitor compute, network, storage, and database resources
-- **Security Dashboards**: Track security events, compliance status, and vulnerabilities
-- **Cost Dashboards**: Monitor resource costs, budget tracking, and optimization opportunities
+```bash
+# Validate JSON and write monitoring/generated/monitoring-manifest-<env>.json
+./monitoring/init-monitoring.sh -e production
 
-### Alerts
+# Rebuild and show which files changed since the previous manifest
+./monitoring/update-monitoring.sh -e production
+```
 
-- **Infrastructure Alerts**: Resource health, performance thresholds, and availability
-- **Security Alerts**: Security incidents, compliance violations, and threat detection
-- **Cost Alerts**: Budget thresholds, unusual spending patterns, and resource waste
+The manifest records each file path and SHA-256 digest plus an environment label.
+`monitoring/generated/` is git-ignored.
 
-### Logging
+## What the scripts verify
 
-- **Infrastructure Logging**: System logs, application logs, and performance metrics
-- **Security Logging**: Security events, audit logs, and compliance reporting
-- **Cost Logging**: Resource usage, cost allocation, and optimization metrics
+- Every monitoring JSON file parses successfully.
+- A manifest can be generated atomically.
+- On update, additions, removals, and digest changes are reported.
 
-## Implementation Guidelines
+## Limitations
 
-1. Dashboard Creation
-   - Use consistent naming conventions
-   - Include clear descriptions
-   - Implement proper access controls
-   - Regular review and updates
-
-2. Alert Configuration
-   - Define clear thresholds
-   - Implement proper routing
-   - Include runbook links
-   - Regular testing and validation
-
-3. Logging Setup
-   - Define retention policies
-   - Implement proper encryption
-   - Configure log shipping
-   - Regular audit and cleanup
-
-## Tools and Integrations
-
-- AWS CloudWatch
-- Azure Monitor
-- Google Cloud Monitoring
-- Grafana
-- Prometheus
-- ELK Stack
-- Splunk
-- DataDog
-
-## Maintenance
-
-- Regular review of dashboard effectiveness
-- Alert threshold adjustments
-- Log retention policy updates
-- Performance optimization
-- Access control review
-
-## Security Considerations
-
-- Encryption at rest and in transit
-- Access control and authentication
-- Audit logging
-- Compliance requirements
-- Data retention policies
-
-## Cost Management
-
-- Resource optimization
-- Log storage optimization
-- Dashboard resource usage
-- Alert cost management
-- Integration costs
+- No cloud API calls, dashboard imports, or alert deployment occur.
+- The JSON files are provider-neutral configuration evidence, not validated
+  against a specific CloudWatch/Azure Monitor/Cloud Monitoring schema.
+- Applying a bundle to a backend of record requires a separate reviewed
+  integration.

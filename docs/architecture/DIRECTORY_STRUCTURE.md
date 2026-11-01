@@ -1,6 +1,12 @@
 # Complete Directory Structure
 
+> **Status note (2026-10-31):** This is an aspirational target structure, not an
+> inventory of the repository. The current tree is documented in `README.md`.
+> The CI workflow is `.github/workflows/ci.yml`; the three workflow files shown
+> below were not created.
+
 ## Root Level Organization
+
 ```
 .
 ├── .github/                          # GitHub specific configurations
@@ -40,6 +46,7 @@
 ## Detailed Component Structure
 
 ### .github/workflows/
+
 ```
 .github/workflows/
 ├── terraform-plan.yml              # Terraform plan workflow
@@ -50,6 +57,7 @@
 ```
 
 ### automation/
+
 ```
 automation/
 ├── cost/
@@ -67,6 +75,7 @@ automation/
 ```
 
 ### monitoring/
+
 ```
 monitoring/
 ├── dashboards/
@@ -84,6 +93,7 @@ monitoring/
 ```
 
 ### scripts/
+
 ```
 scripts/
 ├── deployment/
@@ -105,6 +115,7 @@ scripts/
 ```
 
 ### tests/
+
 ```
 tests/
 ├── terraform/

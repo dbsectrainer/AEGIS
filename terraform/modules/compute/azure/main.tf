@@ -8,21 +8,28 @@ resource "azurerm_kubernetes_cluster" "main" {
   dns_prefix          = "${var.environment}-aks"
   kubernetes_version  = var.kubernetes_version
 
-  # Keep the API server off the public internet
-  private_cluster_enabled = true
+  # Keep the API server off the public internet.
+  private_cluster_enabled   = true
+  local_account_disabled    = true
+  sku_tier                  = "Standard"
+  automatic_upgrade_channel = "stable"
+  node_os_upgrade_channel   = "NodeImage"
+  oidc_issuer_enabled       = true
+  workload_identity_enabled = true
 
   default_node_pool {
-    name                 = "system"
-    node_count           = var.system_node_count
-    vm_size              = var.system_node_vm_size
-    vnet_subnet_id       = var.subnet_id
-    zones                = var.availability_zones
-    auto_scaling_enabled = true
-    min_count            = var.system_node_min_count
-    max_count            = var.system_node_max_count
-    os_disk_size_gb      = var.system_node_disk_size
-    os_disk_type         = "Managed"
-    type                 = "VirtualMachineScaleSets"
+    name                         = "system"
+    vm_size                      = var.system_node_vm_size
+    vnet_subnet_id               = var.subnet_id
+    zones                        = var.availability_zones
+    auto_scaling_enabled         = true
+    min_count                    = var.system_node_min_count
+    max_count                    = var.system_node_max_count
+    os_disk_size_gb              = var.system_node_disk_size
+    os_disk_type                 = "Managed"
+    only_critical_addons_enabled = true
+    max_pods                     = 50
+    type                         = "VirtualMachineScaleSets"
 
     node_labels = {
       "nodepool-type" = "system"
@@ -40,7 +47,7 @@ resource "azurerm_kubernetes_cluster" "main" {
   network_profile {
     network_plugin    = "azure"
     network_policy    = "azure"
-    load_balancer_sku = "Standard"
+    load_balancer_sku = "standard"
     service_cidr      = var.service_cidr
     dns_service_ip    = var.dns_service_ip
   }
@@ -66,13 +73,13 @@ resource "azurerm_kubernetes_cluster_node_pool" "user" {
   name                  = "user"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.main.id
   vm_size               = var.user_node_vm_size
-  node_count            = var.user_node_count
   vnet_subnet_id        = var.subnet_id
   zones                 = var.availability_zones
   auto_scaling_enabled  = true
   min_count             = var.user_node_min_count
   max_count             = var.user_node_max_count
   os_disk_size_gb       = var.user_node_disk_size
+  max_pods              = 50
   os_type               = "Linux"
   mode                  = "User"
 
@@ -87,11 +94,14 @@ resource "azurerm_kubernetes_cluster_node_pool" "user" {
 
 # Container Registry
 resource "azurerm_container_registry" "main" {
-  name                = replace("${var.environment}acr", "-", "")
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  sku                 = "Premium"
-  admin_enabled       = false
+  name                          = replace("${var.environment}acr", "-", "")
+  resource_group_name           = var.resource_group_name
+  location                      = var.location
+  sku                           = "Premium"
+  admin_enabled                 = false
+  public_network_access_enabled = true
+  data_endpoint_enabled         = true
+  retention_policy_in_days      = 30
 
   network_rule_set {
     default_action = "Deny"
@@ -169,12 +179,6 @@ variable "kubernetes_version" {
   type        = string
 }
 
-variable "system_node_count" {
-  description = "Number of system nodes"
-  type        = number
-  default     = 3
-}
-
 variable "system_node_vm_size" {
   description = "VM size for system nodes"
   type        = string
@@ -197,12 +201,6 @@ variable "system_node_disk_size" {
   description = "Disk size for system nodes"
   type        = number
   default     = 128
-}
-
-variable "user_node_count" {
-  description = "Number of user nodes"
-  type        = number
-  default     = 2
 }
 
 variable "user_node_vm_size" {

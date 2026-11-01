@@ -1,12 +1,14 @@
 # Enterprise Cloud & On-Premises RACI Matrix for Federal Agency
 
 ## Legend
+
 - **R** (Responsible): Performs the activity/task
 - **A** (Accountable): Ultimately answerable for the activity/task (only one person)
 - **C** (Consulted): Provides input before activity/task
 - **I** (Informed): Kept up-to-date on progress/completion
 
 ## Key Stakeholders
+
 - **CIO**: Chief Information Officer
 - **CISO**: Chief Information Security Officer
 - **EA**: Enterprise Architect
@@ -26,7 +28,7 @@
 ## Cloud Infrastructure Management
 
 | Activity | CIO | CISO | EA | PM | CST | SecOps | NetOps | SysAdmin | DevOps | IAM | DBA | AppDev | PMO | FinOps | AO |
-|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----| 
+|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----|
 | Cloud Platform Selection | A | C | R | C | R | C | C | C | C | I | C | C | I | C | I |
 | Cloud Architecture Design | I | C | A | I | R | C | C | C | C | C | C | C | I | I | I |
 | Resource Provisioning | I | I | C | I | R | C | C | A | R | C | C | I | I | C | I |
@@ -36,7 +38,7 @@
 ## Security & Compliance
 
 | Activity | CIO | CISO | EA | PM | CST | SecOps | NetOps | SysAdmin | DevOps | IAM | DBA | AppDev | PMO | FinOps | AO |
-|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----| 
+|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----|
 | Security Policy Development | C | A/R | C | I | C | R | C | C | C | C | C | C | I | I | C |
 | Security Controls Implementation | I | A | C | I | R | R | R | R | R | R | R | R | I | I | C |
 | Compliance Monitoring | I | A | C | I | C | R | C | C | C | R | C | C | I | I | R |
@@ -46,7 +48,7 @@
 ## Operations & Maintenance
 
 | Activity | CIO | CISO | EA | PM | CST | SecOps | NetOps | SysAdmin | DevOps | IAM | DBA | AppDev | PMO | FinOps | AO |
-|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----| 
+|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----|
 | System Maintenance | I | I | C | I | C | C | C | A/R | R | C | C | C | I | I | I |
 | Patch Management | I | C | I | I | C | C | C | A/R | R | I | C | I | I | I | I |
 | Backup & Recovery | I | C | C | I | C | C | C | A/R | C | I | R | I | I | I | I |
@@ -56,7 +58,7 @@
 ## Data Management
 
 | Activity | CIO | CISO | EA | PM | CST | SecOps | NetOps | SysAdmin | DevOps | IAM | DBA | AppDev | PMO | FinOps | AO |
-|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----| 
+|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----|
 | Data Architecture | I | C | A | I | C | C | I | C | C | C | R | C | I | I | I |
 | Data Migration | I | C | C | R | C | C | C | C | C | C | A/R | C | I | I | I |
 | Data Protection | I | A | C | I | C | R | C | C | C | C | R | C | I | I | C |
@@ -66,7 +68,7 @@
 ## Application Development & Migration
 
 | Activity | CIO | CISO | EA | PM | CST | SecOps | NetOps | SysAdmin | DevOps | IAM | DBA | AppDev | PMO | FinOps | AO |
-|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----| 
+|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----|
 | Application Architecture | I | C | A | C | C | C | C | C | R | C | C | R | I | I | I |
 | Cloud Migration Planning | I | C | A | R | R | C | C | C | R | C | C | R | C | C | I |
 | Application Development | I | C | C | A | C | C | I | I | R | C | C | R | C | I | I |
@@ -76,7 +78,7 @@
 ## Identity & Access Management
 
 | Activity | CIO | CISO | EA | PM | CST | SecOps | NetOps | SysAdmin | DevOps | IAM | DBA | AppDev | PMO | FinOps | AO |
-|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----| 
+|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----|
 | IAM Policy Development | C | A | C | I | C | R | I | C | C | R | C | C | I | I | C |
 | Access Control Implementation | I | A | C | I | C | R | C | C | C | R | C | C | I | I | C |
 | User Authentication | I | A | I | I | C | C | I | C | C | R | I | C | I | I | I |
@@ -86,7 +88,7 @@
 ## Cost Management & Optimization
 
 | Activity | CIO | CISO | EA | PM | CST | SecOps | NetOps | SysAdmin | DevOps | IAM | DBA | AppDev | PMO | FinOps | AO |
-|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----| 
+|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----|
 | Budget Planning | A | C | C | C | C | I | I | I | I | I | I | I | R | R | I |
 | Cost Monitoring | C | I | C | C | R | I | I | I | I | I | I | I | C | A/R | I |
 | Resource Optimization | C | I | A | C | R | C | C | R | R | I | R | C | I | R | I |
@@ -96,7 +98,7 @@
 ## Disaster Recovery & Business Continuity
 
 | Activity | CIO | CISO | EA | PM | CST | SecOps | NetOps | SysAdmin | DevOps | IAM | DBA | AppDev | PMO | FinOps | AO |
-|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----| 
+|----------|-----|------|----|----|-----|---------|---------|-----------|---------|-----|-----|---------|-----|---------|----|
 | DR Planning | A | R | R | C | R | R | R | R | R | C | R | C | C | C | C |
 | BCP Development | A | R | R | C | R | R | R | R | R | C | R | C | C | C | C |
 | DR Testing | I | A | C | R | R | R | R | R | R | C | R | C | C | I | I |
@@ -104,6 +106,7 @@
 | Business Impact Analysis | A | R | R | C | C | C | C | C | C | C | C | C | R | R | C |
 
 ## Notes
+
 1. This RACI matrix is designed for a large federal agency and may need to be adapted based on specific organizational structure and requirements.
 2. Some activities may have shared responsibilities (R) across multiple teams for comprehensive coverage.
 3. The Authorizing Official (AO) plays a crucial role in security and compliance approvals.

@@ -39,13 +39,8 @@ resource "azurerm_subnet" "private" {
     "Microsoft.ServiceBus"
   ]
 
-  delegation {
-    name = "delegation"
-    service_delegation {
-      name    = "Microsoft.ContainerInstance/containerGroups"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
-    }
-  }
+  # Private endpoints (SQL, Cosmos, and future ACR) live in this subnet.
+  private_endpoint_network_policies = "Disabled"
 }
 
 # Network Security Groups
@@ -56,6 +51,7 @@ resource "azurerm_network_security_group" "public" {
 
   security_rule {
     name                       = "AllowHTTPS"
+    description                = "Allow approved sources to reach HTTPS workloads"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
@@ -77,6 +73,7 @@ resource "azurerm_network_security_group" "private" {
 
   security_rule {
     name                       = "DenyInternetOutbound"
+    description                = "Deny direct internet egress; use an approved egress path"
     priority                   = 100
     direction                  = "Outbound"
     access                     = "Deny"
@@ -173,6 +170,13 @@ resource "azurerm_nat_gateway_public_ip_association" "main" {
   public_ip_address_id = azurerm_public_ip.nat[0].id
 }
 
+# The NAT gateway only provides egress when it is associated with subnets.
+resource "azurerm_subnet_nat_gateway_association" "private" {
+  count          = var.enable_nat_gateway ? length(var.private_subnet_cidrs) : 0
+  subnet_id      = azurerm_subnet.private[count.index].id
+  nat_gateway_id = azurerm_nat_gateway.main[0].id
+}
+
 # Private Link Service (if enabled)
 resource "azurerm_private_link_service" "main" {
   count               = var.enable_private_link ? 1 : 0
@@ -187,6 +191,13 @@ resource "azurerm_private_link_service" "main" {
   }
 
   load_balancer_frontend_ip_configuration_ids = var.load_balancer_frontend_ip_configuration_ids
+
+  lifecycle {
+    precondition {
+      condition     = length(var.load_balancer_frontend_ip_configuration_ids) > 0
+      error_message = "enable_private_link requires at least one load balancer frontend IP configuration ID."
+    }
+  }
 
   tags = var.tags
 }

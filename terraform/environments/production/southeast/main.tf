@@ -1,137 +1,187 @@
 # Southeast Region Production Environment
+# Multi-cloud root module for AWS GovCloud, Azure Government, and GCP.
+# Provider configuration lives in providers.tf; inputs in variables.tf.
+
+locals {
+  gcp_labels = {
+    environment = "production"
+    region      = "southeast"
+    managed_by  = "terraform"
+    project     = "aegis"
+  }
+}
+
+resource "azurerm_resource_group" "main" {
+  name     = var.azure_resource_group
+  location = var.azure_location
+  tags     = var.default_tags
+}
+
+# AWS KMS key shared by EKS secrets encryption and ECS execute-command logging.
+# The key policy is the AWS-created root policy; the EKS role receives an
+# explicit identity policy in modules/compute/aws/iam.tf.
+resource "aws_kms_key" "platform" {
+  description             = "AEGIS platform encryption key (${var.environment_name})"
+  deletion_window_in_days = 30
+  enable_key_rotation     = true
+  tags                    = var.default_tags
+}
+
+resource "aws_kms_alias" "platform" {
+  name          = "alias/${var.environment_name}-platform"
+  target_key_id = aws_kms_key.platform.key_id
+}
+
+# Azure Private DNS zones for private endpoints. Azure Government zone names
+# follow the Microsoft private-endpoint DNS reference.
+resource "azurerm_private_dns_zone" "sql" {
+  name                = "privatelink.database.usgovcloudapi.net"
+  resource_group_name = azurerm_resource_group.main.name
+  tags                = var.default_tags
+}
+
+resource "azurerm_private_dns_zone" "cosmos" {
+  name                = "privatelink.documents.azure.us"
+  resource_group_name = azurerm_resource_group.main.name
+  tags                = var.default_tags
+}
+
+resource "azurerm_private_dns_zone_virtual_network_link" "sql" {
+  name                  = "sql-vnet-link"
+  resource_group_name   = azurerm_resource_group.main.name
+  private_dns_zone_name = azurerm_private_dns_zone.sql.name
+  virtual_network_id    = module.azure_networking.vnet_id
+  registration_enabled  = false
+  tags                  = var.default_tags
+}
+
+resource "azurerm_private_dns_zone_virtual_network_link" "cosmos" {
+  name                  = "cosmos-vnet-link"
+  resource_group_name   = azurerm_resource_group.main.name
+  private_dns_zone_name = azurerm_private_dns_zone.cosmos.name
+  virtual_network_id    = module.azure_networking.vnet_id
+  registration_enabled  = false
+  tags                  = var.default_tags
+}
 
 # AWS Resources
 module "aws_networking" {
   source = "../../../modules/networking/aws"
 
-  environment          = "prod-southeast"
-  region               = "us-gov-east-1"
-  vpc_cidr             = "10.0.0.0/16"
-  public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
-  private_subnet_cidrs = ["10.0.3.0/24", "10.0.4.0/24"]
-  availability_zones   = ["us-gov-east-1a", "us-gov-east-1b"]
+  environment          = var.environment_name
+  region               = var.aws_region
+  vpc_cidr             = var.vpc_cidr
+  public_subnet_cidrs  = var.aws_public_subnet_cidrs
+  private_subnet_cidrs = var.aws_private_subnet_cidrs
+  availability_zones   = var.aws_availability_zones
 
-  tags = {
-    Environment = "production"
-    Region      = "southeast"
-    ManagedBy   = "terraform"
-  }
+  tags = var.default_tags
 }
 
-# AWS Compute Resources
 module "aws_compute" {
   source = "../../../modules/compute/aws"
 
-  environment          = "prod-southeast"
+  environment          = var.environment_name
   vpc_id               = module.aws_networking.vpc_id
   private_subnet_ids   = module.aws_networking.private_subnet_ids
-  private_subnet_cidrs = ["10.0.3.0/24", "10.0.4.0/24"]
+  private_subnet_cidrs = var.aws_private_subnet_cidrs
 
-  kubernetes_version = "1.35"
-  ssh_key_name       = "gov-prod-southeast"
-  kms_key_arn        = "arn:aws-us-gov:kms:us-gov-east-1:123456789012:key/abcd1234-a123-456a-a12b-a123b4cd5678"
+  kubernetes_version = var.kubernetes_version
+  kms_key_arn        = aws_kms_key.platform.arn
 
-  ecs_ami_id = "ami-123456789" # Replace with actual ECS-optimized AMI ID
+  ecs_ami_id              = var.ecs_ami_id
+  ecs_instance_type       = var.ecs_instance_type
+  node_group_desired_size = var.node_group_desired_size
+  node_group_min_size     = var.node_group_min_size
+  node_group_max_size     = var.node_group_max_size
+  ecs_desired_capacity    = var.ecs_desired_capacity
+  ecs_min_size            = var.ecs_min_size
+  ecs_max_size            = var.ecs_max_size
 
-  tags = {
-    Environment = "production"
-    Region      = "southeast"
-    ManagedBy   = "terraform"
-  }
+  tags = var.default_tags
 }
 
-# Azure Government Configuration
+# Azure Networking
 module "azure_networking" {
   source = "../../../modules/networking/azure"
 
-  environment          = "prod-southeast"
-  location             = "usgovvirginia"
-  resource_group_name  = "gov-prod-southeast-rg"
-  vnet_cidr            = "172.16.0.0/16"
-  public_subnet_cidrs  = ["172.16.1.0/24", "172.16.2.0/24"]
-  private_subnet_cidrs = ["172.16.3.0/24", "172.16.4.0/24"]
+  environment          = var.environment_name
+  location             = var.azure_location
+  resource_group_name  = azurerm_resource_group.main.name
+  vnet_cidr            = var.vnet_cidr
+  public_subnet_cidrs  = var.azure_public_subnet_cidrs
+  private_subnet_cidrs = var.azure_private_subnet_cidrs
 
-  enable_nat_gateway  = true
-  enable_private_link = true
+  public_ingress_source_prefixes = var.azure_public_ingress_source_prefixes
+  enable_nat_gateway             = true
+  enable_private_link            = false
 
-  tags = {
-    Environment = "production"
-    Region      = "southeast"
-    ManagedBy   = "terraform"
-  }
+  tags = var.default_tags
 }
 
-# Azure Compute Resources
 module "azure_compute" {
   source = "../../../modules/compute/azure"
 
-  environment         = "prod-southeast"
-  location            = "usgovvirginia"
-  resource_group_name = "gov-prod-southeast-rg"
+  environment         = var.environment_name
+  location            = var.azure_location
+  resource_group_name = azurerm_resource_group.main.name
   subnet_id           = module.azure_networking.private_subnet_ids[0]
 
-  kubernetes_version     = "1.35"
-  admin_group_object_ids = ["12345678-1234-5678-1234-567812345678"] # Replace with actual Azure AD group IDs
+  kubernetes_version     = var.kubernetes_version
+  admin_group_object_ids = var.azure_admin_group_object_ids
 
-  allowed_ip_ranges = "10.0.0.0/8"
-  key_vault_key_id  = "/subscriptions/12345678-1234-5678-1234-567812345678/resourceGroups/gov-prod-southeast-rg/providers/Microsoft.KeyVault/vaults/gov-prod-kv/keys/container-registry"
+  allowed_ip_ranges = var.allowed_ip_ranges
+  key_vault_key_id  = var.azure_key_vault_key_id
 
-  tags = {
-    Environment = "production"
-    Region      = "southeast"
-    ManagedBy   = "terraform"
-  }
+  tags = var.default_tags
 }
 
-# GCP Configuration
+# GCP Networking
 module "gcp_networking" {
   source = "../../../modules/networking/gcp"
 
-  environment          = "prod-southeast"
+  environment          = var.environment_name
   project_id           = var.gcp_project_id
-  region               = "us-east4"
-  public_subnet_cidrs  = ["192.168.1.0/24", "192.168.2.0/24"]
-  private_subnet_cidrs = ["192.168.3.0/24", "192.168.4.0/24"]
+  region               = var.gcp_region
+  public_subnet_cidrs  = var.gcp_public_subnet_cidrs
+  private_subnet_cidrs = var.gcp_private_subnet_cidrs
 
-  enable_vpc_sc    = true
+  enable_vpc_sc    = false
   access_policy_id = var.gcp_access_policy_id
   project_number   = var.gcp_project_number
 
-  enable_private_service_connect = true
+  # The database module owns the servicenetworking connection for this network.
+  enable_private_service_connect = false
 }
 
-# GCP Compute Resources
 module "gcp_compute" {
   source = "../../../modules/compute/gcp"
 
-  environment   = "prod-southeast"
+  environment   = var.environment_name
   project_id    = var.gcp_project_id
-  region        = "us-east4"
+  region        = var.gcp_region
   network_id    = module.gcp_networking.network_id
   subnetwork_id = module.gcp_networking.private_subnet_ids[0]
 
-  master_ipv4_cidr_block   = "172.16.0.0/28"
-  cluster_ipv4_cidr_block  = "10.4.0.0/16"
-  services_ipv4_cidr_block = "10.5.0.0/16"
+  master_ipv4_cidr_block   = var.gcp_master_cidr
+  cluster_ipv4_cidr_block  = var.gcp_cluster_cidr
+  services_ipv4_cidr_block = var.gcp_services_cidr
 
-  master_authorized_networks = [
-    {
-      cidr_block   = "10.0.0.0/8"
-      display_name = "VPC Network"
-    }
-  ]
-
-  network_usage_dataset_id = "network_usage_dataset"
+  network_usage_dataset_id = var.gcp_network_usage_dataset_id
+  labels                   = local.gcp_labels
 }
 
 # AWS Database Resources
 module "aws_database" {
   source = "../../../modules/database/aws"
 
-  environment             = "prod-southeast"
-  vpc_id                  = module.aws_networking.vpc_id
-  subnet_ids              = module.aws_networking.private_subnet_ids
-  allowed_security_groups = [module.aws_compute.ecs_security_group_id]
+  environment = var.environment_name
+  vpc_id      = module.aws_networking.vpc_id
+  subnet_ids  = module.aws_networking.private_subnet_ids
+  allowed_security_groups = [
+    module.aws_compute.ecs_security_group_id,
+    module.aws_compute.eks_nodes_security_group_id,
+  ]
 
   create_aurora_cluster = true
   database_name         = "govapp"
@@ -156,20 +206,16 @@ module "aws_database" {
     }
   }
 
-  tags = {
-    Environment = "production"
-    Region      = "southeast"
-    ManagedBy   = "terraform"
-  }
+  tags = var.default_tags
 }
 
 # Azure Database Resources
 module "azure_database" {
   source = "../../../modules/database/azure"
 
-  environment         = "prod-southeast"
-  location            = "usgovvirginia"
-  resource_group_name = "gov-prod-southeast-rg"
+  environment         = var.environment_name
+  location            = var.azure_location
+  resource_group_name = azurerm_resource_group.main.name
   subnet_id           = module.azure_networking.private_subnet_ids[0]
 
   administrator_login    = "admin"
@@ -178,28 +224,24 @@ module "azure_database" {
   azure_ad_admin_username  = var.azure_ad_admin_username
   azure_ad_admin_object_id = var.azure_ad_admin_object_id
 
-  private_dns_zone_id        = var.azure_private_dns_zone_id
-  log_analytics_workspace_id = var.azure_log_analytics_workspace_id
+  private_dns_zone_id        = azurerm_private_dns_zone.sql.id
+  cosmos_private_dns_zone_id = azurerm_private_dns_zone.cosmos.id
+  log_analytics_workspace_id = module.azure_compute.log_analytics_workspace_id
 
-  tags = {
-    Environment = "production"
-    Region      = "southeast"
-    ManagedBy   = "terraform"
-  }
+  tags = var.default_tags
 }
 
 # GCP Database Resources
 module "gcp_database" {
   source = "../../../modules/database/gcp"
 
-  environment = "prod-southeast"
+  environment = var.environment_name
   project_id  = var.gcp_project_id
-  region      = "us-east4"
+  region      = var.gcp_region
   network_id  = module.gcp_networking.network_id
 
   database_user     = "admin"
   database_password = var.gcp_db_password
-  sql_ip_range      = "10.6.0.0/16"
 
   create_spanner           = true
   spanner_config           = "regional-us-east1"
@@ -207,79 +249,14 @@ module "gcp_database" {
 
   notification_channels = var.gcp_notification_channels
 
-  labels = {
-    environment = "production"
-    region      = "southeast"
-    managed_by  = "terraform"
-  }
+  labels = local.gcp_labels
 }
 
 # Cross-Cloud Network Connectivity (if required)
-# Note: Implementation depends on specific requirements and connectivity methods
-# Examples include AWS Direct Connect, Azure ExpressRoute, GCP Cloud Interconnect
-
-# Database Variables
-variable "aurora_master_password" {
-  description = "Master password for Aurora cluster"
-  type        = string
-  sensitive   = true
-}
-
-variable "azure_sql_password" {
-  description = "Password for Azure SQL administrator"
-  type        = string
-  sensitive   = true
-}
-
-variable "azure_ad_admin_username" {
-  description = "Azure AD admin username for SQL Server"
-  type        = string
-}
-
-variable "azure_ad_admin_object_id" {
-  description = "Azure AD admin object ID for SQL Server"
-  type        = string
-}
-
-variable "azure_private_dns_zone_id" {
-  description = "Azure Private DNS Zone ID"
-  type        = string
-}
-
-variable "azure_log_analytics_workspace_id" {
-  description = "Azure Log Analytics Workspace ID"
-  type        = string
-}
-
-variable "gcp_db_password" {
-  description = "Password for GCP database user"
-  type        = string
-  sensitive   = true
-}
-
-variable "gcp_notification_channels" {
-  description = "GCP monitoring notification channel IDs"
-  type        = list(string)
-}
-
-# Project Variables
-variable "gcp_project_id" {
-  description = "GCP Project ID"
-  type        = string
-}
-
-variable "gcp_access_policy_id" {
-  description = "GCP Access Policy ID for VPC Service Controls"
-  type        = string
-}
-
-variable "gcp_project_number" {
-  description = "GCP Project Number"
-  type        = string
-}
+# Implementation depends on specific requirements and connectivity methods:
+# AWS Direct Connect, Azure ExpressRoute, or GCP Cloud Interconnect.
 
 # Outputs
-# AWS Outputs
 output "aws_vpc_id" {
   value = module.aws_networking.vpc_id
 }
@@ -296,7 +273,14 @@ output "aws_ecs_cluster_id" {
   value = module.aws_compute.ecs_cluster_id
 }
 
-# Azure Outputs
+output "aws_kms_key_arn" {
+  value = aws_kms_key.platform.arn
+}
+
+output "azure_resource_group_name" {
+  value = azurerm_resource_group.main.name
+}
+
 output "azure_vnet_id" {
   value = module.azure_networking.vnet_id
 }
@@ -313,7 +297,6 @@ output "azure_acr_id" {
   value = module.azure_compute.acr_id
 }
 
-# GCP Outputs
 output "gcp_network_id" {
   value = module.gcp_networking.network_id
 }
@@ -330,7 +313,6 @@ output "gcp_artifact_registry_id" {
   value = module.gcp_compute.artifact_registry_id
 }
 
-# Database Outputs
 output "aurora_cluster_endpoint" {
   value = module.aws_database.aurora_cluster_endpoint
 }
@@ -354,34 +336,3 @@ output "gcp_sql_instance_name" {
 output "gcp_spanner_instance_id" {
   value = module.gcp_database.spanner_instance_id
 }
-
-# Provider Configuration
-terraform {
-  required_version = ">= 1.12"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 6.0"
-    }
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 4.0"
-    }
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 6.0"
-    }
-  }
-
-  # Use remote state
-  backend "s3" {
-    bucket         = "gov-terraform-state"
-    key            = "environments/production/southeast/terraform.tfstate"
-    region         = "us-gov-east-1"
-    encrypt        = true
-    dynamodb_table = "terraform-state-lock"
-  }
-}
-
-# Provider configurations are inherited from the provider configurations in terraform/providers/

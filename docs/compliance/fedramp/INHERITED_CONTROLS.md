@@ -1,11 +1,13 @@
 # Cloud Service Provider Inherited Controls
 
 ## Overview
+
 This document details the security controls inherited from AWS GovCloud and Azure Government under their shared responsibility models, mapped to FedRAMP High baseline controls. It clarifies which security requirements are managed by the Cloud Service Provider (CSP) versus GOV responsibilities.
 
 ## Shared Responsibility Model Overview
 
 ### AWS GovCloud
+
 1. CSP Responsibilities (Inherited)
    - Physical security of data centers
    - Hardware infrastructure
@@ -29,6 +31,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
    - Operating system security
 
 ### Azure Government
+
 1. CSP Responsibilities (Inherited)
    - Physical datacenter security
    - Network infrastructure
@@ -54,6 +57,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 ### Physical and Environmental Protection (PE)
 
 #### AWS GovCloud Inherited Controls
+
 | Control ID | Control Name | Implementation | Validation Evidence |
 |------------|--------------|----------------|-------------------|
 | PE-1 | Physical and Environmental Protection Policy and Procedures | Fully Inherited | AWS FedRAMP Package |
@@ -74,6 +78,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 | PE-17 | Alternate Work Site | Partially Inherited | AWS FedRAMP Package |
 
 #### Azure Government Inherited Controls
+
 | Control ID | Control Name | Implementation | Validation Evidence |
 |------------|--------------|----------------|-------------------|
 | PE-1 | Physical and Environmental Protection Policy and Procedures | Fully Inherited | Azure FedRAMP Package |
@@ -96,6 +101,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 ### System and Communications Protection (SC)
 
 #### AWS GovCloud Inherited Controls
+
 | Control ID | Control Name | Implementation | Validation Evidence |
 |------------|--------------|----------------|-------------------|
 | SC-1 | System and Communications Protection Policy and Procedures | Partially Inherited | AWS FedRAMP Package |
@@ -108,6 +114,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 | SC-23 | Session Authenticity | Partially Inherited | AWS FedRAMP Package |
 
 #### Azure Government Inherited Controls
+
 | Control ID | Control Name | Implementation | Validation Evidence |
 |------------|--------------|----------------|-------------------|
 | SC-1 | System and Communications Protection Policy and Procedures | Partially Inherited | Azure FedRAMP Package |
@@ -122,6 +129,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 ### Maintenance (MA)
 
 #### AWS GovCloud Inherited Controls
+
 | Control ID | Control Name | Implementation | Validation Evidence |
 |------------|--------------|----------------|-------------------|
 | MA-1 | System Maintenance Policy and Procedures | Fully Inherited | AWS FedRAMP Package |
@@ -132,6 +140,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 | MA-6 | Timely Maintenance | Fully Inherited | AWS FedRAMP Package |
 
 #### Azure Government Inherited Controls
+
 | Control ID | Control Name | Implementation | Validation Evidence |
 |------------|--------------|----------------|-------------------|
 | MA-1 | System Maintenance Policy and Procedures | Fully Inherited | Azure FedRAMP Package |
@@ -146,6 +155,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 ### Configuration Management (CM)
 
 #### AWS GovCloud Shared Controls
+
 | Control ID | Control Name | CSP Responsibility | Customer Responsibility |
 |------------|--------------|-------------------|------------------------|
 | CM-1 | Configuration Management Policy and Procedures | Infrastructure CM | Application CM |
@@ -157,6 +167,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 | CM-8 | Information System Component Inventory | Infrastructure Inventory | Application Inventory |
 
 #### Azure Government Shared Controls
+
 | Control ID | Control Name | CSP Responsibility | Customer Responsibility |
 |------------|--------------|-------------------|------------------------|
 | CM-1 | Configuration Management Policy and Procedures | Infrastructure CM | Application CM |
@@ -170,6 +181,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
 ## Validation and Documentation Requirements
 
 ### Evidence Collection
+
 1. CSP FedRAMP Authorization Packages
    - Annual review and documentation
    - Continuous monitoring reports
@@ -182,6 +194,7 @@ This document details the security controls inherited from AWS GovCloud and Azur
    - Change management records
 
 ### Continuous Monitoring
+
 1. CSP Responsibilities
    - Infrastructure security monitoring
    - Physical security monitoring
@@ -197,18 +210,21 @@ This document details the security controls inherited from AWS GovCloud and Azur
 ## Annual Review and Updates
 
 ### Review Requirements
+
 1. Annual review of inherited controls
 2. Validation of CSP compliance
 3. Update of shared responsibility documentation
 4. Assessment of control effectiveness
 
 ### Documentation Updates
+
 1. Update control implementations
 2. Revise responsibility matrices
 3. Refresh evidence collections
 4. Maintain audit trails
 
 ## References
+
 1. FedRAMP High Security Controls Baseline
 2. AWS GovCloud Security Controls
 3. Azure Government Security Controls

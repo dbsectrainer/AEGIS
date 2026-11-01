@@ -1,0 +1,15 @@
+[2026-10-31 22:53:44] [INFO] [DRY RUN] Would create backups/aegis-config-20261101T025344Z.tar.gz
+[2026-10-31 22:53:44] [INFO] [DRY RUN] Included: README.md
+Makefile
+.gitignore
+automation
+data
+docs
+itsm_templates
+monitoring
+raci
+security-reference
+templates
+terraform
+tests
+[2026-10-31 22:53:44] [INFO] [DRY RUN] Excluded: .git, .terraform, *.tfstate, *.tfplan, *.tfvars, security-reports, compliance-reports, backups, docs/site

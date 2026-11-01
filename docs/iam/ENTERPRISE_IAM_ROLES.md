@@ -1,22 +1,25 @@
 # Enterprise IAM Roles and Permissions Structure
 
 ## Overview
+
 This document outlines the comprehensive role structure for enterprise-level cloud operations across AWS and Azure environments, following defense industry best practices and compliance requirements.
 
 ## Role Purpose and Justification
 
 ### Executive Level Roles
+
 1. **Enterprise Architecture Role**
    - Purpose: Oversee and govern overall cloud architecture and infrastructure design
    - Justification: Ensures consistent architecture standards, compliance with enterprise policies
    - Critical for: Strategic planning, technology standardization, and governance enforcement
-   
+
 2. **Cost Management Role**
    - Purpose: Monitor and optimize cloud spending across all accounts
    - Justification: Essential for budget control in large-scale cloud deployments
    - Critical for: Financial oversight, budget planning, and cost optimization
 
 ### Security Roles
+
 1. **Security Operations Manager**
    - Purpose: Overall security posture management and security strategy
    - Justification: Central coordination of security operations and incident response
@@ -48,6 +51,7 @@ This document outlines the comprehensive role structure for enterprise-level clo
    - Critical for: Incident containment, forensics, recovery
 
 ### Infrastructure Roles
+
 1. **Network Administrator**
    - Purpose: Design and manage cloud network infrastructure
    - Justification: Complex network architecture requires dedicated expertise
@@ -69,6 +73,7 @@ This document outlines the comprehensive role structure for enterprise-level clo
    - Critical for: System uptime, routine maintenance
 
 ### Development Roles
+
 1. **DevOps Engineer**
    - Purpose: Manage CI/CD pipelines and automation
    - Justification: Essential for automated deployment and operations
@@ -90,6 +95,7 @@ This document outlines the comprehensive role structure for enterprise-level clo
    - Critical for: Application availability, performance
 
 ### Data Roles
+
 1. **Database Administrator**
    - Purpose: Manage database platforms and data security
    - Justification: Expert-level database management required
@@ -115,7 +121,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Executive Level
 
 #### 1. Cloud Governance
+
 - **Enterprise Architecture Role**
+
   ```json
   {
     "Effect": "Allow",
@@ -127,7 +135,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Cost Management Role**
+
   ```json
   {
     "Effect": "Allow",
@@ -142,7 +152,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Security Operations
 
 #### 1. Security Administration
+
 - **Security Operations Manager**
+
   ```json
   {
     "Effect": "Allow",
@@ -155,7 +167,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Compliance Manager**
+
   ```json
   {
     "Effect": "Allow",
@@ -167,7 +181,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Identity Manager**
+
   ```json
   {
     "Effect": "Allow",
@@ -180,7 +196,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
   ```
 
 #### 2. Security Operations
+
 - **SOC Analyst Level 1**
+
   ```json
   {
     "Effect": "Allow",
@@ -192,7 +210,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **SOC Analyst Level 2**
+
   ```json
   {
     "Effect": "Allow",
@@ -204,7 +224,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Incident Response**
+
   ```json
   {
     "Effect": "Allow",
@@ -220,7 +242,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Infrastructure Operations
 
 #### 1. Network Operations
+
 - **Network Administrator**
+
   ```json
   {
     "Effect": "Allow",
@@ -233,7 +257,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Network Operator**
+
   ```json
   {
     "Effect": "Allow",
@@ -247,7 +273,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
   ```
 
 #### 2. Systems Operations
+
 - **Systems Administrator**
+
   ```json
   {
     "Effect": "Allow",
@@ -259,7 +287,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Systems Operator**
+
   ```json
   {
     "Effect": "Allow",
@@ -275,7 +305,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Development Operations
 
 #### 1. DevOps
+
 - **DevOps Engineer**
+
   ```json
   {
     "Effect": "Allow",
@@ -287,7 +319,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **CI/CD Administrator**
+
   ```json
   {
     "Effect": "Allow",
@@ -301,7 +335,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
   ```
 
 #### 2. Application Development
+
 - **Developer**
+
   ```json
   {
     "Effect": "Allow",
@@ -314,7 +350,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Application Support**
+
   ```json
   {
     "Effect": "Allow",
@@ -329,7 +367,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Data Operations
 
 #### 1. Database Administration
+
 - **Database Administrator**
+
   ```json
   {
     "Effect": "Allow",
@@ -340,7 +380,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Database Operator**
+
   ```json
   {
     "Effect": "Allow",
@@ -354,7 +396,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
   ```
 
 #### 2. Data Analytics
+
 - **Data Scientist**
+
   ```json
   {
     "Effect": "Allow",
@@ -365,7 +409,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Data Engineer**
+
   ```json
   {
     "Effect": "Allow",
@@ -382,7 +428,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Executive Level
 
 #### 1. Cloud Governance
+
 - **Enterprise Architecture Role**
+
   ```json
   {
     "Actions": [
@@ -392,7 +440,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Cost Management Role**
+
   ```json
   {
     "Actions": [
@@ -406,7 +456,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Security Operations
 
 #### 1. Security Administration
+
 - **Security Operations Manager**
+
   ```json
   {
     "Actions": [
@@ -416,7 +468,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
     ]
   }
   ```
+
 - **Compliance Manager**
+
   ```json
   {
     "Actions": [
@@ -428,7 +482,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
   ```
 
 #### 2. Identity Management
+
 - **Identity Administrator**
+
   ```json
   {
     "Actions": [
@@ -442,7 +498,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Infrastructure Operations
 
 #### 1. Network Operations
+
 - **Network Administrator**
+
   ```json
   {
     "Actions": [
@@ -454,7 +512,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
   ```
 
 #### 2. Systems Operations
+
 - **Systems Administrator**
+
   ```json
   {
     "Actions": [
@@ -468,7 +528,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Development Operations
 
 #### 1. DevOps
+
 - **DevOps Engineer**
+
   ```json
   {
     "Actions": [
@@ -480,7 +542,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
   ```
 
 #### 2. Application Development
+
 - **Developer**
+
   ```json
   {
     "Actions": [
@@ -494,7 +558,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ### Data Operations
 
 #### 1. Database Administration
+
 - **Database Administrator**
+
   ```json
   {
     "Actions": [
@@ -506,7 +572,9 @@ This document outlines the comprehensive role structure for enterprise-level clo
   ```
 
 #### 2. Data Analytics
+
 - **Data Scientist**
+
   ```json
   {
     "Actions": [
@@ -520,18 +588,21 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ## Role Assignment Guidelines
 
 ### Principle of Least Privilege
+
 1. Start with minimum required permissions
 2. Add permissions based on validated needs
 3. Regular access reviews
 4. Remove unused permissions
 
 ### Separation of Duties
+
 1. Development vs. Production access
 2. Infrastructure vs. Application access
 3. Data access vs. System access
 4. Security administration vs. System administration
 
 ### Access Review Cycles
+
 1. Privileged roles: Monthly review
 2. Standard roles: Quarterly review
 3. Emergency access: After each use
@@ -540,6 +611,7 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ## Compliance Requirements
 
 ### FedRAMP High Controls
+
 1. Access Control (AC)
    - Role-based schemes
    - Separation of duties
@@ -551,6 +623,7 @@ This document outlines the comprehensive role structure for enterprise-level clo
    - Usage monitoring
 
 ### DoD Requirements
+
 1. STIG Compliance
    - Role templates
    - Permission boundaries
@@ -564,21 +637,25 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ## Implementation Process
 
 ### 1. Initial Setup
+
 - Create role definitions
 - Establish permission boundaries
 - Configure access policies
 
 ### 2. Role Assignment
+
 - Map users to roles
 - Document assignments
 - Configure MFA requirements
 
 ### 3. Monitoring
+
 - Enable logging
 - Configure alerts
 - Review access patterns
 
 ### 4. Maintenance
+
 - Regular reviews
 - Permission updates
 - Role optimization
@@ -586,12 +663,14 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ## Emergency Access Procedures
 
 ### Break-Glass Access
+
 1. Emergency account creation
 2. Temporary elevation process
 3. Access monitoring requirements
 4. Post-incident review
 
 ### Disaster Recovery
+
 1. Backup authentication methods
 2. Cross-account access procedures
 3. Recovery role assignments
@@ -600,12 +679,14 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ## Documentation Requirements
 
 ### Role Documentation
+
 1. Role definitions
 2. Permission sets
 3. Assignment procedures
 4. Review processes
 
 ### Access Procedures
+
 1. Request process
 2. Approval workflows
 3. Provisioning steps
@@ -614,12 +695,14 @@ This document outlines the comprehensive role structure for enterprise-level clo
 ## Audit Requirements
 
 ### Regular Audits
+
 1. Monthly role reviews
 2. Quarterly access audits
 3. Annual comprehensive review
 4. Continuous monitoring
 
 ### Audit Documentation
+
 1. Review findings
 2. Remediation actions
 3. Compliance status

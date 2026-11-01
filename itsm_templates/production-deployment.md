@@ -1,6 +1,7 @@
 # Production Deployment Request Form
 
 ## Deployment Overview
+
 - **Release Name**: [Version/Release name] (*)
 - **Deployment Type**: [Full/Partial/Rollback] (*)
 - **Requestor**: [Name/Email] (*)
@@ -9,6 +10,7 @@
 - **Deployment Window**: [Duration] (*)
 
 ## Release Information
+
 - **Release Version**: [Version number] (*)
 - **Release Branch**: [Branch/Tag name] (*)
 - **Release Notes**: [Link to notes] (*)
@@ -16,6 +18,7 @@
 - **Known Issues**: [List of known issues]
 
 ## Pre-Deployment Requirements
+
 - **Environment Readiness**: [Pre-checks] (*)
 - **Configuration Changes**: [Config updates] (*)
 - **Database Changes**: [DB migrations] (*)
@@ -23,6 +26,7 @@
 - **Security Requirements**: [Security checks] (*)
 
 ## Testing Verification
+
 - **Unit Test Results**: [Test coverage/results] (*)
 - **Integration Test Results**: [Test results] (*)
 - **Performance Test Results**: [Load test results] (*)
@@ -30,6 +34,7 @@
 - **UAT Sign-off**: [User acceptance] (*)
 
 ## Deployment Components
+
 - **Application Changes**: [Service updates] (*)
 - **Database Changes**: [Schema changes] (*)
 - **Infrastructure Updates**: [Cloud resources] (*)
@@ -37,6 +42,7 @@
 - **Third-Party Services**: [External dependencies]
 
 ## Security Checklist
+
 - **Security Review**: [Security approval] (*)
 - **Compliance Check**: [Compliance status] (*)
 - **Vulnerability Scan**: [Scan results] (*)
@@ -44,6 +50,7 @@
 - **Access Controls**: [Permission updates] (*)
 
 ## Deployment Strategy
+
 - **Deployment Method**: [Blue-Green/Canary/Rolling] (*)
 - **Order of Operations**: [Deployment steps] (*)
 - **Database Migration Plan**: [Migration strategy] (*)
@@ -51,6 +58,7 @@
 - **Traffic Management**: [Load balancing] (*)
 
 ## Rollback Plan
+
 - **Rollback Triggers**: [Failure criteria] (*)
 - **Rollback Steps**: [Detailed steps] (*)
 - **Data Rollback**: [Data recovery] (*)
@@ -58,6 +66,7 @@
 - **Verification Steps**: [Post-rollback checks] (*)
 
 ## Monitoring & Alerts
+
 - **Monitoring Dashboard**: [Dashboard link] (*)
 - **Alert Configurations**: [Alert settings] (*)
 - **Key Metrics**: [Critical metrics] (*)
@@ -65,6 +74,7 @@
 - **Performance Monitoring**: [APM setup] (*)
 
 ## Communication Plan
+
 - **Stakeholder List**: [Key contacts] (*)
 - **Communication Channel**: [Notification method] (*)
 - **Status Updates**: [Update frequency] (*)
@@ -72,6 +82,7 @@
 - **External Communications**: [Customer notices]
 
 ## Service Level Objectives
+
 - **Availability Target**: [Uptime goal] (*)
 - **Performance Target**: [Response time] (*)
 - **Error Budget**: [Allowed downtime] (*)
@@ -79,6 +90,7 @@
 - **Data Loss Prevention**: [RPO target] (*)
 
 ## Post-Deployment
+
 - **Smoke Tests**: [Validation tests] (*)
 - **Health Checks**: [System health] (*)
 - **Performance Baseline**: [New baseline] (*)
@@ -86,6 +98,7 @@
 - **Monitoring Period**: [Observation time] (*)
 
 ## Documentation
+
 - **Deployment Guide**: [Step-by-step guide] (*)
 - **Configuration Changes**: [Config documentation] (*)
 - **API Changes**: [API documentation] (*)
@@ -93,6 +106,7 @@
 - **Architecture Updates**: [Design changes] (*)
 
 ## Dependencies
+
 - **System Dependencies**: [Internal systems] (*)
 - **External Dependencies**: [Third-party services] (*)
 - **Team Dependencies**: [Other teams] (*)
@@ -100,6 +114,7 @@
 - **Licensing Requirements**: [License updates]
 
 ## Approvals Required
+
 - **Development Team**: [Tech lead] (*)
 - **QA Team**: [QA lead] (*)
 - **Security Team**: [Security lead] (*)
@@ -107,6 +122,7 @@
 - **Business Owner**: [Product owner] (*)
 
 ## Risk Assessment
+
 - **Business Impact**: [Impact level] (*)
 - **Technical Risk**: [Risk level] (*)
 - **Mitigation Plan**: [Risk mitigation] (*)

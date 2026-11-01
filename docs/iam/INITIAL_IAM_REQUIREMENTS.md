@@ -9,6 +9,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ### AWS Environment
 
 #### 1. Management Account Access
+
 - **Organization Administrator Role**
   - Purpose: Initial setup and management of AWS Organizations
   - Key Permissions:
@@ -19,6 +20,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
   - Required For: Multi-account management and security configuration
 
 #### 2. Security Administration
+
 - **Security Operations Role**
   - Purpose: Security monitoring and compliance management
   - Key Permissions:
@@ -30,6 +32,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
   - Required For: Security monitoring and compliance reporting
 
 #### 3. Audit Management
+
 - **Audit Administrator Role**
   - Purpose: Audit configuration and review
   - Key Permissions:
@@ -42,6 +45,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ### Azure Environment
 
 #### 1. Tenant Administration
+
 - **Global Administrator Role**
   - Purpose: Initial Azure AD configuration
   - Key Permissions:
@@ -50,6 +54,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
   - Required For: Identity federation and conditional access setup
 
 #### 2. Security Operations
+
 - **Security Administrator Role**
   - Purpose: Security policy management
   - Key Permissions:
@@ -59,6 +64,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
   - Required For: Security control implementation
 
 #### 3. Subscription Management
+
 - **Subscription Administrator Role**
   - Purpose: Resource management
   - Key Permissions:
@@ -71,6 +77,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ### Phase 1: Initial Setup (Week 1-2)
 
 #### AWS Setup Requirements
+
 1. **Organizations Configuration**
    - Create management account
    - Enable all security features
@@ -83,6 +90,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
    - AWS IAM Access Analyzer
 
 #### Azure Setup Requirements
+
 1. **Azure AD Configuration**
    - Configure conditional access
    - Enable MFA
@@ -98,7 +106,9 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ### Phase 2: Access Configuration (Week 3-4)
 
 #### AWS Access Requirements
+
 1. **Cross-Account Access**
+
    ```json
    {
      "Version": "2012-10-17",
@@ -120,6 +130,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
    ```
 
 2. **Service Control Policies**
+
    ```json
    {
      "Version": "2012-10-17",
@@ -140,6 +151,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
    ```
 
 #### Azure Access Requirements
+
 1. **Conditional Access Policies**
    - Require MFA for all users
    - Enforce device compliance
@@ -147,6 +159,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
    - Enable session controls
 
 2. **RBAC Assignments**
+
    ```json
    {
      "Name": "Custom Security Role",
@@ -169,6 +182,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ## Security Requirements
 
 ### Authentication
+
 1. **Multi-Factor Authentication**
    - Required for all user accounts
    - Hardware tokens for privileged access
@@ -187,6 +201,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ## Compliance Requirements
 
 ### FedRAMP High Controls
+
 1. **Access Control (AC)**
    - AC-1: Access Control Policy
    - AC-2: Account Management
@@ -198,6 +213,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
    - AU-12: Audit Generation
 
 ### DoD Requirements
+
 1. **STIG Compliance**
    - Implementation of security technical guides
    - Regular compliance scanning
@@ -211,6 +227,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ## Required Documentation
 
 ### Security Documentation
+
 1. **System Security Plan (SSP)**
    - Architecture diagrams
    - Control implementations
@@ -222,6 +239,7 @@ This document outlines the initial Identity and Access Management (IAM) requirem
    - Recovery processes
 
 ### Access Management
+
 1. **Access Control Policy**
    - Role definitions
    - Permission sets
@@ -235,21 +253,25 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ## Timeline and Milestones
 
 ### Week 1
+
 - [ ] Initial AWS Organizations setup
 - [ ] Azure AD configuration
 - [ ] Security tool enablement
 
 ### Week 2
+
 - [ ] Role and policy creation
 - [ ] MFA implementation
 - [ ] Logging configuration
 
 ### Week 3
+
 - [ ] Cross-account access setup
 - [ ] Conditional access policies
 - [ ] Compliance validation
 
 ### Week 4
+
 - [ ] Documentation completion
 - [ ] Access review procedures
 - [ ] Final security validation
@@ -271,11 +293,13 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ## Contact Information
 
 ### Security Team
+
 - Security Lead: [Name]
 - Email: [Email]
 - Phone: [Phone]
 
 ### Technical Team
+
 - Technical Lead: [Name]
 - Email: [Email]
 - Phone: [Phone]
@@ -283,12 +307,14 @@ This document outlines the initial Identity and Access Management (IAM) requirem
 ## Approval Requirements
 
 ### Required Signatures
+
 - [ ] GOV Information System Security Manager
 - [ ] GOV Cloud Program Manager
 - [ ] Contractor Program Manager
 - [ ] Security Team Lead
 
 ### Documentation Requirements
+
 - [ ] Signed SSP
 - [ ] Approved access policies
 - [ ] Configuration documentation

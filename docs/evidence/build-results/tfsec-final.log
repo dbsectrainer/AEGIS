@@ -1,0 +1,42 @@
+# tfsec final verification
+Command: tfsec terraform --force-all-dirs --minimum-severity HIGH
+
+
+======================================================
+tfsec is joining the Trivy family
+
+tfsec will continue to remain available 
+for the time being, although our engineering 
+attention will be directed at Trivy going forward.
+
+You can read more here: 
+https://github.com/aquasecurity/tfsec/discussions/1994
+======================================================
+[0m  [1mtimings[0m
+  ──────────────────────────────────────────
+[0m[0m  [2mdisk i/o            [0m 968.543µs
+[0m[0m  [2mparsing             [0m 78.942254ms
+[0m[0m  [2madaptation          [0m 40.890457ms
+[0m[0m  [2mchecks              [0m 5.745670667s
+[0m[0m  [2mtotal               [0m 5.866471921s
+[0m
+[0m  [1mcounts[0m
+  ──────────────────────────────────────────
+[0m[0m  [2mmodules downloaded  [0m 0
+[0m[0m  [2mmodules processed   [0m 22
+[0m[0m  [2mblocks processed    [0m 813
+[0m[0m  [2mfiles read          [0m 28
+[0m
+[0m  [1mresults[0m
+  ──────────────────────────────────────────
+[0m[0m  [2mpassed              [0m 106
+[0m[0m  [2mignored             [0m 169
+[0m[0m  [2mcritical            [0m 0
+[0m[0m  [2mhigh                [0m 0
+[0m[0m  [2mmedium              [0m 0
+[0m[0m  [2mlow                 [0m 0
+[0m
+[0m
+[32m[1mNo problems detected!
+
+[0mEXIT=0

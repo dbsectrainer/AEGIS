@@ -3,9 +3,11 @@
 ## Cloud Infrastructure Management Workflows
 
 ### 1. Cloud Platform Selection Process
+
 **Trigger**: Need for new cloud service or platform evaluation
 **Primary Owner**: CIO (Accountable)
 **Workflow Steps**:
+
 1. Enterprise Architect (R) initiates platform evaluation request
 2. Cloud Services Team (R) conducts technical assessment
    - Evaluate technical requirements
@@ -21,9 +23,11 @@
 **Escalation**: If delayed > 15 days, escalate to CIO
 
 ### 2. Cloud Architecture Design Process
+
 **Trigger**: New cloud solution requirement
 **Primary Owner**: Enterprise Architect (A)
 **Workflow Steps**:
+
 1. Cloud Services Team (R) drafts initial architecture
 2. Enterprise Architect reviews and refines design
 3. Security Team (C) reviews security architecture
@@ -37,9 +41,11 @@
 ## Security & Compliance Workflows
 
 ### 1. Security Incident Response
+
 **Trigger**: Security incident detection
 **Primary Owner**: CISO (A)
 **Workflow Steps**:
+
 1. SecOps Team (R) initiates incident response
 2. CISO assesses incident severity
 3. Security Team implements immediate containment
@@ -49,6 +55,7 @@
 7. CISO approves resolution actions
 8. CIO (I) receives incident report
 **SLA**: Based on severity:
+
 - Critical: 2 hours
 - High: 4 hours
 - Medium: 8 hours
@@ -56,9 +63,11 @@
 **Escalation**: If SLA breached, escalate to CIO
 
 ### 2. Compliance Monitoring Process
+
 **Trigger**: Scheduled compliance check or audit requirement
 **Primary Owner**: CISO (A)
 **Workflow Steps**:
+
 1. SecOps (R) runs compliance scans
 2. IAM Team (R) reviews access compliance
 3. Security Team analyzes results
@@ -72,9 +81,11 @@
 ## Operations & Maintenance Workflows
 
 ### 1. System Maintenance Process
+
 **Trigger**: Scheduled maintenance or system issue
 **Primary Owner**: System Administrators (A/R)
 **Workflow Steps**:
+
 1. SysAdmin team creates maintenance plan
 2. DevOps (R) reviews impact on applications
 3. Security Team (C) reviews security implications
@@ -86,9 +97,11 @@
 **Escalation**: If delayed > 3 days, escalate to Operations Manager
 
 ### 2. Change Management Process
+
 **Trigger**: Change request submission
 **Primary Owner**: Program Manager (A)
 **Workflow Steps**:
+
 1. Requestor submits change request
 2. Change Advisory Board reviews request
 3. Security Team (C) assesses security impact
@@ -103,9 +116,11 @@
 ## Data Management Workflows
 
 ### 1. Data Migration Process
+
 **Trigger**: Data migration requirement
 **Primary Owner**: Database Administrators (A/R)
 **Workflow Steps**:
+
 1. DBA team creates migration plan
 2. Security Team (C) reviews security controls
 3. Enterprise Architect (C) reviews data architecture
@@ -118,9 +133,11 @@
 **Escalation**: If delayed > 15 days, escalate to EA
 
 ### 2. Data Protection Implementation
+
 **Trigger**: New data protection requirement
 **Primary Owner**: CISO (A)
 **Workflow Steps**:
+
 1. Security Team (R) designs controls
 2. DBA team (R) implements database controls
 3. IAM Team (C) configures access controls
@@ -133,9 +150,11 @@
 ## Identity & Access Management Workflows
 
 ### 1. IAM Policy Implementation
+
 **Trigger**: New IAM policy requirement
 **Primary Owner**: CISO (A)
 **Workflow Steps**:
+
 1. IAM Team (R) drafts policy
 2. Security Team (R) reviews controls
 3. Enterprise Architect (C) reviews architecture impact
@@ -147,9 +166,11 @@
 **Escalation**: If delayed > 10 days, escalate to CISO
 
 ### 2. Access Control Management
+
 **Trigger**: Access control change request
 **Primary Owner**: IAM Team (R)
 **Workflow Steps**:
+
 1. IAM Team reviews request
 2. Security Team (R) assesses security impact
 3. System Owners approve access
@@ -162,9 +183,11 @@
 ## Cost Management & Optimization Workflows
 
 ### 1. Budget Planning Process
+
 **Trigger**: Annual budget planning cycle
 **Primary Owner**: CIO (A)
 **Workflow Steps**:
+
 1. FinOps Team (R) prepares initial budget
 2. Cloud Services Team (R) provides resource forecasts
 3. Enterprise Architect (C) reviews technical requirements
@@ -176,9 +199,11 @@
 **Escalation**: If delayed > 15 days, escalate to CIO
 
 ### 2. Cost Optimization Process
+
 **Trigger**: Monthly cost review or optimization request
 **Primary Owner**: FinOps (A/R)
 **Workflow Steps**:
+
 1. FinOps Team analyzes current costs
 2. Cloud Services Team (R) reviews resource usage
 3. Enterprise Architect (A) reviews optimization opportunities
@@ -191,9 +216,11 @@
 ## Disaster Recovery & Business Continuity Workflows
 
 ### 1. DR Planning Process
+
 **Trigger**: Annual DR plan review or significant change
 **Primary Owner**: CIO (A)
 **Workflow Steps**:
+
 1. CISO (R) leads plan review
 2. Enterprise Architect (R) reviews technical requirements
 3. All teams (R) update recovery procedures
@@ -205,9 +232,11 @@
 **Escalation**: If delayed > 30 days, escalate to CIO
 
 ### 2. DR Testing Process
+
 **Trigger**: Scheduled DR test
 **Primary Owner**: CISO (A)
 **Workflow Steps**:
+
 1. Program Manager (R) coordinates test
 2. All technical teams (R) participate in test
 3. Security Team validates security controls
@@ -219,6 +248,7 @@
 **Escalation**: If delayed > 7 days, escalate to CISO
 
 ## Notes
+
 1. All workflows should be reviewed and updated annually or upon significant organizational changes
 2. SLA timelines may be adjusted based on agency-specific requirements
 3. Additional approvals may be required based on specific agency policies

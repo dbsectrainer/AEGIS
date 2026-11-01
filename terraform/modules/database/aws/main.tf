@@ -16,23 +16,26 @@ resource "aws_kms_alias" "database" {
 
 # RDS Aurora PostgreSQL Cluster
 resource "aws_rds_cluster" "main" {
-  count                        = var.create_aurora_cluster ? 1 : 0
-  cluster_identifier           = "${var.environment}-aurora-cluster"
-  engine                       = "aurora-postgresql"
-  engine_version               = var.aurora_engine_version
-  database_name                = var.database_name
-  master_username              = var.master_username
-  master_password              = var.master_password
-  backup_retention_period      = var.backup_retention_period
-  preferred_backup_window      = var.preferred_backup_window
-  preferred_maintenance_window = var.preferred_maintenance_window
-  db_subnet_group_name         = aws_db_subnet_group.main.name
-  vpc_security_group_ids       = [aws_security_group.database.id]
-  storage_encrypted            = true
-  kms_key_id                   = aws_kms_key.database.arn
-  deletion_protection          = true
-  skip_final_snapshot          = false
-  final_snapshot_identifier    = "${var.environment}-aurora-final-snapshot"
+  count                               = var.create_aurora_cluster ? 1 : 0
+  cluster_identifier                  = "${var.environment}-aurora-cluster"
+  engine                              = "aurora-postgresql"
+  engine_version                      = var.aurora_engine_version
+  database_name                       = var.database_name
+  master_username                     = var.master_username
+  master_password                     = var.master_password
+  backup_retention_period             = var.backup_retention_period
+  preferred_backup_window             = var.preferred_backup_window
+  preferred_maintenance_window        = var.preferred_maintenance_window
+  db_subnet_group_name                = aws_db_subnet_group.main.name
+  vpc_security_group_ids              = [aws_security_group.database.id]
+  storage_encrypted                   = true
+  kms_key_id                          = aws_kms_key.database.arn
+  deletion_protection                 = true
+  skip_final_snapshot                 = false
+  final_snapshot_identifier           = "${var.environment}-aurora-final-snapshot"
+  copy_tags_to_snapshot               = true
+  iam_database_authentication_enabled = true
+  auto_minor_version_upgrade          = true
 
   enabled_cloudwatch_logs_exports = ["postgresql"]
 
@@ -52,6 +55,7 @@ resource "aws_rds_cluster_instance" "main" {
   engine             = aws_rds_cluster.main[0].engine
   engine_version     = aws_rds_cluster.main[0].engine_version
 
+  auto_minor_version_upgrade      = true
   performance_insights_enabled    = true
   performance_insights_kms_key_id = aws_kms_key.database.arn
   monitoring_interval             = 60
@@ -95,6 +99,8 @@ resource "aws_dynamodb_table" "main" {
     enabled = true
   }
 
+  deletion_protection_enabled = true
+
   server_side_encryption {
     enabled     = true
     kms_key_arn = aws_kms_key.database.arn
@@ -110,19 +116,19 @@ resource "aws_security_group" "database" {
   description = "Security group for database resources"
 
   ingress {
+    description     = "Allow PostgreSQL access from application tier"
     from_port       = 5432
     to_port         = 5432
     protocol        = "tcp"
     security_groups = var.allowed_security_groups
-    description     = "Allow PostgreSQL access from application tier"
   }
 
   egress {
+    description     = "Allow outbound traffic to application tier only"
     from_port       = 0
     to_port         = 0
     protocol        = "-1"
     security_groups = var.allowed_security_groups
-    description     = "Allow outbound traffic to application tier only"
   }
 
   tags = merge(var.tags, {

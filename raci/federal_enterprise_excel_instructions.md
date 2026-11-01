@@ -1,7 +1,9 @@
 # Instructions for Federal Enterprise Cloud & On-Premises Excel Workbook
 
 ## Overview
+
 This document provides instructions for using the Federal Enterprise Cloud & On-Premises Excel workbook, which contains three integrated worksheets:
+
 1. RACI Matrix
 2. Remedy Workflows
 3. Job Duties
@@ -9,12 +11,14 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
 ## General Workbook Navigation
 
 ### Worksheet Organization
+
 - The workbook contains three tabs at the bottom:
   - "RACI Matrix" - Contains the responsibility assignment matrix
   - "Remedy Workflows" - Contains detailed process workflows
   - "Job Duties" - Contains role descriptions and responsibilities
 
 ### Common Features Across All Sheets
+
 - **Color Coding**:
   - Light Blue: Headers and section titles
   - White: Content cells
@@ -23,6 +27,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
   - Red: Escalated items or issues
 
 ### Basic Navigation
+
 1. Use worksheet tabs at the bottom to switch between sheets
 2. Use the Table of Contents in each sheet to jump to specific sections
 3. Use Ctrl+F (Windows) or Cmd+F (Mac) for keyword search
@@ -31,6 +36,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
 ## RACI Matrix Sheet Instructions
 
 ### Understanding the Matrix
+
 1. **Column Headers**:
    - First column lists activities/tasks
    - Subsequent columns show stakeholder roles
@@ -43,6 +49,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - I (Informed): Kept updated
 
 ### Using Filters and Views
+
 1. **Role-Based Filtering**:
    - Click filter arrow in role column
    - Select specific RACI designations
@@ -54,6 +61,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - Focus on specific workflow areas
 
 ### Updating the Matrix
+
 1. **Adding New Activities**:
    - Insert row in appropriate section
    - Add activity description
@@ -68,6 +76,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
 ## Remedy Workflows Sheet Instructions
 
 ### Navigating Workflows
+
 1. **Finding Workflows**:
    - Use category headers to locate workflow type
    - Use index/hyperlinks for quick navigation
@@ -81,6 +90,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - Escalation: Next level of authority
 
 ### Tracking Workflow Progress
+
 1. **Status Updates**:
    - Use status column to mark progress
    - Update completion dates
@@ -95,6 +105,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
 ## Job Duties Sheet Instructions
 
 ### Using Role Descriptions
+
 1. **Locating Role Information**:
    - Use alphabetical role listing
    - Filter by department/category
@@ -108,6 +119,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - Key Interactions
 
 ### Maintaining Role Information
+
 1. **Updates and Changes**:
    - Document role changes in change log
    - Update related RACI entries
@@ -117,6 +129,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
 ## Integration Between Sheets
 
 ### Cross-Referencing
+
 1. **RACI to Workflows**:
    - Use hyperlinks to jump to related workflows
    - Verify role assignments match
@@ -128,6 +141,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - Confirm skill requirements
 
 ### Decision Support
+
 1. **Using Combined Information**:
    - Check RACI for authority
    - Review workflow for process
@@ -137,6 +151,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
 ## Maintenance Procedures
 
 ### Regular Updates
+
 1. **Review Cycle**:
    - Quarterly RACI review
    - Monthly workflow updates
@@ -150,6 +165,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - Maintain version history
 
 ### Version Control
+
 1. **File Naming**:
    - Include version number
    - Add date of last update
@@ -165,6 +181,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
 ## Best Practices
 
 ### Data Entry
+
 1. **Consistency**:
    - Use standard abbreviations
    - Follow naming conventions
@@ -178,6 +195,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - Test hyperlinks
 
 ### Security
+
 1. **Access Control**:
    - Use file protection
    - Set appropriate permissions
@@ -193,6 +211,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
 ## Support and Help
 
 ### Technical Issues
+
 1. **Common Problems**:
    - Formula errors
    - Filter issues
@@ -206,6 +225,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - Share solutions found
 
 ### Training Resources
+
 1. **Available Materials**:
    - User guides
    - Video tutorials
@@ -219,6 +239,7 @@ This document provides instructions for using the Federal Enterprise Cloud & On-
    - Resource library
 
 ## Notes
+
 1. Save work frequently
 2. Use version control procedures
 3. Report any issues promptly

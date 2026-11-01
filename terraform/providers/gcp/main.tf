@@ -1,4 +1,14 @@
 # Google Cloud Platform Provider Configuration
+terraform {
+  required_version = ">= 1.12"
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.0"
+    }
+  }
+}
+
 provider "google" {
   project = var.project_id
   region  = var.region
@@ -7,13 +17,8 @@ provider "google" {
   # Use OAuth 2.0 access token if specified
   access_token = var.access_token
 
-  # Use service account if specified
-  dynamic "impersonate_service_account" {
-    for_each = var.impersonate_service_account != "" ? [1] : []
-    content {
-      target_service_account = var.impersonate_service_account
-    }
-  }
+  # Use a service account if specified (a provider attribute, not a block).
+  impersonate_service_account = var.impersonate_service_account != "" ? var.impersonate_service_account : null
 }
 
 # Enable required GCP APIs

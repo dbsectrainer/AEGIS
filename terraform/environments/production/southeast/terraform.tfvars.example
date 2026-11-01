@@ -1,0 +1,37 @@
+# Copy this file to terraform.tfvars and replace placeholders.
+# terraform.tfvars is git-ignored. Never commit real credentials.
+#
+# Secrets are intentionally absent. Export them through your secret manager or
+# environment before planning:
+#   export TF_VAR_aurora_master_password='...'
+#   export TF_VAR_azure_sql_password='...'
+#   export TF_VAR_gcp_db_password='...'
+
+environment_name = "prod-southeast"
+
+# AWS GovCloud
+aws_region             = "us-gov-east-1"
+aws_availability_zones = ["us-gov-east-1a", "us-gov-east-1b"]
+ecs_ami_id             = "ami-0123456789abcdef0"
+
+# Azure Government
+azure_subscription_id = "00000000-0000-0000-0000-000000000000"
+azure_tenant_id       = "00000000-0000-0000-0000-000000000000"
+azure_location        = "usgovvirginia"
+azure_resource_group  = "gov-prod-southeast-rg"
+
+azure_key_vault_key_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gov-prod-southeast-rg/providers/Microsoft.KeyVault/vaults/gov-prod-kv/keys/container-registry"
+azure_admin_group_object_ids = [
+  "00000000-0000-0000-0000-000000000000",
+]
+
+# GCP
+gcp_project_id       = "gov-prod-southeast"
+gcp_project_number   = "123456789012"
+gcp_access_policy_id = "987654321"
+gcp_region           = "us-east4"
+gcp_zone             = "us-east4-a"
+
+# Azure SQL administrator
+azure_ad_admin_username  = "admin@example.gov"
+azure_ad_admin_object_id = "00000000-0000-0000-0000-000000000000"

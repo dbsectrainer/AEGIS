@@ -1,173 +1,77 @@
 # Testing Framework
 
-This directory contains the testing infrastructure for validating cloud resources, security configurations, and performance metrics.
+This directory contains the offline and browser test suites for AEGIS. The
+repository has no long-running application; the test layers are:
 
-## Directory Structure
+| Layer | Tool | What it verifies |
+| --- | --- | --- |
+| Repository contracts | Python `unittest` | Required files, Makefile/script contracts, JSON/CSV/XML, shell syntax, secret/state hygiene, provider configuration |
+| Terraform | `terraform validate` + `terraform test` | Formatting, provider schema, full-stack mock plan, validation failures |
+| Security | Trivy, tfsec, Checkov (advisory) | IaC misconfigurations and policy findings |
+| Compliance | `automation/compliance/audit/run-compliance.sh` | 35 artifact, control, configuration, and hygiene checks |
+| Documentation | `make docs` | 66-page static portal generation |
+| Browser E2E | Playwright + Chromium | Navigation, search, links, mobile layout, console/network cleanliness, screenshots |
 
-```
+## Directory layout
+
+```text
 tests/
-├── terraform/           # Infrastructure tests
-│   ├── unit/          # Unit tests for Terraform modules
-│   ├── integration/   # Integration tests for infrastructure
-│   └── security/      # Security tests for infrastructure
-├── security/           # Security testing
-│   ├── unit/          # Unit tests for security controls
-│   ├── integration/   # Integration tests for security systems
-│   └── security/      # Security validation tests
-└── performance/        # Performance testing
-    ├── unit/          # Unit performance tests
-    ├── integration/   # Integration performance tests
-    └── security/      # Security performance tests
+├── test_repository.py          # 21 offline repository tests
+├── run-tests.sh                # full verification runner (evidence collection)
+├── write_verification.py       # machine-readable verification snapshot
+└── e2e/
+    └── test_docs_portal.py     # Playwright E2E + screenshots
 ```
 
-## Test Categories
+## Prerequisites
 
-### Infrastructure Testing (terraform/)
+```bash
+python3 -m pip install -r docs/requirements.txt
+python3 -m pip install playwright
+python3 -m playwright install chromium
+```
 
-- **Unit Tests**
-  - Individual module testing
-  - Resource configuration validation
-  - Input/output validation
-  - State management testing
+Also required for the full runner: Terraform 1.12+, `jq`, `shellcheck`, `trivy`,
+and `markdownlint-cli`. `tfsec` and `checkov` are optional/advisory.
 
-- **Integration Tests**
-  - Cross-module integration
-  - Resource dependency testing
-  - Multi-region deployment
-  - State management across environments
+## Commands
 
-- **Security Tests**
-  - IAM configuration testing
-  - Network security testing
-  - Encryption configuration
-  - Security group validation
+```bash
+# Fast repository contract tests
+make test-repository
 
-### Security Testing (security/)
+# Terraform format, offline validate, and mock-provider tests
+make test-terraform
 
-- **Unit Tests**
-  - Individual security control testing
-  - Policy validation
-  - Authentication testing
-  - Authorization testing
+# Trivy HIGH/CRITICAL IaC scan
+make test-security
 
-- **Integration Tests**
-  - Security system integration
-  - Cross-service security
-  - Identity federation
-  - Access control validation
+# Documentation portal + Playwright E2E + screenshots
+make test-e2e
 
-- **Security Validation**
-  - Vulnerability scanning
-  - Penetration testing
-  - Compliance validation
-  - Security baseline testing
+# Full evidence-collection suite
+make verify
+```
 
-### Performance Testing (performance/)
+`make test` runs the repository, Terraform, and Trivy gates. `make verify` also
+runs ShellCheck, Markdown lint, compliance, monitoring validation, deployment
+dry runs, documentation E2E, and writes `docs/evidence/verification.json`.
 
-- **Unit Tests**
-  - Resource performance testing
-  - API performance testing
-  - Function performance testing
-  - Database performance testing
+## Evidence outputs
 
-- **Integration Tests**
-  - System performance testing
-  - Load testing
-  - Stress testing
-  - Scalability testing
+- `docs/evidence/test-results/`: one log per check plus `status.tsv`
+- `docs/evidence/build-results/`: Terraform, docs, Trivy, and Checkov build logs
+- `docs/evidence/screenshots/`: browser screenshots
+- `docs/evidence/verification.json`: status, counts, artifact paths
+- `docs/evidence/verification-report.md`: human-readable audit report
 
-- **Security Performance**
-  - Security control performance
-  - Encryption performance
-  - Authentication performance
-  - Authorization performance
+## Scope limitations
 
-## Testing Tools
-
-### Infrastructure Testing
-- Terratest
-- Kitchen-Terraform
-- Inspec
-- AWS CloudFormation Linter
-- Azure Resource Manager Template Toolkit
-
-### Security Testing
-- OWASP ZAP
-- Nmap
-- Metasploit
-- Burp Suite
-- SonarQube
-
-### Performance Testing
-- JMeter
-- Gatling
-- K6
-- Apache Benchmark
-- Locust
-
-## Test Execution
-
-1. Local Development
-   ```bash
-   # Run unit tests
-   make test-unit
-   
-   # Run integration tests
-   make test-integration
-   
-   # Run security tests
-   make test-security
-   
-   # Run performance tests
-   make test-performance
-   ```
-
-2. CI/CD Pipeline
-   - Automated testing in GitHub Actions
-   - Test results reporting
-   - Coverage reporting
-   - Performance metrics collection
-
-## Test Reports
-
-- JUnit XML reports
-- HTML test reports
-- Coverage reports
-- Performance test reports
-- Security scan reports
-
-## Best Practices
-
-1. Test Organization
-   - Clear test hierarchy
-   - Consistent naming conventions
-   - Proper test isolation
-   - Comprehensive documentation
-
-2. Test Development
-   - Test-driven development (TDD)
-   - Behavior-driven development (BDD)
-   - Proper error handling
-   - Meaningful assertions
-
-3. Test Maintenance
-   - Regular updates
-   - Dependency management
-   - Test cleanup
-   - Performance optimization
-
-## Security Considerations
-
-- Secure test data handling
-- Credential management
-- Environment isolation
-- Compliance requirements
-- Audit logging
-
-## Performance Considerations
-
-- Resource utilization
-- Test execution time
-- Parallel test execution
-- Resource cleanup
-- Cost optimization
+- Tests run offline. They do not prove live cloud behavior, IAM permissions, or
+  control effectiveness.
+- Terraform tests use mock providers; they validate wiring and schema, not
+  provider API responses.
+- Checkov is advisory and may report findings or false positives; inspect the
+  log rather than treating the label as a pass/fail security certification.
+- Browser E2E covers the documentation portal, which is the only rendered UI in
+  this repository.

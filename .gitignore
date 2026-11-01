@@ -1,0 +1,30 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+*.tfvars
+!*.tfvars.example
+
+# Generated evidence and build output
+docs/site/
+security-reports/
+compliance-reports/
+monitoring/generated/
+backups/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Node
+node_modules/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/

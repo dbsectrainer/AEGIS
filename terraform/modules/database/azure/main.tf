@@ -10,28 +10,34 @@ resource "azurerm_mssql_server" "main" {
   administrator_login_password = var.administrator_password
 
   azuread_administrator {
-    login_username = var.azure_ad_admin_username
-    object_id      = var.azure_ad_admin_object_id
+    login_username              = var.azure_ad_admin_username
+    object_id                   = var.azure_ad_admin_object_id
+    azuread_authentication_only = true
   }
 
   identity {
-    type = "SystemAssigned"
+    type         = "SystemAssigned, UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.sql.id]
   }
 
   primary_user_assigned_identity_id = azurerm_user_assigned_identity.sql.id
 
-  public_network_access_enabled = false
+  public_network_access_enabled            = false
+  minimum_tls_version                      = "1.2"
+  express_vulnerability_assessment_enabled = true
+  outbound_network_restriction_enabled     = true
 
   tags = var.tags
 }
 
 # Azure SQL Database
 resource "azurerm_mssql_database" "main" {
-  name           = "${var.environment}-db"
-  server_id      = azurerm_mssql_server.main.id
-  collation      = "SQL_Latin1_General_CP1_CI_AS"
-  sku_name       = var.sql_sku_name
-  zone_redundant = true
+  name                                = "${var.environment}-db"
+  server_id                           = azurerm_mssql_server.main.id
+  collation                           = "SQL_Latin1_General_CP1_CI_AS"
+  sku_name                            = var.sql_sku_name
+  zone_redundant                      = true
+  transparent_data_encryption_enabled = true
 
   short_term_retention_policy {
     retention_days = 7
@@ -57,6 +63,9 @@ resource "azurerm_cosmosdb_account" "main" {
 
   automatic_failover_enabled       = true
   multiple_write_locations_enabled = false
+  public_network_access_enabled    = false
+  local_authentication_enabled     = false
+  minimal_tls_version              = "Tls12"
 
   consistency_policy {
     consistency_level = "Session"
@@ -111,7 +120,7 @@ resource "azurerm_private_endpoint" "sql" {
   }
 
   private_dns_zone_group {
-    name                 = "default"
+    name                 = "sql"
     private_dns_zone_ids = [var.private_dns_zone_id]
   }
 
@@ -132,8 +141,8 @@ resource "azurerm_private_endpoint" "cosmos" {
   }
 
   private_dns_zone_group {
-    name                 = "default"
-    private_dns_zone_ids = [var.private_dns_zone_id]
+    name                 = "cosmos"
+    private_dns_zone_ids = [var.cosmos_private_dns_zone_id]
   }
 
   tags = var.tags
@@ -244,7 +253,12 @@ variable "subnet_id" {
 }
 
 variable "private_dns_zone_id" {
-  description = "Private DNS zone ID"
+  description = "Private DNS zone ID for the Azure SQL private endpoint"
+  type        = string
+}
+
+variable "cosmos_private_dns_zone_id" {
+  description = "Private DNS zone ID for the Cosmos DB private endpoint"
   type        = string
 }
 

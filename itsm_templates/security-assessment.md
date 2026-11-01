@@ -1,6 +1,7 @@
 # Security Assessment Intake Form
 
 ## Request Information
+
 - **Assessment Type**: [New Feature/Change/Periodic Review] (*)
 - **System/Application Name**: [Name] (*)
 - **Business Owner**: [Name/Email] (*)
@@ -9,6 +10,7 @@
 - **Target Completion Date**: [Date] (*)
 
 ## System Overview
+
 - **System Description**: [Brief description] (*)
 - **Architecture Diagram**: [Link to diagram] (*)
 - **Data Flow Diagrams**: [Link to DFDs] (*)
@@ -16,6 +18,7 @@
 - **Integration Points**: [List of integrations] (*)
 
 ## Data Classification
+
 - **Types of Data**: [List all data types] (*)
 - **Data Classification Levels**: [Public/Internal/Confidential/Restricted] (*)
 - **Regulatory Requirements**: [SOX/GDPR/HIPAA/PCI] (*)
@@ -23,6 +26,7 @@
 - **Data Retention Requirements**: [Retention period] (*)
 
 ## Security Controls Assessment
+
 - **Authentication Mechanisms**: [Details of auth methods] (*)
 - **Authorization Controls**: [RBAC/ABAC details] (*)
 - **Encryption Requirements**: [In-transit/At-rest] (*)
@@ -30,6 +34,7 @@
 - **Audit Logging**: [Logging requirements] (*)
 
 ## Vulnerability Assessment
+
 - **SAST Requirements**: [Static analysis tools/frequency] (*)
 - **DAST Requirements**: [Dynamic analysis scope] (*)
 - **Penetration Testing**: [Scope/frequency] (*)
@@ -37,6 +42,7 @@
 - **Cloud Security**: [Cloud security posture management] (*)
 
 ## Compliance Requirements
+
 - **Regulatory Standards**: [List applicable standards] (*)
 - **Audit Requirements**: [Audit frequency/scope] (*)
 - **Certification Requirements**: [Required certifications] (*)
@@ -44,6 +50,7 @@
 - **Industry Standards**: [Industry-specific requirements] (*)
 
 ## Access Control
+
 - **User Access Management**: [Provisioning/de-provisioning] (*)
 - **Privileged Access**: [PAM requirements] (*)
 - **Third-Party Access**: [Vendor access requirements] (*)
@@ -51,6 +58,7 @@
 - **Emergency Access**: [Break-glass procedures] (*)
 
 ## Incident Response
+
 - **IR Plan Requirements**: [Plan details] (*)
 - **Notification Requirements**: [Who to notify] (*)
 - **SLA Requirements**: [Response times] (*)
@@ -58,6 +66,7 @@
 - **Recovery Procedures**: [Recovery steps] (*)
 
 ## Security Monitoring
+
 - **Monitoring Requirements**: [What to monitor] (*)
 - **Alert Thresholds**: [Alert conditions] (*)
 - **SIEM Integration**: [Log forwarding] (*)
@@ -65,6 +74,7 @@
 - **Threat Intelligence**: [TI feed requirements] (*)
 
 ## Business Continuity
+
 - **RTO Requirements**: [Recovery time objective] (*)
 - **RPO Requirements**: [Recovery point objective] (*)
 - **DR Requirements**: [DR procedures] (*)
@@ -72,6 +82,7 @@
 - **Failover Requirements**: [Failover procedures] (*)
 
 ## Security Documentation
+
 - **Security Architecture**: [Architecture documentation] (*)
 - **Security Controls**: [Controls documentation] (*)
 - **Security Procedures**: [Operating procedures] (*)
@@ -79,6 +90,7 @@
 - **Training Requirements**: [Security training needs] (*)
 
 ## Risk Assessment
+
 - **Threat Model**: [Threat modeling results] (*)
 - **Risk Rating**: [High/Medium/Low] (*)
 - **Impact Assessment**: [Business impact] (*)
@@ -86,6 +98,7 @@
 - **Residual Risk**: [Remaining risk after controls] (*)
 
 ## Approvals Required
+
 - **Security Team**: [Security architect] (*)
 - **Risk Team**: [Risk analyst] (*)
 - **Compliance Team**: [Compliance officer] (*)
@@ -93,6 +106,7 @@
 - **Operations Team**: [Ops manager] (*)
 
 ## Additional Information
+
 - **Dependencies**: [Security tool dependencies]
 - **Timeline Constraints**: [Critical security dates]
 - **Budget Information**: [Security costs/budget]

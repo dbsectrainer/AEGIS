@@ -123,8 +123,7 @@ cat <<'EOF' > /etc/docker/daemon.json
         "awslogs-group": "/aws/ecs/${cluster_name}/containers",
         "awslogs-stream-prefix": "ecs"
     },
-    "metrics-addr" : "0.0.0.0:9323",
-    "experimental" : true
+    "metrics-addr" : "127.0.0.1:9323"
 }
 EOF
 
@@ -136,17 +135,15 @@ yum install -y amazon-ssm-agent
 systemctl enable amazon-ssm-agent
 systemctl start amazon-ssm-agent
 
-# Add instance to ECS cluster
-echo "Adding instance to ECS cluster ${cluster_name}"
-start ecs
-
 # Final system hardening
-# Disable unused services
-systemctl disable postfix
-systemctl stop postfix
+# Disable unused services when present.
+systemctl disable postfix 2>/dev/null || true
+systemctl stop postfix 2>/dev/null || true
 
-# Set proper file permissions
-chmod 700 /root/.aws
+# Restrict the AWS config directory when it exists.
+if [ -d /root/.aws ]; then
+    chmod 700 /root/.aws
+fi
 
 # Configure system limits for containers
 cat <<'EOF' >> /etc/sysctl.conf
@@ -164,12 +161,9 @@ sysctl -p
 # Set proper umask for ECS agent
 echo "umask 022" >> /etc/profile
 
-# Enable enhanced networking
-ethtool -K eth0 sg on
-ethtool -K eth0 tso on
-ethtool -K eth0 ufo on
-ethtool -K eth0 gso on
-ethtool -K eth0 gro on
-
-# Signal completion
-/opt/aws/bin/cfn-signal -e $? --stack ${cluster_name} --resource ECSAutoScalingGroup --region us-gov-east-1
+# Enable enhanced networking where the instance type supports it.
+ethtool -K eth0 sg on 2>/dev/null || true
+ethtool -K eth0 tso on 2>/dev/null || true
+ethtool -K eth0 ufo on 2>/dev/null || true
+ethtool -K eth0 gso on 2>/dev/null || true
+ethtool -K eth0 gro on 2>/dev/null || true

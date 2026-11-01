@@ -1,0 +1,32 @@
+== Offline Trivy HIGH/CRITICAL scan ==
+trivy config --quiet --exit-code 1 --severity HIGH,CRITICAL terraform
+
+Report Summary
+
+┌───────────────────────────────────┬───────────┬───────────────────┐
+│              Target               │   Type    │ Misconfigurations │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ environments/production/southeast │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ modules/compute/azure/main.tf     │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ modules/compute/gcp/main.tf       │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ modules/database/azure/main.tf    │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ modules/database/gcp/main.tf      │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ modules/networking/aws/main.tf    │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ modules/networking/gcp/main.tf    │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ providers/aws                     │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ providers/azure                   │ terraform │         0         │
+├───────────────────────────────────┼───────────┼───────────────────┤
+│ providers/gcp                     │ terraform │         0         │
+└───────────────────────────────────┴───────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+

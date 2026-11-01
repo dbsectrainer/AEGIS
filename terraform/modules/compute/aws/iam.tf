@@ -31,6 +31,36 @@ resource "aws_iam_role_policy_attachment" "eks_service_policy" {
   role       = aws_iam_role.eks_cluster.name
 }
 
+# The cluster role must be able to use the KMS key that encrypts Kubernetes
+# secrets. The key's resource policy grants account root; this identity policy
+# grants the cluster role the required KMS actions.
+resource "aws_iam_role_policy" "eks_kms" {
+  name = "${var.environment}-eks-kms-policy"
+  role = aws_iam_role.eks_cluster.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "kms:Encrypt",
+          "kms:Decrypt",
+          "kms:ReEncryptFrom",
+          "kms:ReEncryptTo",
+          "kms:GenerateDataKey",
+          "kms:GenerateDataKeyWithoutPlaintext",
+          "kms:GenerateDataKeyPair",
+          "kms:GenerateDataKeyPairWithoutPlaintext",
+          "kms:CreateGrant",
+          "kms:DescribeKey"
+        ]
+        Resource = var.kms_key_arn
+      }
+    ]
+  })
+}
+
 # EKS Node Role
 resource "aws_iam_role" "eks_nodes" {
   name = "${var.environment}-eks-node-role"

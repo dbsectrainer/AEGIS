@@ -1,0 +1,3 @@
+# CI workflow YAML validation
+Command: yamllint .github/workflows/ci.yml
+EXIT=0

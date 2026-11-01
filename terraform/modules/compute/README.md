@@ -5,11 +5,13 @@ This directory contains Terraform modules for deploying and managing compute res
 ## Overview
 
 The compute infrastructure is designed to support containerized workloads using:
+
 - AWS: EKS (Kubernetes) and ECS (Container Service)
 - Azure: AKS (Kubernetes)
 - GCP: GKE (Kubernetes)
 
 Each cloud provider's implementation includes:
+
 - Container orchestration platforms
 - Container registries
 - Node pools/instance groups
@@ -34,6 +36,7 @@ compute/
 ## Features
 
 ### AWS (GovCloud)
+
 - EKS cluster with managed node groups
 - ECS cluster with auto-scaling groups
 - Container registry access
@@ -44,6 +47,7 @@ compute/
 - Security groups
 
 ### Azure (Government)
+
 - AKS cluster with system and user node pools
 - Azure Container Registry (Premium SKU)
 - Azure Monitor integration
@@ -53,6 +57,7 @@ compute/
 - RBAC with Azure AD integration
 
 ### GCP
+
 - GKE cluster with system and application node pools
 - Artifact Registry
 - Cloud Monitoring integration
@@ -64,6 +69,7 @@ compute/
 ## Usage
 
 ### AWS Example
+
 ```hcl
 module "aws_compute" {
   source = "../../../modules/compute/aws"
@@ -78,6 +84,7 @@ module "aws_compute" {
 ```
 
 ### Azure Example
+
 ```hcl
 module "azure_compute" {
   source = "../../../modules/compute/azure"
@@ -92,6 +99,7 @@ module "azure_compute" {
 ```
 
 ### GCP Example
+
 ```hcl
 module "gcp_compute" {
   source = "../../../modules/compute/gcp"
@@ -137,6 +145,7 @@ and the AKS, AWS egress, Azure ingress, and GKE admission prerequisites before a
 ## Monitoring and Logging
 
 Each cloud provider's implementation includes:
+
 - Container insights
 - Node monitoring
 - Application metrics
@@ -148,12 +157,14 @@ Each cloud provider's implementation includes:
 ## Maintenance
 
 ### Updates and Patches
+
 1. Review release notes for each cloud provider
 2. Test updates in lower environments
 3. Use maintenance windows for updates
 4. Follow change management procedures
 
 ### Backup and Recovery
+
 1. Regular cluster backups
 2. State file backups
 3. Disaster recovery procedures
@@ -192,6 +203,7 @@ Refer to each provider's module for specific variable definitions and requiremen
 ## Outputs
 
 Each module provides outputs for:
+
 - Cluster identifiers
 - Endpoints
 - Security group/firewall IDs
@@ -201,6 +213,7 @@ Each module provides outputs for:
 ## Support
 
 For issues or questions:
+
 1. Review cloud provider documentation
 2. Check terraform documentation
 3. Consult GOV cloud team

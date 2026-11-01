@@ -1,29 +1,33 @@
 # eMASS Setup & Integration Guide for GOV Multi-Cloud Environment
 
 ## Overview
+
 This guide provides comprehensive instructions for setting up and configuring eMASS (Enterprise Mission Assurance Support Service) for the GOV multi-cloud environment. It includes procedures for system setup, security control validation, documentation management, and integration with cloud services.
 
 ## 1. eMASS Access Setup
 
 ### Prerequisites
+
 - Common Access Card (CAC) with valid certificates
 - ISSM approval for eMASS access
 - Completed Cybersecurity training
 - AWS and Azure administrative access (for cloud integration)
 
 ### Access Request Procedure
+
 1. Submit access request through ISSM:
    - Complete DD Form 2875 (System Authorization Access Request)
    - Provide justification for access level
    - Include certification of completed training
 
 2. Register in eMASS:
-   - Navigate to eMASS portal (https://emass.deps.mil)
+   - Navigate to eMASS portal (<https://emass.deps.mil>)
    - Use CAC for authentication
    - Complete profile setup
    - Request appropriate role assignments
 
 ### Role Assignments
+
 - System Owner
 - Information System Security Manager (ISSM)
 - Information System Security Officer (ISSO)
@@ -33,6 +37,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
 ## 2. System Registration
 
 ### System Details
+
 1. Basic Information:
    - System Name: GOV Multi-Cloud Environment
    - System Description
@@ -53,6 +58,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
 ## 3. Security Control Implementation
 
 ### Control Selection
+
 1. Import Security Controls:
    - FedRAMP High Baseline
    - NIST 800-53 Rev 5
@@ -67,12 +73,13 @@ This guide provides comprehensive instructions for setting up and configuring eM
 
 3. Shared Responsibility Implementation:
    - Review INHERITED_CONTROLS.md for detailed mapping of:
-     * Fully inherited controls from CSPs
-     * Partially inherited controls requiring customer implementation
-     * Shared responsibility controls
-     * Customer-specific controls
+     - Fully inherited controls from CSPs
+     - Partially inherited controls requiring customer implementation
+     - Shared responsibility controls
+     - Customer-specific controls
 
 ### Control Implementation Status
+
 1. Document Implementation:
    - Control Status
    - Implementation Description
@@ -88,6 +95,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
 ## 4. Documentation Management
 
 ### Required Documentation
+
 1. System Security Plan (SSP):
    - System Description
    - Security Categorization
@@ -120,6 +128,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
    - Resource Requirements
 
 ### Document Upload Procedures
+
 1. File Preparation:
    - Convert to PDF format
    - Include required signatures
@@ -135,6 +144,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
 ## 5. Cloud Service Integration
 
 ### AWS GovCloud Integration
+
 1. Security Hub Integration:
    - Enable Security Hub
    - Configure compliance standards
@@ -154,6 +164,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
    - Enable automated alerts
 
 ### Azure Government Integration
+
 1. Azure Security Center:
    - Enable security policies
    - Configure compliance standards
@@ -169,6 +180,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
 ## 6. Continuous Monitoring
 
 ### Automated Assessment
+
 1. Configure Automated Tools:
    - Vulnerability scanners
    - Configuration assessment tools
@@ -182,6 +194,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
    - Quarterly comprehensive assessment
 
 ### Reporting Requirements
+
 1. Monthly Reports:
    - Security metrics
    - Control status updates
@@ -203,6 +216,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
 ## 7. Authorization Process
 
 ### Package Preparation
+
 1. Compile Documentation:
    - System Security Plan
    - Assessment Results
@@ -216,6 +230,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
    - Authorizing Official Review
 
 ### Authorization Maintenance
+
 1. Continuous Monitoring:
    - Control effectiveness
    - System changes
@@ -231,6 +246,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
 ## 8. Training and Support
 
 ### Required Training
+
 1. eMASS System Training:
    - Basic system navigation
    - Document management
@@ -244,6 +260,7 @@ This guide provides comprehensive instructions for setting up and configuring eM
    - Continuous monitoring
 
 ### Support Resources
+
 1. Help Desk:
    - eMASS support contacts
    - Escalation procedures
@@ -259,18 +276,21 @@ This guide provides comprehensive instructions for setting up and configuring eM
 ## Appendices
 
 ### A. Templates
+
 - Security Control Implementation Matrix
 - Evidence Collection Templates
 - Assessment Procedures
 - Report Templates
 
 ### B. Checklists
+
 - System Registration Checklist
 - Control Implementation Checklist
 - Document Upload Checklist
 - Authorization Package Checklist
 
 ### C. Reference Materials
+
 - Applicable Policies and Regulations
 - Security Control Catalogs
 - Assessment Guides

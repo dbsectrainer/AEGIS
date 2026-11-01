@@ -6,6 +6,8 @@ resource "aws_eks_cluster" "main" {
   role_arn = aws_iam_role.eks_cluster.arn
   version  = var.kubernetes_version
 
+  deletion_protection = true
+
   vpc_config {
     subnet_ids              = var.private_subnet_ids
     endpoint_private_access = true
@@ -31,6 +33,26 @@ resource "aws_eks_cluster" "main" {
   tags = var.tags
 }
 
+# Launch template attaches the module-managed node security group to managed nodes.
+resource "aws_launch_template" "eks_nodes" {
+  name_prefix = "${var.environment}-eks-nodes-"
+
+  vpc_security_group_ids = [aws_security_group.eks_nodes.id]
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
+  }
+
+  tag_specifications {
+    resource_type = "instance"
+    tags          = var.tags
+  }
+
+  tags = var.tags
+}
+
 # EKS Node Groups
 resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.main.name
@@ -46,9 +68,13 @@ resource "aws_eks_node_group" "main" {
 
   instance_types = var.node_instance_types
 
-  remote_access {
-    ec2_ssh_key               = var.ssh_key_name
-    source_security_group_ids = [aws_security_group.eks_nodes.id]
+  launch_template {
+    id      = aws_launch_template.eks_nodes.id
+    version = "$Latest"
+  }
+
+  update_config {
+    max_unavailable = 1
   }
 
   labels = merge(var.tags, {
@@ -99,6 +125,18 @@ resource "aws_ecs_capacity_provider" "main" {
   }
 
   tags = var.tags
+}
+
+# Attach the capacity provider to the cluster so ECS can place tasks.
+resource "aws_ecs_cluster_capacity_providers" "main" {
+  cluster_name       = aws_ecs_cluster.main.name
+  capacity_providers = [aws_ecs_capacity_provider.main.name]
+
+  default_capacity_provider_strategy {
+    capacity_provider = aws_ecs_capacity_provider.main.name
+    weight            = 1
+    base              = 0
+  }
 }
 
 # Auto Scaling Group for ECS
@@ -176,21 +214,22 @@ resource "aws_launch_template" "ecs" {
 # Security Groups
 resource "aws_security_group" "eks_cluster" {
   name_prefix = "${var.environment}-eks-cluster-sg"
+  description = "EKS control-plane security group"
   vpc_id      = var.vpc_id
 
   ingress {
-    from_port = 443
-    to_port   = 443
-    protocol  = "tcp"
-    self      = true
+    description = "Control-plane API access from the cluster security group"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    self        = true
   }
 
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
-    # Egress stays inside the private subnets; reach AWS services via VPC endpoints
-    description = "Egress to private subnets only"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    description = "Egress to private subnets and interface endpoints"
     cidr_blocks = var.private_subnet_cidrs
   }
 
@@ -201,9 +240,11 @@ resource "aws_security_group" "eks_cluster" {
 
 resource "aws_security_group" "eks_nodes" {
   name_prefix = "${var.environment}-eks-nodes-sg"
+  description = "EKS worker-node security group"
   vpc_id      = var.vpc_id
 
   ingress {
+    description     = "Control-plane and node traffic"
     from_port       = 0
     to_port         = 65535
     protocol        = "-1"
@@ -211,11 +252,10 @@ resource "aws_security_group" "eks_nodes" {
   }
 
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
-    # Egress stays inside the private subnets; reach AWS services via VPC endpoints
-    description = "Egress to private subnets only"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    description = "Egress to private subnets and interface endpoints"
     cidr_blocks = var.private_subnet_cidrs
   }
 
@@ -226,9 +266,11 @@ resource "aws_security_group" "eks_nodes" {
 
 resource "aws_security_group" "ecs" {
   name_prefix = "${var.environment}-ecs-sg"
+  description = "ECS container-instance security group"
   vpc_id      = var.vpc_id
 
   ingress {
+    description = "Traffic from private subnets"
     from_port   = 0
     to_port     = 65535
     protocol    = "-1"
@@ -236,11 +278,10 @@ resource "aws_security_group" "ecs" {
   }
 
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
-    # Egress stays inside the private subnets; reach AWS services via VPC endpoints
-    description = "Egress to private subnets only"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    description = "Egress to private subnets and interface endpoints"
     cidr_blocks = var.private_subnet_cidrs
   }
 
@@ -290,7 +331,7 @@ variable "private_subnet_cidrs" {
 variable "kubernetes_version" {
   description = "Kubernetes version"
   type        = string
-  default     = "1.27"
+  default     = "1.35"
 }
 
 variable "node_group_desired_size" {
@@ -315,11 +356,6 @@ variable "node_instance_types" {
   description = "List of instance types for the worker nodes"
   type        = list(string)
   default     = ["m5.large"]
-}
-
-variable "ssh_key_name" {
-  description = "Name of SSH key for worker nodes"
-  type        = string
 }
 
 variable "kms_key_arn" {
@@ -371,7 +407,12 @@ variable "target_group_arns" {
 variable "log_retention_days" {
   description = "Number of days to retain logs"
   type        = number
-  default     = 30
+  default     = 365
+
+  validation {
+    condition     = contains([1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, 3653], var.log_retention_days)
+    error_message = "log_retention_days must be a valid CloudWatch Logs retention value."
+  }
 }
 
 variable "tags" {
@@ -391,6 +432,10 @@ output "eks_cluster_endpoint" {
 
 output "eks_cluster_security_group_id" {
   value = aws_security_group.eks_cluster.id
+}
+
+output "eks_nodes_security_group_id" {
+  value = aws_security_group.eks_nodes.id
 }
 
 output "ecs_cluster_id" {

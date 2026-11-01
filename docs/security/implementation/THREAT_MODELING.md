@@ -1,11 +1,13 @@
 # Threat Modeling Framework
 
 ## Overview
+
 This document outlines the comprehensive threat modeling approach for the GOV multi-cloud environment, providing a structured methodology for identifying, analyzing, and mitigating security threats.
 
 ## System Component Analysis
 
 ### Cloud Infrastructure Components
+
 1. **AWS GovCloud**
    - EC2 instances
    - S3 buckets
@@ -23,6 +25,7 @@ This document outlines the comprehensive threat modeling approach for the GOV mu
    - Virtual Networks
 
 ### Application Components
+
 1. **Web Applications**
    - Frontend services
    - Backend APIs
@@ -40,6 +43,7 @@ This document outlines the comprehensive threat modeling approach for the GOV mu
 ## Data Flow Analysis
 
 ### External Data Flows
+
 ```mermaid
 graph TD
     A[User] --> B[Load Balancer]
@@ -51,6 +55,7 @@ graph TD
 ```
 
 ### Internal Data Flows
+
 ```mermaid
 graph TD
     A[Service A] --> B[Message Queue]
@@ -63,106 +68,109 @@ graph TD
 ## STRIDE Analysis
 
 ### Authentication Service
+
 1. **Spoofing**
    - Threat: Identity impersonation
    - Controls:
-     * Multi-factor authentication
-     * Certificate-based authentication
-     * PIV/CAC enforcement
-     * Biometric validation
+     - Multi-factor authentication
+     - Certificate-based authentication
+     - PIV/CAC enforcement
+     - Biometric validation
 
 2. **Tampering**
    - Threat: Authentication data modification
    - Controls:
-     * Digital signatures
-     * Message integrity checks
-     * Secure protocols
-     * Audit logging
+     - Digital signatures
+     - Message integrity checks
+     - Secure protocols
+     - Audit logging
 
 3. **Repudiation**
    - Threat: Action denial
    - Controls:
-     * Secure audit trails
-     * Digital signatures
-     * Timestamp validation
-     * Session logging
+     - Secure audit trails
+     - Digital signatures
+     - Timestamp validation
+     - Session logging
 
 4. **Information Disclosure**
    - Threat: Credential exposure
    - Controls:
-     * Encryption at rest
-     * Encryption in transit
-     * Access controls
-     * Data masking
+     - Encryption at rest
+     - Encryption in transit
+     - Access controls
+     - Data masking
 
 5. **Denial of Service**
    - Threat: Service availability impact
    - Controls:
-     * Rate limiting
-     * Load balancing
-     * DDoS protection
-     * Failover systems
+     - Rate limiting
+     - Load balancing
+     - DDoS protection
+     - Failover systems
 
 6. **Elevation of Privilege**
    - Threat: Unauthorized access gain
    - Controls:
-     * Least privilege
-     * Role-based access
-     * Privilege monitoring
-     * Access reviews
+     - Least privilege
+     - Role-based access
+     - Privilege monitoring
+     - Access reviews
 
 ### Data Storage Service
+
 1. **Spoofing**
    - Threat: Storage access impersonation
    - Controls:
-     * Strong authentication
-     * Service authentication
-     * Access key rotation
-     * Identity validation
+     - Strong authentication
+     - Service authentication
+     - Access key rotation
+     - Identity validation
 
 2. **Tampering**
    - Threat: Data corruption
    - Controls:
-     * Checksums
-     * Version control
-     * Access logging
-     * Integrity monitoring
+     - Checksums
+     - Version control
+     - Access logging
+     - Integrity monitoring
 
 3. **Repudiation**
    - Threat: Data modification denial
    - Controls:
-     * Activity logging
-     * Change tracking
-     * User attribution
-     * Audit trails
+     - Activity logging
+     - Change tracking
+     - User attribution
+     - Audit trails
 
 4. **Information Disclosure**
    - Threat: Data leakage
    - Controls:
-     * Encryption
-     * Access controls
-     * Data classification
-     * DLP solutions
+     - Encryption
+     - Access controls
+     - Data classification
+     - DLP solutions
 
 5. **Denial of Service**
    - Threat: Storage availability
    - Controls:
-     * Redundancy
-     * Backup systems
-     * Performance monitoring
-     * Resource scaling
+     - Redundancy
+     - Backup systems
+     - Performance monitoring
+     - Resource scaling
 
 6. **Elevation of Privilege**
    - Threat: Unauthorized data access
    - Controls:
-     * Access controls
-     * Permission boundaries
-     * Activity monitoring
-     * Regular reviews
+     - Access controls
+     - Permission boundaries
+     - Activity monitoring
+     - Regular reviews
 
 ## Attack Surface Analysis
 
 ### Network Attack Surface
+
 1. **External Endpoints**
    - Public APIs
    - Web applications
@@ -178,6 +186,7 @@ graph TD
    - Administrative tools
 
 ### Application Attack Surface
+
 1. **Input Vectors**
    - API parameters
    - File uploads
@@ -195,6 +204,7 @@ graph TD
 ## Risk Assessment Matrix
 
 ### Impact Levels
+
 1. **Critical**
    - System compromise
    - Data breach
@@ -224,6 +234,7 @@ graph TD
    - Limited effect
 
 ### Probability Levels
+
 1. **High Likelihood**
    - Known exploits
    - Common attacks
@@ -248,6 +259,7 @@ graph TD
 ## Mitigation Strategies
 
 ### Prevention Controls
+
 1. **Technical Controls**
    - Security configurations
    - Access controls
@@ -263,6 +275,7 @@ graph TD
    - Compliance checks
 
 ### Detection Controls
+
 1. **Monitoring Systems**
    - SIEM integration
    - Log analysis
@@ -278,6 +291,7 @@ graph TD
    - Escalation procedures
 
 ### Response Controls
+
 1. **Incident Response**
    - Response procedures
    - Team activation
@@ -295,6 +309,7 @@ graph TD
 ## Continuous Improvement
 
 ### Threat Intelligence
+
 1. **External Sources**
    - Industry feeds
    - Government advisories
@@ -310,6 +325,7 @@ graph TD
    - Risk evolution
 
 ### Model Updates
+
 1. **Regular Reviews**
    - Threat assessment
    - Control validation
@@ -325,6 +341,7 @@ graph TD
    - Compliance requirements
 
 ## References
+
 1. NIST SP 800-154
 2. OWASP Threat Modeling
 3. MITRE ATT&CK Framework

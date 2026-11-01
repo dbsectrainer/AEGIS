@@ -1,0 +1,4 @@
+[2026-10-31 22:53:44] [INFO] [DRY RUN] Environment: production; region: us-gov-east-1
+[2026-10-31 22:53:44] [INFO] [DRY RUN] Would collect: sts identity, IAM summary/password policy, CloudTrail, GuardDuty, Security Hub, AWS Config, S3 public access block
+[2026-10-31 22:53:44] [INFO] [DRY RUN] Would write JSON and a Markdown report to security-reports/audit
+[2026-10-31 22:53:44] [INFO] [DRY RUN] No AWS calls were made.

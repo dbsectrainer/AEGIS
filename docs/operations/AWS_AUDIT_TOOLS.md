@@ -3,6 +3,7 @@
 ## Primary Auditing Tools
 
 ### 1. AWS Config
+
 ```hcl
 # Enable AWS Config across all accounts via Terraform
 resource "aws_config_configuration_recorder" "config" {
@@ -22,12 +23,14 @@ resource "aws_config_configuration_recorder_status" "config" {
 ```
 
 Benefits:
+
 - Continuous monitoring of resources
 - Automated compliance checking
 - Historical configuration tracking
 - Multi-account support via AWS Organizations
 
 ### 2. AWS CloudFormation StackSets
+
 ```yaml
 # Example StackSet for enabling Security Hub
 AWSTemplateFormatVersion: '2010-09-09'
@@ -38,12 +41,14 @@ Resources:
 ```
 
 Benefits:
+
 - Deploy consistent configurations across accounts
 - Automated stack operations
 - Centralized management
 - Region-specific deployments
 
 ### 3. AWS IAM Access Analyzer
+
 ```hcl
 # Enable IAM Access Analyzer via Terraform
 resource "aws_accessanalyzer_analyzer" "organization" {
@@ -53,6 +58,7 @@ resource "aws_accessanalyzer_analyzer" "organization" {
 ```
 
 Benefits:
+
 - Identifies resources shared with external entities
 - Continuous security monitoring
 - Policy validation
@@ -61,6 +67,7 @@ Benefits:
 ## Automated Auditing Scripts
 
 ### 1. AWS Organizations List Script
+
 ```python
 import boto3
 import csv
@@ -91,6 +98,7 @@ if __name__ == '__main__':
 ```
 
 ### 2. IAM User Audit Script
+
 ```python
 import boto3
 import csv
@@ -133,6 +141,7 @@ if __name__ == '__main__':
 ```
 
 ### 3. Resource Audit Script
+
 ```python
 import boto3
 import json
@@ -163,6 +172,7 @@ if __name__ == '__main__':
 ## Comprehensive Audit Tool: AWS Audit Manager
 
 ### Enable AWS Audit Manager
+
 ```hcl
 # Enable Audit Manager via Terraform
 resource "aws_auditmanager_organization_admin_account_registration" "admin" {
@@ -197,6 +207,7 @@ resource "aws_auditmanager_assessment" "compliance" {
 ```
 
 Benefits:
+
 - Continuous auditing
 - Automated evidence collection
 - Compliance framework mapping
@@ -205,6 +216,7 @@ Benefits:
 ## AWS Security Hub
 
 ### Enable Security Hub
+
 ```hcl
 # Enable Security Hub via Terraform
 resource "aws_securityhub_account" "main" {}
@@ -220,6 +232,7 @@ resource "aws_securityhub_standards_subscription" "cis" {
 ```
 
 Benefits:
+
 - Security findings aggregation
 - Automated security checks
 - Compliance status tracking

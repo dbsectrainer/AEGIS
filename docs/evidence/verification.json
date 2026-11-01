@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-11-01T02:53:56.959262+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Repository contract tests",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/repository-contract-tests.log"
+    },
+    {
+      "name": "Terraform format validate and mock tests",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/terraform-format-validate-and-mock-tests.log"
+    },
+    {
+      "name": "Offline Trivy security scan",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/offline-trivy-security-scan.log"
+    },
+    {
+      "name": "ShellCheck",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/shellcheck.log"
+    },
+    {
+      "name": "Markdown lint",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/markdown-lint.log"
+    },
+    {
+      "name": "Offline compliance audit",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/offline-compliance-audit.log"
+    },
+    {
+      "name": "Documentation portal build",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/documentation-portal-build.log"
+    },
+    {
+      "name": "Monitoring manifest validation",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/monitoring-manifest-validation.log"
+    },
+    {
+      "name": "Deployment dry run",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/deployment-dry-run.log"
+    },
+    {
+      "name": "Security scan dry run",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/security-scan-dry-run.log"
+    },
+    {
+      "name": "Security audit dry run",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/security-audit-dry-run.log"
+    },
+    {
+      "name": "Backup dry run",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/backup-dry-run.log"
+    },
+    {
+      "name": "Checkov advisory scan",
+      "status": "ADVISORY",
+      "detail": "34 findings; docs/evidence/test-results/checkov-advisory-scan.log"
+    },
+    {
+      "name": "Documentation portal E2E",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/documentation-portal-e2e.log"
+    },
+    {
+      "name": "Documentation portal rebuild with verification snapshot",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/documentation-portal-rebuild-with-verification-snapshot.log"
+    },
+    {
+      "name": "Final screenshots",
+      "status": "PASS",
+      "detail": "docs/evidence/test-results/documentation-portal-screenshots.log"
+    }
+  ],
+  "counts": {
+    "documents": 66,
+    "terraform_resource_blocks": 141,
+    "terraform_modules": 3,
+    "control_references": 140,
+    "test_cases": 21,
+    "screenshots": 8,
+    "checkov_findings": 34
+  },
+  "artifacts": {
+    "verification_report": "docs/evidence/verification-report.md",
+    "screenshots": [
+      "docs/evidence/screenshots/feature-verification.png",
+      "docs/evidence/screenshots/homepage-desktop.png",
+      "docs/evidence/screenshots/homepage-mobile.png",
+      "docs/evidence/screenshots/readme-page.png",
+      "docs/evidence/screenshots/security-reference-aws.png",
+      "docs/evidence/screenshots/security-reference-azure.png",
+      "docs/evidence/screenshots/security-reference-gcp.png",
+      "docs/evidence/screenshots/verification-snapshot.png"
+    ],
+    "test_results": "docs/evidence/test-results/",
+    "build_results": "docs/evidence/build-results/"
+  }
+}

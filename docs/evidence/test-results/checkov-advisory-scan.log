@@ -1,0 +1,187 @@
+2026-10-31 22:53:45,974 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/providers.tf
+2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/main.tf
+2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/aws/govcloud.tf
+2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/gcp/main.tf
+2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/tests/production.tftest.hcl
+2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/aws/iam.tf
+2026-10-31 22:53:45,976 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/variables.tf
+2026-10-31 22:53:45,976 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/azure/government.tf
+2026-10-31 22:53:45,977 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/gcp/main.tf
+2026-10-31 22:53:45,978 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/aws/main.tf
+2026-10-31 22:53:45,979 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/azure/main.tf
+2026-10-31 22:53:45,980 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/gcp/main.tf
+2026-10-31 22:53:45,981 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/azure/main.tf
+2026-10-31 22:53:45,981 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/aws/main.tf
+2026-10-31 22:53:45,982 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/azure/main.tf
+2026-10-31 22:53:45,983 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/gcp/main.tf
+2026-10-31 22:53:45,985 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/aws/main.tf
+2026-10-31 22:53:45,986 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/aws/iam.tf
+terraform scan results:
+
+Passed checks: 343, Failed checks: 34, Skipped checks: 0
+
+Check: CKV_AWS_339: "Ensure EKS clusters run on a supported Kubernetes version"
+	FAILED for resource: module.aws_compute.aws_eks_cluster.main
+	File: /modules/compute/aws/main.tf:4-34
+	Calling File: /environments/production/southeast/main.tf:81-102
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-kubernetes-policies/bc-aws-339
+Check: CKV_AZURE_172: "Ensure autorotation of Secrets Store CSI Driver secrets for AKS clusters"
+	FAILED for resource: module.azure_compute.azurerm_kubernetes_cluster.main
+	File: /modules/compute/azure/main.tf:4-69
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-172
+Check: CKV_AZURE_117: "Ensure that AKS uses disk encryption set"
+	FAILED for resource: module.azure_compute.azurerm_kubernetes_cluster.main
+	File: /modules/compute/azure/main.tf:4-69
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/ensure-that-aks-uses-disk-encryption-set
+Check: CKV_AZURE_226: "Ensure ephemeral disks are used for OS disks"
+	FAILED for resource: module.azure_compute.azurerm_kubernetes_cluster.main
+	File: /modules/compute/azure/main.tf:4-69
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azure-226
+Check: CKV_AZURE_227: "Ensure that the AKS cluster encrypt temp disks, caches, and data flows between Compute and Storage resources"
+	FAILED for resource: module.azure_compute.azurerm_kubernetes_cluster.main
+	File: /modules/compute/azure/main.tf:4-69
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azure-227
+Check: CKV_AZURE_227: "Ensure that the AKS cluster encrypt temp disks, caches, and data flows between Compute and Storage resources"
+	FAILED for resource: module.azure_compute.azurerm_kubernetes_cluster_node_pool.user
+	File: /modules/compute/azure/main.tf:72-93
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azure-227
+Check: CKV_AZURE_233: "Ensure Azure Container Registry (ACR) is zone redundant"
+	FAILED for resource: module.azure_compute.azurerm_container_registry.main
+	File: /modules/compute/azure/main.tf:96-120
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-233
+Check: CKV_AZURE_164: "Ensures that ACR uses signed/trusted images"
+	FAILED for resource: module.azure_compute.azurerm_container_registry.main
+	File: /modules/compute/azure/main.tf:96-120
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-164
+Check: CKV_AZURE_165: "Ensure geo-replicated container registries to match multi-region container deployments."
+	FAILED for resource: module.azure_compute.azurerm_container_registry.main
+	File: /modules/compute/azure/main.tf:96-120
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-165
+Check: CKV_AZURE_166: "Ensure container image quarantine, scan, and mark images verified"
+	FAILED for resource: module.azure_compute.azurerm_container_registry.main
+	File: /modules/compute/azure/main.tf:96-120
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-166
+Check: CKV_AZURE_139: "Ensure ACR set to disable public networking"
+	FAILED for resource: module.azure_compute.azurerm_container_registry.main
+	File: /modules/compute/azure/main.tf:96-120
+	Calling File: /environments/production/southeast/main.tf:122-137
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-azure-acr-is-set-to-disable-public-networking
+Check: CKV_GCP_81: "Ensure Big Query Datasets are encrypted with Customer Supplied Encryption Keys (CSEK)"
+	FAILED for resource: module.gcp_compute.google_bigquery_dataset.network_usage
+	File: /modules/compute/gcp/main.tf:28-35
+	Calling File: /environments/production/southeast/main.tf:157-172
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-general-policies/ensure-gcp-big-query-tables-are-encrypted-with-customer-supplied-encryption-keys-csek-1
+Check: CKV_GCP_20: "Ensure master authorized networks is set to enabled in GKE clusters"
+	FAILED for resource: module.gcp_compute.google_container_cluster.main
+	File: /modules/compute/gcp/main.tf:40-158
+	Calling File: /environments/production/southeast/main.tf:157-172
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-kubernetes-policies/bc-gcp-kubernetes-12
+Check: CKV_GCP_65: "Manage Kubernetes RBAC users with Google Groups for GKE"
+	FAILED for resource: module.gcp_compute.google_container_cluster.main
+	File: /modules/compute/gcp/main.tf:40-158
+	Calling File: /environments/production/southeast/main.tf:157-172
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-kubernetes-policies/manage-kubernetes-rbac-users-with-google-groups-for-gke
+Check: CKV_GCP_69: "Ensure the GKE Metadata Server is Enabled"
+	FAILED for resource: module.gcp_compute.google_container_cluster.main
+	File: /modules/compute/gcp/main.tf:40-158
+	Calling File: /environments/production/southeast/main.tf:157-172
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-kubernetes-policies/ensure-the-gke-metadata-server-is-enabled
+Check: CKV_GCP_84: "Ensure Artifact Registry Repositories are encrypted with Customer Supplied Encryption Keys (CSEK)"
+	FAILED for resource: module.gcp_compute.google_artifact_registry_repository.main
+	File: /modules/compute/gcp/main.tf:305-317
+	Calling File: /environments/production/southeast/main.tf:157-172
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-general-policies/ensure-gcp-artifact-registry-repositories-are-encrypted-with-customer-supplied-encryption-keys-csek
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	FAILED for resource: module.aws_database.aws_iam_policy_document.kms
+	File: /modules/database/aws/iam.tf:27-116
+	Calling File: /environments/production/southeast/main.tf:175-210
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_356: "Ensure no IAM policies documents allow "*" as a statement's resource for restrictable actions"
+	FAILED for resource: module.aws_database.aws_iam_policy_document.kms
+	File: /modules/database/aws/iam.tf:27-116
+	Calling File: /environments/production/southeast/main.tf:175-210
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-356
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	FAILED for resource: module.aws_database.aws_iam_policy_document.kms
+	File: /modules/database/aws/iam.tf:27-116
+	Calling File: /environments/production/southeast/main.tf:175-210
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AZURE_224: "Ensure that the Ledger feature is enabled on database that requires cryptographic proof and nonrepudiation of data integrity"
+	FAILED for resource: module.azure_database.azurerm_mssql_database.main
+	File: /modules/database/azure/main.tf:34-54
+	Calling File: /environments/production/southeast/main.tf:213-232
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/bc-azure-224
+Check: CKV_AZURE_132: "Ensure cosmosdb does not allow privileged escalation by restricting management plane changes"
+	FAILED for resource: module.azure_database.azurerm_cosmosdb_account.main
+	File: /modules/database/azure/main.tf:57-98
+	Calling File: /environments/production/southeast/main.tf:213-232
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-storage-policies/bc-azr-storage-4
+Check: CKV_AZURE_100: "Ensure that Cosmos DB accounts have customer-managed keys to encrypt data at rest"
+	FAILED for resource: module.azure_database.azurerm_cosmosdb_account.main
+	File: /modules/database/azure/main.tf:57-98
+	Calling File: /environments/production/southeast/main.tf:213-232
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-cosmos-db-accounts-have-customer-managed-keys-to-encrypt-data-at-rest
+Check: CKV_AZURE_140: "Ensure that Local Authentication is disabled on CosmosDB"
+	FAILED for resource: module.azure_database.azurerm_cosmosdb_account.main
+	File: /modules/database/azure/main.tf:57-98
+	Calling File: /environments/production/southeast/main.tf:213-232
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/ensure-azure-acr-admin-account-is-disabled
+Check: CKV_GCP_6: "Ensure all Cloud SQL database instance requires all incoming connections to use SSL"
+	FAILED for resource: module.gcp_database.google_sql_database_instance.main
+	File: /modules/database/gcp/main.tf:4-104
+	Calling File: /environments/production/southeast/main.tf:235-253
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-general-policies/bc-gcp-general-1
+Check: CKV_GCP_111: "Ensure GCP PostgreSQL logs SQL statements"
+	FAILED for resource: module.gcp_database.google_sql_database_instance.main
+	File: /modules/database/gcp/main.tf:4-104
+	Calling File: /environments/production/southeast/main.tf:235-253
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/logging-policies-1/bc-google-cloud-111
+Check: CKV_GCP_120: "Ensure Spanner Database has drop protection enabled"
+	FAILED for resource: module.gcp_database.google_spanner_database.main[0]
+	File: /modules/database/gcp/main.tf:136-146
+	Calling File: /environments/production/southeast/main.tf:235-253
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-general-policies/bc-gcp-120
+Check: CKV_GCP_93: "Ensure Spanner Database is encrypted with Customer Supplied Encryption Keys (CSEK)"
+	FAILED for resource: module.gcp_database.google_spanner_database.main[0]
+	File: /modules/database/gcp/main.tf:136-146
+	Calling File: /environments/production/southeast/main.tf:235-253
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-general-policies/ensure-gcp-spanner-database-is-encrypted-with-customer-supplied-encryption-keys-cseks
+Check: CKV_AWS_158: "Ensure that CloudWatch Log Group is encrypted by KMS"
+	FAILED for resource: module.aws_networking.aws_cloudwatch_log_group.flow
+	File: /modules/networking/aws/main.tf:204-208
+	Calling File: /environments/production/southeast/main.tf:68-79
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-cloudwatch-log-group-is-encrypted-by-kms
+Check: CKV2_AZURE_2: "Ensure that Vulnerability Assessment (VA) is enabled on a SQL server by setting a Storage Account"
+	FAILED for resource: module.azure_database.azurerm_mssql_server.main
+	File: /modules/database/azure/main.tf:4-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-vulnerability-assessment-va-is-enabled-on-a-sql-server-by-setting-a-storage-account
+Check: CKV_AZURE_23: "Ensure that 'Auditing' is set to 'On' for SQL servers"
+	FAILED for resource: module.azure_database.azurerm_mssql_server.main
+	File: /modules/database/azure/main.tf:4-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/bc-azr-logging-2
+Check: CKV_AZURE_24: "Ensure that 'Auditing' Retention is 'greater than 90 days' for SQL servers"
+	FAILED for resource: module.azure_database.azurerm_mssql_server.main
+	File: /modules/database/azure/main.tf:4-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/bc-azr-logging-3
+Check: CKV2_AWS_27: "Ensure Postgres RDS as aws_rds_cluster has Query Logging enabled"
+	FAILED for resource: module.aws_database.aws_rds_cluster.main[0]
+	File: /modules/database/aws/main.tf:18-48
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-logging-32
+Check: CKV2_AWS_8: "Ensure that RDS clusters has backup plan of AWS Backup"
+	FAILED for resource: module.aws_database.aws_rds_cluster.main[0]
+	File: /modules/database/aws/main.tf:18-48
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-rds-clusters-has-backup-plan-of-aws-backup
+Check: CKV2_AWS_64: "Ensure KMS key Policy is defined"
+	FAILED for resource: aws_kms_key.platform
+	File: /environments/production/southeast/main.tf:23-28
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-64
+

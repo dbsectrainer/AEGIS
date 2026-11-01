@@ -1,0 +1,16 @@
+Repository contract tests	PASS	docs/evidence/test-results/repository-contract-tests.log
+Terraform format validate and mock tests	PASS	docs/evidence/test-results/terraform-format-validate-and-mock-tests.log
+Offline Trivy security scan	PASS	docs/evidence/test-results/offline-trivy-security-scan.log
+ShellCheck	PASS	docs/evidence/test-results/shellcheck.log
+Markdown lint	PASS	docs/evidence/test-results/markdown-lint.log
+Offline compliance audit	PASS	docs/evidence/test-results/offline-compliance-audit.log
+Documentation portal build	PASS	docs/evidence/test-results/documentation-portal-build.log
+Monitoring manifest validation	PASS	docs/evidence/test-results/monitoring-manifest-validation.log
+Deployment dry run	PASS	docs/evidence/test-results/deployment-dry-run.log
+Security scan dry run	PASS	docs/evidence/test-results/security-scan-dry-run.log
+Security audit dry run	PASS	docs/evidence/test-results/security-audit-dry-run.log
+Backup dry run	PASS	docs/evidence/test-results/backup-dry-run.log
+Checkov advisory scan	ADVISORY	34 findings; docs/evidence/test-results/checkov-advisory-scan.log
+Documentation portal E2E	PASS	docs/evidence/test-results/documentation-portal-e2e.log
+Documentation portal rebuild with verification snapshot	PASS	docs/evidence/test-results/documentation-portal-rebuild-with-verification-snapshot.log
+Final screenshots	PASS	docs/evidence/test-results/documentation-portal-screenshots.log

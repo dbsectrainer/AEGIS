@@ -1,6 +1,7 @@
 # Infrastructure Change Request Form
 
 ## Request Overview
+
 - **Change Type**: [New/Modification/Retirement] (*)
 - **Environment**: [Dev/QA/Staging/Prod] (*)
 - **Requestor**: [Name/Email] (*)
@@ -9,6 +10,7 @@
 - **Change Window**: [Duration] (*)
 
 ## Change Description
+
 - **Summary**: [Brief description] (*)
 - **Detailed Description**: [Complete details] (*)
 - **Business Justification**: [Why is this needed] (*)
@@ -16,6 +18,7 @@
 - **Success Criteria**: [Measurable outcomes] (*)
 
 ## Infrastructure Components
+
 - **Cloud Resources**: [AWS/Azure/GCP resources] (*)
 - **Network Changes**: [Network/firewall changes] (*)
 - **Security Groups**: [Security group modifications] (*)
@@ -23,6 +26,7 @@
 - **DNS Changes**: [DNS modifications]
 
 ## Configuration Management
+
 - **IaC Templates**: [Terraform/CloudFormation] (*)
 - **Configuration Files**: [Config changes] (*)
 - **Version Control**: [Repository/branch] (*)
@@ -30,6 +34,7 @@
 - **Secrets Management**: [Vault/KMS changes]
 
 ## Security Assessment
+
 - **Security Impact**: [Security implications] (*)
 - **Compliance Impact**: [Regulatory effects] (*)
 - **Access Changes**: [IAM/RBAC changes] (*)
@@ -37,6 +42,7 @@
 - **Vulnerability Assessment**: [Security testing] (*)
 
 ## Performance Impact
+
 - **Resource Requirements**: [CPU/Memory/Storage] (*)
 - **Performance Expectations**: [Response time/throughput] (*)
 - **Scalability Requirements**: [Auto-scaling needs] (*)
@@ -44,6 +50,7 @@
 - **Capacity Planning**: [Resource forecasting] (*)
 
 ## High Availability & DR
+
 - **HA Requirements**: [Availability needs] (*)
 - **Failover Process**: [Failover procedures] (*)
 - **Backup Requirements**: [Backup changes] (*)
@@ -51,6 +58,7 @@
 - **Business Continuity**: [BC plan updates] (*)
 
 ## Monitoring & Alerting
+
 - **Monitoring Changes**: [Monitoring updates] (*)
 - **Alert Configurations**: [Alert changes] (*)
 - **Metrics Collection**: [New/modified metrics] (*)
@@ -58,6 +66,7 @@
 - **Dashboard Updates**: [Dashboard modifications] (*)
 
 ## Implementation Plan
+
 - **Pre-Implementation Steps**: [Preparation tasks] (*)
 - **Implementation Steps**: [Detailed procedure] (*)
 - **Verification Steps**: [Testing steps] (*)
@@ -65,6 +74,7 @@
 - **Post-Implementation**: [Validation steps] (*)
 
 ## Risk Assessment
+
 - **Risk Level**: [High/Medium/Low] (*)
 - **Potential Impacts**: [Service/system impacts] (*)
 - **Dependencies**: [Affected systems] (*)
@@ -72,6 +82,7 @@
 - **Contingency Plan**: [Backup plan] (*)
 
 ## Cost Analysis
+
 - **Infrastructure Costs**: [Resource costs] (*)
 - **Operational Costs**: [Ongoing costs] (*)
 - **License Requirements**: [New/modified licenses]
@@ -79,6 +90,7 @@
 - **ROI Analysis**: [Cost benefits]
 
 ## Testing Requirements
+
 - **Test Plan**: [Testing strategy] (*)
 - **Test Cases**: [Specific tests] (*)
 - **UAT Requirements**: [User acceptance] (*)
@@ -86,6 +98,7 @@
 - **Security Testing**: [Security validation] (*)
 
 ## Documentation
+
 - **Architecture Updates**: [Design documents] (*)
 - **Runbook Changes**: [Procedure updates] (*)
 - **Knowledge Base**: [KB articles] (*)
@@ -93,6 +106,7 @@
 - **Diagrams**: [Infrastructure diagrams] (*)
 
 ## Communication Plan
+
 - **Stakeholders**: [Who to notify] (*)
 - **Communication Timeline**: [When to notify] (*)
 - **Maintenance Window**: [Downtime notice] (*)
@@ -100,6 +114,7 @@
 - **Escalation Path**: [Escalation contacts] (*)
 
 ## Approvals Required
+
 - **Infrastructure Team**: [Infrastructure lead] (*)
 - **Security Team**: [Security architect] (*)
 - **Operations Team**: [Ops manager] (*)
@@ -107,6 +122,7 @@
 - **Business Owner**: [Business approval] (*)
 
 ## Post-Implementation
+
 - **Success Metrics**: [Success criteria] (*)
 - **Monitoring Period**: [Observation time] (*)
 - **Performance Baseline**: [New baselines] (*)

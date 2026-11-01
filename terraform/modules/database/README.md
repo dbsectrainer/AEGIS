@@ -7,6 +7,7 @@ This directory contains Terraform modules for deploying and managing database re
 The database infrastructure supports various managed database services:
 
 ### AWS (GovCloud)
+
 - Amazon Aurora PostgreSQL (Serverless v2)
 - Amazon DynamoDB
 - Encrypted storage with KMS
@@ -15,6 +16,7 @@ The database infrastructure supports various managed database services:
 - Automated backups
 
 ### Azure (Government)
+
 - Azure SQL Database
 - Cosmos DB
 - Private endpoints
@@ -23,6 +25,7 @@ The database infrastructure supports various managed database services:
 - Automated backups
 
 ### GCP
+
 - Cloud SQL (PostgreSQL)
 - Cloud Spanner
 - Private service connections
@@ -45,6 +48,7 @@ database/
 ## Features
 
 ### Common Features Across Providers
+
 - Private networking
 - Encryption at rest
 - Automated backups
@@ -54,6 +58,7 @@ database/
 - Performance insights
 
 ### AWS-Specific Features
+
 - Serverless scaling
 - Global tables (DynamoDB)
 - Point-in-time recovery
@@ -61,6 +66,7 @@ database/
 - IAM authentication
 
 ### Azure-Specific Features
+
 - Active Directory integration
 - Geo-replication
 - Automatic tuning
@@ -68,6 +74,7 @@ database/
 - Threat detection
 
 ### GCP-Specific Features
+
 - Regional availability
 - Maintenance windows
 - Query insights
@@ -77,6 +84,7 @@ database/
 ## Usage
 
 ### AWS Example
+
 ```hcl
 module "aws_database" {
   source = "../../../modules/database/aws"
@@ -115,6 +123,7 @@ module "aws_database" {
 ```
 
 ### Azure Example
+
 ```hcl
 module "azure_database" {
   source = "../../../modules/database/azure"
@@ -138,6 +147,7 @@ module "azure_database" {
 ```
 
 ### GCP Example
+
 ```hcl
 module "gcp_database" {
   source = "../../../modules/database/gcp"
@@ -191,6 +201,7 @@ module "gcp_database" {
 ## Monitoring and Maintenance
 
 ### Monitoring
+
 - Performance metrics
 - Query insights
 - Resource utilization
@@ -198,6 +209,7 @@ module "gcp_database" {
 - Alert policies
 
 ### Maintenance
+
 - Automated backups
 - Patch management
 - Version upgrades
@@ -236,6 +248,7 @@ Refer to each provider's module for specific variable definitions and requiremen
 ## Outputs
 
 Each module provides outputs for:
+
 - Database identifiers
 - Connection endpoints
 - Security group/firewall IDs
@@ -244,6 +257,7 @@ Each module provides outputs for:
 ## Support
 
 For issues or questions:
+
 1. Review cloud provider documentation
 2. Check terraform documentation
 3. Consult GOV cloud team
