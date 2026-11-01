@@ -11,12 +11,13 @@ repository has no long-running application; the test layers are:
 | Compliance | `automation/compliance/audit/run-compliance.sh` | 35 artifact, control, configuration, and hygiene checks |
 | Documentation | `make docs` | 66-page static portal generation |
 | Browser E2E | Playwright + Chromium | Navigation, search, links, mobile layout, console/network cleanliness, screenshots |
+| Local AWS emulation | LocalStack + AWS CLI | Provider CRUD and integration for supported AWS services |
 
 ## Directory layout
 
 ```text
 tests/
-├── test_repository.py          # 21 offline repository tests
+├── test_repository.py          # 23 offline repository tests
 ├── run-tests.sh                # full verification runner (evidence collection)
 ├── write_verification.py       # machine-readable verification snapshot
 └── e2e/
@@ -49,7 +50,10 @@ make test-security
 # Documentation portal + Playwright E2E + screenshots
 make test-e2e
 
-# Full evidence-collection suite
+# Optional LocalStack AWS emulation (Docker)
+make test-localstack
+
+# Full offline evidence-collection suite
 make verify
 ```
 
@@ -62,6 +66,8 @@ dry runs, documentation E2E, and writes `docs/evidence/verification.json`.
 - `docs/evidence/test-results/`: one log per check plus `status.tsv`
 - `docs/evidence/build-results/`: Terraform, docs, Trivy, and Checkov build logs
 - `docs/evidence/screenshots/`: browser screenshots
+- `docs/evidence/localstack/`: LocalStack logs, assertions, and result JSON
+- `docs/evidence/localstack-report.md`: emulation coverage and boundaries
 - `docs/evidence/verification.json`: status, counts, artifact paths
 - `docs/evidence/verification-report.md`: human-readable audit report
 

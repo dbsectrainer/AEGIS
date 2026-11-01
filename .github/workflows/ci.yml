@@ -93,3 +93,49 @@ jobs:
             docs/site/
             compliance-reports/
           if-no-files-found: warn
+
+  local-emulation:
+    name: Local AWS emulation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      localstack:
+        image: localstack/localstack:4.4.0
+        ports:
+          - 4566:4566
+        env:
+          SERVICES: s3,dynamodb,sqs,sns,iam,sts,kms,ec2,logs
+        options: >-
+          --health-cmd "curl -fsS http://localhost:4566/_localstack/health"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 12
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          terraform_wrapper: false
+
+      - name: Install AWS CLI and jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli jq curl
+
+      - name: Run LocalStack Terraform fixture
+        env:
+          LOCALSTACK_ENDPOINT: http://localhost:4566
+        run: tests/localstack/run-localstack-tests.sh --no-start
+
+      - name: Upload LocalStack evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aegis-localstack-evidence
+          path: docs/evidence/localstack/
+          if-no-files-found: warn

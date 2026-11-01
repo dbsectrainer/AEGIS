@@ -1,21 +1,21 @@
-2026-10-31 22:53:45,974 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/providers.tf
-2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/main.tf
-2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/aws/govcloud.tf
-2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/gcp/main.tf
-2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/tests/production.tftest.hcl
-2026-10-31 22:53:45,975 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/aws/iam.tf
-2026-10-31 22:53:45,976 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/variables.tf
-2026-10-31 22:53:45,976 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/azure/government.tf
-2026-10-31 22:53:45,977 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/gcp/main.tf
-2026-10-31 22:53:45,978 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/aws/main.tf
-2026-10-31 22:53:45,979 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/azure/main.tf
-2026-10-31 22:53:45,980 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/gcp/main.tf
-2026-10-31 22:53:45,981 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/azure/main.tf
-2026-10-31 22:53:45,981 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/aws/main.tf
-2026-10-31 22:53:45,982 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/azure/main.tf
-2026-10-31 22:53:45,983 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/gcp/main.tf
-2026-10-31 22:53:45,985 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/aws/main.tf
-2026-10-31 22:53:45,986 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/aws/iam.tf
+2026-10-31 23:28:07,850 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/gcp/main.tf
+2026-10-31 23:28:07,851 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/providers.tf
+2026-10-31 23:28:07,852 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/azure/main.tf
+2026-10-31 23:28:07,852 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/aws/iam.tf
+2026-10-31 23:28:07,852 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/azure/main.tf
+2026-10-31 23:28:07,852 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/aws/govcloud.tf
+2026-10-31 23:28:07,853 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/azure/government.tf
+2026-10-31 23:28:07,853 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/main.tf
+2026-10-31 23:28:07,854 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/variables.tf
+2026-10-31 23:28:07,854 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/environments/production/southeast/tests/production.tftest.hcl
+2026-10-31 23:28:07,855 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/providers/gcp/main.tf
+2026-10-31 23:28:07,856 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/gcp/main.tf
+2026-10-31 23:28:07,856 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/database/aws/main.tf
+2026-10-31 23:28:07,859 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/azure/main.tf
+2026-10-31 23:28:07,859 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/networking/aws/main.tf
+2026-10-31 23:28:07,859 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/gcp/main.tf
+2026-10-31 23:28:07,860 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/aws/main.tf
+2026-10-31 23:28:07,861 [ThreadPoolEx] [WARNI]  Secret scanning: could not process file /Users/newtechlab/Documents/GitHub/AEGIS/terraform/modules/compute/aws/iam.tf
 terraform scan results:
 
 Passed checks: 343, Failed checks: 34, Skipped checks: 0
@@ -164,14 +164,14 @@ Check: CKV2_AZURE_2: "Ensure that Vulnerability Assessment (VA) is enabled on a 
 	FAILED for resource: module.azure_database.azurerm_mssql_server.main
 	File: /modules/database/azure/main.tf:4-31
 	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-vulnerability-assessment-va-is-enabled-on-a-sql-server-by-setting-a-storage-account
-Check: CKV_AZURE_23: "Ensure that 'Auditing' is set to 'On' for SQL servers"
-	FAILED for resource: module.azure_database.azurerm_mssql_server.main
-	File: /modules/database/azure/main.tf:4-31
-	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/bc-azr-logging-2
 Check: CKV_AZURE_24: "Ensure that 'Auditing' Retention is 'greater than 90 days' for SQL servers"
 	FAILED for resource: module.azure_database.azurerm_mssql_server.main
 	File: /modules/database/azure/main.tf:4-31
 	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/bc-azr-logging-3
+Check: CKV_AZURE_23: "Ensure that 'Auditing' is set to 'On' for SQL servers"
+	FAILED for resource: module.azure_database.azurerm_mssql_server.main
+	File: /modules/database/azure/main.tf:4-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/bc-azr-logging-2
 Check: CKV2_AWS_27: "Ensure Postgres RDS as aws_rds_cluster has Query Logging enabled"
 	FAILED for resource: module.aws_database.aws_rds_cluster.main[0]
 	File: /modules/database/aws/main.tf:18-48

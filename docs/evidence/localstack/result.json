@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-11-01T03:27:18.666320+00:00",
+  "status": "PASS",
+  "checks": 22,
+  "failures": 0,
+  "tool": "LocalStack 4.4.0 + Terraform AWS provider 5.x + AWS CLI",
+  "coverage": [
+    "S3 bucket, encryption, versioning, public-access block, object CRUD",
+    "DynamoDB table and item CRUD",
+    "SQS queue and SNS-to-SQS delivery",
+    "KMS alias",
+    "CloudWatch Logs group and retention",
+    "IAM role and inline policy",
+    "EC2 VPC, subnets, and security group"
+  ],
+  "not_covered": [
+    "GovCloud-specific endpoints and partitions",
+    "EKS, ECS, RDS/Aurora, and other managed services",
+    "Azure and GCP",
+    "Production module IAM managed-policy ARNs"
+  ]
+}

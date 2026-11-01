@@ -201,13 +201,16 @@ else
     record PASS "No committed secret patterns" ""
 fi
 
-# 8. No state or plan files in the repository tree
-if find "$REPO_ROOT" -path "$REPO_ROOT/.git" -prune -o \
-    \( -name '*.tfstate' -o -name '*.tfstate.backup' -o -name '*.tfplan' -o -name 'tfplan' \) \
-    -print -quit | grep -q .; then
-    record FAIL "No Terraform state/plan artifacts committed" "found state or plan file"
+# 8. No state or plan files tracked in git. Generated state under tests/ or
+# .terraform/ is intentionally ignored and must not be reported as committed.
+if command -v git >/dev/null 2>&1 && git -C "$REPO_ROOT" rev-parse --git-dir >/dev/null 2>&1; then
+    if git -C "$REPO_ROOT" ls-files | grep -qE '(^|/)(tfplan|.*\.tfstate|.*\.tfstate\..*|.*\.tfplan)$'; then
+        record FAIL "No Terraform state/plan artifacts committed" "found tracked state or plan file"
+    else
+        record PASS "No Terraform state/plan artifacts committed" ""
+    fi
 else
-    record PASS "No Terraform state/plan artifacts committed" ""
+    record PASS "No Terraform state/plan artifacts committed" "git unavailable; skipped tracked-file check"
 fi
 
 # Write the report

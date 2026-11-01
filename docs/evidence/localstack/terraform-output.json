@@ -1,0 +1,42 @@
+{
+  "audit_table": {
+    "sensitive": false,
+    "type": "string",
+    "value": "aegis-local-audit"
+  },
+  "kms_alias": {
+    "sensitive": false,
+    "type": "string",
+    "value": "alias/aegis-local"
+  },
+  "log_group": {
+    "sensitive": false,
+    "type": "string",
+    "value": "/aegis/local/application"
+  },
+  "runtime_role": {
+    "sensitive": false,
+    "type": "string",
+    "value": "aegis-local-runtime"
+  },
+  "s3_bucket": {
+    "sensitive": false,
+    "type": "string",
+    "value": "aegis-local-evidence"
+  },
+  "sns_topic_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:sns:us-east-1:000000000000:aegis-local-alerts"
+  },
+  "sqs_queue_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/aegis-local-events"
+  },
+  "vpc_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "vpc-75e7a9e6772929be6"
+  }
+}

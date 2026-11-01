@@ -8,12 +8,13 @@
 [![NIST 800-207](https://img.shields.io/badge/NIST-800--207%20Zero%20Trust-green.svg?style=flat)](https://csrc.nist.gov/publications/detail/sp/800-207/final)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Verification status: PARTIAL PASS.** All offline repository checks pass. The
-Terraform root validates and plans against mock providers, but no live cloud
-plan/apply was executed because this audit had no cloud credentials or
-provisioned remote-state backend. See the
-[verification report](docs/evidence/verification-report.md) for the complete
-accounting.
+**Verification status: PARTIAL PASS.** All offline repository checks pass, and
+the AWS provider/local-emulation path passes against LocalStack for supported
+services. The Terraform root validates and plans against mock providers, but no
+live AWS/Azure/GCP plan/apply was executed because this audit had no cloud
+credentials or provisioned remote-state backend. See the
+[verification report](docs/evidence/verification-report.md) and
+[LocalStack report](docs/evidence/localstack-report.md) for the complete accounting.
 
 ---
 
@@ -117,6 +118,7 @@ present.
 - `trivy` (for the HIGH/CRITICAL gate)
 - `markdownlint-cli` (for `make docs-lint`)
 - Optional: `tfsec`, `checkov` for additional scans
+- Docker for the optional LocalStack AWS emulation test
 - Playwright with Chromium for browser E2E:
 
 ```bash
@@ -142,7 +144,7 @@ npm install --global markdownlint-cli@0.45.0
 # Show all repository commands
 make help
 
-# Fast repository contract tests (21 tests)
+# Fast repository contract tests (23 tests)
 make test-repository
 
 # Terraform format check, offline init/validate, and native mock-provider tests
@@ -150,6 +152,9 @@ make test-terraform
 
 # Offline HIGH/CRITICAL IaC scan
 make test-security
+
+# Optional: AWS Terraform/provider emulation against LocalStack (Docker)
+make test-localstack
 
 # Everything above plus shellcheck, markdownlint, compliance, docs, and E2E
 make verify
@@ -231,12 +236,36 @@ terraform test -verbose
 | `make backup` | Create a verified local configuration archive | No |
 | `make cleanup` | Dry-run generated-artifact cleanup (`--yes` to delete) | No |
 | `make test-e2e` | Build the portal and run Playwright checks/screenshots | No |
+| `make test-localstack` | AWS provider/integration emulation; requires Docker | No |
 | `make deploy-dry-run` | Validate deployment inputs without cloud calls | No |
 | `make deploy` | Deploy through the Terraform wrapper | Yes |
 
 `make security-live` and `make deploy` fail fast with a clear message when no
 usable credentials are present. Their dry-run counterparts are the supported
 offline verification paths.
+
+---
+
+## Local AWS emulation (optional)
+
+`make test-localstack` runs a real Terraform AWS provider fixture against a
+pinned LocalStack 4.4.0 community container, then verifies resources through the
+AWS CLI:
+
+- S3 bucket, encryption, versioning, public-access block, object CRUD
+- DynamoDB table and item CRUD
+- SQS/SNS with actual message delivery
+- KMS alias, CloudWatch Logs, IAM role, VPC/subnets/security group
+
+It uses Terraform AWS provider 5.x because LocalStack 4.4.0 does not reliably
+complete DynamoDB update waiters with provider 6.x. The production root remains
+on provider 6.x.
+
+This closes part of the AWS local-verification gap. It does **not** emulate
+GovCloud, EKS, ECS, RDS/Aurora, Azure, GCP, or the production modules' managed
+IAM policies. See [tests/localstack/README.md](tests/localstack/README.md) for
+the coverage matrix and review of SAM CLI, Moto, DynamoDB Local, MinIO, ElasticMQ,
+and AWS sandbox accounts.
 
 ---
 
@@ -247,7 +276,7 @@ The full audit, baseline, fixes, commands, and remaining limitations are in
 
 | Check | Result |
 | --- | --- |
-| Repository contract tests | 21 passed |
+| Repository contract tests | 23 passed |
 | Terraform format/validate | Passed, no warnings |
 | Terraform native mock tests | 2 passed; full-stack plan of 164 resources |
 | Trivy HIGH/CRITICAL IaC scan | 0 findings |
@@ -258,6 +287,7 @@ The full audit, baseline, fixes, commands, and remaining limitations are in
 | Offline compliance audit | 35/35 checks passed |
 | Documentation portal | 66 pages generated |
 | Playwright E2E | Passed (desktop, mobile, search, links, console, overflow) |
+| LocalStack AWS emulation | 22/22 checks passed; 17 resources applied/destroyed |
 | Live cloud plan/apply | **Not run** (no credentials/backend) |
 
 ### Screenshots
@@ -331,14 +361,17 @@ this environment. Treat the first remote run as an unverified step.
    without that design.
 4. **Live scans/audits were not run.** AWS posture collection and image scanning
    require credentials and were exercised only through `--dry-run`.
-5. **Only one environment exists.** Production/southeast is the only Terraform
+5. **Local emulation has a narrow coverage boundary.** LocalStack validates
+   supported AWS services and provider CRUD, but not GovCloud, EKS/ECS/RDS, the
+   production modules, or Azure/GCP. It uses provider 5.x; production uses 6.x.
+6. **Only one environment exists.** Production/southeast is the only Terraform
    root; the development/staging trees referenced in old docs are absent.
-6. **No operational application.** There is no web frontend, API, or database
+7. **No operational application.** There is no web frontend, API, or database
    application to exercise. Browser evidence covers the generated documentation
    portal and static security guides only.
-7. **CI has not run on GitHub.** The workflow is syntactically valid but its
+8. **CI has not run on GitHub.** The workflow is syntactically valid but its
    remote execution is unverified.
-8. **Provider reference configs are not deployment roots.** `terraform/providers/`
+9. **Provider reference configs are not deployment roots.** `terraform/providers/`
    validates independently but duplicates backend/provider concerns; the
    production root is the authoritative composition.
 
@@ -355,6 +388,7 @@ this environment. Treat the first remote run as an unverified step.
 - [Incident response](docs/security/policies/INCIDENT_RESPONSE_PLAN.md)
 - [Terraform security review](terraform/SECURITY_REVIEW.md)
 - [Test framework](tests/README.md)
+- [LocalStack emulation](tests/localstack/README.md)
 
 ---
 

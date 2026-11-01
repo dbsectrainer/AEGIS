@@ -3,7 +3,7 @@
 - **Audit date:** 2026-10-31 (America/New_York); evidence timestamps are UTC
 - **Repository:** `/Users/newtechlab/Documents/GitHub/AEGIS`
 - **Branch:** `main`
-- **Final status:** **PARTIAL PASS**
+- **Final status:** **PARTIAL PASS** (offline suite and LocalStack AWS emulation pass; no live cloud apply)
 - **Offline verification:** PASS
 - **Live cloud verification:** NOT RUN (no credentials or remote-state backend)
 
@@ -25,7 +25,7 @@ emitting 19 undeclared-variable warnings.
 
 After remediation:
 
-- `make test` passes with 21 repository tests plus Terraform validation and two
+- `make test` passes with 23 repository tests plus Terraform validation and two
   native mock-provider test runs.
 - The full-stack Terraform plan produces 164 resources with mocked providers.
 - Trivy reports 0 HIGH/CRITICAL findings and tfsec reports 0 HIGH findings.
@@ -34,6 +34,9 @@ After remediation:
 - The documentation portal builds 66 pages and passes Playwright E2E checks at
   desktop and mobile widths.
 - Checkov remains advisory with 34 findings (down from 64).
+- A LocalStack integration test passes 22/22 assertions against 17 real AWS
+  provider resources for supported services. This validates the local AWS path
+  but not GovCloud, EKS/ECS/RDS, or the production modules.
 
 These results validate repository construction and offline behavior. They do
 **not** validate live AWS/Azure/GCP deployment, provider API compatibility, IAM
@@ -160,7 +163,7 @@ defect below was reproduced, fixed, and re-tested:
 | Terraform composition | Added managed resource group, KMS key, SQL/Cosmos private DNS zones, correct module inputs, safe outputs, and removal of hardcoded placeholder ARNs | `terraform/environments/production/southeast/main.tf` |
 | Terraform modules | Fixed AKS/GKE autoscaling conflicts, Azure SQL identity, Cosmos local auth/public access, private DNS separation, GCP APIs/BigQuery dataset, GCP SQL allocated range, AWS endpoints/flow logs/default SG/node launch template, KMS actions, SG descriptions | `terraform/modules/**` |
 | Provider references | Fixed the invalid GCP dynamic provider block, removed the AWS alias that left the default provider unconfigured, added version constraints, and validated each reference root | `terraform/providers/**` |
-| Tests | Added 21 repository contract tests, Terraform mock tests, Playwright E2E, and a full evidence runner | `tests/**`, `terraform/environments/production/southeast/tests/production.tftest.hcl` |
+| Tests | Added 23 repository contract tests, Terraform mock tests, Playwright E2E, and a full evidence runner | `tests/**`, `terraform/environments/production/southeast/tests/production.tftest.hcl` |
 | Documentation | Added a static portal generator, conditional verification snapshot, search, category navigation, responsive CSS, evidence gallery | `docs/generate-docs.sh`, `docs/requirements.txt` |
 | Hygiene | Added `.gitignore`, removed tracked `terraform.tfvars`, added a non-secret example, split secret-like literals used by the scanner | `.gitignore`, `terraform/environments/production/southeast/terraform.tfvars.example` |
 | CI | Added a GitHub Actions workflow for tests, Terraform, Trivy, docs, E2E, compliance, and artifact upload | `.github/workflows/ci.yml` |
@@ -175,7 +178,7 @@ All commands were run from the repository root on 2026-10-31. Raw logs are under
 
 | Command | Result | Evidence |
 | --- | --- | --- |
-| `python3 -m unittest discover -s tests -p 'test_*.py' -v` | 21 tests passed | `repository-contract-tests.log` |
+| `python3 -m unittest discover -s tests -p 'test_*.py' -v` | 23 tests passed | `repository-contract-tests.log` |
 | `terraform fmt -recursive -check terraform` | Passed | `terraform-fmt-validate-test.log` |
 | `terraform init -backend=false` + `terraform validate` | Passed; no warnings | `terraform-fmt-validate-test.log` |
 | `terraform test -verbose` | 2 passed, 0 failed; full plan 164 resources; expected validation failure reproduced | `terraform-fmt-validate-test.log` |
@@ -187,6 +190,7 @@ All commands were run from the repository root on 2026-10-31. Raw logs are under
 | `make security-compliance` | 35/35 checks passed | `offline-compliance-audit.log` |
 | `make docs` | 66 documentation pages generated | `documentation-portal-build.log` |
 | Playwright E2E | Passed: title, 20+ cards, internal links, search filter, empty state, README render, security references, mobile overflow, console/network checks | `documentation-portal-e2e.log` |
+| LocalStack AWS emulation | 22/22 assertions; 17 resources applied/destroyed | `docs/evidence/localstack/result.json` |
 | `make monitoring-init` / `update` | 3 JSON files validated; manifest created; no changes on second run | `monitoring-manifest-validation.log` |
 | `make deploy-dry-run` | Passed without credentials | `deployment-dry-run.log` |
 | `run-scans.sh --dry-run` | Passed without credentials/tools | `security-scan-dry-run.log` |
@@ -205,6 +209,37 @@ All commands were run from the repository root on 2026-10-31. Raw logs are under
   was generated from source and browser-tested.
 - **Cloud runtime:** Not attempted. A live plan requires a real S3/DynamoDB
   backend and provider credentials.
+
+### Local AWS emulation
+
+A separate, opt-in emulation test was added to narrow the AWS verification gap:
+
+```bash
+make test-localstack
+```
+
+It starts a pinned LocalStack 4.4.0 community container, applies
+`tests/localstack/terraform` with Terraform AWS provider 5.x, verifies the
+resources through the AWS CLI, and destroys them.
+
+| Area | Verified |
+| --- | --- |
+| S3 | Bucket, AES256 encryption, versioning, public-access block, object upload/download |
+| DynamoDB | Table active, `PAY_PER_REQUEST`, put/get item |
+| SQS/SNS | Queue/topic creation, SNS→SQS message delivery |
+| KMS | Alias exists |
+| CloudWatch Logs | Log group and 30-day retention |
+| IAM | Role and inline policy |
+| EC2 | VPC, subnets, security group |
+
+Result: **PASS**, 22/22 assertions, 17 resources applied and destroyed. Evidence:
+`docs/evidence/localstack/` and [localstack-report.md](localstack-report.md).
+
+It intentionally does **not** cover GovCloud partitions, EKS, ECS, RDS/Aurora,
+the production modules' AWS-managed policy attachments, Azure, or GCP. It uses
+provider 5.x because LocalStack 4.4.0's DynamoDB update waiter is unreliable with
+provider 6.x; production remains on 6.x. This is a local pre-check, not a
+substitute for a sandbox/live-account plan/apply.
 
 ---
 
@@ -296,6 +331,10 @@ cloud functionality.
    after documentation changes.
 9. **No operational application or API** exists; backend/API quality gates are
    not applicable and were not simulated.
+10. **LocalStack is deliberately narrow and optional.** It is a separate
+    Docker-dependent target, not part of `make verify`; the CI workflow runs it in
+    a dedicated job. It covers supported AWS services only (provider 5.x), not
+    GovCloud, EKS/ECS/RDS, the production modules, Azure, or GCP.
 
 ---
 
@@ -318,6 +357,7 @@ make docs
 make test-e2e
 make security-compliance
 make security-dry-run
+make test-localstack      # optional Docker/LocalStack pre-check
 ```
 
 Expected final line: `RESULT: PASS`. The script exits non-zero if any required
@@ -334,10 +374,10 @@ check fails. Checkov is intentionally advisory and is recorded separately.
 | Production build completes | PASS | 66-page static portal built |
 | Type checking | N/A | No typed application language; Terraform validate covers configuration |
 | Linting passes | PASS | ShellCheck 0, Markdown 0, Terraform fmt clean |
-| Automated tests pass | PASS | 21 repository tests, 2 Terraform tests |
+| Automated tests pass | PASS | 23 repository tests, 2 Terraform tests |
 | Critical workflows verified | PASS (offline) / NOT RUN (cloud) | Portal workflows verified; live cloud workflows not |
 | Browser console clean | PASS | Playwright asserted no console errors or failed local requests |
-| API integrations | N/A / NOT RUN | No local API; cloud integrations unverified |
+| API integrations | PARTIAL | SNS→SQS verified in LocalStack; no live cloud API integration verified |
 | Responsive layouts | PASS | 1440px and 390px tested; no horizontal overflow |
 | Screenshots saved | PASS | 8 images under `docs/evidence/screenshots/` |
 | README accurate | PASS | Rewritten against verified state |
@@ -346,6 +386,7 @@ check fails. Checkov is intentionally advisory and is recorded separately.
 | Remaining issues documented | PASS | Sections 8 and 10 |
 
 **Final verdict: PARTIAL PASS.** The repository is buildable, testable, lint-clean,
-secret-hygienic, and its documentation UI is verified. It is not deployment-ready:
-live cloud behavior was not exercised, and the Azure AKS/ACR egress design plus
-remaining Checkov findings require resolution before production use.
+secret-hygienic, its documentation UI is verified, and supported AWS Terraform
+patterns pass against LocalStack. It is not deployment-ready: no live cloud
+plan/apply was exercised, and the Azure AKS/ACR egress design, managed-service
+coverage, and remaining Checkov findings require resolution before production use.

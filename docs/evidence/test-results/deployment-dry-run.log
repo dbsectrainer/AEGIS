@@ -1,8 +1,8 @@
 ./automation/deployment/infrastructure/deploy.sh -e production -r southeast --dry-run
-[2026-10-31 22:53:43] [INFO] Starting infrastructure deployment
-[2026-10-31 22:53:43] [INFO] Dry run selected; cloud credentials and AWS CLI are not required.
-[2026-10-31 22:53:43] [INFO] [DRY RUN] Environment: production; region: southeast; components: all
-[2026-10-31 22:53:43] [INFO] [DRY RUN] Terraform directory: terraform/environments/production/southeast
-[2026-10-31 22:53:43] [INFO] [DRY RUN] Would run: terraform init; terraform plan -out=tfplan; terraform apply tfplan
-[2026-10-31 22:53:43] [INFO] [DRY RUN] No cloud state was read or changed.
-[2026-10-31 22:53:43] [INFO] Dry run completed successfully
+[2026-10-31 23:28:05] [INFO] Starting infrastructure deployment
+[2026-10-31 23:28:05] [INFO] Dry run selected; cloud credentials and AWS CLI are not required.
+[2026-10-31 23:28:05] [INFO] [DRY RUN] Environment: production; region: southeast; components: all
+[2026-10-31 23:28:05] [INFO] [DRY RUN] Terraform directory: terraform/environments/production/southeast
+[2026-10-31 23:28:05] [INFO] [DRY RUN] Would run: terraform init; terraform plan -out=tfplan; terraform apply tfplan
+[2026-10-31 23:28:05] [INFO] [DRY RUN] No cloud state was read or changed.
+[2026-10-31 23:28:05] [INFO] Dry run completed successfully

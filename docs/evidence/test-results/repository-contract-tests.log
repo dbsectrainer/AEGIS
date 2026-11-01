@@ -6,6 +6,8 @@ test_jira_csv_is_well_formed (test_repository.ConfigurationSyntaxTests.test_jira
 test_json_configuration_is_valid (test_repository.ConfigurationSyntaxTests.test_json_configuration_is_valid) ... ok
 test_shell_scripts_parse (test_repository.ConfigurationSyntaxTests.test_shell_scripts_parse) ... ok
 test_terraform_templates_parse (test_repository.ConfigurationSyntaxTests.test_terraform_templates_parse) ... ok
+test_fixture_targets_localstack_and_not_a_live_account (test_repository.LocalEmulationContractTests.test_fixture_targets_localstack_and_not_a_live_account) ... ok
+test_localstack_result_snapshot_is_valid (test_repository.LocalEmulationContractTests.test_localstack_result_snapshot_is_valid) ... ok
 test_gitignore_protects_state_and_secrets (test_repository.RepositoryStructureTests.test_gitignore_protects_state_and_secrets) ... ok
 test_makefile_commands_reference_existing_scripts (test_repository.RepositoryStructureTests.test_makefile_commands_reference_existing_scripts) ... ok
 test_readme_relative_links_resolve (test_repository.RepositoryStructureTests.test_readme_relative_links_resolve) ... ok
@@ -21,6 +23,6 @@ test_verification_report_required_sections (test_repository.VerificationEvidence
 test_verification_snapshot_is_valid (test_repository.VerificationEvidenceTests.test_verification_snapshot_is_valid) ... ok
 
 ----------------------------------------------------------------------
-Ran 21 tests in 0.457s
+Ran 23 tests in 0.501s
 
 OK

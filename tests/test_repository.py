@@ -34,6 +34,10 @@ REQUIRED_FILES = [
     "docs/generate-docs.sh",
     "docs/requirements.txt",
     "tests/run-tests.sh",
+    "tests/localstack/run-localstack-tests.sh",
+    "tests/localstack/terraform/main.tf",
+    "tests/localstack/README.md",
+    "docs/evidence/localstack-report.md",
     "automation/security/scanning/run-scans.sh",
     "automation/security/scanning/run-audit.sh",
     "automation/compliance/audit/run-compliance.sh",
@@ -52,6 +56,7 @@ SHELL_SCRIPTS = [
     "monitoring/init-monitoring.sh",
     "monitoring/update-monitoring.sh",
     "tests/run-tests.sh",
+    "tests/localstack/run-localstack-tests.sh",
 ]
 
 JSON_FILES = [
@@ -157,6 +162,7 @@ class AutomationContractTests(unittest.TestCase):
             "automation/maintenance/cleanup/cleanup.sh",
             "monitoring/init-monitoring.sh",
             "monitoring/update-monitoring.sh",
+            "tests/localstack/run-localstack-tests.sh",
         ]
         for rel in scripts:
             with self.subTest(path=rel):
@@ -258,6 +264,24 @@ class TerraformContractTests(unittest.TestCase):
         ):
             with self.subTest(path=rel):
                 self.assertTrue((ROOT / rel).is_file())
+
+
+class LocalEmulationContractTests(unittest.TestCase):
+    def test_fixture_targets_localstack_and_not_a_live_account(self) -> None:
+        text = (ROOT / "tests/localstack/terraform/main.tf").read_text(encoding="utf-8")
+        self.assertIn("localstack_endpoint", text)
+        self.assertIn("http://localhost:4566", text)
+        self.assertIn("skip_credentials_validation", text)
+        self.assertIn('provider "aws"', text)
+        self.assertIn('version = "~> 5.0"', text)
+
+    def test_localstack_result_snapshot_is_valid(self) -> None:
+        path = ROOT / "docs/evidence/localstack/result.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(data["status"], "PASS")
+        self.assertGreaterEqual(data["checks"], 20)
+        self.assertEqual(data["failures"], 0)
+        self.assertIn("EKS", " ".join(data["not_covered"]))
 
 
 class VerificationEvidenceTests(unittest.TestCase):

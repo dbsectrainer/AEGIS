@@ -58,7 +58,8 @@ run_shellcheck() {
         "${REPO_ROOT}/docs/generate-docs.sh" \
         "${REPO_ROOT}/monitoring/init-monitoring.sh" \
         "${REPO_ROOT}/monitoring/update-monitoring.sh" \
-        "${REPO_ROOT}/tests/run-tests.sh"
+        "${REPO_ROOT}/tests/run-tests.sh" \
+        "${REPO_ROOT}/tests/localstack/run-localstack-tests.sh"
 }
 
 run_checkov() {

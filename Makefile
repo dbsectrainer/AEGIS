@@ -14,7 +14,7 @@ TF_DIR := terraform/environments/$(ENV)/$(REGION)
 TF_BIN := terraform
 
 .PHONY: help fmt validate init plan apply deploy deploy-dry-run \
-        test test-repository test-terraform test-security test-e2e \
+        test test-repository test-terraform test-security test-e2e test-localstack \
         security security-scan-offline security-compliance security-live security-dry-run \
         docs docs-lint monitoring-init monitoring-update backup cleanup clean verify
 
@@ -29,6 +29,7 @@ help:
 	@echo "  make test-terraform                    Terraform format, validate, and native tests"
 	@echo "  make test-security                     Trivy HIGH/CRITICAL IaC scan (fails on findings)"
 	@echo "  make test-e2e                          Build the docs portal and run Playwright E2E checks"
+	@echo "  make test-localstack                   LocalStack AWS provider/integration test (Docker)"
 	@echo "  make verify                            Run the full evidence-collection suite"
 	@echo ""
 	@echo "Infrastructure (requires credentials and remote state):"
@@ -64,7 +65,7 @@ guard-env:
 	fi
 
 fmt:
-	$(TF_BIN) fmt -recursive terraform
+	$(TF_BIN) fmt -recursive terraform tests/localstack/terraform
 
 validate: test-terraform
 
@@ -91,6 +92,10 @@ test-security:
 test-e2e: docs
 	@echo "== Playwright documentation portal E2E =="
 	python3 tests/e2e/test_docs_portal.py
+
+test-localstack:
+	@echo "== LocalStack AWS emulation tests =="
+	./tests/localstack/run-localstack-tests.sh
 
 security: security-scan-offline security-compliance
 

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T02:53:56.959262+00:00",
+  "generated_at": "2026-11-01T03:28:18.903623+00:00",
   "status": "PASS",
   "checks": [
     {
@@ -88,7 +88,7 @@
     "terraform_resource_blocks": 141,
     "terraform_modules": 3,
     "control_references": 140,
-    "test_cases": 21,
+    "test_cases": 23,
     "screenshots": 8,
     "checkov_findings": 34
   },

@@ -1,4 +1,4 @@
 ./monitoring/init-monitoring.sh -e production
-[2026-10-31 22:53:43] [INFO] Validated 3 monitoring file(s)
-[2026-10-31 22:53:43] [INFO] Manifest written to generated/monitoring-manifest-production.json for environment production
-[2026-10-31 22:53:43] [INFO] This bundle has not been deployed. Apply it with the monitoring backend of record after review.
+[2026-10-31 23:28:05] [INFO] Validated 3 monitoring file(s)
+[2026-10-31 23:28:05] [INFO] Manifest written to generated/monitoring-manifest-production.json for environment production
+[2026-10-31 23:28:05] [INFO] This bundle has not been deployed. Apply it with the monitoring backend of record after review.

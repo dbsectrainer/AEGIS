@@ -1,38 +1,38 @@
 ./automation/compliance/audit/run-compliance.sh -e production
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: templates/SSP_TEMPLATE.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: templates/POAM_TEMPLATE.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: templates/SAR_TEMPLATE.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: templates/RAR_TEMPLATE.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: templates/AUTHORIZATION_PACKAGE.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: templates/CCI_MAPPING.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: docs/compliance/COMPLIANCE_MAPPING.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: docs/compliance/fedramp/FEDRAMP_COMPLIANCE.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: docs/compliance/fedramp/INHERITED_CONTROLS.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: docs/security/policies/INCIDENT_RESPONSE_PLAN.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: docs/security/policies/DR_BC_DETAILED_PLAN.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: docs/security/implementation/SECURITY_METRICS.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: docs/architecture/ZERO_TRUST_ARCHITECTURE.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: docs/iam/IAM_GOVERNANCE.md
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: monitoring/alerts/security/main.json
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: monitoring/dashboards/infrastructure/main.json
-[2026-10-31 22:53:39] [INFO] PASS: Required artifact: monitoring/logging/infrastructure/config.json
-[2026-10-31 22:53:39] [INFO] PASS: Terraform formatting (recursive)
-[2026-10-31 22:53:42] [INFO] PASS: Terraform production root validation
-[2026-10-31 22:53:42] [INFO] PASS: NIST 800-53 control families mapped
-[2026-10-31 22:53:42] [INFO] PASS: FedRAMP High coverage documented
-[2026-10-31 22:53:42] [INFO] PASS: NIST 800-207 coverage documented
-[2026-10-31 22:53:42] [INFO] PASS: Valid JSON: monitoring/alerts/security/main.json
-[2026-10-31 22:53:42] [INFO] PASS: Valid JSON: monitoring/dashboards/infrastructure/main.json
-[2026-10-31 22:53:42] [INFO] PASS: Valid JSON: monitoring/logging/infrastructure/config.json
-[2026-10-31 22:53:42] [INFO] PASS: Valid JSON: itsm_templates/jira-import.json
-[2026-10-31 22:53:42] [INFO] PASS: Valid JSON: itsm_templates/servicenow-import.json
-[2026-10-31 22:53:42] [INFO] PASS: Shell syntax: automation/deployment/infrastructure/deploy.sh
-[2026-10-31 22:53:42] [INFO] PASS: Shell syntax: automation/security/scanning/run-scans.sh
-[2026-10-31 22:53:42] [INFO] PASS: Shell syntax: automation/security/scanning/run-audit.sh
-[2026-10-31 22:53:42] [INFO] PASS: Shell syntax: automation/compliance/audit/run-compliance.sh
-[2026-10-31 22:53:42] [INFO] PASS: Shell syntax: docs/generate-docs.sh
-[2026-10-31 22:53:42] [INFO] PASS: Shell syntax: tests/run-tests.sh
-[2026-10-31 22:53:42] [INFO] PASS: No committed secret patterns
-[2026-10-31 22:53:42] [INFO] PASS: No Terraform state/plan artifacts committed
-[2026-10-31 22:53:42] [INFO] Report written to compliance-reports/compliance-production-20261101T025339Z.md
-[2026-10-31 22:53:42] [INFO] All 35 checks passed
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: templates/SSP_TEMPLATE.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: templates/POAM_TEMPLATE.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: templates/SAR_TEMPLATE.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: templates/RAR_TEMPLATE.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: templates/AUTHORIZATION_PACKAGE.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: templates/CCI_MAPPING.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: docs/compliance/COMPLIANCE_MAPPING.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: docs/compliance/fedramp/FEDRAMP_COMPLIANCE.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: docs/compliance/fedramp/INHERITED_CONTROLS.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: docs/security/policies/INCIDENT_RESPONSE_PLAN.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: docs/security/policies/DR_BC_DETAILED_PLAN.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: docs/security/implementation/SECURITY_METRICS.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: docs/architecture/ZERO_TRUST_ARCHITECTURE.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: docs/iam/IAM_GOVERNANCE.md
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: monitoring/alerts/security/main.json
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: monitoring/dashboards/infrastructure/main.json
+[2026-10-31 23:28:01] [INFO] PASS: Required artifact: monitoring/logging/infrastructure/config.json
+[2026-10-31 23:28:01] [INFO] PASS: Terraform formatting (recursive)
+[2026-10-31 23:28:04] [INFO] PASS: Terraform production root validation
+[2026-10-31 23:28:04] [INFO] PASS: NIST 800-53 control families mapped
+[2026-10-31 23:28:04] [INFO] PASS: FedRAMP High coverage documented
+[2026-10-31 23:28:04] [INFO] PASS: NIST 800-207 coverage documented
+[2026-10-31 23:28:04] [INFO] PASS: Valid JSON: monitoring/alerts/security/main.json
+[2026-10-31 23:28:04] [INFO] PASS: Valid JSON: monitoring/dashboards/infrastructure/main.json
+[2026-10-31 23:28:04] [INFO] PASS: Valid JSON: monitoring/logging/infrastructure/config.json
+[2026-10-31 23:28:04] [INFO] PASS: Valid JSON: itsm_templates/jira-import.json
+[2026-10-31 23:28:04] [INFO] PASS: Valid JSON: itsm_templates/servicenow-import.json
+[2026-10-31 23:28:04] [INFO] PASS: Shell syntax: automation/deployment/infrastructure/deploy.sh
+[2026-10-31 23:28:04] [INFO] PASS: Shell syntax: automation/security/scanning/run-scans.sh
+[2026-10-31 23:28:04] [INFO] PASS: Shell syntax: automation/security/scanning/run-audit.sh
+[2026-10-31 23:28:04] [INFO] PASS: Shell syntax: automation/compliance/audit/run-compliance.sh
+[2026-10-31 23:28:04] [INFO] PASS: Shell syntax: docs/generate-docs.sh
+[2026-10-31 23:28:04] [INFO] PASS: Shell syntax: tests/run-tests.sh
+[2026-10-31 23:28:04] [INFO] PASS: No committed secret patterns
+[2026-10-31 23:28:04] [INFO] PASS: No Terraform state/plan artifacts committed
+[2026-10-31 23:28:04] [INFO] Report written to compliance-reports/compliance-production-20261101T032801Z.md
+[2026-10-31 23:28:04] [INFO] All 35 checks passed
